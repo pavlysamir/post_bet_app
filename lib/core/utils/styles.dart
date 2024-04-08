@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:post_bet/constants.dart';
 
 abstract class Styles {
   static const title1textStyle20 = TextStyle(
     fontSize: 20, fontWeight: FontWeight.w600, //color: kPrimaryKey
   );
 
-  static const textStyle20 =
-      TextStyle(fontSize: 20, fontWeight: FontWeight.w600);
-
-  static const title2textStyle16 =
-      TextStyle(fontSize: 16, fontWeight: FontWeight.w500);
-
-  static const textStyle16 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.normal,
+  static TextStyle textStyle32Black = TextStyle(
+      fontSize: 32.sp, fontWeight: FontWeight.bold, color: Colors.black);
+  static TextStyle textStyle32Orange = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeight.bold,
+    color: kPrimaryKey,
   );
-  static const textStyle14Bold = TextStyle(
-    fontSize: 14,
+
+  static TextStyle textStyle12 =
+      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold);
+
+  static TextStyle textStyle8 = TextStyle(
+    fontSize: 8.sp,
     fontWeight: FontWeight.bold,
   );
+  static TextStyle textStyle14 = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: Colors.grey,
+  );
+
   static const textStyle18 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.normal,
@@ -45,11 +55,4 @@ abstract class Styles {
     fontSize: 14,
     fontWeight: FontWeight.bold,
   );
-  static const textStyle12 = TextStyle(
-    fontSize: 12, fontWeight: FontWeight.normal, //color: kPrimaryKey
-  );
-  static const textStyle8 =
-      TextStyle(fontSize: 8, fontWeight: FontWeight.normal);
-  static const textStyle10 =
-      TextStyle(fontSize: 10, fontWeight: FontWeight.normal);
 }

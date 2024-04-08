@@ -1,0 +1,8 @@
+flutter_native_splash:
+
+  color: "#ffffff"
+  image: assets/images/Splash_postBet.png
+
+  android_12:
+    image: assets/images/splash2+12.png
+    color: "#DE2626"
