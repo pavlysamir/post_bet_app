@@ -36,6 +36,8 @@ dependencies:
   flutter_screenutil: ^5.9.0
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
+  flutter_windowmanager: ^0.2.0
+
   flutter:
     sdk: flutter
 
