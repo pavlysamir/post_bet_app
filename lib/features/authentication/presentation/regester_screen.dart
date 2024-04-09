@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/core/functions/snacck_bar.dart';
 import 'package:post_bet/core/functions/validation_handling.dart';
+import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/widgets/custom_button_large_dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
@@ -35,15 +40,13 @@ class RegisterScreen extends StatelessWidget {
                 ),
                 Text('Create an account to start using postbet',
                     style: Styles.textStyle14Grey),
-                const SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30.h),
                 Text(
                   'Email',
                   style: Styles.textStyle14Black,
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 CustomFormField(
                     prefixIcon: const Icon(
@@ -54,15 +57,13 @@ class RegisterScreen extends StatelessWidget {
                     hintText: 'Email',
                     controller: emailController,
                     validationMassage: conditionOfValidationName),
-                const SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30.h),
                 Text(
                   'Name',
                   style: Styles.textStyle14Black,
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 CustomFormField(
                     prefixIcon: const Icon(
@@ -73,17 +74,16 @@ class RegisterScreen extends StatelessWidget {
                     hintText: 'Name',
                     controller: nameController,
                     validationMassage: conditionOfValidationEmail),
-                const SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30.h),
                 Text(
                   'Password',
                   style: Styles.textStyle14Black,
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 CustomFormField(
+                    isEyeTrue: true,
                     prefixIcon: const Icon(
                       Icons.lock,
                       color: kPrimaryKey,
@@ -98,18 +98,16 @@ class RegisterScreen extends StatelessWidget {
                     hintText: '*************',
                     controller: passwordController,
                     validationMassage: conditionOfValidationPhone),
-
-                const SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30.h),
                 Text(
                   'Confirm password',
                   style: Styles.textStyle14Black,
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: 10.h,
                 ),
                 CustomFormField(
+                    isEyeTrue: true,
                     prefixIcon: const Icon(
                       Icons.lock,
                       color: kPrimaryKey,
@@ -124,58 +122,36 @@ class RegisterScreen extends StatelessWidget {
                     hintText: '*************',
                     controller: confirmPasswordController,
                     validationMassage: conditionOfValidationPhone),
-
-                const SizedBox(
-                  height: 30,
-                ),
-
-                // ConditionalBuilder(
-                //   condition: state is! RegisterCreateUserLoadingState,
-                //   builder: (context) => SizedBox(
-                //     width: MediaQuery.of(context).size.width * 0.35,
-                //     height: MediaQuery.of(context).size.height * 0.04,
-                //     child: CustomButton(
-                //       color: kPrimaryKey,
-                //       text: 'Sign Up',
-                //       textColor: Colors.white,
-                //       function: () {
-                //         if (formKey.currentState!.validate()) {
-                //           // GoRouter.of(context).go(AppRouter.kHomeView);
-                //           RegistrationCubit.get(context)!.userRegister(
-                //             name: nameController.text,
-                //             email: emailController.text,
-                //             password: passwordController.text,
-                //             phone: phoneController.text,
-                //           );
-                //         }
-                //       },
-                //     ),
-                //   ),
-                //   fallback: (context) => const Center(
-                //     child: CircularProgressIndicator(),
-                //   ),
-                // ),
-
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  children: [
-                    GestureDetector(
-                      onTap: () {},
-                      child: Text(
-                        'Terms of Service',
-                        style: Styles.textStyle12.copyWith(
+                SizedBox(height: 30.h),
+                CustomButtonLarge(
+                  color: kPrimaryKey,
+                  function: () {
+                    if (formKey.currentState!.validate()) {
+                      showSnackBar(
                           color: kPrimaryKey,
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                    const Text('By login you agree to our'),
-                  ],
+                          message: 'done',
+                          context: context);
+                    }
+                    ;
+                  },
+                  text: 'Sign Up',
+                  textColor: Colors.white,
                 ),
-                const SizedBox(
-                  height: 40,
+                SizedBox(
+                  height: 30.h,
+                ),
+                Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      customGoAndDeleteNavigate(
+                          context: context, path: AppRouter.kLoginView);
+                    },
+                    child: Text('Already have an account',
+                        style: Styles.textStyle12Orange),
+                  ),
+                ),
+                SizedBox(
+                  height: 40.h,
                 ),
               ],
             ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class CustomButtonLarge extends StatelessWidget {
   const CustomButtonLarge(
@@ -21,7 +23,7 @@ class CustomButtonLarge extends StatelessWidget {
     return InkWell(
       onTap: function,
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.035,
+        height:40.h,
         width: MediaQuery.of(context).size.width ,
         decoration: BoxDecoration(
           color: color,

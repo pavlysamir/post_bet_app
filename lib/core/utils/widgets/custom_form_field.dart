@@ -13,7 +13,7 @@ class CustomFormField extends StatelessWidget {
       required this.textInputType,
       this.suffixIcon,
       this.prefixIcon,
-      this.isEyeTrue = true});
+      this.isEyeTrue = false});
   final TextEditingController controller;
   //final String validationMassage;
   final String hintText;
@@ -45,6 +45,7 @@ class CustomFormField extends StatelessWidget {
         //fillColor: Colors.grey[200],
         enabledBorder: outlineInputBorder(),
         focusedBorder: outlineInputBorder(),
+        errorBorder: outlineInputBorderError(),
         hintText: hintText,
         prefixIconConstraints: const BoxConstraints(
           minWidth: 40,
@@ -59,6 +60,14 @@ class CustomFormField extends StatelessWidget {
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
     borderSide: const BorderSide(color: kBlackColor),
+    borderRadius: BorderRadius.circular(14),
+  );
+}
+
+OutlineInputBorder outlineInputBorderError() {
+  return OutlineInputBorder(
+    borderSide:
+        const BorderSide(color: Colors.red), // Border color changes to red
     borderRadius: BorderRadius.circular(14),
   );
 }
