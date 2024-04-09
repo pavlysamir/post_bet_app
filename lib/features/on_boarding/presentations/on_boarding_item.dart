@@ -27,7 +27,7 @@ class BuildBoardingItem extends StatelessWidget {
         Expanded(
           child: Text(
             '${model.messege}',
-            style: Styles.textStyle14,
+            style: Styles.textStyle14Grey,
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             maxLines: 5,

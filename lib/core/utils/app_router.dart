@@ -9,11 +9,11 @@ abstract class AppRouter {
   static const kOnBoarding = '/OnBoardingScreen';
 
   static final router = GoRouter(
-      initialLocation:
-          getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
-                  true
-              ? kLoginView
-              : kOnBoarding,
+      initialLocation: kOnBoarding,
+      // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
+      //         true
+      //     ? kLoginView
+      //     : kOnBoarding,
       routes: [
         GoRoute(
           path: kLoginView,

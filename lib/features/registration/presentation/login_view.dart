@@ -14,6 +14,9 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 76.h,
+            ),
             Image.asset(AssetsData.loginLogo),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
@@ -39,7 +42,7 @@ class LoginScreen extends StatelessWidget {
             ),
             Text(
               'Let’s Get Started',
-              style: Styles.textStyle14,
+              style: Styles.textStyle14Grey,
             ),
             SizedBox(
               height: 25.h,
@@ -55,6 +58,19 @@ class LoginScreen extends StatelessWidget {
               image: AssetsData.emailIcon,
               text: 'Continue with Email',
             ),
+            SizedBox(
+              height: 26.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Already have an account?'),
+                GestureDetector(
+                  onTap: () {},
+                  child: Text('Login', style: Styles.textStyle14Orange),
+                ),
+              ],
+            )
           ],
         ),
       ),

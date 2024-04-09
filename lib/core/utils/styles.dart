@@ -19,15 +19,26 @@ abstract class Styles {
   static TextStyle textStyle12 =
       TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold);
 
+  static TextStyle textStyle12Orange = TextStyle(
+      fontSize: 12.sp, fontWeight: FontWeight.bold, color: kPrimaryKey);
+
   static TextStyle textStyle8 = TextStyle(
     fontSize: 8.sp,
     fontWeight: FontWeight.bold,
   );
-  static TextStyle textStyle14 = GoogleFonts.poppins(
+  static TextStyle textStyle14Grey = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     color: Colors.grey,
   );
+  static TextStyle textStyle14Orange = GoogleFonts.poppins(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: kPrimaryKey,
+  );
+
+  static TextStyle textStyle14White = TextStyle(
+      fontSize: 14.sp, fontWeight: FontWeight.normal, color: Colors.white);
 
   static const textStyle18 = TextStyle(
     fontSize: 18,

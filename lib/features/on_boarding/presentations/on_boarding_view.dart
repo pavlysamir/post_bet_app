@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../constants.dart';
@@ -45,7 +46,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           onPressed: () {
             submit();
           },
-          child: Text('Skip', style: Styles.textStyle14),
+          child: Text('Skip', style: Styles.textStyle14Grey),
         ),
       ),
       body: Padding(
@@ -94,20 +95,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       spacing: 5),
                 ),
                 const Spacer(),
-                TextButton(
-                    onPressed: () {
-                      if (widget.isLast == true) {
-                        submit();
-                      } else {
-                        BoardController.nextPage(
-                            duration: const Duration(milliseconds: 750),
-                            curve: Curves.fastLinearToSlowEaseIn);
-                      }
-                    },
-                    child: const Text(
-                      'next',
-                      style: Styles.textStyle24,
-                    )),
+                CustomButtonSmall(
+                  function: () {
+                    if (widget.isLast == true) {
+                      submit();
+                    } else {
+                      BoardController.nextPage(
+                          duration: const Duration(milliseconds: 750),
+                          curve: Curves.fastLinearToSlowEaseIn);
+                    }
+                  },
+                  text: 'Next',
+                ),
               ],
             ),
             const SizedBox(
