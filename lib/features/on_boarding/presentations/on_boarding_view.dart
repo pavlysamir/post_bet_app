@@ -123,7 +123,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         .get<CashHelperSharedPreferences>()
         .saveData(key: 'onBoarding', value: true)
         .then((value) {
-      customGoNavigate(context: context, path: AppRouter.kLoginView);
+      customGoAndDeleteNavigate(context: context, path: AppRouter.kLoginView);
     });
   }
 }

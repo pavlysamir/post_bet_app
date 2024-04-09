@@ -40,9 +40,17 @@ abstract class Styles {
   static TextStyle textStyle14White = TextStyle(
       fontSize: 14.sp, fontWeight: FontWeight.normal, color: Colors.white);
 
+  static TextStyle textStyle14Black = TextStyle(
+      fontSize: 14.sp, fontWeight: FontWeight.normal, color: kBlackColor);
+
   static const textStyle18 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.normal,
+  );
+  static TextStyle textStyle18Grey = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.normal,
+    color: const Color(0xff2D2D2D).withAlpha(90),
   );
   static const textStyle24 = TextStyle(
     fontSize: 24,

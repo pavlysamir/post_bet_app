@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/styles.dart';
-import 'package:post_bet/features/registration/presentation/views/widgets/custom_button_login.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/features/authentication/presentation/views/widgets/custom_button_login.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -66,7 +68,10 @@ class LoginScreen extends StatelessWidget {
               children: [
                 const Text('Already have an account?'),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    customJustGoNavigate(
+                        context: context, path: AppRouter.kRegistretion);
+                  },
                   child: Text('Login', style: Styles.textStyle14Orange),
                 ),
               ],
