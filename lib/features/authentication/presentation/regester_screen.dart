@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:post_bet/core/functions/snacck_bar.dart';
 import 'package:post_bet/core/functions/validation_handling.dart';
 import 'package:post_bet/core/utils/app_router.dart';
@@ -11,20 +12,45 @@ import 'package:post_bet/features/authentication/presentation/manager/cubit/regi
 import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
+
+  @override
+  State<RegisterScreen> createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
   TextEditingController confirmPasswordController = TextEditingController();
+
   TextEditingController nameController = TextEditingController();
+
   TextEditingController phoneController = TextEditingController();
+
   IconData iconDataPassword = Icons.visibility_off;
+
   IconData iconDataConfirmPassword = Icons.visibility_off;
 
   bool ifPasswordVisible = true;
+
   bool ifConfirmPasswordVisible = true;
 
   var formKey = GlobalKey<FormState>();
+
+  // Future<void> preventScreenshot() async {
+  //   await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  // }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

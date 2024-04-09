@@ -15,8 +15,8 @@ class CustomAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 30.h,
-        width: 200.w,
+        height: 40.h,
+        width: 222.w,
         decoration: BoxDecoration(
           border: Border.all(color: kBlackColor),
           color: Colors.white,
