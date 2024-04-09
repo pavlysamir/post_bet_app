@@ -20,14 +20,14 @@ class BuildBoardingItem extends StatelessWidget {
           height: 10,
         ),
         Text('${model.title}',
-            style: Styles.title1textStyle20, textAlign: TextAlign.center),
+            style: Styles.textStyle32Black, textAlign: TextAlign.center),
         const SizedBox(
           height: 20,
         ),
         Expanded(
           child: Text(
             '${model.messege}',
-            style: Styles.button1textStyle16,
+            style: Styles.textStyle14,
             textAlign: TextAlign.center,
             overflow: TextOverflow.ellipsis,
             maxLines: 5,

@@ -1,5 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../constants.dart';
 import '../../../core/assets/Assets.dart';
@@ -22,11 +25,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
     List<OnBoardingModel> modelBoarding = [
       OnBoardingModel(
-          image: AssetsData.emailIcon, title: 'dddd', messege: 'dddd'),
+          image: AssetsData.onBoarding1,
+          title: 'Easy way to share',
+          messege: 'Share posts , images and videos with just one click '),
       OnBoardingModel(
-          image: AssetsData.emailIcon, title: 'ddd', messege: 'dddd'),
+          image: AssetsData.onBoarding2,
+          title: 'Different platforms',
+          messege:
+              'We offer platforms like facebook , instagram , x and tiktok'),
       OnBoardingModel(
-          image: AssetsData.emailIcon, title: 'sssss', messege: 'sss'),
+          image: AssetsData.onBoarding3,
+          title: 'ALO with postbet',
+          messege: 'Postbet make you easily manage and share you posts '),
     ];
 
     return Scaffold(
@@ -58,7 +68,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     });
                   } else {
                     setState(() {
-                      print('not last');
+                      if (kDebugMode) {
+                        print('not last');
+                      }
                       widget.isLast = false;
                     });
                   }
@@ -92,7 +104,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             curve: Curves.fastLinearToSlowEaseIn);
                       }
                     },
-                    child: Text(
+                    child: const Text(
                       'next',
                       style: Styles.textStyle24,
                     )),
@@ -111,6 +123,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     getIt
         .get<CashHelperSharedPreferences>()
         .saveData(key: 'onBoarding', value: true)
-        .then((value) {});
+        .then((value) {
+      customGoNavigate(context: context, path: AppRouter.kLoginView);
+    });
   }
 }
