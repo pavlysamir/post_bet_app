@@ -1,7 +1,7 @@
 flutter_native_splash:
 
   color: "#ffffff"
-  image: assets/images/splash_for_pose_bet.png
+  image: assets/images/Splash_post.png
 
   android_12:
    
