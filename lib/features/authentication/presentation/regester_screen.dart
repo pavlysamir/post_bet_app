@@ -104,7 +104,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           textInputType: TextInputType.emailAddress,
                           hintText: 'Email',
                           controller: emailController,
-                          validationMassage: conditionOfValidationName),
+                          validationMassage: conditionOfValidationEmail),
                       SizedBox(height: 30.h),
                       Text(
                         'Name',
@@ -121,7 +121,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           textInputType: TextInputType.text,
                           hintText: 'Name',
                           controller: nameController,
-                          validationMassage: conditionOfValidationEmail),
+                          validationMassage: conditionOfValidationName),
                       SizedBox(height: 30.h),
                       Text(
                         'Password',
@@ -146,7 +146,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           textInputType: TextInputType.visiblePassword,
                           hintText: '*************',
                           controller: passwordController,
-                          validationMassage: conditionOfValidationPhone),
+                          validationMassage: conditionOfValidationPassWord),
                       SizedBox(height: 30.h),
                       Text(
                         'Confirm password',
