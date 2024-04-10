@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:post_bet/constants.dart';
 import '../../../../../core/utils/styles.dart';
 
 class CustomDescriptionPostField extends StatelessWidget {
