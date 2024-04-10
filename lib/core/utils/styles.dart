@@ -26,6 +26,11 @@ abstract class Styles {
     fontSize: 8.sp,
     fontWeight: FontWeight.bold,
   );
+
+  static TextStyle textStyle24BoldBlack = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeight.bold,
+  );
   static TextStyle textStyle14Grey = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w500,
