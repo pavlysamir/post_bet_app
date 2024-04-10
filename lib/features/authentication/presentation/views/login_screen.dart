@@ -123,7 +123,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: kPrimaryKey,
                           textColor: Colors.white,
                           function: () {
-                            if (formKey.currentState!.validate()) {}
+                            if (formKey.currentState!.validate()) {
+                              customGoAndDeleteNavigate(
+                                  context: context,
+                                  path: AppRouter.kHomeScreen);
+                            }
                           }),
                       const SizedBox(
                         height: 30,

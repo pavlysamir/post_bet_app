@@ -5,6 +5,7 @@ import 'package:post_bet/features/authentication/presentation/views/forget_passw
 import 'package:post_bet/features/authentication/presentation/views/login_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/regester_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/verify_mail_screen.dart';
+import 'package:post_bet/features/home/presentation/views/home_screen.dart';
 import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dart';
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
 
@@ -15,6 +16,7 @@ abstract class AppRouter {
   static const kLogin = '/LoginScreen';
   static const kForgotPassword = '/ForgotPasswordScreen';
   static const kVerifyEmail = '/VerifyEmailScreen';
+  static const kHomeScreen = '/HomeScreen';
 
   static final router = GoRouter(
       initialLocation: kOnBoarding,
@@ -46,6 +48,10 @@ abstract class AppRouter {
         GoRoute(
           path: kVerifyEmail,
           builder: (context, state) => const VerifyEmailScreen(),
+        ),
+        GoRoute(
+          path: kHomeScreen,
+          builder: (context, state) => const HomeScreen(),
         ),
       ]);
 }
