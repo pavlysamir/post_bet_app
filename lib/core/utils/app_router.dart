@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:post_bet/core/Layouts/home_layout.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/authentication/presentation/views/forget_password_screen.dart';
@@ -17,6 +18,7 @@ abstract class AppRouter {
   static const kForgotPassword = '/ForgotPasswordScreen';
   static const kVerifyEmail = '/VerifyEmailScreen';
   static const kHomeScreen = '/HomeScreen';
+  static const kHomeLayOut = '/HomeLayOut';
 
   static final router = GoRouter(
       initialLocation: kOnBoarding,
@@ -52,6 +54,10 @@ abstract class AppRouter {
         GoRoute(
           path: kHomeScreen,
           builder: (context, state) => HomeScreen(),
+        ),
+        GoRoute(
+          path: kHomeLayOut,
+          builder: (context, state) => const HomeLayout(),
         ),
       ]);
 }

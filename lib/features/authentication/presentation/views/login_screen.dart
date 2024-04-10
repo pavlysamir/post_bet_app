@@ -126,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (formKey.currentState!.validate()) {
                               customGoAndDeleteNavigate(
                                   context: context,
-                                  path: AppRouter.kHomeScreen);
+                                  path: AppRouter.kHomeLayOut);
                             }
                           }),
                       const SizedBox(

@@ -62,7 +62,25 @@ class HomeScreen extends StatelessWidget {
                     color: kPrimaryKey,
                     textColor: Colors.white,
                     function: () {}),
-              )
+              ),
+              SizedBox(
+                height: 34.h,
+              ),
+              Container(
+                width: double.infinity,
+                height: 1,
+                color: kBlackColor.withOpacity(0.4),
+              ),
+              SizedBox(
+                height: 34.h,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  'History',
+                  style: Styles.textStyle24BoldBlack,
+                ),
+              ),
             ],
           ),
         ),
