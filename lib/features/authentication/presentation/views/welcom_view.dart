@@ -6,8 +6,8 @@ import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_button_login.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class WelcomScreen extends StatelessWidget {
+  const WelcomScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class LoginScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     customJustGoNavigate(
-                        context: context, path: AppRouter.kRegistretion);
+                        context: context, path: AppRouter.kLogin);
                   },
                   child: Text('Login', style: Styles.textStyle14Orange),
                 ),

@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
-import 'package:post_bet/core/functions/snacck_bar.dart';
 import 'package:post_bet/core/functions/validation_handling.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large_dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
-import 'package:post_bet/features/authentication/presentation/manager/cubit/registration_cubit.dart';
-import '../../../../../constants.dart';
-import '../../../../../core/utils/styles.dart';
+import 'package:post_bet/features/authentication/presentation/manager/register_cubit/registration_cubit.dart';
+import '../../../../../../constants.dart';
+import '../../../../../../core/utils/styles.dart';
 
 class RegisterScreen extends StatefulWidget {
   RegisterScreen({Key? key}) : super(key: key);
@@ -184,10 +183,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         color: kPrimaryKey,
                         function: () {
                           if (formKey.currentState!.validate()) {
-                            showSnackBar(
-                                color: kPrimaryKey,
-                                message: 'done',
-                                context: context);
+                            customJustGoNavigate(
+                                context: context, path: AppRouter.kVerifyEmail);
                           }
                         },
                         text: 'Sign Up',
@@ -200,7 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         child: GestureDetector(
                           onTap: () {
                             customGoAndDeleteNavigate(
-                                context: context, path: AppRouter.kLoginView);
+                                context: context, path: AppRouter.kLogin);
                           },
                           child: Text('Already have an account',
                               style: Styles.textStyle12Orange),

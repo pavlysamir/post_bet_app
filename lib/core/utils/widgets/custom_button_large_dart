@@ -28,7 +28,7 @@ class CustomButtonLarge extends StatelessWidget {
         decoration: BoxDecoration(
           color: color,
           border: Border.all(color: kPrimaryKey),
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(100)),
         ),
         child: Center(
             child: RichText(
