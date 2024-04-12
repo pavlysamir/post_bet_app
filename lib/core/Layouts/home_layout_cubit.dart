@@ -15,8 +15,8 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   List screens = [
     HomeScreen(),
     const ActivitiesScreen(),
-    const SettingsScreen(),
     const PlatformScreen(),
+    const SettingsScreen(),
   ];
 
   void changeBottomNavBar(int index) {

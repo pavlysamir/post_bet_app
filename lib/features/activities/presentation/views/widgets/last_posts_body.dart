@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/styles.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 
 class LastPostsContainer extends StatelessWidget {
   const LastPostsContainer({super.key});
@@ -48,7 +50,22 @@ class LastPostsContainer extends StatelessWidget {
               ),
               IconButton(
                   iconSize: 16.h,
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => PopUpDialog(
+                        context: context,
+                        function: () {},
+                        title: 'Confirm delete post',
+                        subTitle:
+                            'if you confirm to delete this post will not be a backup',
+                        colorButton1: kPoppingsRedColor,
+                        colorButton2: Colors.red,
+                        textColortcolor1: Colors.red,
+                        textColortcolor2: Colors.white,
+                      ),
+                    );
+                  },
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,

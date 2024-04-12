@@ -8,6 +8,11 @@ abstract class Styles {
     fontSize: 20, fontWeight: FontWeight.w600, //color: kPrimaryKey
   );
 
+  static TextStyle textStyle20BoldPoppings = GoogleFonts.poppins(
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
+
   static TextStyle textStyle32Black = TextStyle(
       fontSize: 32.sp, fontWeight: FontWeight.bold, color: Colors.black);
   static TextStyle textStyle32Orange = TextStyle(
@@ -74,9 +79,10 @@ abstract class Styles {
     fontSize: 24,
     fontWeight: FontWeight.w600,
   );
-  static const button1textStyle16 = TextStyle(
+  static const button1textStyle16Grey = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w500,
+    color: Colors.grey,
   );
   static const textStyle16Bold = TextStyle(
     fontSize: 16,

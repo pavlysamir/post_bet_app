@@ -9,11 +9,15 @@ class CustomButtonSmall extends StatelessWidget {
       required this.function,
       required this.text,
       this.color = kPrimaryKey,
-      this.textColortcolor = Colors.white});
+      this.textColortcolor = Colors.white,
+      this.width = 78,
+      required this.borderColor});
   final Function() function;
   final String text;
   final Color color;
   final Color textColortcolor;
+  final double width;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +25,16 @@ class CustomButtonSmall extends StatelessWidget {
         onPressed: function,
         child: Container(
           height: 40.h,
-          width: 78.w,
+          width: width.w,
           decoration: BoxDecoration(
-            color: kPrimaryKey,
+            border: Border.all(color: borderColor),
+            color: color,
             borderRadius: BorderRadius.circular(100),
           ),
           child: Center(
             child: Text(
               text,
-              style: Styles.textStyle14White.copyWith(color: Colors.red),
+              style: Styles.textStyle14White.copyWith(color: textColortcolor),
             ),
           ),
         ));

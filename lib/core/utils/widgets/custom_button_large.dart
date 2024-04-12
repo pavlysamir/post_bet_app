@@ -3,7 +3,6 @@ import '../../../constants.dart';
 import '../styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class CustomButtonLarge extends StatelessWidget {
   const CustomButtonLarge(
       {Key? key,
@@ -23,8 +22,8 @@ class CustomButtonLarge extends StatelessWidget {
     return InkWell(
       onTap: function,
       child: Container(
-        height:40.h,
-        width: MediaQuery.of(context).size.width ,
+        height: 40.h,
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: color,
           border: Border.all(color: kPrimaryKey),
@@ -33,7 +32,7 @@ class CustomButtonLarge extends StatelessWidget {
         child: Center(
             child: RichText(
           text: TextSpan(
-            style: Styles.button1textStyle16.copyWith(color: textColor),
+            style: Styles.button1textStyle16Grey.copyWith(color: textColor),
             children: [
               TextSpan(
                   text: text,

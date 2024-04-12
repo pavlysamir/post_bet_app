@@ -96,6 +96,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
                 const Spacer(),
                 CustomButtonSmall(
+                  borderColor: kPrimaryKey,
                   function: () {
                     if (widget.isLast == true) {
                       submit();
