@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/styles.dart';
 
-class LastPostsBody extends StatelessWidget {
-  const LastPostsBody({super.key});
+class LastPostsContainer extends StatelessWidget {
+  const LastPostsContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 130.h,
+      height: 120.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -23,7 +23,7 @@ class LastPostsBody extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+        padding: const EdgeInsets.only(left: 10, right: 10, top: 8, bottom: 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -47,11 +47,11 @@ class LastPostsBody extends StatelessWidget {
                 style: Styles.textStyle12Orange,
               ),
               IconButton(
+                  iconSize: 16.h,
                   onPressed: () {},
                   icon: const Icon(
                     Icons.delete,
                     color: Colors.red,
-                    size: 14,
                   )),
             ]),
           ],

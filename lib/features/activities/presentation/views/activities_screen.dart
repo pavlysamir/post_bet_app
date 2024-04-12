@@ -1,9 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
-import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
-import 'package:post_bet/features/activities/presentation/views/widgets/last_posts_body.dart';
+import 'package:post_bet/features/activities/presentation/views/widgets/last_posts_listview_item.dart';
 
 class ActivitiesScreen extends StatelessWidget {
   const ActivitiesScreen({super.key});
@@ -22,16 +23,16 @@ class ActivitiesScreen extends StatelessWidget {
             height: 40.h,
           ),
           const CustomTitleText(text: 'Your latest posts'),
-          SizedBox(
-            height: 40.h,
+          Expanded(
+            child: ListView.builder(
+                clipBehavior: Clip.none,
+                //physics: const NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.zero,
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return const LastPostsListViewItem();
+                }),
           ),
-          const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: LastPostsBody()),
-          SizedBox(
-            height: 40.h,
-          ),
-          const CustomLineSeperator(),
         ],
       ),
     );
