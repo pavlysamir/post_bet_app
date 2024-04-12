@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
-import 'package:post_bet/core/utils/widgets/custom_button_large_dart';
+import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';

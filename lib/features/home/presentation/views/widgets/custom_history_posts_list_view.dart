@@ -8,7 +8,7 @@ class CustomHistoryPostsListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100.h,
+      height: 120.h,
       child: ListView.separated(
         clipBehavior: Clip.none,
         padding: const EdgeInsets.symmetric(horizontal: 16),

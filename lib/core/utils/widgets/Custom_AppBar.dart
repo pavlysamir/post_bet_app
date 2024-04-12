@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
-import '../../../../../constants.dart';
-import '../../../../../core/utils/styles.dart';
+import '../../../constants.dart';
+import '../styles.dart';
 
-class CustomHomeAppBar extends StatelessWidget {
-  const CustomHomeAppBar({
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({
     Key? key,
     required this.name,
     required this.image,

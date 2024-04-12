@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:post_bet/core/utils/app_router.dart';
-import 'package:post_bet/core/utils/widgets/custom_button_large_dart';
+import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';

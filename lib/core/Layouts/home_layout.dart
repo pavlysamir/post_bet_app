@@ -46,19 +46,19 @@ class _HomeLayoutState extends State<HomeLayout> {
                     icon: Icon(
                       Icons.calendar_month,
                     ),
-                    label: 'Home',
+                    label: 'Activity',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
                       Icons.horizontal_split_rounded,
                     ),
-                    label: 'Home',
+                    label: 'Platforms',
                   ),
                   BottomNavigationBarItem(
                     icon: Icon(
                       Icons.settings,
                     ),
-                    label: 'Home',
+                    label: 'Settings',
                   ),
                 ],
                 currentIndex: cubit.currentIndex,

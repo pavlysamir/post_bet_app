@@ -9,6 +9,7 @@ class HistoryPostsListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 170.w,
+      //height: 150.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -34,7 +35,7 @@ class HistoryPostsListViewItem extends StatelessWidget {
             ),
             Text(
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry....',
-              style: Styles.textStyle12.copyWith(color: Colors.grey),
+              style: Styles.textStyle12BoldGrey,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
