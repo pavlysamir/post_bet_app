@@ -5,9 +5,15 @@ import 'package:post_bet/core/utils/styles.dart';
 
 class CustomButtonSmall extends StatelessWidget {
   const CustomButtonSmall(
-      {super.key, required this.function, required this.text});
+      {super.key,
+      required this.function,
+      required this.text,
+      this.color = kPrimaryKey,
+      this.textColortcolor = Colors.white});
   final Function() function;
   final String text;
+  final Color color;
+  final Color textColortcolor;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +29,7 @@ class CustomButtonSmall extends StatelessWidget {
           child: Center(
             child: Text(
               text,
-              style: Styles.textStyle14White,
+              style: Styles.textStyle14White.copyWith(color: Colors.red),
             ),
           ),
         ));
