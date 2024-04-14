@@ -60,6 +60,9 @@ abstract class Styles {
   static TextStyle textStyle14Black = TextStyle(
       fontSize: 14.sp, fontWeight: FontWeight.bold, color: kBlackColor);
 
+  static TextStyle textStyle14W500Black = GoogleFonts.poppins(
+      fontSize: 14.sp, fontWeight: FontWeight.w500, color: kBlackColor);
+
   static const textStyle18 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.normal,
@@ -92,4 +95,6 @@ abstract class Styles {
     fontSize: 14,
     fontWeight: FontWeight.bold,
   );
+  static const textStyle24W700 =
+      TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: kBlackColor);
 }
