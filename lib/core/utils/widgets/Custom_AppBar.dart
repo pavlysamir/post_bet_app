@@ -51,7 +51,7 @@ class CustomAppBar extends StatelessWidget {
             width: double.infinity,
             height: 1,
             color: kBlackColor.withOpacity(0.4),
-          )
+          ),
         ],
       ),
     );

@@ -27,13 +27,17 @@ class PlatformListViewItem extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(children: [
-            Image.asset(AssetsData.googleIcon),
-            Text(
-              'Platform Name',
-              style: Styles.textStyle14Grey,
-            ),
-          ]),
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(AssetsData.instagramIcon),
+                SizedBox(height: 10.h),
+                Text(
+                  'Instgram',
+                  style: Styles.textStyle14Grey,
+                ),
+              ]),
         ),
       ),
     );

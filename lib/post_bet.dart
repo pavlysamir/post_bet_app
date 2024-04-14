@@ -15,7 +15,7 @@ class PostBetApp extends StatelessWidget {
       child: MaterialApp.router(
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.router,
-          theme: themeData),
+          theme: themeDarkData),
     );
   }
 }
