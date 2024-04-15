@@ -49,6 +49,16 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Easy way to share`
+  String get onBoardingSlider1 {
+    return Intl.message(
+      'Easy way to share',
+      name: 'onBoardingSlider1',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
