@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
@@ -13,7 +11,6 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
-import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/authentication/presentation/manager/register_cubit/registration_cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
@@ -43,8 +40,11 @@ class EditProfileScreen extends StatelessWidget {
                         const CustomLineSeperator(),
                         SizedBox(height: 20.h),
                         //Profile photo
-                        const ProfilePhotoWidget(),
+                        ProfilePhotoWidget(
+                          editProfileCubit: editProfileCubit,
+                        ),
                         SizedBox(height: 20.h),
+                        //edit name
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -80,9 +80,21 @@ class EditProfileScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         CustomFormField(
+                            isEyeTrue:
+                                editProfileCubit.isCurrentPasswordVisible,
                             prefixIcon: const Icon(
                               Icons.lock,
                               color: kPrimaryKey,
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                editProfileCubit
+                                    .changeCurrentPasswordVisibility();
+                              },
+                              icon: Icon(
+                                  !editProfileCubit.isCurrentPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off),
                             ),
                             textInputType: TextInputType.text,
                             hintText: '*************',
@@ -98,13 +110,18 @@ class EditProfileScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         CustomFormField(
+                            isEyeTrue: editProfileCubit.isNewPasswordVisible,
                             prefixIcon: const Icon(
                               Icons.lock,
                               color: kPrimaryKey,
                             ),
                             suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.visibility_off),
+                              onPressed: () {
+                                editProfileCubit.changeNewPasswordVisibility();
+                              },
+                              icon: Icon(!editProfileCubit.isNewPasswordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
                             ),
                             textInputType: TextInputType.visiblePassword,
                             hintText: '*************',
@@ -119,16 +136,20 @@ class EditProfileScreen extends StatelessWidget {
                           height: 10.h,
                         ),
                         CustomFormField(
+                          isEyeTrue: editProfileCubit.isConfirmPasswordVisible,
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: kPrimaryKey,
                           ),
                           suffixIcon: IconButton(
                             onPressed: () {
-                              RegistrationCubit.get(context)!
-                                  .isVisibleConformPasswordEye();
+                              editProfileCubit
+                                  .changeConfirmPasswordVisibility();
                             },
-                            icon: const Icon(Icons.visibility_off),
+                            icon: Icon(
+                                !editProfileCubit.isConfirmPasswordVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
                           ),
                           textInputType: TextInputType.visiblePassword,
                           hintText: '*************',
