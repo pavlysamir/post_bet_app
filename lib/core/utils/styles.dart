@@ -80,9 +80,5 @@ abstract class Styles {
   static TextStyle textStyle14Black = TextStyle(
       fontSize: 14.sp, fontWeight: FontWeight.bold, color: kBlackColor);
 
-  static const button1textStyle16Grey = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-    color: Colors.grey,
-  );
+
 }
