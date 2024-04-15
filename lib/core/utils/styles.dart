@@ -97,4 +97,7 @@ abstract class Styles {
   );
   static const textStyle24W700 =
       TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: kBlackColor);
+
+  static TextStyle textStyle27W600 = GoogleFonts.poppins(
+      fontSize: 24, fontWeight: FontWeight.w600, color: k323232);
 }
