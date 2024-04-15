@@ -56,7 +56,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         'Login',
-                        style: Styles.textStyle32Orange,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(color: kPrimaryKey),
                       ),
                       const SizedBox(
                         height: 12,
@@ -66,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 30.h),
                       Text(
                         'Email',
-                        style: Styles.textStyle14Black,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
                         height: 10.h,
@@ -87,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(height: 30.h),
                       Text(
                         'Password',
-                        style: Styles.textStyle14Black,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
                         height: 10.h,

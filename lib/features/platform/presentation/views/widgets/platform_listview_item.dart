@@ -16,13 +16,14 @@ class PlatformListViewItem extends StatelessWidget {
           width: 130.w,
           height: 60.h,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.white),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 4,
+                color: Theme.of(context).shadowColor,
+                //spreadRadius: 2,
+                blurRadius: 10,
                 offset: const Offset(0, 2), // changes position of shadow
               ),
             ],

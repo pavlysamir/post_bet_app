@@ -11,7 +11,7 @@ class CustomTitleText extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
         text,
-        style: Styles.textStyle24BoldBlack,
+        style: Theme.of(context).textTheme.displaySmall,
       ),
     );
   }

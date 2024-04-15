@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:post_bet/constants.dart';
 
 import '../../../../../core/utils/styles.dart';
 
@@ -25,6 +24,7 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: Theme.of(context).textTheme.titleMedium,
       obscureText: isEyeTrue,
       keyboardType: textInputType,
       controller: controller,
@@ -42,8 +42,8 @@ class CustomFormField extends StatelessWidget {
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
         //fillColor: Colors.grey[200],
-        enabledBorder: outlineInputBorder(),
-        focusedBorder: outlineInputBorder(),
+        enabledBorder: outlineInputBorder(context),
+        focusedBorder: outlineInputBorder(context),
         errorBorder: outlineInputBorderError(),
         hintText: hintText,
         prefixIconConstraints: const BoxConstraints(
@@ -56,11 +56,8 @@ class CustomFormField extends StatelessWidget {
   }
 }
 
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-    borderSide: const BorderSide(color: kBlackColor),
-    borderRadius: BorderRadius.circular(14),
-  );
+InputBorder? outlineInputBorder(BuildContext context) {
+  return Theme.of(context).inputDecorationTheme.enabledBorder;
 }
 
 OutlineInputBorder outlineInputBorderError() {

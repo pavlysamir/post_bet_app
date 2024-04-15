@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/styles.dart';
@@ -28,14 +29,17 @@ class WelcomScreen extends StatelessWidget {
               children: [
                 Text(
                   'Welcome To',
-                  style: Styles.textStyle32Black,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 Text(
                   'POSTBET',
-                  style: Styles.textStyle32Orange,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: kPrimaryKey),
                 ),
               ],
             ),
