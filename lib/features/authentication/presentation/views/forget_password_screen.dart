@@ -38,7 +38,10 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
               children: [
                 Text(
                   'Reset Password',
-                  style: Styles.textStyle32Orange,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: kPrimaryKey),
                 ),
                 const SizedBox(
                   height: 12,
@@ -47,7 +50,7 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
                 SizedBox(height: 30.h),
                 Text(
                   'Email',
-                  style: Styles.textStyle14Black,
+                  style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(
                   height: 10.h,

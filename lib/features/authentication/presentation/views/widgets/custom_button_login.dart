@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/styles.dart';
 
 class CustomAuthButton extends StatelessWidget {
   const CustomAuthButton({
@@ -34,7 +33,9 @@ class CustomAuthButton extends StatelessWidget {
             ),
             Text(
               text,
-              style: Styles.textStyle12,
+              style: const TextStyle(
+                fontSize: 12,
+              ),
             )
           ],
         ));

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:post_bet/constants.dart';
 
 class CustomLineSeperator extends StatelessWidget {
   const CustomLineSeperator({super.key});
@@ -9,7 +8,7 @@ class CustomLineSeperator extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 1,
-      color: kBlackColor.withOpacity(0.2),
+      color: Colors.grey,
     );
   }
 }

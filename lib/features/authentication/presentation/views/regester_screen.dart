@@ -79,7 +79,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     children: [
                       Text(
                         'Register',
-                        style: Styles.textStyle32Orange,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayLarge!
+                            .copyWith(color: kPrimaryKey),
                       ),
                       const SizedBox(
                         height: 8,
@@ -89,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: 30.h),
                       Text(
                         'Email',
-                        style: Styles.textStyle14Black,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
                         height: 10.h,
@@ -106,7 +109,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: 30.h),
                       Text(
                         'Name',
-                        style: Styles.textStyle14Black,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
                         height: 10.h,
@@ -123,7 +126,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: 30.h),
                       Text(
                         'Password',
-                        style: Styles.textStyle14Black,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
                         height: 10.h,
@@ -148,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: 30.h),
                       Text(
                         'Confirm password',
-                        style: Styles.textStyle14Black,
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
                         height: 10.h,

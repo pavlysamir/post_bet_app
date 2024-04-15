@@ -42,7 +42,6 @@ class _HomeLayoutState extends State<HomeLayout> {
                 ),
               ),
               child: BottomNavigationBar(
-                backgroundColor: Colors.white,
                 mouseCursor: MouseCursor.defer,
                 items: const [
                   BottomNavigationBarItem(
