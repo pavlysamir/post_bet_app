@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/styles.dart';
+import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
@@ -14,19 +13,7 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: kPrimaryKey,
-          ),
-        ),
-        title: const Text(
-          'Settings',
-          style: Styles.textStyle24W700,
-        ),
-      ),
+      appBar: const CustomAppbareWithTitle(title: 'Settings'),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const CustomLineSeperator(),

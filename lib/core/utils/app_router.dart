@@ -7,6 +7,7 @@ import 'package:post_bet/features/authentication/presentation/views/verify_mail_
 import 'package:post_bet/features/home/presentation/views/home_screen.dart';
 import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dart';
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
+import 'package:post_bet/features/profile/presentation/view/edit%20profile%20screen.dart';
 
 abstract class AppRouter {
   static const kWelcomeView = '/';
@@ -17,9 +18,10 @@ abstract class AppRouter {
   static const kVerifyEmail = '/VerifyEmailScreen';
   static const kHomeScreen = '/HomeScreen';
   static const kHomeLayOut = '/HomeLayOut';
+  static const kEditProfile = '/EditProfile';
 
   static final router = GoRouter(
-      initialLocation: kHomeLayOut,
+      initialLocation: kEditProfile,
       // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
       //         true
       //     ? kLoginView
@@ -56,6 +58,10 @@ abstract class AppRouter {
         GoRoute(
           path: kHomeLayOut,
           builder: (context, state) => const HomeLayout(),
+        ),
+        GoRoute(
+          path: kEditProfile,
+          builder: (context, state) => const EditProfileScreen(),
         ),
       ]);
 }

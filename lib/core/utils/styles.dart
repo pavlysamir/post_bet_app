@@ -80,5 +80,4 @@ abstract class Styles {
   static TextStyle textStyle14Black = TextStyle(
       fontSize: 14.sp, fontWeight: FontWeight.bold, color: kBlackColor);
 
-
 }
