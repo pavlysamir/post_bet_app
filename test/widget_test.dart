@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:post_bet/main.dart';
 import 'package:post_bet/post_bet.dart';
 
 void main() {

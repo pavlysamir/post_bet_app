@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/styles.dart';
 
 class CustomAuthButton extends StatelessWidget {
   const CustomAuthButton({
@@ -15,8 +14,8 @@ class CustomAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 30.h,
-        width: 200.w,
+        height: 40.h,
+        width: 222.w,
         decoration: BoxDecoration(
           border: Border.all(color: kBlackColor),
           color: Colors.white,
@@ -34,7 +33,9 @@ class CustomAuthButton extends StatelessWidget {
             ),
             Text(
               text,
-              style: Styles.textStyle12,
+              style: const TextStyle(
+                fontSize: 12,
+              ),
             )
           ],
         ));

@@ -4,55 +4,81 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:post_bet/constants.dart';
 
 abstract class Styles {
-  static const title1textStyle20 = TextStyle(
-    fontSize: 20, fontWeight: FontWeight.w600, //color: kPrimaryKey
-  );
-
-  static TextStyle textStyle32Black = TextStyle(
-      fontSize: 32.sp, fontWeight: FontWeight.bold, color: Colors.black);
-  static TextStyle textStyle32Orange = TextStyle(
-    fontSize: 32.sp,
-    fontWeight: FontWeight.bold,
-    color: kPrimaryKey,
-  );
-
-  static TextStyle textStyle12 =
-      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold);
-
-  static TextStyle textStyle8 = TextStyle(
-    fontSize: 8.sp,
+  static TextStyle textStyle20BoldPoppings = GoogleFonts.poppins(
+    fontSize: 20,
     fontWeight: FontWeight.bold,
   );
-  static TextStyle textStyle14 = GoogleFonts.poppins(
+
+  static TextStyle textStyle32Black = GoogleFonts.poppins(
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+  );
+
+  static TextStyle textStyle32White = GoogleFonts.poppins(
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
+
+  static TextStyle? textStyle32Orange;
+
+  void initializeTextStyle32Orange() {
+    textStyle32Orange = TextStyle(
+      fontSize: 32.sp,
+      fontWeight: FontWeight.bold,
+      color: kPrimaryKey,
+    );
+  }
+
+  // static TextStyle? textStyle32Black;
+  // void initializeTextStyle32Black() {
+  //   textStyle32Black = TextStyle(
+  //     fontSize: 32.sp,
+  //     fontWeight: FontWeight.bold,
+  //     color: Colors.black,
+  //   );
+  // }
+  static TextStyle textStyle12Black = const TextStyle(
+      fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black);
+  static TextStyle textStyle12White = const TextStyle(
+      fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white);
+  static TextStyle textStyle12BoldGrey = const TextStyle(
+      fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey);
+
+  static TextStyle textStyle12BoldPoppings = GoogleFonts.poppins(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle textStyle12Orange = const TextStyle(
+      fontSize: 12, fontWeight: FontWeight.bold, color: kPrimaryKey);
+
+  static TextStyle textStyle24BoldBlack = GoogleFonts.poppins(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: kBlackColor,
+  );
+  static TextStyle textStyle24BoldWhite = GoogleFonts.poppins(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+  );
+  static TextStyle textStyle14Grey = GoogleFonts.poppins(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     color: Colors.grey,
   );
-
-  static const textStyle18 = TextStyle(
-    fontSize: 18,
-    fontWeight: FontWeight.normal,
-  );
-  static const textStyle24 = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.normal,
-    // color: kPrimaryKey,
-    decoration: TextDecoration.underline,
-  );
-  static const textStyle24SemiBold = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w600,
-  );
-  static const button1textStyle16 = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w500,
-  );
-  static const textStyle16Bold = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.bold,
-  );
-  static const button2textStyle12 = TextStyle(
+  static TextStyle textStyle14Orange = GoogleFonts.poppins(
     fontSize: 14,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
+    color: kPrimaryKey,
   );
+
+  static TextStyle textStyle14White = const TextStyle(
+      fontSize: 14, fontWeight: FontWeight.normal, color: Colors.white);
+
+  static TextStyle textStyle14Black = TextStyle(
+      fontSize: 14.sp, fontWeight: FontWeight.bold, color: kBlackColor);
+
+
 }

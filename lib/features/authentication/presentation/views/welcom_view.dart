@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/styles.dart';
-import 'package:post_bet/features/registration/presentation/views/widgets/custom_button_login.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/features/authentication/presentation/views/widgets/custom_button_login.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class WelcomScreen extends StatelessWidget {
+  const WelcomScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +17,9 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 76.h,
+            ),
             Image.asset(AssetsData.loginLogo),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
@@ -23,14 +29,17 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Text(
                   'Welcome To',
-                  style: Styles.textStyle32Black,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 Text(
                   'POSTBET',
-                  style: Styles.textStyle32Orange,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: kPrimaryKey),
                 ),
               ],
             ),
@@ -39,7 +48,7 @@ class LoginScreen extends StatelessWidget {
             ),
             Text(
               'Let’s Get Started',
-              style: Styles.textStyle14,
+              style: Styles.textStyle14Grey,
             ),
             SizedBox(
               height: 25.h,
@@ -55,6 +64,22 @@ class LoginScreen extends StatelessWidget {
               image: AssetsData.emailIcon,
               text: 'Continue with Email',
             ),
+            SizedBox(
+              height: 26.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Already have an account?'),
+                GestureDetector(
+                  onTap: () {
+                    customJustGoNavigate(
+                        context: context, path: AppRouter.kLogin);
+                  },
+                  child: Text('Login', style: Styles.textStyle14Orange),
+                ),
+              ],
+            )
           ],
         ),
       ),
