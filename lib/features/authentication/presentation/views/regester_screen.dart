@@ -12,7 +12,7 @@ import '../../../../../../constants.dart';
 import '../../../../../../core/utils/styles.dart';
 
 class RegisterScreen extends StatefulWidget {
-  RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
@@ -45,7 +45,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
   }
