@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/utils/styles.dart';
 
 class CustomDescriptionPostField extends StatelessWidget {
   const CustomDescriptionPostField({
@@ -22,7 +21,8 @@ class CustomDescriptionPostField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
+        border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -49,11 +49,11 @@ class CustomDescriptionPostField extends StatelessWidget {
             contentPadding:
                 const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
             filled: true,
-            fillColor: Colors.grey[200],
+            fillColor: Theme.of(context).cardColor,
             enabledBorder: outlineInputBorder(),
             focusedBorder: outlineInputBorder(),
             hintText: hintText,
-            hintStyle: Styles.textStyle12,
+            hintStyle: Theme.of(context).textTheme.bodyLarge,
             //prefixIcon: prefexIcon,
           ),
         ),

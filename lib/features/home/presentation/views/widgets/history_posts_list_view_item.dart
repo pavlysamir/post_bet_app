@@ -11,11 +11,12 @@ class HistoryPostsListViewItem extends StatelessWidget {
       width: 170.w,
       //height: 150.h,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: Colors.white),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
+            color: Theme.of(context).shadowColor,
             //spreadRadius: 2,
             blurRadius: 10,
             offset: const Offset(0, 2), // changes position of shadow
@@ -29,7 +30,8 @@ class HistoryPostsListViewItem extends StatelessWidget {
           children: [
             Align(
                 alignment: Alignment.topLeft,
-                child: Text('this is my post', style: Styles.textStyle12)),
+                child: Text('this is my post',
+                    style: Theme.of(context).textTheme.bodyLarge)),
             SizedBox(
               height: 8.h,
             ),

@@ -35,7 +35,7 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kRegistretion,
-          builder: (context, state) => RegisterScreen(),
+          builder: (context, state) => const RegisterScreen(),
         ),
         GoRoute(
           path: kLogin,

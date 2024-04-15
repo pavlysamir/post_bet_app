@@ -20,7 +20,8 @@ class BuildBoardingItem extends StatelessWidget {
           height: 10,
         ),
         Text('${model.title}',
-            style: Styles.textStyle32Black, textAlign: TextAlign.center),
+            style: Theme.of(context).textTheme.displayLarge,
+            textAlign: TextAlign.center),
         const SizedBox(
           height: 20,
         ),

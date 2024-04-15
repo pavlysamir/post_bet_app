@@ -8,4 +8,5 @@ class AssetsData {
   static const onBoarding3 = 'assets/images/onBoarding_3.png';
   static const postBetName = 'assets/images/postBet_Name.png';
   static const penIcon = 'assets/images/pen_icon.png';
+  static const instagramIcon = 'assets/images/icons_instagram.png';
 }

@@ -38,12 +38,18 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
               children: [
                 Text(
                   'Verify Your Email',
-                  style: Styles.textStyle32Orange,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: kPrimaryKey),
                 ),
                 const SizedBox(
                   height: 12,
                 ),
-                Text('Enter Code', style: Styles.textStyle14Grey),
+                Text(
+                  'Enter Code',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
                 SizedBox(height: 30.h),
                 Text(
                   'Code',
