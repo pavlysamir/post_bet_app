@@ -6,6 +6,7 @@ import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_history_posts_list_view.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 import '../../../../core/utils/widgets/custom_button_large.dart';
 
@@ -33,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                const CustomTitleText(text: 'Create a post'),
+                CustomTitleText(text: S.of(context).editProfile),
                 SizedBox(
                   height: 15.h,
                 ),
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                           return 'please write anything';
                         }
                       },
-                      hintText: 'Type anything here ',
+                      hintText: S.of(context).typeAnyThing,
                       textInputType: TextInputType.text),
                 ),
                 SizedBox(
@@ -58,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                 Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 44),
                     child: CustomButtonLarge(
-                        text: 'Share',
+                        text: S.of(context).share,
                         color: kPrimaryKey,
                         textColor: Colors.white,
                         function: () {})),
@@ -69,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 34.h,
                 ),
-                const CustomTitleText(text: 'History'),
+                CustomTitleText(text: S.of(context).history),
                 SizedBox(
                   height: 30.h,
                 ),

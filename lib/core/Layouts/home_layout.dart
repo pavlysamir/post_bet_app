@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_bet/core/Layouts/home_layout_cubit.dart';
+import '../../../../../generated/l10n.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
@@ -43,30 +44,30 @@ class _HomeLayoutState extends State<HomeLayout> {
               ),
               child: BottomNavigationBar(
                 mouseCursor: MouseCursor.defer,
-                items: const [
+                items: [
                   BottomNavigationBarItem(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.home_outlined,
                     ),
-                    label: 'Home',
+                    label: S.of(context).home,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.calendar_month,
                     ),
-                    label: 'Activity',
+                    label: S.of(context).activities,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.horizontal_split_rounded,
                     ),
-                    label: 'Platforms',
+                    label: S.of(context).platform,
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.settings,
                     ),
-                    label: 'Settings',
+                    label: S.of(context).settings,
                   ),
                 ],
                 currentIndex: cubit.currentIndex,

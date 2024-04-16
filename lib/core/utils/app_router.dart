@@ -23,7 +23,7 @@ abstract class AppRouter {
   static const kCobonsView = '/CobonsView';
 
   static final router = GoRouter(
-      initialLocation: kCobonsView,
+      initialLocation: kOnBoarding,
       // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
       //         true
       //     ? kLoginView

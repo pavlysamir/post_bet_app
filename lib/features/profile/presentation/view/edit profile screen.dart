@@ -13,6 +13,7 @@ import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
 import 'package:post_bet/features/profile/presentation/view/widgets/profile%20photo%20widget.dart';
+import '../../../../../generated/l10n.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -20,7 +21,7 @@ class EditProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppbareWithTitle(title: 'Edit Profile'),
+        appBar: CustomAppbareWithTitle(title: S.of(context).editProfile),
         body: BlocProvider<EditProfileCubit>(
             create: (context) => EditProfileCubit(),
             child: BlocConsumer<EditProfileCubit, EditProfileState>(
@@ -56,7 +57,7 @@ class EditProfileScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 30.h),
                         Text(
-                          'Email',
+                          S.of(context).loginEmail,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
@@ -68,12 +69,12 @@ class EditProfileScreen extends StatelessWidget {
                               color: kPrimaryKey,
                             ),
                             textInputType: TextInputType.emailAddress,
-                            hintText: 'Email',
+                            hintText: S.of(context).loginEmail,
                             controller: editProfileCubit.emailController,
                             validationMassage: conditionOfValidationEmail),
                         SizedBox(height: 30.h),
                         Text(
-                          'Current password',
+                          S.of(context).currentPassword,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
@@ -102,7 +103,7 @@ class EditProfileScreen extends StatelessWidget {
                                 editProfileCubit.currentPasswordController,
                             validationMassage: conditionOfValidationName),
                         SizedBox(height: 30.h),
-                        Text('New password',
+                        Text(S.of(context).newPassword,
                             style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(
                           height: 10.h,
@@ -127,7 +128,7 @@ class EditProfileScreen extends StatelessWidget {
                             validationMassage: conditionOfValidationPassWord),
                         SizedBox(height: 30.h),
                         Text(
-                          'Confirm password',
+                          S.of(context).confirmPassword,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
@@ -173,7 +174,7 @@ class EditProfileScreen extends StatelessWidget {
                                   path: AppRouter.kVerifyEmail);
                             }
                           },
-                          text: 'Update',
+                          text: S.of(context).ubdate,
                           textColor: Colors.white,
                         ),
                         SizedBox(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_cobon_item.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 class CobonsView extends StatelessWidget {
   const CobonsView({super.key});
@@ -16,7 +17,7 @@ class CobonsView extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back_ios),
           ),
-          title: const CustomTitleText(text: 'Cobons'),
+          title: CustomTitleText(text: S.of(context).Cobons),
         ),
         body: SafeArea(
           child: Padding(

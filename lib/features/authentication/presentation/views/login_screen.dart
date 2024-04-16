@@ -8,6 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_text_button_forgot_password.dart';
+import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Login',
+                        S.of(context).login,
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -64,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(
                         height: 12,
                       ),
-                      Text('Welcome back to postbet',
+                      Text(S.of(context).welcomeBack,
                           style: Styles.textStyle14Grey),
                       SizedBox(height: 30.h),
                       Text(
@@ -80,16 +81,16 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: kPrimaryKey,
                           ),
                           textInputType: TextInputType.emailAddress,
-                          hintText: 'Email',
+                          hintText: S.of(context).loginEmail,
                           controller: emailController,
                           validationMassage: (value) {
                             if (value.isEmpty) {
-                              return 'please enter your email';
+                              return S.of(context).enterCode;
                             }
                           }),
                       SizedBox(height: 30.h),
                       Text(
-                        'Password',
+                        S.of(context).password,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
@@ -122,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             context: context, path: AppRouter.kForgotPassword);
                       }),
                       CustomButtonLarge(
-                          text: 'Login',
+                          text: S.of(context).loginButton,
                           color: kPrimaryKey,
                           textColor: Colors.white,
                           function: () {
@@ -142,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 context: context,
                                 path: AppRouter.kRegistretion);
                           },
-                          child: Text('Don’t have account ? register now',
+                          child: Text(S.of(context).dontHaveAccount,
                               style: Styles.textStyle12Orange),
                         ),
                       ),

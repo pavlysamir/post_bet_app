@@ -629,6 +629,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit Profile`
+  String get editProfile {
+    return Intl.message(
+      'Edit Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Let’s Get Started`
+  String get letsSatrt {
+    return Intl.message(
+      'Let’s Get Started',
+      name: 'letsSatrt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back to postbet`
+  String get welcomeBack {
+    return Intl.message(
+      'Welcome back to postbet',
+      name: 'welcomeBack',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign Up`
+  String get signUp {
+    return Intl.message(
+      'Sign Up',
+      name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

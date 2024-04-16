@@ -6,6 +6,7 @@ import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_button_login.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 class WelcomScreen extends StatelessWidget {
   const WelcomScreen({super.key});
@@ -28,7 +29,7 @@ class WelcomScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Welcome To',
+                  S.of(context).welcome,
                   style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(
@@ -47,7 +48,7 @@ class WelcomScreen extends StatelessWidget {
               height: 8,
             ),
             Text(
-              'Let’s Get Started',
+              S.of(context).letsSatrt,
               style: Styles.textStyle14Grey,
             ),
             SizedBox(
@@ -70,13 +71,16 @@ class WelcomScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('Already have an account?'),
+                Text(
+                  S.of(context).haveAccount,
+                ),
                 GestureDetector(
                   onTap: () {
                     customJustGoNavigate(
                         context: context, path: AppRouter.kLogin);
                   },
-                  child: Text('Login', style: Styles.textStyle14Orange),
+                  child: Text(S.of(context).login,
+                      style: Styles.textStyle14Orange),
                 ),
               ],
             )

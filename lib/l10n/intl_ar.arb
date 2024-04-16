@@ -57,7 +57,11 @@
     "coupons": "كوبونات",
     "currentPassword": "كلمة المرور الحالية",
     "newPassword": "كلمة المرور الجديدة",
-    "update": "تحديث"
+    "update": "تحديث",
+    "editProfile": "تعديل الملف الشخصي",
+    "letsSatrt": "لنبدأ",
+    "welcomeBack": "مرحبًا مرة أخرى في postbet",
+    "signUp": "سجّل الدخول"
     }
     
     

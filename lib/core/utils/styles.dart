@@ -46,10 +46,11 @@ abstract class Styles {
   static TextStyle textStyle12BoldGrey = const TextStyle(
       fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey);
 
-  static TextStyle textStyle12BoldPoppings = GoogleFonts.poppins(
-    fontSize: 12,
-    fontWeight: FontWeight.bold,
-  );
+  static TextStyle textStyle12BlackBoldPoppings = GoogleFonts.poppins(
+      fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black);
+
+  static TextStyle textStyle12WhiteBoldPoppings = GoogleFonts.poppins(
+      fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white);
   static TextStyle textStyle12Orange = const TextStyle(
       fontSize: 12, fontWeight: FontWeight.bold, color: kPrimaryKey);
 

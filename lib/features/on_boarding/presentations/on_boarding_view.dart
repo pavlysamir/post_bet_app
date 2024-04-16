@@ -4,6 +4,7 @@ import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../constants.dart';
 import '../../../core/assets/Assets.dart';
@@ -27,17 +28,16 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     List<OnBoardingModel> modelBoarding = [
       OnBoardingModel(
           image: AssetsData.onBoarding1,
-          title: 'Easy way to share',
-          messege: 'Share posts , images and videos with just one click '),
+          title: S.of(context).onBoardingSlider1,
+          messege: S.of(context).onBoardingSlider1subTitle1),
       OnBoardingModel(
           image: AssetsData.onBoarding2,
-          title: 'Different platforms',
-          messege:
-              'We offer platforms like facebook , instagram , x and tiktok'),
+          title: S.of(context).onBoardingSlider2,
+          messege: S.of(context).onBoardingSlider2subTitle1),
       OnBoardingModel(
           image: AssetsData.onBoarding3,
-          title: 'ALO with postbet',
-          messege: 'Postbet make you easily manage and share you posts '),
+          title: S.of(context).onBoardingSlider3,
+          messege: S.of(context).onBoardingSlider3subTitle1),
     ];
 
     return Scaffold(
@@ -46,7 +46,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           onPressed: () {
             submit();
           },
-          child: Text('Skip', style: Styles.textStyle14Grey),
+          child: Text(S.of(context).skip, style: Styles.textStyle14Grey),
         ),
       ),
       body: Padding(
@@ -106,7 +106,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           curve: Curves.fastLinearToSlowEaseIn);
                     }
                   },
-                  text: 'Next',
+                  text: S.of(context).next,
                 ),
               ],
             ),

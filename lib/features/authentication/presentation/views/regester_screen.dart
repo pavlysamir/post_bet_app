@@ -8,6 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/register_cubit/registration_cubit.dart';
+import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../constants.dart';
 import '../../../../../../core/utils/styles.dart';
 
@@ -78,7 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Register',
+                        S.of(context).register,
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -87,11 +88,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       const SizedBox(
                         height: 8,
                       ),
-                      Text('Create an account to start using postbet',
+                      Text(S.of(context).createAccount,
                           style: Styles.textStyle14Grey),
                       SizedBox(height: 30.h),
                       Text(
-                        'Email',
+                        S.of(context).loginEmail,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
@@ -103,12 +104,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: kPrimaryKey,
                           ),
                           textInputType: TextInputType.emailAddress,
-                          hintText: 'Email',
+                          hintText: S.of(context).loginEmail,
                           controller: emailController,
                           validationMassage: conditionOfValidationEmail),
                       SizedBox(height: 30.h),
                       Text(
-                        'Name',
+                        S.of(context).name,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
@@ -120,12 +121,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: kPrimaryKey,
                           ),
                           textInputType: TextInputType.text,
-                          hintText: 'Name',
+                          hintText: S.of(context).name,
                           controller: nameController,
                           validationMassage: conditionOfValidationName),
                       SizedBox(height: 30.h),
                       Text(
-                        'Password',
+                        S.of(context).password,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
@@ -150,7 +151,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           validationMassage: conditionOfValidationPassWord),
                       SizedBox(height: 30.h),
                       Text(
-                        'Confirm password',
+                        S.of(context).confirmPassword,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(
@@ -189,7 +190,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 context: context, path: AppRouter.kVerifyEmail);
                           }
                         },
-                        text: 'Sign Up',
+                        text: S.of(context).signUp,
                         textColor: Colors.white,
                       ),
                       SizedBox(
@@ -201,7 +202,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             customGoAndDeleteNavigate(
                                 context: context, path: AppRouter.kLogin);
                           },
-                          child: Text('Already have an account',
+                          child: Text(S.of(context).haveAccount,
                               style: Styles.textStyle12Orange),
                         ),
                       ),

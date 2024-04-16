@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/app_router.dart';
@@ -7,6 +6,7 @@ import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
+import '../../../../../generated/l10n.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
@@ -15,15 +15,8 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: kPrimaryKey,
-          ),
-        ),
         title: Text(
-          'Settings',
+          S.of(context).settings,
           style: Theme.of(context).textTheme.displaySmall,
         ),
       ),
@@ -31,7 +24,7 @@ class SettingsScreen extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const CustomLineSeperator(),
           SizedBox(height: 40.h),
-          const CustomTitleText(text: 'Accounts'),
+          CustomTitleText(text: S.of(context).accounts),
           SizedBox(height: 26.h),
           GestureDetector(
             onTap: () {
@@ -66,13 +59,13 @@ class SettingsScreen extends StatelessWidget {
           const SizedBox(height: 40),
           const CustomLineSeperator(),
           SizedBox(height: 30.h),
-          const CustomTitleText(text: 'Settings'),
-          const SettingsIconWidget(
-            icon: Icon(
+          CustomTitleText(text: S.of(context).settings),
+          SettingsIconWidget(
+            icon: const Icon(
               Icons.help_outline_sharp,
               color: Colors.white,
             ),
-            title: 'Help center',
+            title: S.of(context).helpCenter,
           ),
           SettingsIconWidget(
             function: () {
@@ -83,31 +76,31 @@ class SettingsScreen extends StatelessWidget {
               Icons.local_offer,
               color: Colors.white,
             ),
-            title: 'Cobons',
+            title: S.of(context).Cobons,
           ),
-          const SettingsIconWidget(
-            title: 'About Us',
+          SettingsIconWidget(
+            title: S.of(context).aboutUs,
           ),
-          const SettingsIconWidget(
-            title: 'Subscriptions',
+          SettingsIconWidget(
+            title: S.of(context).subscribe,
           ),
-          const SettingsIconWidget(
-            title: 'Change language',
+          SettingsIconWidget(
+            title: S.of(context).changeLanguage,
           ),
-          const SettingsIconWidget(
-            icon: Icon(Icons.text_snippet, color: Colors.white),
-            title: 'Terms & conditions',
+          SettingsIconWidget(
+            icon: const Icon(Icons.text_snippet, color: Colors.white),
+            title: S.of(context).termsAndConditions,
           ),
-          const SettingsIconWidget(
-            icon: Icon(Icons.delete, color: Colors.white),
-            title: 'Delete account',
+          SettingsIconWidget(
+            icon: const Icon(Icons.delete, color: Colors.white),
+            title: S.of(context).deleteAccount,
           ),
-          const SettingsIconWidget(
-            title: 'Change Theme',
+          SettingsIconWidget(
+            title: S.of(context).changeTheme,
           ),
-          const SettingsIconWidget(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
-            title: 'Logout',
+          SettingsIconWidget(
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+            title: S.of(context).logOut,
           ),
         ]),
       ),

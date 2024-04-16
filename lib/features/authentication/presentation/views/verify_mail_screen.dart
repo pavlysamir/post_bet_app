@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
+import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -37,7 +38,7 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Verify Your Email',
+                  S.of(context).verifyEmail,
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
@@ -47,12 +48,12 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
                   height: 12,
                 ),
                 Text(
-                  'Enter Code',
+                  S.of(context).enterCode,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(height: 30.h),
                 Text(
-                  'Code',
+                  S.of(context).code,
                   style: Styles.textStyle14Black,
                 ),
                 SizedBox(
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
                     }),
                 SizedBox(height: 36.h),
                 CustomButtonLarge(
-                    text: 'Submit',
+                    text: S.of(context).submet,
                     color: kPrimaryKey,
                     textColor: Colors.white,
                     function: () {

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
+import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -37,7 +38,7 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Reset Password',
+                  S.of(context).registerPassword,
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
@@ -46,10 +47,10 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
                 const SizedBox(
                   height: 12,
                 ),
-                Text('Enter Your Email', style: Styles.textStyle14Grey),
+                Text(S.of(context).enterEmail, style: Styles.textStyle14Grey),
                 SizedBox(height: 30.h),
                 Text(
-                  'Email',
+                  S.of(context).loginEmail,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 SizedBox(
@@ -61,7 +62,7 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
                       color: kPrimaryKey,
                     ),
                     textInputType: TextInputType.emailAddress,
-                    hintText: 'Email',
+                    hintText: S.of(context).loginEmail,
                     controller: emailController,
                     validationMassage: (value) {
                       if (value.isEmpty) {
@@ -70,7 +71,7 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
                     }),
                 SizedBox(height: 36.h),
                 CustomButtonLarge(
-                    text: 'reset password',
+                    text: S.of(context).resetPassword,
                     color: kPrimaryKey,
                     textColor: Colors.white,
                     function: () {

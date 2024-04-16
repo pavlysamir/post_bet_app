@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
+import '../../../../../generated/l10n.dart';
 
 class PlatformScreen extends StatelessWidget {
   const PlatformScreen({super.key});
@@ -22,7 +22,7 @@ class PlatformScreen extends StatelessWidget {
             SizedBox(
               height: 40.h,
             ),
-            const CustomTitleText(text: 'Platforms'),
+            CustomTitleText(text: S.of(context).platform),
             SizedBox(
               height: 40.h,
             ),

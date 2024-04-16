@@ -32,7 +32,7 @@ class LastPostsContainer extends StatelessWidget {
           children: [
             Text(
               'this is my post',
-              style: Styles.textStyle12BoldPoppings,
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             SizedBox(
               height: 8.h,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 import '../../../../../core/utils/styles.dart';
 
@@ -11,7 +12,8 @@ class CustomTextButtonForgotPassword extends StatelessWidget {
       alignment: Alignment.bottomRight,
       child: TextButton(
         onPressed: function,
-        child: Text('Forget password ?', style: Styles.textStyle12Orange),
+        child:
+            Text(S.of(context).forgotPassword, style: Styles.textStyle12Orange),
       ),
     );
   }

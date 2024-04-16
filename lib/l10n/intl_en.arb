@@ -56,5 +56,9 @@
     "Cobons":"Cobons",
     "currentPassword":"Current Password",
     "newPassword":"New Password",
-   "ubdate":"Update"
+   "ubdate":"Update",
+   "editProfile":"Edit Profile",
+   "letsSatrt":"Let’s Get Started",
+   "welcomeBack":"Welcome back to postbet",
+   "signUp":"Sign Up"
 }

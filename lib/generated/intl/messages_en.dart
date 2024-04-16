@@ -40,6 +40,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don’t have account ? register now"),
+        "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Your Email"),
         "forgotPassword":
@@ -50,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "history": MessageLookupByLibrary.simpleMessage("History"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "lastPosts": MessageLookupByLibrary.simpleMessage("Your latest posts"),
+        "letsSatrt": MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
@@ -86,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "submet": MessageLookupByLibrary.simpleMessage("Submit"),
         "subscribe": MessageLookupByLibrary.simpleMessage("Subscriptions"),
@@ -96,6 +99,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "ubdate": MessageLookupByLibrary.simpleMessage("Update"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("Verify Your Email"),
-        "welcome": MessageLookupByLibrary.simpleMessage("Welcome to ")
+        "welcome": MessageLookupByLibrary.simpleMessage("Welcome to "),
+        "welcomeBack":
+            MessageLookupByLibrary.simpleMessage("Welcome back to postbet")
       };
 }

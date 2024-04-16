@@ -38,6 +38,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ سجل الآن"),
+        "editProfile":
+            MessageLookupByLibrary.simpleMessage("تعديل الملف الشخصي"),
         "enterCode": MessageLookupByLibrary.simpleMessage("أدخل الرمز"),
         "enterEmail":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكتروني"),
@@ -49,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "history": MessageLookupByLibrary.simpleMessage("التاريخ"),
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "lastPosts": MessageLookupByLibrary.simpleMessage("أحدث منشوراتك"),
+        "letsSatrt": MessageLookupByLibrary.simpleMessage("لنبدأ"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -89,12 +92,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+        "signUp": MessageLookupByLibrary.simpleMessage("سجّل الدخول"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطى"),
         "subscribe": MessageLookupByLibrary.simpleMessage("الاشتراكات"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("تحقق من بريدك الإلكتروني"),
-        "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في")
+        "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في"),
+        "welcomeBack":
+            MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى في postbet")
       };
 }

@@ -97,6 +97,7 @@ class AppTheme {
     primaryColor: kPrimaryKey, // Change primary color as needed
     // Change accent color as needed
     textTheme: TextTheme(
+      bodySmall: Styles.textStyle12BlackBoldPoppings,
       displayLarge: Styles.textStyle32Black,
       displayMedium: Styles.textStyle32Orange,
       bodyLarge: Styles.textStyle12Black,
@@ -137,6 +138,7 @@ class AppTheme {
 
     primaryColor: kPrimaryKey, // Change primary color as needed
     textTheme: TextTheme(
+      bodySmall: Styles.textStyle12WhiteBoldPoppings,
       displayLarge: Styles.textStyle32White,
       displayMedium: Styles.textStyle32Orange,
       bodyLarge: Styles.textStyle12White,
