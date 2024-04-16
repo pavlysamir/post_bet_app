@@ -5,7 +5,6 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/functions/validation_handling.dart';
 import 'package:post_bet/core/utils/app_router.dart';
-import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
@@ -58,7 +57,7 @@ class EditProfileScreen extends StatelessWidget {
                         SizedBox(height: 30.h),
                         Text(
                           'Email',
-                          style: Styles.textStyle14Black,
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
                           height: 10.h,
@@ -75,7 +74,7 @@ class EditProfileScreen extends StatelessWidget {
                         SizedBox(height: 30.h),
                         Text(
                           'Current password',
-                          style: Styles.textStyle14Black,
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
                           height: 10.h,
@@ -103,10 +102,8 @@ class EditProfileScreen extends StatelessWidget {
                                 editProfileCubit.currentPasswordController,
                             validationMassage: conditionOfValidationName),
                         SizedBox(height: 30.h),
-                        Text(
-                          'New password',
-                          style: Styles.textStyle14Black,
-                        ),
+                        Text('New password',
+                            style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(
                           height: 10.h,
                         ),
@@ -131,7 +128,7 @@ class EditProfileScreen extends StatelessWidget {
                         SizedBox(height: 30.h),
                         Text(
                           'Confirm password',
-                          style: Styles.textStyle14Black,
+                          style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
                           height: 10.h,
@@ -179,6 +176,9 @@ class EditProfileScreen extends StatelessWidget {
                           text: 'Update',
                           textColor: Colors.white,
                         ),
+                        SizedBox(
+                          height: 30.h,
+                        )
                       ],
                     ),
                   ),

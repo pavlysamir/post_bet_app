@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
@@ -30,31 +33,37 @@ class SettingsScreen extends StatelessWidget {
           SizedBox(height: 40.h),
           const CustomTitleText(text: 'Accounts'),
           SizedBox(height: 26.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const CircleAvatar(
-                  radius: 20,
-                  backgroundColor: kBlackColor,
-                ),
-                SizedBox(width: 10.w),
-                Text('john smith',
-                    style: Theme.of(context).textTheme.titleLarge),
-                SizedBox(width: 180.w),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.arrow_forward_ios,
-                    color: kPrimaryKey,
-                    size: 24,
+          GestureDetector(
+            onTap: () {
+              customJustGoNavigate(
+                  context: context, path: AppRouter.kEditProfile);
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const CircleAvatar(
+                    radius: 20,
+                    backgroundColor: kBlackColor,
                   ),
-                ),
-              ],
+                  SizedBox(width: 10.w),
+                  Text('john smith',
+                      style: Theme.of(context).textTheme.titleLarge),
+                  SizedBox(width: 180.w),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.arrow_forward_ios,
+                      color: kPrimaryKey,
+                      size: 24,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 40.h),
+          const SizedBox(height: 40),
           const CustomLineSeperator(),
           SizedBox(height: 30.h),
           const CustomTitleText(text: 'Settings'),

@@ -12,42 +12,35 @@ class ProfilePhotoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<EditProfileCubit, EditProfileState>(
       builder: (context, state) {
-        return GestureDetector(
-          onTap: () {
-            editProfileCubit.pickCameraImage();
-          },
-          child: Align(
-            alignment: Alignment.center,
-            child: Stack(
-              children: [
-                ClipOval(
-                  child: CircleAvatar(
-                      radius: 75.h,
-                      backgroundColor: k5A5A5A,
-                      child: editProfileCubit.file == null
-                          ? null
-                          : Image.file(
-                              editProfileCubit.file!,
-                              fit: BoxFit.fill,
-                              width: double.infinity,
-                              height: double.infinity,
-                            )),
+        return Align(
+          alignment: Alignment.center,
+          child: Stack(
+            alignment: AlignmentDirectional.bottomEnd,
+            children: [
+              ClipOval(
+                child: CircleAvatar(
+                    radius: 75.h,
+                    backgroundColor: k5A5A5A,
+                    child: editProfileCubit.file == null
+                        ? null
+                        : Image.file(
+                            editProfileCubit.file!,
+                            fit: BoxFit.fill,
+                            width: double.infinity,
+                            height: double.infinity,
+                          )),
+              ),
+              IconButton(
+                onPressed: () {
+                  editProfileCubit.pickCameraImage();
+                },
+                icon: Icon(
+                  color: kPrimaryKey,
+                  Icons.photo_camera,
+                  size: 32.h,
                 ),
-                Positioned(
-                  top: 110.h,
-                  left: 110.w,
-                  right: 120.w,
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      color: kPrimaryKey,
-                      Icons.photo_camera,
-                      size: 32.h,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },

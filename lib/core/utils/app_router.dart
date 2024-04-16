@@ -21,7 +21,7 @@ abstract class AppRouter {
   static const kEditProfile = '/EditProfile';
 
   static final router = GoRouter(
-      initialLocation: kEditProfile,
+      initialLocation: kOnBoarding,
       // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
       //         true
       //     ? kLoginView
