@@ -71,7 +71,7 @@ class CobonsView extends StatelessWidget {
                         'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
                   ),
                   SizedBox(
-                    height: 10.h,
+                    height: 30.h,
                   ),
                 ],
               ),

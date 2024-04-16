@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/core/utils/styles.dart';
 
 class CobonItem extends StatelessWidget {
   const CobonItem({
@@ -37,9 +38,9 @@ class CobonItem extends StatelessWidget {
           Expanded(
             child: Text(
               cobonTitle,
-              maxLines: 2,
+              maxLines: 3,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.labelLarge,
+              style: Styles.textStyle16Black,
             ),
           ),
           SizedBox(
