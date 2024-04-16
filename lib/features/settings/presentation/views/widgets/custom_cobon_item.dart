@@ -6,10 +6,12 @@ class CobonItem extends StatelessWidget {
     super.key,
     required this.cobonTitle,
     required this.cobonCode,
+    required this.color,
   });
 
   final String cobonTitle;
   final String cobonCode;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class CobonItem extends StatelessWidget {
       padding: EdgeInsets.all(8.h),
       height: 202.h,
       decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
+        color: color,
         border: Border.all(color: Colors.white),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [

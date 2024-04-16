@@ -9,27 +9,74 @@ class CobonsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              height: 40.h,
-            ),
-            const CustomTitleText(text: 'Cobons'),
-            SizedBox(
-              height: 20.h,
-            ),
-            const CobonItem(
-              cobonCode: '01222',
-              cobonTitle:
-                  'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
-            ),
-          ],
+        appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+          ),
+          title: const CustomTitleText(text: 'Cobons'),
         ),
-      ),
-    ));
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  const CobonItem(
+                    color: Colors.grey,
+                    cobonCode: '01222',
+                    cobonTitle:
+                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  CobonItem(
+                    color: Colors.grey.shade300,
+                    cobonCode: '01222',
+                    cobonTitle:
+                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  CobonItem(
+                    color: Colors.brown.shade300,
+                    cobonCode: '01222',
+                    cobonTitle:
+                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  const CobonItem(
+                    color: Colors.amber,
+                    cobonCode: '01222',
+                    cobonTitle:
+                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  CobonItem(
+                    color: Colors.blue.shade100,
+                    cobonCode: '01222',
+                    cobonTitle:
+                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ));
   }
 }

@@ -24,7 +24,7 @@ class PostBetApp extends StatelessWidget {
           supportedLocales: S.delegate.supportedLocales,
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.router,
-          theme: AppTheme.darkTheme),
+          theme: AppTheme.lightTheme),
     );
   }
 }

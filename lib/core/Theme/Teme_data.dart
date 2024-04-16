@@ -101,7 +101,7 @@ class AppTheme {
       displayMedium: Styles.textStyle32Orange,
       bodyLarge: Styles.textStyle12Black,
       bodyMedium: Styles.textStyle12BoldGrey,
-      titleMedium: const TextStyle(color: Colors.white),
+      titleMedium: const TextStyle(color: Colors.black),
       titleSmall: Styles.textStyle12Orange,
       displaySmall: Styles.textStyle24BoldBlack,
       headlineMedium: Styles.textStyle14Grey,
