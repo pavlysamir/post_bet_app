@@ -134,6 +134,7 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
     ),
     scaffoldBackgroundColor: Colors.black,
+
     primaryColor: kPrimaryKey, // Change primary color as needed
     textTheme: TextTheme(
       displayLarge: Styles.textStyle32White,
