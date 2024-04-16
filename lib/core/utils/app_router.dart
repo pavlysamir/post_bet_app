@@ -4,6 +4,7 @@ import 'package:post_bet/features/authentication/presentation/views/forget_passw
 import 'package:post_bet/features/authentication/presentation/views/login_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/regester_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/verify_mail_screen.dart';
+import 'package:post_bet/features/home/presentation/views/creare_post_view.dart';
 import 'package:post_bet/features/home/presentation/views/home_screen.dart';
 import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dart';
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
@@ -21,6 +22,7 @@ abstract class AppRouter {
   static const kHomeLayOut = '/HomeLayOut';
   static const kEditProfile = '/EditProfile';
   static const kCobonsView = '/CobonsView';
+  static const kAddPostView = '/AddPostView';
 
   static final router = GoRouter(
       initialLocation: kOnBoarding,
@@ -68,6 +70,10 @@ abstract class AppRouter {
         GoRoute(
           path: kCobonsView,
           builder: (context, state) => const CobonsView(),
+        ),
+        GoRoute(
+          path: kAddPostView,
+          builder: (context, state) => const CreatePostView(),
         ),
       ]);
 }
