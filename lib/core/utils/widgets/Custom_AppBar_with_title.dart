@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/styles.dart';
 
 class CustomAppbareWithTitle extends StatelessWidget
     implements PreferredSizeWidget {
@@ -20,7 +19,7 @@ class CustomAppbareWithTitle extends StatelessWidget
       ),
       title: Text(
         title,
-        style: Styles.textStyle24W700,
+        style: Theme.of(context).textTheme.displaySmall,
       ),
     );
   }
