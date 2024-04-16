@@ -82,4 +82,6 @@ abstract class Styles {
 
   static TextStyle textStyle16Black = const TextStyle(
       fontSize: 16, fontWeight: FontWeight.bold, color: kBlackColor);
+  static TextStyle textStyle16White = const TextStyle(
+      fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white);
 }

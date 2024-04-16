@@ -74,6 +74,17 @@ class SettingsScreen extends StatelessWidget {
             ),
             title: 'Help center',
           ),
+          SettingsIconWidget(
+            function: () {
+              customJustGoNavigate(
+                  context: context, path: AppRouter.kCobonsView);
+            },
+            icon: const Icon(
+              Icons.local_offer,
+              color: Colors.white,
+            ),
+            title: 'Cobons',
+          ),
           const SettingsIconWidget(
             title: 'About Us',
           ),

@@ -147,7 +147,7 @@ class AppTheme {
       headlineMedium: Styles.textStyle14Grey,
       headlineSmall: Styles.textStyle14Orange,
       titleLarge: Styles.textStyle14White,
-      labelLarge: Styles.textStyle16Black,
+      labelLarge: Styles.textStyle16White,
       // Text color for light mode
     ),
     brightness: Brightness.dark,
