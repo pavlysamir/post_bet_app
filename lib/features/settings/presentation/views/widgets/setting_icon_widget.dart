@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/styles.dart';
 
 class SettingsIconWidget extends StatelessWidget {
   const SettingsIconWidget({this.icon, required this.title, super.key});
@@ -21,7 +20,7 @@ class SettingsIconWidget extends StatelessWidget {
                   const CircleAvatar(radius: 15, backgroundColor: Colors.white),
             ),
             SizedBox(width: 13.w),
-            Text(title, style: Styles.textStyle14W500Black),
+            Text(title, style: Theme.of(context).textTheme.titleLarge),
             const Spacer(),
             IconButton(
               onPressed: () {},

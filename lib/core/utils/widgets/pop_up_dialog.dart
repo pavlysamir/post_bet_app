@@ -45,8 +45,7 @@ class PopUpDialog extends StatelessWidget {
           ),
           Text(
             subTitle,
-            style: Styles.button1textStyle16Grey
-                .copyWith(color: const Color(0XFF777777)),
+            style: Theme.of(context).textTheme.labelLarge,
             textAlign: TextAlign.center,
           )
         ],

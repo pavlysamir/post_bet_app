@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
@@ -22,9 +21,9 @@ class SettingsScreen extends StatelessWidget {
             color: kPrimaryKey,
           ),
         ),
-        title: const Text(
+        title: Text(
           'Settings',
-          style: Styles.textStyle24W700,
+          style: Theme.of(context).textTheme.displaySmall,
         ),
       ),
       body: SingleChildScrollView(
@@ -43,7 +42,8 @@ class SettingsScreen extends StatelessWidget {
                   backgroundColor: kBlackColor,
                 ),
                 SizedBox(width: 10.w),
-                Text('john smith', style: Styles.textStyle14W500Black),
+                Text('john smith',
+                    style: Theme.of(context).textTheme.titleLarge),
                 SizedBox(width: 180.w),
                 IconButton(
                   onPressed: () {},

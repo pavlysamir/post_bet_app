@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
-import '../styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButtonLarge extends StatelessWidget {
@@ -32,7 +31,7 @@ class CustomButtonLarge extends StatelessWidget {
         child: Center(
             child: RichText(
           text: TextSpan(
-            style: Styles.button1textStyle16Grey.copyWith(color: textColor),
+            style: Theme.of(context).textTheme.labelLarge,
             children: [
               TextSpan(
                   text: text,
