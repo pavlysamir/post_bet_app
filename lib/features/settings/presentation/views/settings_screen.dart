@@ -82,6 +82,10 @@ class SettingsScreen extends StatelessWidget {
             title: S.of(context).aboutUs,
           ),
           SettingsIconWidget(
+            function: () {
+              customJustGoNavigate(
+                  context: context, path: AppRouter.kSubscriptionView);
+            },
             title: S.of(context).subscribe,
           ),
           SettingsIconWidget(

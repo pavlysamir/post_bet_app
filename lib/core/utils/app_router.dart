@@ -10,6 +10,7 @@ import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dar
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
 import 'package:post_bet/features/profile/presentation/view/edit%20profile%20screen.dart';
 import 'package:post_bet/features/settings/presentation/views/cobons_view.dart';
+import 'package:post_bet/features/settings/presentation/views/subscription_view.dart';
 
 abstract class AppRouter {
   static const kWelcomeView = '/';
@@ -23,9 +24,11 @@ abstract class AppRouter {
   static const kEditProfile = '/EditProfile';
   static const kCobonsView = '/CobonsView';
   static const kAddPostView = '/AddPostView';
+  static const kSubscriptionView = '/SubscriptionView';
+  static const kPaymentView = '/PaymentView';
 
   static final router = GoRouter(
-      initialLocation: kOnBoarding,
+      initialLocation: kHomeLayOut,
       // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
       //         true
       //     ? kLoginView
@@ -57,7 +60,7 @@ abstract class AppRouter {
         ),
         GoRoute(
           path: kHomeScreen,
-          builder: (context, state) => HomeScreen(),
+          builder: (context, state) => const HomeScreen(),
         ),
         GoRoute(
           path: kHomeLayOut,
@@ -75,5 +78,13 @@ abstract class AppRouter {
           path: kAddPostView,
           builder: (context, state) => const CreatePostView(),
         ),
+        GoRoute(
+          path: kSubscriptionView,
+          builder: (context, state) => const SubscriptionsView(),
+        ),
+        // GoRoute(
+        //   path: kPaymentView,
+        //   builder: (context, state) => const PaymentView(text: ,),
+        // ),
       ]);
 }

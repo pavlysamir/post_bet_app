@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:post_bet/core/utils/styles.dart';
 
 class CustomTitleText extends StatelessWidget {
   const CustomTitleText({super.key, required this.text});

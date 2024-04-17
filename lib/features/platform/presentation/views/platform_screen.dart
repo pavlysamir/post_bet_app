@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
@@ -10,6 +11,20 @@ class PlatformScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<String> platformNames = [
+      'instagram',
+      'facebook',
+      'x',
+      'instagram',
+      'instagram',
+    ];
+    final List<String> platformIcons = [
+      AssetsData.instagramIcon,
+      AssetsData.faceBookIcon,
+      AssetsData.xIcon,
+      AssetsData.instagramIcon,
+      AssetsData.instagramIcon,
+    ];
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -33,9 +48,12 @@ class PlatformScreen extends StatelessWidget {
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
-                    itemCount: 5,
+                    itemCount: platformNames.length,
                     itemBuilder: (context, index) {
-                      return const PlatformListViewItem();
+                      return PlatformListViewItem(
+                        image: platformIcons[index],
+                        text: platformNames[index],
+                      );
                     }),
               ),
             )

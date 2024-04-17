@@ -31,9 +31,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+    var formKey = GlobalKey<FormState>();
+
     IconData iconData = Icons.visibility_off;
     bool ifPasswordVisible = true;
-    var formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) => LoginCubit(),
       child: BlocConsumer<LoginCubit, LoginState>(
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: Styles.textStyle14Grey),
                       SizedBox(height: 30.h),
                       Text(
-                        'Email',
+                        S.of(context).loginEmail,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(

@@ -11,4 +11,5 @@ class AssetsData {
   static const instagramIcon = 'assets/images/icons_instagram.png';
   static const xIcon = 'assets/images/logo-x.png';
   static const faceBookIcon = 'assets/images/logofacebook.png';
+  static const visa = 'assets/images/logos_mastercard.png';
 }

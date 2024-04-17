@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/styles.dart';
 
 class PlatformListViewItem extends StatelessWidget {
-  const PlatformListViewItem({super.key});
+  const PlatformListViewItem(
+      {super.key, required this.image, required this.text});
+  final String image;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +34,10 @@ class PlatformListViewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(AssetsData.instagramIcon),
+                Image.asset(image),
                 SizedBox(height: 10.h),
                 Text(
-                  'Instgram',
+                  text,
                   style: Styles.textStyle14Grey,
                 ),
               ]),

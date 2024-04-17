@@ -23,8 +23,8 @@ class CreatePostView extends StatelessWidget {
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
-      AssetsData.instagramIcon,
-      AssetsData.instagramIcon,
+      AssetsData.faceBookIcon,
+      AssetsData.xIcon,
     ];
     return BlocProvider(
       create: (context) => AddPostCubit(),

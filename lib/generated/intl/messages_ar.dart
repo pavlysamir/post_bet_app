@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "accounts": MessageLookupByLibrary.simpleMessage("الحسابات"),
         "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
+        "basic": MessageLookupByLibrary.simpleMessage("بسيط"),
+        "cardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("تغيير المظهر"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
@@ -35,6 +37,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createPost": MessageLookupByLibrary.simpleMessage("إنشاء منشور"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
+        "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ سجل الآن"),
@@ -43,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterCode": MessageLookupByLibrary.simpleMessage("أدخل الرمز"),
         "enterEmail":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكتروني"),
+        "expireData": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
+        "fivePosts": MessageLookupByLibrary.simpleMessage("5 منشورات في اليوم"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "haveAccount":
@@ -65,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutSuccess":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج بنجاح"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
+        "nameCard": MessageLookupByLibrary.simpleMessage("اسم على البطاقة"),
         "newPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
@@ -81,7 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingSlider3subTitle1": MessageLookupByLibrary.simpleMessage(
             "بوستبيت يجعل من السهل عليك إدارة ومشاركة منشوراتك"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "pay": MessageLookupByLibrary.simpleMessage("دفع"),
+        "paymentAmount": MessageLookupByLibrary.simpleMessage("مبلغ الدفع"),
         "platform": MessageLookupByLibrary.simpleMessage("المنصات"),
+        "premium": MessageLookupByLibrary.simpleMessage("مميز"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerEmail":
@@ -92,15 +101,27 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
+        "shareAllPlatform":
+            MessageLookupByLibrary.simpleMessage("مشاركة مع جميع المنصات"),
+        "shareWithTickTok":
+            MessageLookupByLibrary.simpleMessage("مشاركة مع تيك توك"),
+        "shareWithTickandSnap":
+            MessageLookupByLibrary.simpleMessage("مشاركة مع تيك توك وسناب شات"),
         "signUp": MessageLookupByLibrary.simpleMessage("سجّل الدخول"),
         "skip": MessageLookupByLibrary.simpleMessage("تخطى"),
+        "standard": MessageLookupByLibrary.simpleMessage("قياسي"),
         "subscribe": MessageLookupByLibrary.simpleMessage("الاشتراكات"),
+        "subscribePlan": MessageLookupByLibrary.simpleMessage("خطط الاشتراكات"),
+        "tenPosts": MessageLookupByLibrary.simpleMessage("10 منشورات في اليوم"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),
+        "unlimitedPosts": MessageLookupByLibrary.simpleMessage(
+            "عدد غير محدود من المنشورات في اليوم"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("تحقق من بريدك الإلكتروني"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في"),
         "welcomeBack":
-            MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى في postbet")
+            MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى في postbet"),
+        "zip": MessageLookupByLibrary.simpleMessage("الرمز البريدي")
       };
 }

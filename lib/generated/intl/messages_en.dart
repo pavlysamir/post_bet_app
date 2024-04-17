@@ -26,6 +26,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "aboutUs": MessageLookupByLibrary.simpleMessage("About us"),
         "accounts": MessageLookupByLibrary.simpleMessage("Accounts"),
         "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+        "basic": MessageLookupByLibrary.simpleMessage("Basic Plan"),
+        "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
@@ -37,12 +39,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "createPost": MessageLookupByLibrary.simpleMessage("Create a Post"),
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
+        "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don’t have account ? register now"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Your Email"),
+        "expireData": MessageLookupByLibrary.simpleMessage("Expire Data"),
+        "fivePosts": MessageLookupByLibrary.simpleMessage("5 posts per day"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "haveAccount":
@@ -64,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "logoutSuccess": MessageLookupByLibrary.simpleMessage("Logout success"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "nameCard": MessageLookupByLibrary.simpleMessage("Name on card"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "onBoardingSlider1":
@@ -79,7 +85,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "onBoardingSlider3subTitle1": MessageLookupByLibrary.simpleMessage(
             "Postbet make you easily manage and share you posts "),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "pay": MessageLookupByLibrary.simpleMessage("Pay"),
+        "paymentAmount": MessageLookupByLibrary.simpleMessage("Pay amount"),
         "platform": MessageLookupByLibrary.simpleMessage("Platform"),
+        "premium": MessageLookupByLibrary.simpleMessage("Premium Plan"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
         "registerEmail": MessageLookupByLibrary.simpleMessage("Email"),
@@ -88,19 +97,32 @@ class MessageLookup extends MessageLookupByLibrary {
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "shareAllPlatform":
+            MessageLookupByLibrary.simpleMessage("Share with all platforms"),
+        "shareWithTickTok":
+            MessageLookupByLibrary.simpleMessage("Share with tiktok"),
+        "shareWithTickandSnap": MessageLookupByLibrary.simpleMessage(
+            "Share with Tiktok and snapchat"),
         "signUp": MessageLookupByLibrary.simpleMessage("Sign Up"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
+        "standard": MessageLookupByLibrary.simpleMessage("Standard Plan"),
         "submet": MessageLookupByLibrary.simpleMessage("Submit"),
         "subscribe": MessageLookupByLibrary.simpleMessage("Subscriptions"),
+        "subscribePlan":
+            MessageLookupByLibrary.simpleMessage("Subscriptions Plans"),
+        "tenPosts": MessageLookupByLibrary.simpleMessage("10 posts per day"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),
         "typeAnyThing":
             MessageLookupByLibrary.simpleMessage("Type anything here"),
         "ubdate": MessageLookupByLibrary.simpleMessage("Update"),
+        "unlimitedPosts":
+            MessageLookupByLibrary.simpleMessage("Unlimited posts per day"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("Verify Your Email"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome to "),
         "welcomeBack":
-            MessageLookupByLibrary.simpleMessage("Welcome back to postbet")
+            MessageLookupByLibrary.simpleMessage("Welcome back to postbet"),
+        "zip": MessageLookupByLibrary.simpleMessage("Zip / Postal code")
       };
 }

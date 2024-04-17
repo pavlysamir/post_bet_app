@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:post_bet/constants.dart';
 
@@ -15,22 +14,22 @@ abstract class Styles {
     color: Colors.black,
   );
 
+  static TextStyle textStyle48Orange = GoogleFonts.poppins(
+    fontSize: 48,
+    fontWeight: FontWeight.bold,
+    color: kPrimaryKey,
+  );
+
   static TextStyle textStyle32White = GoogleFonts.poppins(
     fontSize: 32,
     fontWeight: FontWeight.bold,
     color: Colors.white,
   );
-
-  static TextStyle? textStyle32Orange;
-
-  void initializeTextStyle32Orange() {
-    textStyle32Orange = TextStyle(
-      fontSize: 32.sp,
-      fontWeight: FontWeight.bold,
-      color: kPrimaryKey,
-    );
-  }
-
+  static TextStyle textStyle32Orange = GoogleFonts.poppins(
+    fontSize: 32,
+    fontWeight: FontWeight.bold,
+    color: kPrimaryKey,
+  );
   // static TextStyle? textStyle32Black;
   // void initializeTextStyle32Black() {
   //   textStyle32Black = TextStyle(

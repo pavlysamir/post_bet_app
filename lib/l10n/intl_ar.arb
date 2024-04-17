@@ -49,6 +49,7 @@
     "helpCenter": "مركز المساعدة",
     "aboutUs": "معلومات عنا",
     "subscribe": "الاشتراكات",
+    "subscribePlan":"خطط الاشتراكات",
     "changeLanguage": "تغيير اللغة",
     "termsAndConditions": "الشروط والأحكام",
     "deleteAccount": "حذف الحساب",
@@ -61,7 +62,23 @@
     "editProfile": "تعديل الملف الشخصي",
     "letsSatrt": "لنبدأ",
     "welcomeBack": "مرحبًا مرة أخرى في postbet",
-    "signUp": "سجّل الدخول"
+    "signUp": "سجّل الدخول",
+    "basic": "بسيط",
+    "standard": "قياسي",
+    "premium": "مميز",
+    "fivePosts": "5 منشورات في اليوم",
+    "shareWithTickTok": "مشاركة مع تيك توك",
+    "tenPosts": "10 منشورات في اليوم",
+    "shareWithTickandSnap": "مشاركة مع تيك توك وسناب شات",
+    "unlimitedPosts": "عدد غير محدود من المنشورات في اليوم",
+    "shareAllPlatform": "مشاركة مع جميع المنصات",
+    "paymentAmount": "مبلغ الدفع",
+    "nameCard": "اسم على البطاقة",
+    "cardNumber": "رقم البطاقة",
+    "expireData": "تاريخ الانتهاء",
+    "cvv": "CVV",
+    "zip": "الرمز البريدي",
+    "pay": "دفع"
     }
     
     

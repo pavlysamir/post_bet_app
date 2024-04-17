@@ -48,6 +48,8 @@
     "helpCenter":"Help center",
     "aboutUs":"About us",
     "subscribe":"Subscriptions",
+    "subscribePlan":"Subscriptions Plans",
+
     "changeLanguage":"Change Language",
     "termsAndConditions":"Terms and Conditions",
     "deleteAccount":"Delete Account",
@@ -60,5 +62,21 @@
    "editProfile":"Edit Profile",
    "letsSatrt":"Let’s Get Started",
    "welcomeBack":"Welcome back to postbet",
-   "signUp":"Sign Up"
+   "signUp":"Sign Up",
+   "basic":"Basic Plan",
+   "standard":"Standard Plan",
+   "premium":"Premium Plan",
+   "fivePosts":"5 posts per day",
+   "shareWithTickTok":"Share with tiktok",
+   "tenPosts":"10 posts per day",
+   "shareWithTickandSnap":"Share with Tiktok and snapchat",
+   "unlimitedPosts":"Unlimited posts per day",
+   "shareAllPlatform":"Share with all platforms",
+   "paymentAmount":"Pay amount",
+   "nameCard":"Name on card",
+   "cardNumber":"Card Number",
+   "expireData":"Expire Data",
+   "cvv":"CVV",
+   "zip":"Zip / Postal code",
+   "pay":"Pay"
 }

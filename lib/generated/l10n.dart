@@ -540,6 +540,16 @@ class S {
     );
   }
 
+  /// `Subscriptions Plans`
+  String get subscribePlan {
+    return Intl.message(
+      'Subscriptions Plans',
+      name: 'subscribePlan',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change Language`
   String get changeLanguage {
     return Intl.message(
@@ -665,6 +675,166 @@ class S {
     return Intl.message(
       'Sign Up',
       name: 'signUp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Basic Plan`
+  String get basic {
+    return Intl.message(
+      'Basic Plan',
+      name: 'basic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Standard Plan`
+  String get standard {
+    return Intl.message(
+      'Standard Plan',
+      name: 'standard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Premium Plan`
+  String get premium {
+    return Intl.message(
+      'Premium Plan',
+      name: 'premium',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `5 posts per day`
+  String get fivePosts {
+    return Intl.message(
+      '5 posts per day',
+      name: 'fivePosts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share with tiktok`
+  String get shareWithTickTok {
+    return Intl.message(
+      'Share with tiktok',
+      name: 'shareWithTickTok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `10 posts per day`
+  String get tenPosts {
+    return Intl.message(
+      '10 posts per day',
+      name: 'tenPosts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share with Tiktok and snapchat`
+  String get shareWithTickandSnap {
+    return Intl.message(
+      'Share with Tiktok and snapchat',
+      name: 'shareWithTickandSnap',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unlimited posts per day`
+  String get unlimitedPosts {
+    return Intl.message(
+      'Unlimited posts per day',
+      name: 'unlimitedPosts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Share with all platforms`
+  String get shareAllPlatform {
+    return Intl.message(
+      'Share with all platforms',
+      name: 'shareAllPlatform',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay amount`
+  String get paymentAmount {
+    return Intl.message(
+      'Pay amount',
+      name: 'paymentAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name on card`
+  String get nameCard {
+    return Intl.message(
+      'Name on card',
+      name: 'nameCard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Card Number`
+  String get cardNumber {
+    return Intl.message(
+      'Card Number',
+      name: 'cardNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expire Data`
+  String get expireData {
+    return Intl.message(
+      'Expire Data',
+      name: 'expireData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `CVV`
+  String get cvv {
+    return Intl.message(
+      'CVV',
+      name: 'cvv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Zip / Postal code`
+  String get zip {
+    return Intl.message(
+      'Zip / Postal code',
+      name: 'zip',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pay`
+  String get pay {
+    return Intl.message(
+      'Pay',
+      name: 'pay',
       desc: '',
       args: [],
     );
