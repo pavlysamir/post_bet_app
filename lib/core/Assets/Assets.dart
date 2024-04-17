@@ -9,4 +9,6 @@ class AssetsData {
   static const postBetName = 'assets/images/postBet_Name.png';
   static const penIcon = 'assets/images/pen_icon.png';
   static const instagramIcon = 'assets/images/icons_instagram.png';
+  static const xIcon = 'assets/images/logo-x.png';
+  static const faceBookIcon = 'assets/images/logofacebook.png';
 }

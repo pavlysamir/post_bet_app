@@ -122,6 +122,7 @@ class AppTheme {
         borderRadius: BorderRadius.circular(10.0),
       ),
     ),
+    iconTheme: const IconThemeData(color: Colors.black),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -165,5 +166,6 @@ class AppTheme {
         borderRadius: BorderRadius.circular(10.0),
       ),
     ),
+    iconTheme: const IconThemeData(color: Colors.white),
   );
 }

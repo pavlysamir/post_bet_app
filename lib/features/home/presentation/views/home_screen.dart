@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
-import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/add_post_container.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_history_posts_list_view.dart';
 import 'package:post_bet/generated/l10n.dart';
-import '../../../../core/utils/widgets/custom_button_large.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
-  var formKey = GlobalKey<FormState>();
+  const HomeScreen({super.key});
+//  var formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 SliverToBoxAdapter(
                   child: SafeArea(
                     child: Form(
-                      key: formKey,
+                      // key: formKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -43,48 +40,22 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 40.h,
                           ),
-                          CustomTitleText(text: S.of(context).editProfile),
+                          CustomTitleText(text: S.of(context).createPost),
                           SizedBox(
                             height: 15.h,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: GestureDetector(
-                              onTap: () {
-                                customJustGoNavigate(
-                                    context: context,
-                                    path: AppRouter.kAddPostView);
-                              },
-                              child: Container(
-                                height: 150.h,
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).cardColor,
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 2,
-                                      blurRadius: 4,
-                                      offset: const Offset(
-                                          0, 2), // changes position of shadow
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                          const AddPostContainer(),
                           SizedBox(
                             height: 25.h,
                           ),
-                          Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 44),
-                              child: CustomButtonLarge(
-                                  text: S.of(context).share,
-                                  color: kPrimaryKey,
-                                  textColor: Colors.white,
-                                  function: () {})),
+                          // Padding(
+                          //     padding:
+                          //         const EdgeInsets.symmetric(horizontal: 44),
+                          //     child: CustomButtonLarge(
+                          //         text: S.of(context).share,
+                          //         color: kPrimaryKey,
+                          //         textColor: Colors.white,
+                          //         function: () {})),
                           SizedBox(
                             height: 34.h,
                           ),
