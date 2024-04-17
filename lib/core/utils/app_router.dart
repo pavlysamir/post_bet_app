@@ -28,7 +28,7 @@ abstract class AppRouter {
   static const kPaymentView = '/PaymentView';
 
   static final router = GoRouter(
-      initialLocation: kHomeLayOut,
+      initialLocation: kOnBoarding,
       // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
       //         true
       //     ? kLoginView
