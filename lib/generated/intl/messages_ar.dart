@@ -39,6 +39,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+        "doChangeLanguage":
+            MessageLookupByLibrary.simpleMessage("هل تريد تغيير اللغة"),
+        "doChangeTheme":
+            MessageLookupByLibrary.simpleMessage("هل تريد تغيير المظهر"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ سجل الآن"),
         "editProfile":
@@ -74,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
+        "no": MessageLookupByLibrary.simpleMessage("لا"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("طريقة سهلة للمشاركة"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(
@@ -122,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في"),
         "welcomeBack":
             MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى في postbet"),
+        "yes": MessageLookupByLibrary.simpleMessage("نعم"),
         "zip": MessageLookupByLibrary.simpleMessage("الرمز البريدي")
       };
 }

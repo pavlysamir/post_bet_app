@@ -41,6 +41,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Current Password"),
         "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
+        "doChangeLanguage":
+            MessageLookupByLibrary.simpleMessage("Do you want change language"),
+        "doChangeTheme":
+            MessageLookupByLibrary.simpleMessage("Do you want change Theme"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don’t have account ? register now"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -72,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "nameCard": MessageLookupByLibrary.simpleMessage("Name on card"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("Easy way to share"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(
@@ -123,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome to "),
         "welcomeBack":
             MessageLookupByLibrary.simpleMessage("Welcome back to postbet"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "zip": MessageLookupByLibrary.simpleMessage("Zip / Postal code")
       };
 }

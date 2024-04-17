@@ -78,5 +78,10 @@
    "expireData":"Expire Data",
    "cvv":"CVV",
    "zip":"Zip / Postal code",
-   "pay":"Pay"
+   "pay":"Pay",
+   "doChangeLanguage":"Do you want change language",
+   "yes":"Yes",
+   "no":"No",
+   "doChangeTheme":"Do you want change Theme"
+
 }

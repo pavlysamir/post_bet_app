@@ -839,6 +839,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want change language`
+  String get doChangeLanguage {
+    return Intl.message(
+      'Do you want change language',
+      name: 'doChangeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want change Theme`
+  String get doChangeTheme {
+    return Intl.message(
+      'Do you want change Theme',
+      name: 'doChangeTheme',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
