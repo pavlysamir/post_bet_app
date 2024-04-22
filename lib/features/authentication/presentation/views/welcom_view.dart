@@ -76,7 +76,7 @@ class WelcomScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    customJustGoNavigate(
+                    customGoAndDeleteNavigate(
                         context: context, path: AppRouter.kLogin);
                   },
                   child: Text(S.of(context).login,
