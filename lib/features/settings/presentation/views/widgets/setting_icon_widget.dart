@@ -11,7 +11,7 @@ class SettingsIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: function,
       child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 18),
@@ -27,13 +27,10 @@ class SettingsIconWidget extends StatelessWidget {
               SizedBox(width: 13.w),
               Text(title, style: Theme.of(context).textTheme.titleLarge),
               const Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_forward_ios,
-                  color: kPrimaryKey,
-                  size: 24,
-                ),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: kPrimaryKey,
+                size: 24,
               ),
             ],
           )),

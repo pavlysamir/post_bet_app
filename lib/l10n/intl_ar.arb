@@ -82,7 +82,9 @@
     "doChangeLanguage":"هل تريد تغيير اللغة",
     "yes":"نعم",
     "no":"لا",
-    "doChangeTheme":"هل تريد تغيير المظهر"
+    "doChangeTheme":"هل تريد تغيير المظهر",
+    "changePassword":"تغيير كلمة المرور"
+
 
     }
     

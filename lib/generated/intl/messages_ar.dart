@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "basic": MessageLookupByLibrary.simpleMessage("بسيط"),
         "cardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("تغيير المظهر"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirmPassword":

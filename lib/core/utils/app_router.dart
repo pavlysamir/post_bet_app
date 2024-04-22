@@ -9,6 +9,7 @@ import 'package:post_bet/features/home/presentation/views/home_screen.dart';
 import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dart';
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
 import 'package:post_bet/features/profile/presentation/view/edit%20profile%20screen.dart';
+import 'package:post_bet/features/settings/presentation/views/change_password_view.dart';
 import 'package:post_bet/features/settings/presentation/views/cobons_view.dart';
 import 'package:post_bet/features/settings/presentation/views/subscription_view.dart';
 
@@ -26,6 +27,7 @@ abstract class AppRouter {
   static const kAddPostView = '/AddPostView';
   static const kSubscriptionView = '/SubscriptionView';
   static const kPaymentView = '/PaymentView';
+  static const kChangePassword = '/changePassword';
 
   static final router = GoRouter(
       initialLocation: kOnBoarding,
@@ -82,9 +84,9 @@ abstract class AppRouter {
           path: kSubscriptionView,
           builder: (context, state) => const SubscriptionsView(),
         ),
-        // GoRoute(
-        //   path: kPaymentView,
-        //   builder: (context, state) => const PaymentView(text: ,),
-        // ),
+        GoRoute(
+          path: kChangePassword,
+          builder: (context, state) => const ChangePasswordView(),
+        ),
       ]);
 }

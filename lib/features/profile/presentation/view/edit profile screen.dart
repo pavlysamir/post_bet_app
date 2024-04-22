@@ -20,16 +20,33 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: CustomAppbareWithTitle(title: S.of(context).editProfile),
-        body: BlocProvider<EditProfileCubit>(
-            create: (context) => EditProfileCubit(),
-            child: BlocConsumer<EditProfileCubit, EditProfileState>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                EditProfileCubit editProfileCubit =
-                    EditProfileCubit.get(context);
-                return SingleChildScrollView(
+    return BlocProvider(
+        create: (context) => EditProfileCubit(),
+        child: BlocConsumer<EditProfileCubit, EditProfileState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            EditProfileCubit editProfileCubit = EditProfileCubit.get(context);
+            return Scaffold(
+                appBar:
+                    CustomAppbareWithTitle(title: S.of(context).editProfile),
+                bottomNavigationBar: BottomAppBar(
+                  height: 70.h,
+                  elevation: 0,
+                  child: CustomButtonLarge(
+                    color: kPrimaryKey,
+                    function: () {
+                      if (editProfileCubit.formKey.currentState!.validate()) {
+                        customJustGoNavigate(
+                            context: context, path: AppRouter.kVerifyEmail);
+                      }
+                    },
+                    text: S.of(context).ubdate,
+                    textColor: Colors.white,
+                  ),
+                ),
+                body: SingleChildScrollView(
                   padding: EdgeInsets.symmetric(horizontal: 40.w),
                   child: Form(
                     key: editProfileCubit.formKey,
@@ -74,117 +91,31 @@ class EditProfileScreen extends StatelessWidget {
                             validationMassage: conditionOfValidationEmail),
                         SizedBox(height: 30.h),
                         Text(
-                          S.of(context).currentPassword,
+                          S.of(context).name,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
                           height: 10.h,
                         ),
                         CustomFormField(
-                            isEyeTrue:
-                                editProfileCubit.isCurrentPasswordVisible,
                             prefixIcon: const Icon(
-                              Icons.lock,
+                              Icons.account_circle_rounded,
                               color: kPrimaryKey,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                editProfileCubit
-                                    .changeCurrentPasswordVisibility();
-                              },
-                              icon: Icon(
-                                  !editProfileCubit.isCurrentPasswordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off),
                             ),
                             textInputType: TextInputType.text,
-                            hintText: '*************',
-                            controller:
-                                editProfileCubit.currentPasswordController,
+                            hintText: S.of(context).name,
+                            controller: editProfileCubit.nameController,
                             validationMassage: conditionOfValidationName),
                         SizedBox(height: 30.h),
-                        Text(S.of(context).newPassword,
-                            style: Theme.of(context).textTheme.titleLarge),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CustomFormField(
-                            isEyeTrue: editProfileCubit.isNewPasswordVisible,
-                            prefixIcon: const Icon(
-                              Icons.lock,
-                              color: kPrimaryKey,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                editProfileCubit.changeNewPasswordVisibility();
-                              },
-                              icon: Icon(!editProfileCubit.isNewPasswordVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
-                            ),
-                            textInputType: TextInputType.visiblePassword,
-                            hintText: '*************',
-                            controller: editProfileCubit.newPasswordController,
-                            validationMassage: conditionOfValidationPassWord),
-                        SizedBox(height: 30.h),
-                        Text(
-                          S.of(context).confirmPassword,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        CustomFormField(
-                          isEyeTrue: editProfileCubit.isConfirmPasswordVisible,
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: kPrimaryKey,
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              editProfileCubit
-                                  .changeConfirmPasswordVisibility();
-                            },
-                            icon: Icon(
-                                !editProfileCubit.isConfirmPasswordVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off),
-                          ),
-                          textInputType: TextInputType.visiblePassword,
-                          hintText: '*************',
-                          controller:
-                              editProfileCubit.confirmPasswordController,
-                          validationMassage: (value) {
-                            if (value ==
-                                editProfileCubit.newPasswordController.text) {
-                              return null;
-                            } else {
-                              return 'does\'t match ';
-                            }
-                          },
-                        ),
-                        SizedBox(height: 30.h),
-                        CustomButtonLarge(
-                          color: kPrimaryKey,
-                          function: () {
-                            if (editProfileCubit.formKey.currentState!
-                                .validate()) {
-                              customJustGoNavigate(
-                                  context: context,
-                                  path: AppRouter.kVerifyEmail);
-                            }
-                          },
-                          text: S.of(context).ubdate,
-                          textColor: Colors.white,
-                        ),
+
                         SizedBox(
                           height: 30.h,
                         )
                       ],
                     ),
                   ),
-                );
-              },
-            )));
+                ));
+          },
+        ));
   }
 }

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:post_bet/constants.dart';
@@ -10,6 +11,28 @@ part 'settings_state.dart';
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsInitial());
   static SettingsCubit get(context) => BlocProvider.of(context);
+
+  TextEditingController currentPasswordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  bool isCurrentPasswordVisible = true;
+  bool isNewPasswordVisible = true;
+  bool isConfirmPasswordVisible = true;
+  void changeCurrentPasswordVisibility() {
+    isCurrentPasswordVisible = !isCurrentPasswordVisible;
+    emit(ChangeCurrentPasswordVisibility());
+  }
+
+  void changeNewPasswordVisibility() {
+    isNewPasswordVisible = !isNewPasswordVisible;
+    emit(ChangeNewPasswordVisibility());
+  }
+
+  void changeConfirmPasswordVisibility() {
+    isConfirmPasswordVisible = !isConfirmPasswordVisible;
+    emit(ChangeConfirmPasswordVisibility());
+  }
 
   Future<void> initializeLanguage() async {
     // Retrieve the saved language preference when the app starts.
@@ -25,9 +48,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     // Update the isEnglish variable.
     if (savedIsEnglish != null) {
       isEnglish = savedIsEnglish;
-    }
-
-    if (savedIsDark != null) {
+    } else if (savedIsDark != null) {
       isEnglish = savedIsDark;
     }
   }

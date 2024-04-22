@@ -35,7 +35,7 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: 40.h),
               CustomTitleText(text: S.of(context).accounts),
               SizedBox(height: 26.h),
-              GestureDetector(
+              InkWell(
                 onTap: () {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kEditProfile);
@@ -52,14 +52,11 @@ class SettingsScreen extends StatelessWidget {
                       SizedBox(width: 10.w),
                       Text('john smith',
                           style: Theme.of(context).textTheme.titleLarge),
-                      SizedBox(width: 180.w),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.arrow_forward_ios,
-                          color: kPrimaryKey,
-                          size: 24,
-                        ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        color: kPrimaryKey,
+                        size: 24,
                       ),
                     ],
                   ),
@@ -75,6 +72,14 @@ class SettingsScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: S.of(context).helpCenter,
+              ),
+              SettingsIconWidget(
+                icon: const Icon(Icons.password, color: Colors.white),
+                title: S.of(context).currentPassword,
+                function: () {
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kChangePassword);
+                },
               ),
               SettingsIconWidget(
                 function: () {

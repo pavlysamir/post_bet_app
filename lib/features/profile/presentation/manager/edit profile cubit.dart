@@ -11,29 +11,28 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   static EditProfileCubit get(BuildContext context) => BlocProvider.of(context);
 
-  TextEditingController currentPasswordController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController newPasswordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  bool isCurrentPasswordVisible = true;
-  bool isNewPasswordVisible = true;
-  bool isConfirmPasswordVisible = true;
-  void changeCurrentPasswordVisibility() {
-    isCurrentPasswordVisible = !isCurrentPasswordVisible;
-    emit(ChangeCurrentPasswordVisibility());
-  }
+  TextEditingController emailController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
-  void changeNewPasswordVisibility() {
-    isNewPasswordVisible = !isNewPasswordVisible;
-    emit(ChangeNewPasswordVisibility());
-  }
+  // bool isCurrentPasswordVisible = true;
+  // bool isNewPasswordVisible = true;
+  // bool isConfirmPasswordVisible = true;
+  // void changeCurrentPasswordVisibility() {
+  //   isCurrentPasswordVisible = !isCurrentPasswordVisible;
+  //   emit(ChangeCurrentPasswordVisibility());
+  // }
 
-  void changeConfirmPasswordVisibility() {
-    isConfirmPasswordVisible = !isConfirmPasswordVisible;
-    emit(ChangeConfirmPasswordVisibility());
-  }
+  // void changeNewPasswordVisibility() {
+  //   isNewPasswordVisible = !isNewPasswordVisible;
+  //   emit(ChangeNewPasswordVisibility());
+  // }
+
+  // void changeConfirmPasswordVisibility() {
+  //   isConfirmPasswordVisible = !isConfirmPasswordVisible;
+  //   emit(ChangeConfirmPasswordVisibility());
+  // }
 
   File? file;
   Future<void> pickCameraImage() async {

@@ -82,6 +82,8 @@
    "doChangeLanguage":"Do you want change language",
    "yes":"Yes",
    "no":"No",
-   "doChangeTheme":"Do you want change Theme"
+   "doChangeTheme":"Do you want change Theme",
+   "changePassword":"Change Password"
+
 
 }
