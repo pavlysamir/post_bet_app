@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:post_bet/core/functions/validation_handling.dart';
 import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/register_cubit/registration_cubit.dart';
 import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../constants.dart';
@@ -20,26 +22,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController passwordController = TextEditingController();
-
-  TextEditingController confirmPasswordController = TextEditingController();
-
-  TextEditingController nameController = TextEditingController();
-
-  TextEditingController phoneController = TextEditingController();
-
-  IconData iconDataPassword = Icons.visibility_off;
-
-  IconData iconDataConfirmPassword = Icons.visibility_off;
-
-  bool ifPasswordVisible = true;
-
-  bool ifConfirmPasswordVisible = true;
-
-  var formKey = GlobalKey<FormState>();
-
   // Future<void> preventScreenshot() async {
   //   await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
   // }
@@ -53,24 +35,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegistrationCubit(),
+      create: (context) => RegistrationCubit(getIt.get<AuthRepository>()),
       child: BlocConsumer<RegistrationCubit, RegistrationState>(
         listener: (context, state) {
-          if (state is RegisterIsPasswordVisibleEye) {
-            ifPasswordVisible = !ifPasswordVisible;
-            iconDataPassword =
-                ifPasswordVisible ? Icons.visibility_off : Icons.remove_red_eye;
-          } else if (state is RegisterIsConfirmPasswordVisibleEye) {
-            ifConfirmPasswordVisible = !ifConfirmPasswordVisible;
-            iconDataConfirmPassword = ifConfirmPasswordVisible
-                ? Icons.visibility_off
-                : Icons.remove_red_eye;
+          if (state is SignUpSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("success"),
+            ));
+
+            customJustGoNavigate(
+                context: context, path: AppRouter.kVerifyEmail);
+          } else if (state is SignUpFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(state.errMessage),
+            ));
           }
         },
         builder: (context, state) {
           return Scaffold(
               body: Form(
-            key: formKey,
+            key: RegistrationCubit.get(context)!.formKey,
             child: Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -105,7 +89,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           textInputType: TextInputType.emailAddress,
                           hintText: S.of(context).loginEmail,
-                          controller: emailController,
+                          controller:
+                              RegistrationCubit.get(context)!.emailController,
                           validationMassage: conditionOfValidationEmail),
                       SizedBox(height: 30.h),
                       Text(
@@ -122,7 +107,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           textInputType: TextInputType.text,
                           hintText: S.of(context).name,
-                          controller: nameController,
+                          controller:
+                              RegistrationCubit.get(context)!.nameController,
                           validationMassage: conditionOfValidationName),
                       SizedBox(height: 30.h),
                       Text(
@@ -133,7 +119,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: 10.h,
                       ),
                       CustomFormField(
-                          isEyeTrue: ifPasswordVisible,
+                          isEyeTrue:
+                              RegistrationCubit.get(context)!.ifPasswordVisible,
                           prefixIcon: const Icon(
                             Icons.lock,
                             color: kPrimaryKey,
@@ -143,11 +130,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               RegistrationCubit.get(context)!
                                   .isVisiblePasswordEye();
                             },
-                            icon: Icon(iconDataPassword),
+                            icon: Icon(RegistrationCubit.get(context)!
+                                .iconDataPassword),
                           ),
                           textInputType: TextInputType.visiblePassword,
                           hintText: '*************',
-                          controller: passwordController,
+                          controller: RegistrationCubit.get(context)!
+                              .passwordController,
                           validationMassage: conditionOfValidationPassWord),
                       SizedBox(height: 30.h),
                       Text(
@@ -158,7 +147,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: 10.h,
                       ),
                       CustomFormField(
-                        isEyeTrue: ifConfirmPasswordVisible,
+                        isEyeTrue: RegistrationCubit.get(context)!
+                            .ifConfirmPasswordVisible,
                         prefixIcon: const Icon(
                           Icons.lock,
                           color: kPrimaryKey,
@@ -168,13 +158,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             RegistrationCubit.get(context)!
                                 .isVisibleConformPasswordEye();
                           },
-                          icon: Icon(iconDataConfirmPassword),
+                          icon: Icon(RegistrationCubit.get(context)!
+                              .iconDataConfirmPassword),
                         ),
                         textInputType: TextInputType.visiblePassword,
                         hintText: '*************',
-                        controller: confirmPasswordController,
+                        controller: RegistrationCubit.get(context)!
+                            .confirmPasswordController,
                         validationMassage: (value) {
-                          if (value == passwordController.text) {
+                          if (value ==
+                              RegistrationCubit.get(context)!
+                                  .passwordController
+                                  .text) {
                             return null;
                           } else {
                             return 'does\'t match ';
@@ -182,17 +177,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         },
                       ),
                       SizedBox(height: 30.h),
-                      CustomButtonLarge(
-                        color: kPrimaryKey,
-                        function: () {
-                          if (formKey.currentState!.validate()) {
-                            customJustGoNavigate(
-                                context: context, path: AppRouter.kVerifyEmail);
-                          }
-                        },
-                        text: S.of(context).signUp,
-                        textColor: Colors.white,
-                      ),
+                      state is SignUpLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: kPrimaryKey,
+                              ),
+                            )
+                          : CustomButtonLarge(
+                              color: kPrimaryKey,
+                              function: () {
+                                if (RegistrationCubit.get(context)!
+                                    .formKey
+                                    .currentState!
+                                    .validate()) {
+                                  RegistrationCubit.get(context)!.signUp();
+                                }
+                              },
+                              text: S.of(context).signUp,
+                              textColor: Colors.white,
+                            ),
                       SizedBox(
                         height: 30.h,
                       ),

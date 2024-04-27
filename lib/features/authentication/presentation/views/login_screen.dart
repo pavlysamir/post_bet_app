@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_text_button_forgot_password.dart';
 import 'package:post_bet/generated/l10n.dart';
@@ -32,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
     IconData iconData = Icons.visibility_off;
     bool ifPasswordVisible = true;
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => LoginCubit(getIt.get<AuthRepository>()),
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginIsPasswordVisibleEye) {
@@ -45,6 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 content: Text("success"),
               ),
             );
+            customGoAndDeleteNavigate(
+                context: context, path: AppRouter.kHomeLayOut);
           } else if (state is LoginFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -131,20 +135,23 @@ class _LoginScreenState extends State<LoginScreen> {
                         customJustGoNavigate(
                             context: context, path: AppRouter.kForgotPassword);
                       }),
-                      CustomButtonLarge(
-                          text: S.of(context).loginButton,
-                          color: kPrimaryKey,
-                          textColor: Colors.white,
-                          function: () {
-                            if (LoginCubit.get(context)!
-                                .formKey
-                                .currentState!
-                                .validate()) {
-                              customGoAndDeleteNavigate(
-                                  context: context,
-                                  path: AppRouter.kHomeLayOut);
-                            }
-                          }),
+                      state is LoginLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                              color: kPrimaryKey,
+                            ))
+                          : CustomButtonLarge(
+                              text: S.of(context).loginButton,
+                              color: kPrimaryKey,
+                              textColor: Colors.white,
+                              function: () {
+                                if (LoginCubit.get(context)!
+                                    .formKey
+                                    .currentState!
+                                    .validate()) {
+                                  LoginCubit.get(context)!.signIn();
+                                }
+                              }),
                       const SizedBox(
                         height: 30,
                       ),

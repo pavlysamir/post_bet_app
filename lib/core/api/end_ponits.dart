@@ -8,8 +8,10 @@ class EndPoint {
 }
 
 class ApiKey {
-  static String status = "status";
-  static String errorMessage = "ErrorMessage";
+  static String status = "statusCode";
+  static String errorMessage = "message";
+  static String error = "errors";
+
   static String email = "email";
   static String password = "password";
   static String token = "token";

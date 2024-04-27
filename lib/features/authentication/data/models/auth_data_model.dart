@@ -1,4 +1,4 @@
-class LoginModel {
+class AuthDataModel {
   final int id;
   final DateTime createdAt;
   final DateTime updatedAt;
@@ -11,13 +11,13 @@ class LoginModel {
   final String? otp;
   final DateTime? otpRequestDate;
   final bool verifiedOtp;
-  final DateTime lastOnlineTime;
+  final DateTime lastLoginTime;
   final bool haveAccount;
   final bool firstTime;
   final String? tempCode;
   final String token;
 
-  LoginModel({
+  AuthDataModel({
     required this.id,
     required this.createdAt,
     required this.updatedAt,
@@ -30,15 +30,15 @@ class LoginModel {
     this.otp,
     this.otpRequestDate,
     required this.verifiedOtp,
-    required this.lastOnlineTime,
+    required this.lastLoginTime,
     required this.haveAccount,
     required this.firstTime,
     this.tempCode,
     required this.token,
   });
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) {
-    return LoginModel(
+  factory AuthDataModel.fromJson(Map<String, dynamic> json) {
+    return AuthDataModel(
       id: json['id'],
       createdAt: DateTime.parse(json['createdAt']),
       updatedAt: DateTime.parse(json['updatedAt']),
@@ -53,7 +53,7 @@ class LoginModel {
           ? DateTime.parse(json['otpRequestDate'])
           : null,
       verifiedOtp: json['verifiedOtp'],
-      lastOnlineTime: DateTime.parse(json['lastOnlineTime']),
+      lastLoginTime: DateTime.parse(json['lastLoginTime']),
       haveAccount: json['haveAccount'],
       firstTime: json['firstTime'],
       tempCode: json['tempCode'],
