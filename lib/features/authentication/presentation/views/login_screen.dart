@@ -29,10 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    var formKey = GlobalKey<FormState>();
-
     IconData iconData = Icons.visibility_off;
     bool ifPasswordVisible = true;
     return BlocProvider(
@@ -43,12 +39,24 @@ class _LoginScreenState extends State<LoginScreen> {
             ifPasswordVisible = !ifPasswordVisible;
             iconData =
                 ifPasswordVisible ? Icons.visibility_off : Icons.remove_red_eye;
+          } else if (state is LoginSuccess) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text("success"),
+              ),
+            );
+          } else if (state is LoginFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errMessage),
+              ),
+            );
           }
         },
         builder: (context, state) {
           return Scaffold(
               body: Form(
-            key: formKey,
+            key: LoginCubit.get(context)!.formKey,
             child: Center(
               child: SingleChildScrollView(
                 child: Padding(
@@ -83,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           textInputType: TextInputType.emailAddress,
                           hintText: S.of(context).loginEmail,
-                          controller: emailController,
+                          controller: LoginCubit.get(context)!.emailController,
                           validationMassage: (value) {
                             if (value.isEmpty) {
                               return S.of(context).enterCode;
@@ -111,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         textInputType: TextInputType.visiblePassword,
                         hintText: '*************',
-                        controller: passwordController,
+                        controller: LoginCubit.get(context)!.passwordController,
                         validationMassage: (value) {
                           if (value.isEmpty) {
                             return 'please enter your password';
@@ -128,7 +136,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: kPrimaryKey,
                           textColor: Colors.white,
                           function: () {
-                            if (formKey.currentState!.validate()) {
+                            if (LoginCubit.get(context)!
+                                .formKey
+                                .currentState!
+                                .validate()) {
                               customGoAndDeleteNavigate(
                                   context: context,
                                   path: AppRouter.kHomeLayOut);

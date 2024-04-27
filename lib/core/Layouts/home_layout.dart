@@ -24,15 +24,6 @@ class _HomeLayoutState extends State<HomeLayout> {
           var cubit = HomeLayoutCubit.get(context);
 
           return Scaffold(
-            // appBar: PreferredSize(
-            //   preferredSize: Size.fromHeight(85.h),
-            //   child: const SafeArea(
-            //     child: CustomAppBar(
-            //       name: 'Your Name',
-            //       image: 'Your Image',
-            //     ),
-            //   ),
-            // ),
             bottomNavigationBar: Container(
               decoration: const BoxDecoration(
                 border: Border(

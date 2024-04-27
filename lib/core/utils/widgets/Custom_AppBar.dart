@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import '../../../constants.dart';
-import '../styles.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
