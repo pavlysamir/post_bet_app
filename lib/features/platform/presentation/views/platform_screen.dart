@@ -31,7 +31,6 @@ class PlatformScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomAppBar(
-              name: 'Bavly sa',
               image: 'd',
             ),
             SizedBox(

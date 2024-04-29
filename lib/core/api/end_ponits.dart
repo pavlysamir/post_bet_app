@@ -3,7 +3,7 @@ class EndPoint {
   static String login = "/Auth/login";
   static String signUp = "/Auth/signUp";
   static String getUserDataEndPoint(id) {
-    return "/User/:$id";
+    return "/User/$id";
   }
 }
 
@@ -22,4 +22,5 @@ class ApiKey {
   static String confirmPassword = "confirmPassword";
   static String location = "location";
   static String profilePic = "profilePic";
+  static String authorizationHeader = "Authorization";
 }

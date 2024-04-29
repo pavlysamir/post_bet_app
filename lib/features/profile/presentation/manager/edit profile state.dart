@@ -1,3 +1,5 @@
+import 'package:post_bet/features/profile/data/models/profile_model.dart';
+
 abstract class EditProfileState {}
 
 class InitialEditProfileState extends EditProfileState {}

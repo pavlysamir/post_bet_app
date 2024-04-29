@@ -5,7 +5,8 @@ import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
-import 'package:post_bet/features/authentication/data/models/auth_model.dart';
+import 'package:post_bet/features/authentication/data/models/auth_model/auth_model.dart';
+import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_response_model.dart';
 
 class AuthRepository {
   final ApiConsumer api;
@@ -56,6 +57,19 @@ class AuthRepository {
       return Right(signUPModel);
     } on ServerException catch (e) {
       return Left(e.errModel.error![0]);
+    }
+  }
+
+  Future<Either<String, UserDataResponseModel>> getUserProfile() async {
+    try {
+      final response = await api.get(
+        EndPoint.getUserDataEndPoint(
+          getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.id),
+        ),
+      );
+      return Right(UserDataResponseModel.fromJson(response));
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
     }
   }
 }

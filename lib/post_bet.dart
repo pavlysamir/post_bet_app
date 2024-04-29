@@ -5,6 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Theme/Teme_data.dart';
 import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
+import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -21,6 +24,9 @@ class PostBetApp extends StatelessWidget {
         providers: [
           BlocProvider(
               create: (context) => SettingsCubit()..initializeLanguage()),
+          BlocProvider(
+            create: (context) => LoginCubit(getIt.get<AuthRepository>()),
+          )
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {

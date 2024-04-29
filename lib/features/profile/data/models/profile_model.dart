@@ -1,18 +1,18 @@
-import 'package:post_bet/features/authentication/data/models/auth_data_model.dart';
+import 'package:post_bet/features/authentication/data/models/auth_model/auth_data_model.dart';
 
-class AuthResponseModle {
+class ProfileResponseModle {
   final bool success;
   final int status;
   final AuthDataModel data;
 
-  AuthResponseModle({
+  ProfileResponseModle({
     required this.success,
     required this.status,
     required this.data,
   });
 
-  factory AuthResponseModle.fromJson(Map<String, dynamic> json) {
-    return AuthResponseModle(
+  factory ProfileResponseModle.fromJson(Map<String, dynamic> json) {
+    return ProfileResponseModle(
       success: json['success'],
       status: json['status'],
       data: AuthDataModel.fromJson(json['data']),
