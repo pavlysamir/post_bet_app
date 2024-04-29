@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import '../../../constants.dart';
@@ -34,7 +37,8 @@ class CustomAppBar extends StatelessWidget {
                     state is GetUserLoading
                         ? Text('Hello',
                             style: Theme.of(context).textTheme.titleLarge)
-                        : Text(LoginCubit.get(context)!.userData!.name,
+                        : Text(
+                            '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
                             style: Theme.of(context).textTheme.titleLarge),
                     const SizedBox(
                       width: 5,

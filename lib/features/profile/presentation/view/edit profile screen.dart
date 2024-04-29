@@ -10,7 +10,6 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
-import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
 import 'package:post_bet/features/profile/presentation/view/widgets/profile%20photo%20widget.dart';

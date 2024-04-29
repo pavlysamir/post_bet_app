@@ -45,7 +45,7 @@ class UserDataModel {
       isActive: json['isActive'],
       suspended: json['suspended'],
       userType: json['userType'],
-      profileImage: json['profileImage'],
+      profileImage: json['profileImage'] ?? '',
       otp: json['otp'],
       otpRequestDate: json['otpRequestDate'] != null
           ? DateTime.parse(json['otpRequestDate'])

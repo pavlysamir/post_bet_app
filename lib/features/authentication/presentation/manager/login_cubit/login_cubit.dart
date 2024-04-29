@@ -2,6 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_model.dart';
 import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_response_model.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
@@ -43,6 +46,13 @@ class LoginCubit extends Cubit<LoginState> {
       (user) {
         userData = user.data;
         print(' hellloooooooooooooooooo ${user.data.name}');
+        getIt
+            .get<CashHelperSharedPreferences>()
+            .saveData(key: ApiKey.name, value: user.data.name);
+        getIt
+            .get<CashHelperSharedPreferences>()
+            .saveData(key: ApiKey.profilePic, value: user.data.profileImage);
+
         emit(GetUserSuccess(user: user));
       },
     );
