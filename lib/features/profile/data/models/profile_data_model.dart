@@ -15,7 +15,7 @@ class ProfileDataModel {
   final bool haveAccount;
   final bool firstTime;
   final String? tempCode;
-  final String token;
+  final String? password;
 
   ProfileDataModel({
     required this.id,
@@ -34,7 +34,7 @@ class ProfileDataModel {
     required this.haveAccount,
     required this.firstTime,
     this.tempCode,
-    required this.token,
+    this.password,
   });
 
   factory ProfileDataModel.fromJson(Map<String, dynamic> json) {
@@ -47,7 +47,7 @@ class ProfileDataModel {
       isActive: json['isActive'],
       suspended: json['suspended'],
       userType: json['userType'],
-      profileImage: json['profileImage'],
+      profileImage: json['profileImage'] ?? '',
       otp: json['otp'],
       otpRequestDate: json['otpRequestDate'] != null
           ? DateTime.parse(json['otpRequestDate'])
@@ -57,7 +57,7 @@ class ProfileDataModel {
       haveAccount: json['haveAccount'],
       firstTime: json['firstTime'],
       tempCode: json['tempCode'],
-      token: json['token'],
+      password: json['password'],
     );
   }
 }

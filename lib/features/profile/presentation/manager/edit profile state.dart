@@ -13,3 +13,17 @@ class ChangeConfirmPasswordVisibility extends EditProfileState {}
 class SuccessfulPickImage extends EditProfileState {}
 
 class FailPickImage extends EditProfileState {}
+
+class UpdateUserDataLoading extends EditProfileState {}
+
+class UpdateUserDataSuccess extends EditProfileState {
+  final ProfileResponseModle user;
+
+  UpdateUserDataSuccess({required this.user});
+}
+
+class UpdateUserDataFailure extends EditProfileState {
+  final String errMessage;
+
+  UpdateUserDataFailure({required this.errMessage});
+}

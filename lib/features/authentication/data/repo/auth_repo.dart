@@ -35,7 +35,7 @@ class AuthRepository {
       print(decodedToken[ApiKey.id]);
       return Right(user);
     } on ServerException catch (e) {
-      return Left(e.errModel.error![0]);
+      return Left(e.errModel.errorMessage!);
     }
   }
 
@@ -56,7 +56,7 @@ class AuthRepository {
       final signUPModel = AuthResponseModle.fromJson(response);
       return Right(signUPModel);
     } on ServerException catch (e) {
-      return Left(e.errModel.error![0]);
+      return Left(e.errModel.errorMessage!);
     }
   }
 
