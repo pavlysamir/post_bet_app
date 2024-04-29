@@ -11,7 +11,8 @@ class CustomFormField extends StatelessWidget {
       required this.textInputType,
       this.suffixIcon,
       this.prefixIcon,
-      this.isEyeTrue = false});
+      this.isEyeTrue = false,
+      this.initialValue});
   final TextEditingController controller;
   //final String validationMassage;
   final String hintText;
@@ -20,10 +21,12 @@ class CustomFormField extends StatelessWidget {
   Icon? prefixIcon;
   final Function(String value) validationMassage;
   final bool isEyeTrue;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       style: Theme.of(context).textTheme.titleMedium,
       obscureText: isEyeTrue,
       keyboardType: textInputType,

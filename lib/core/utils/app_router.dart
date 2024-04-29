@@ -1,5 +1,8 @@
 import 'package:go_router/go_router.dart';
 import 'package:post_bet/core/Layouts/home_layout.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/authentication/presentation/views/forget_password_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/login_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/regester_screen.dart';
@@ -30,11 +33,16 @@ abstract class AppRouter {
   static const kChangePassword = '/changePassword';
 
   static final router = GoRouter(
-      initialLocation: kOnBoarding,
-      // getIt.get<CashHelperSharedPreferences>().getData(key: 'onBoarding') ==
-      //         true
-      //     ? kLoginView
-      //     : kOnBoarding,
+      initialLocation:
+          getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token) !=
+                  null
+              ? kHomeLayOut
+              : getIt
+                          .get<CashHelperSharedPreferences>()
+                          .getData(key: 'onBoarding') ==
+                      true
+                  ? kLogin
+                  : kOnBoarding,
       routes: [
         GoRoute(
           path: kWelcomeView,

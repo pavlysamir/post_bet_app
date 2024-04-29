@@ -53,6 +53,10 @@ class LoginCubit extends Cubit<LoginState> {
             .get<CashHelperSharedPreferences>()
             .saveData(key: ApiKey.profilePic, value: user.data.profileImage);
 
+        getIt
+            .get<CashHelperSharedPreferences>()
+            .saveData(key: ApiKey.email, value: user.data.email);
+
         emit(GetUserSuccess(user: user));
       },
     );
