@@ -23,7 +23,7 @@ class ProfileRepository {
         data: {
           ApiKey.name: name,
           ApiKey.email: email,
-          ApiKey.password: profilePic,
+          ApiKey.profilePic: profilePic,
         },
       );
       return Right(ProfileResponseModle.fromJson(response));

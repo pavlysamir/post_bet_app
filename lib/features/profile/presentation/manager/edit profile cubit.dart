@@ -38,8 +38,8 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   updateUserData() async {
     emit(UpdateUserDataLoading());
     final response = await profileRepository.updateProfileData(
-      email: emailController.text,
       name: nameController.text,
+      email: emailController.text,
       profilePic: file!.path ??
           'https://firebasestorage.googleapis.com/v0/b/yappy-app-ef720.appspot.com/o/posts%2FprofileImg.png?alt=media&token=1ad84aae-172b-4b68-b199-d59ab8e7107d',
     );
@@ -57,7 +57,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
         getIt
             .get<CashHelperSharedPreferences>()
             .saveData(key: ApiKey.email, value: userData.data.email);
-        emit(UpdateUserDataSuccess(user: userData));
+        emit(UpdateUserDataSuccess());
       },
     );
   }

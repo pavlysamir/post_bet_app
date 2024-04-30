@@ -1,9 +1,9 @@
-import 'package:post_bet/features/authentication/data/models/auth_model/auth_data_model.dart';
+import 'package:post_bet/features/profile/data/models/profile_data_model.dart';
 
 class ProfileResponseModle {
   final bool success;
   final int status;
-  final AuthDataModel data;
+  final ProfileDataModel data;
 
   ProfileResponseModle({
     required this.success,
@@ -15,7 +15,7 @@ class ProfileResponseModle {
     return ProfileResponseModle(
       success: json['success'],
       status: json['status'],
-      data: AuthDataModel.fromJson(json['data']),
+      data: ProfileDataModel.fromJson(json['data']),
     );
   }
 }

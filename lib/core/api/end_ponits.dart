@@ -21,6 +21,6 @@ class ApiKey {
   static String phone = "phone";
   static String confirmPassword = "confirmPassword";
   static String location = "location";
-  static String profilePic = "profilePic";
+  static String profilePic = "profileImage";
   static String authorizationHeader = "Authorization";
 }

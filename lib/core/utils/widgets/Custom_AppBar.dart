@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,7 +8,6 @@ import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
-import '../../../constants.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
@@ -21,6 +21,9 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
+        String? profilePicPath = getIt
+            .get<CashHelperSharedPreferences>()
+            .getData(key: ApiKey.profilePic);
         return Padding(
           padding: const EdgeInsets.only(top: 6, bottom: 20),
           child: Column(
@@ -43,14 +46,26 @@ class CustomAppBar extends StatelessWidget {
                     const SizedBox(
                       width: 5,
                     ),
-                    CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      radius: 20,
-                      child: ClipOval(
-                          child: Container(
-                        color: kBlackColor,
-                      )),
-                    ),
+                    profilePicPath != null
+                        ? CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 20,
+                            child: ClipOval(
+                              child: File(profilePicPath)
+                                      .existsSync() // Check if the file exists
+                                  ? Image.file(
+                                      fit: BoxFit.fill,
+                                      width: double.infinity,
+                                      File(profilePicPath),
+                                    )
+                                  : const Icon(Icons.person),
+                            ),
+                          )
+                        : const CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 20,
+                            child: Icon(Icons.person),
+                          )
                   ],
                 ),
               ),

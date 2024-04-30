@@ -39,7 +39,7 @@ class AuthRepository {
     }
   }
 
-  Future<Either<String, AuthResponseModle>> signUp({
+  Future<Either<String, void>> signUp({
     required String name,
     required String email,
     required String password,
@@ -53,8 +53,8 @@ class AuthRepository {
           ApiKey.password: password,
         },
       );
-      final signUPModel = AuthResponseModle.fromJson(response);
-      return Right(signUPModel);
+      // final signUPModel = AuthResponseModle.fromJson(response);
+      return Right(response);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

@@ -100,7 +100,7 @@ class DioConsumer extends ApiConsumer {
     bool isFromData = false,
   }) async {
     try {
-      final response = await dio.patch(
+      final response = await dio.put(
         path,
         data: isFromData ? FormData.fromMap(data) : data,
         queryParameters: queryParameters,

@@ -16,11 +16,7 @@ class FailPickImage extends EditProfileState {}
 
 class UpdateUserDataLoading extends EditProfileState {}
 
-class UpdateUserDataSuccess extends EditProfileState {
-  final ProfileResponseModle user;
-
-  UpdateUserDataSuccess({required this.user});
-}
+class UpdateUserDataSuccess extends EditProfileState {}
 
 class UpdateUserDataFailure extends EditProfileState {
   final String errMessage;

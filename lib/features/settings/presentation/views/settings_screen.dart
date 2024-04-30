@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
@@ -21,6 +26,9 @@ class SettingsScreen extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
+        String? profilePicPath = getIt
+            .get<CashHelperSharedPreferences>()
+            .getData(key: ApiKey.profilePic);
         return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -45,12 +53,29 @@ class SettingsScreen extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const CircleAvatar(
-                        radius: 20,
-                        backgroundColor: kBlackColor,
-                      ),
+                      profilePicPath != null
+                          ? CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              radius: 20,
+                              child: ClipOval(
+                                child: File(profilePicPath)
+                                        .existsSync() // Check if the file exists
+                                    ? Image.file(
+                                        fit: BoxFit.fill,
+                                        width: double.infinity,
+                                        File(profilePicPath),
+                                      )
+                                    : const Icon(Icons.person),
+                              ),
+                            )
+                          : const CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              radius: 20,
+                              child: Icon(Icons.person),
+                            ),
                       SizedBox(width: 10.w),
-                      Text('john smith',
+                      Text(
+                          '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
                           style: Theme.of(context).textTheme.titleLarge),
                       const Spacer(),
                       const Icon(
@@ -75,7 +100,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               SettingsIconWidget(
                 icon: const Icon(Icons.password, color: Colors.white),
-                title: S.of(context).currentPassword,
+                title: S.of(context).changePassword,
                 function: () {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kChangePassword);
