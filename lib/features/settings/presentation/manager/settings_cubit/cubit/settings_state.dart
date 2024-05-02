@@ -14,3 +14,5 @@ class ChangeCurrentPasswordVisibility extends SettingsState {}
 class ChangeNewPasswordVisibility extends SettingsState {}
 
 class ChangeConfirmPasswordVisibility extends SettingsState {}
+
+class LogOutSuccess extends SettingsState {}

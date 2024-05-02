@@ -1,8 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 
@@ -65,7 +67,9 @@ class SettingsCubit extends Cubit<SettingsState> {
           value: isEnglish,
         )
         .then((value) {
-      print(isEnglish);
+      if (kDebugMode) {
+        print(isEnglish);
+      }
     });
   }
 
@@ -81,7 +85,22 @@ class SettingsCubit extends Cubit<SettingsState> {
           value: isDark,
         )
         .then((value) {
-      print(isDark);
+      if (kDebugMode) {
+        print(isDark);
+      }
     });
+  }
+
+  void logout() async {
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.token);
+    await getIt.get<CashHelperSharedPreferences>().removeData(key: ApiKey.name);
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.email);
+    await getIt.get<CashHelperSharedPreferences>().removeData(key: ApiKey.id);
+
+    emit(LogOutSuccess());
   }
 }

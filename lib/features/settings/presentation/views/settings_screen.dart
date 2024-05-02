@@ -23,7 +23,9 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is LogOutSuccess) {
+          customGoAndDeleteNavigate(context: context, path: AppRouter.kLogin);
+        }
       },
       builder: (context, state) {
         String? profilePicPath = getIt
@@ -178,6 +180,25 @@ class SettingsScreen extends StatelessWidget {
                 title: S.of(context).changeTheme,
               ),
               SettingsIconWidget(
+                function: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => PopUpDialog(
+                      context: context,
+                      function: () {
+                        SettingsCubit.get(context).logout();
+
+                        Navigator.pop(context);
+                      },
+                      title: 'Confirm Log Out',
+                      subTitle: S.of(context).doChangeTheme,
+                      colorButton1: kPoppingsRedColor,
+                      colorButton2: Colors.red,
+                      textColortcolor1: Colors.red,
+                      textColortcolor2: Colors.white,
+                    ),
+                  );
+                },
                 icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
                 title: S.of(context).logOut,
               ),

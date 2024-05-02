@@ -31,6 +31,7 @@ class CobonsView extends StatelessWidget {
                     height: 20.h,
                   ),
                   const CobonItem(
+                    packageType: 'Free package',
                     color: Colors.grey,
                     cobonCode: '01222',
                     cobonTitle:
@@ -40,6 +41,7 @@ class CobonsView extends StatelessWidget {
                     height: 10.h,
                   ),
                   CobonItem(
+                    packageType: 'Bronze package',
                     color: Colors.grey.shade300,
                     cobonCode: '01222',
                     cobonTitle:
@@ -49,6 +51,7 @@ class CobonsView extends StatelessWidget {
                     height: 10.h,
                   ),
                   CobonItem(
+                    packageType: 'Silver package',
                     color: Colors.brown.shade300,
                     cobonCode: '01222',
                     cobonTitle:
@@ -58,6 +61,7 @@ class CobonsView extends StatelessWidget {
                     height: 10.h,
                   ),
                   const CobonItem(
+                    packageType: 'Gold package',
                     color: Colors.amber,
                     cobonCode: '01222',
                     cobonTitle:
@@ -67,6 +71,7 @@ class CobonsView extends StatelessWidget {
                     height: 10.h,
                   ),
                   CobonItem(
+                    packageType: 'Bussiness package',
                     color: Colors.blue.shade100,
                     cobonCode: '01222',
                     cobonTitle:
