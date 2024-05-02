@@ -9,6 +9,8 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/custom_view_photo_from_device.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/custom_view_video_from_device.dart';
 import 'package:post_bet/generated/l10n.dart';
 
 class CreatePostView extends StatelessWidget {
@@ -42,59 +44,93 @@ class CreatePostView extends StatelessWidget {
                     textColor: Colors.white,
                     function: () {}),
               ),
-              body: Column(
-                children: [
-                  SizedBox(height: 20.h),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Stack(
-                      alignment: Alignment.bottomRight,
-                      children: [
-                        CustomDescriptionPostField(
-                            controller:
-                                AddPostCubit.get(context).addPostController,
-                            validationMassage: (value) {
-                              if (value.isEmpty) {
-                                return 'please write anything';
-                              }
-                            },
-                            hintText: S.of(context).typeAnyThing,
-                            textInputType: TextInputType.text),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                              icon: Icon(
-                                Icons.image,
-                                size: 25.h,
+              body: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 20.h),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Stack(
+                        alignment: Alignment.bottomRight,
+                        children: [
+                          CustomDescriptionPostField(
+                              controller:
+                                  AddPostCubit.get(context).addPostController,
+                              validationMassage: (value) {
+                                if (value.isEmpty) {
+                                  return 'please write anything';
+                                }
+                              },
+                              hintText: S.of(context).typeAnyThing,
+                              textInputType: TextInputType.text),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              IconButton(
+                                icon: Icon(
+                                  Icons.image,
+                                  size: 25.h,
+                                ),
+                                onPressed: () {
+                                  AddPostCubit.get(context).pickCameraImage();
+                                },
                               ),
-                              onPressed: () {},
-                            ),
-                            SizedBox(width: 10.w),
-                            IconButton(
-                              icon: Icon(
-                                Icons.videocam_rounded,
-                                size: 25.h,
+                              SizedBox(width: 10.w),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.videocam_rounded,
+                                  size: 25.h,
+                                ),
+                                onPressed: () {
+                                  AddPostCubit.get(context).pickCameraVideo();
+                                },
                               ),
-                              onPressed: () {},
-                            ),
-                            SizedBox(width: 10.w),
-                            IconButton(
-                              icon: Icon(
-                                Icons.discount,
-                                size: 25.h,
+                              SizedBox(width: 10.w),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.discount,
+                                  size: 25.h,
+                                ),
+                                onPressed: () {},
                               ),
-                              onPressed: () {},
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
+                    if (AddPostCubit.get(context).fileImage != null)
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          CustomViewPhotoFromDevice(
+                            file: AddPostCubit.get(context).fileImage!,
+                            function: () {
+                              AddPostCubit.get(context).clearImage();
+                            },
+                          ),
+                        ],
+                      ),
+                    if (AddPostCubit.get(context).fileVideo != null)
+                      Column(
+                        children: [
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          CustomViewVideoFromDevice(
+                            file: AddPostCubit.get(context).fileVideo!,
+                            function: () {
+                              AddPostCubit.get(context).clearVideo();
+                            },
+                          ),
+                        ],
+                      ),
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
                           separatorBuilder: (context, index) {
                             return const CustomLineSeperator();
                           },
@@ -106,8 +142,8 @@ class CreatePostView extends StatelessWidget {
                             );
                           }),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ));
         },
       ),

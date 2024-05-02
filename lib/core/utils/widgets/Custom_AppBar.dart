@@ -21,9 +21,6 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
-        String? profilePicPath = getIt
-            .get<CashHelperSharedPreferences>()
-            .getData(key: ApiKey.profilePic);
         return Padding(
           padding: const EdgeInsets.only(top: 6, bottom: 20),
           child: Column(
@@ -46,25 +43,23 @@ class CustomAppBar extends StatelessWidget {
                     const SizedBox(
                       width: 5,
                     ),
-                    profilePicPath != null
-                        ? CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 20,
-                            child: ClipOval(
-                              child: File(profilePicPath)
-                                      .existsSync() // Check if the file exists
-                                  ? Image.file(
-                                      fit: BoxFit.fill,
-                                      width: double.infinity,
-                                      File(profilePicPath),
-                                    )
-                                  : const Icon(Icons.person),
-                            ),
-                          )
-                        : const CircleAvatar(
+                    state is GetUserLoading
+                        ? const CircleAvatar(
                             backgroundColor: Colors.grey,
                             radius: 20,
                             child: Icon(Icons.person),
+                          )
+                        : CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 20,
+                            child: ClipOval(
+                                child: Image.file(
+                              fit: BoxFit.fill,
+                              width: double.infinity,
+                              File(getIt
+                                  .get<CashHelperSharedPreferences>()
+                                  .getData(key: ApiKey.profilePic)),
+                            )),
                           )
                   ],
                 ),

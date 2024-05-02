@@ -8,3 +8,7 @@ final class AddPostInitial extends AddPostState {}
 class SuccessfulPickImage extends AddPostState {}
 
 class FailPickImage extends AddPostState {}
+
+class RemoveFileImage extends AddPostState {}
+
+class RemoveFileVideo extends AddPostState {}
