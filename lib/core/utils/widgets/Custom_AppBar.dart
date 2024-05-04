@@ -43,9 +43,12 @@ class CustomAppBar extends StatelessWidget {
                     const SizedBox(
                       width: 5,
                     ),
-                    state is GetUserLoading
+                    getIt
+                                .get<CashHelperSharedPreferences>()
+                                .getData(key: ApiKey.profilePic) ==
+                            null
                         ? const CircleAvatar(
-                            backgroundColor: Colors.black,
+                            backgroundColor: Colors.grey,
                             radius: 20,
                             child: Icon(Icons.person),
                           )

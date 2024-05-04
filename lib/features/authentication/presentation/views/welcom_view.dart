@@ -74,6 +74,9 @@ class WelcomScreen extends StatelessWidget {
                 Text(
                   S.of(context).haveAccount,
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
                 GestureDetector(
                   onTap: () {
                     customGoAndDeleteNavigate(

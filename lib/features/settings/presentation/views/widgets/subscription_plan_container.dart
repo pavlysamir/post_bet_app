@@ -24,7 +24,7 @@ class SubscriptionPlansCntainer extends StatelessWidget {
       child: GestureDetector(
         onTap: function,
         child: Container(
-          height: 200.h,
+          // height: 200.h,
           width: double.infinity,
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
@@ -60,7 +60,8 @@ class SubscriptionPlansCntainer extends StatelessWidget {
               Text(
                 description,
                 style: Theme.of(context).textTheme.bodyMedium,
-              )
+              ),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

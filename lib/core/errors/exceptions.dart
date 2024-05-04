@@ -20,7 +20,17 @@ void handleDioExceptions(DioException e) {
     case DioExceptionType.cancel:
       throw ServerException(errModel: ErrorModel.fromJson(e.response!.data));
     case DioExceptionType.connectionError:
-      throw ServerException(errModel: ErrorModel.fromJson(e.response!.data));
+      if (e.response != null) {
+        throw ServerException(errModel: ErrorModel.fromJson(e.response!.data));
+      } else {
+        // Handle the case where response is null
+        throw ServerException(
+            errModel: ErrorModel(
+                errorMessage: 'Connection error',
+                error: 'Connection error',
+                status: 500));
+      }
+
     case DioExceptionType.unknown:
       throw ServerException(errModel: ErrorModel.fromJson(e.response!.data));
     case DioExceptionType.badResponse:
