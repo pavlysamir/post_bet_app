@@ -4,11 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/functions/validation_handling.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
@@ -28,6 +30,7 @@ class EditProfileScreen extends StatelessWidget {
               content: Text("success"),
             ),
           );
+          customJustGoNavigate(context: context, path: AppRouter.kHomeLayOut);
         } else if (state is UpdateUserDataFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(

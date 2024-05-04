@@ -42,7 +42,7 @@ class CobonsView extends StatelessWidget {
                   ),
                   CobonItem(
                     packageType: 'Bronze package',
-                    color: Colors.grey.shade300,
+                    color: Colors.brown.shade300,
                     cobonCode: '01222',
                     cobonTitle:
                         'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
@@ -52,7 +52,7 @@ class CobonsView extends StatelessWidget {
                   ),
                   CobonItem(
                     packageType: 'Silver package',
-                    color: Colors.brown.shade300,
+                    color: Colors.grey.shade300,
                     cobonCode: '01222',
                     cobonTitle:
                         'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',

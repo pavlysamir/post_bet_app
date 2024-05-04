@@ -45,7 +45,7 @@ class CustomAppBar extends StatelessWidget {
                     ),
                     state is GetUserLoading
                         ? const CircleAvatar(
-                            backgroundColor: Colors.grey,
+                            backgroundColor: Colors.black,
                             radius: 20,
                             child: Icon(Icons.person),
                           )

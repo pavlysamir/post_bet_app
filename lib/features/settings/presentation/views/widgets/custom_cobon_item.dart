@@ -63,12 +63,17 @@ class CobonItem extends StatelessWidget {
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          cobonTitle,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.titleLarge,
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Text(
+                            cobonTitle,
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context).textTheme.labelLarge,
+                            maxLines: 4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                        SizedBox(height: 8.w),
+                        const Spacer(),
                         SizedBox(
                           width: 80.w,
                           height: 40.h,
@@ -94,23 +99,26 @@ class CobonItem extends StatelessWidget {
                             ),
                           ),
                         ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Container(
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            width: double.infinity,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Read more',
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                            ),
-                          ),
+                        SizedBox(
+                          height: 12.h,
                         )
+                        // TextButton(
+                        //   onPressed: () {},
+                        //   child: Container(
+                        //     height: 40.h,
+                        //     decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(14),
+                        //     ),
+                        //     width: double.infinity,
+                        //     child: Align(
+                        //       alignment: Alignment.center,
+                        //       child: Text(
+                        //         'Read more',
+                        //         style: Theme.of(context).textTheme.titleLarge,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // )
                       ])),
             )
           ],

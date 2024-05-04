@@ -56,17 +56,24 @@ class SettingsScreen extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      profilePicPath != null
+                      getIt
+                                  .get<CashHelperSharedPreferences>()
+                                  .getData(key: ApiKey.profilePic) !=
+                              null
                           ? CircleAvatar(
                               backgroundColor: Colors.transparent,
                               radius: 20,
                               child: ClipOval(
-                                child: File(profilePicPath)
+                                child: File(getIt
+                                            .get<CashHelperSharedPreferences>()
+                                            .getData(key: ApiKey.profilePic))
                                         .existsSync() // Check if the file exists
                                     ? Image.file(
                                         fit: BoxFit.fill,
                                         width: double.infinity,
-                                        File(profilePicPath),
+                                        File(getIt
+                                            .get<CashHelperSharedPreferences>()
+                                            .getData(key: ApiKey.profilePic)),
                                       )
                                     : const Icon(Icons.person),
                               ),
@@ -101,17 +108,6 @@ class SettingsScreen extends StatelessWidget {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kChangePassword);
                 },
-              ),
-              SettingsIconWidget(
-                function: () {
-                  customJustGoNavigate(
-                      context: context, path: AppRouter.kCobonsView);
-                },
-                icon: const Icon(
-                  Icons.local_offer,
-                  color: Colors.white,
-                ),
-                title: S.of(context).Cobons,
               ),
               SettingsIconWidget(
                 function: () {
@@ -174,6 +170,17 @@ class SettingsScreen extends StatelessWidget {
                   );
                 },
                 title: S.of(context).changeTheme,
+              ),
+              SettingsIconWidget(
+                function: () {
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kCobonsView);
+                },
+                icon: const Icon(
+                  Icons.local_offer,
+                  color: Colors.white,
+                ),
+                title: S.of(context).Cobons,
               ),
               SettingsIconWidget(
                 title: S.of(context).aboutUs,
