@@ -889,6 +889,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Template`
+  String get template {
+    return Intl.message(
+      'Template',
+      name: 'template',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

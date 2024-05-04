@@ -119,6 +119,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "standard": MessageLookupByLibrary.simpleMessage("قياسي"),
         "subscribe": MessageLookupByLibrary.simpleMessage("الاشتراكات"),
         "subscribePlan": MessageLookupByLibrary.simpleMessage("خطط الاشتراكات"),
+        "template": MessageLookupByLibrary.simpleMessage("قالب"),
         "tenPosts": MessageLookupByLibrary.simpleMessage("10 منشورات في اليوم"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("الشروط والأحكام"),

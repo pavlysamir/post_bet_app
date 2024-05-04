@@ -117,6 +117,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "subscribe": MessageLookupByLibrary.simpleMessage("Subscriptions"),
         "subscribePlan":
             MessageLookupByLibrary.simpleMessage("Subscriptions Plans"),
+        "template": MessageLookupByLibrary.simpleMessage("Template"),
         "tenPosts": MessageLookupByLibrary.simpleMessage("10 posts per day"),
         "termsAndConditions":
             MessageLookupByLibrary.simpleMessage("Terms and Conditions"),

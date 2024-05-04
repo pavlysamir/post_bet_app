@@ -7,6 +7,7 @@ import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/add_post_container.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_history_posts_list_view.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/custom_teplate_list_view.dart';
 import 'package:post_bet/generated/l10n.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -47,14 +48,6 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 25.h,
                           ),
-                          // Padding(
-                          //     padding:
-                          //         const EdgeInsets.symmetric(horizontal: 44),
-                          //     child: CustomButtonLarge(
-                          //         text: S.of(context).share,
-                          //         color: kPrimaryKey,
-                          //         textColor: Colors.white,
-                          //         function: () {})),
                           SizedBox(
                             height: 34.h,
                           ),
@@ -62,7 +55,7 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 34.h,
                           ),
-                          CustomTitleText(text: S.of(context).history),
+                          CustomTitleText(text: S.of(context).template),
                           SizedBox(
                             height: 30.h,
                           ),
@@ -72,8 +65,29 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SliverToBoxAdapter(
+                  child: CustomTemplatePostsListView(),
+                ),
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                      const CustomLineSeperator(),
+                      SizedBox(
+                        height: 34.h,
+                      ),
+                      CustomTitleText(text: S.of(context).history),
+                      SizedBox(
+                        height: 30.h,
+                      ),
+                    ],
+                  ),
+                ),
+                const SliverToBoxAdapter(
                   child: CustomHistoryPostsListView(),
-                )
+                ),
               ]));
         },
       ),

@@ -18,3 +18,13 @@ class SignUpFailure extends RegistrationState {
 
   SignUpFailure({required this.errMessage});
 }
+
+class VerfyOtpLoading extends RegistrationState {}
+
+class VerfyOtpSuccess extends RegistrationState {}
+
+class VerfyOtpFailure extends RegistrationState {
+  final String errMessage;
+
+  VerfyOtpFailure({required this.errMessage});
+}

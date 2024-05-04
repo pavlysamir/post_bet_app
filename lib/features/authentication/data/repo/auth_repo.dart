@@ -72,4 +72,20 @@ class AuthRepository {
       return Left(e.errModel.errorMessage!);
     }
   }
+
+  Future<Either<String, void>> verfyOtp({
+    required String otp,
+  }) async {
+    try {
+      final response = await api.post(
+        EndPoint.getOtp,
+        data: {
+          ApiKey.otp: otp,
+        },
+      );
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
 }

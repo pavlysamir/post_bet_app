@@ -11,6 +11,8 @@ class CustomTitleText extends StatelessWidget {
       child: Text(
         text,
         style: Theme.of(context).textTheme.displaySmall,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }

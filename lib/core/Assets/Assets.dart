@@ -12,4 +12,8 @@ class AssetsData {
   static const xIcon = 'assets/images/logo-x.png';
   static const faceBookIcon = 'assets/images/logofacebook.png';
   static const visa = 'assets/images/logos_mastercard.png';
+  static const eadFtr = 'assets/images/3ed_fatr.png';
+  static const happyEad = 'assets/images/happy_3ed.png';
+  static const moledNaby = 'assets/images/moled_naby.png';
+  static const happyBirthday = 'assets/images/happy_birthday.png';
 }

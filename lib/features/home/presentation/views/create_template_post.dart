@@ -9,14 +9,17 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_view_photo_from_device.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_view_video_from_device.dart';
 import 'package:post_bet/generated/l10n.dart';
 
-class CreatePostView extends StatelessWidget {
-  const CreatePostView({
+class CreateTemplatePostView extends StatelessWidget {
+  const CreateTemplatePostView({
     super.key,
+    required this.img,
+    required this.text,
   });
+
+  final String img;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +38,7 @@ class CreatePostView extends StatelessWidget {
       child: BlocConsumer<AddPostCubit, AddPostState>(
         listener: (context, state) {},
         builder: (context, state) {
+          AddPostCubit.get(context).addPostController.text = text;
           return Scaffold(
               appBar: CustomAppbareWithTitle(title: S.of(context).createPost),
               bottomNavigationBar: Padding(
@@ -65,69 +69,19 @@ class CreatePostView extends StatelessWidget {
                               },
                               hintText: S.of(context).typeAnyThing,
                               textInputType: TextInputType.text),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.image,
-                                  size: 25.h,
-                                ),
-                                onPressed: () {
-                                  AddPostCubit.get(context).pickCameraImage();
-                                },
-                              ),
-                              SizedBox(width: 10.w),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.videocam_rounded,
-                                  size: 25.h,
-                                ),
-                                onPressed: () {
-                                  AddPostCubit.get(context).pickCameraVideo();
-                                },
-                              ),
-                              SizedBox(width: 10.w),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.discount,
-                                  size: 25.h,
-                                ),
-                                onPressed: () {},
-                              ),
-                            ],
-                          )
                         ],
                       ),
                     ),
-                    if (AddPostCubit.get(context).fileImage != null)
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          CustomViewPhotoFromDevice(
-                            file: AddPostCubit.get(context).fileImage!,
-                            function: () {
-                              AddPostCubit.get(context).clearImage();
-                            },
-                          ),
-                        ],
-                      ),
-                    if (AddPostCubit.get(context).fileVideo != null)
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          CustomViewVideoFromDevice(
-                            file: AddPostCubit.get(context).fileVideo!,
-                            function: () {
-                              AddPostCubit.get(context).clearVideo();
-                            },
-                          ),
-                        ],
-                      ),
+                    SizedBox(height: 20.h),
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      height: MediaQuery.of(context).size.height * 0.2,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: kPrimaryKey),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
+                      child: Image.asset(img),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.separated(

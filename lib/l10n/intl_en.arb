@@ -83,7 +83,9 @@
    "yes":"Yes",
    "no":"No",
    "doChangeTheme":"Do you want change Theme",
-   "changePassword":"Change Password"
+   "changePassword":"Change Password",
+   "template":"Template"
+
 
 
 }

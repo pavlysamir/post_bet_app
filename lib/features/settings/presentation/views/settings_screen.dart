@@ -13,6 +13,7 @@ import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
+import 'package:post_bet/features/settings/presentation/views/terms_conditions_view.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -151,6 +152,11 @@ class SettingsScreen extends StatelessWidget {
                 title: S.of(context).changeLanguage,
               ),
               SettingsIconWidget(
+                function: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return TermsAndConditionsScreen();
+                  }));
+                },
                 icon: const Icon(Icons.text_snippet, color: Colors.white),
                 title: S.of(context).termsAndConditions,
               ),

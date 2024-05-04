@@ -58,4 +58,15 @@ class RegistrationCubit extends Cubit<RegistrationState> {
       (signUpModel) => emit(SignUpSuccess()),
     );
   }
+
+  verfyOtp() async {
+    emit(VerfyOtpLoading());
+    final response = await authRepository.verfyOtp(
+      otp: '123456',
+    );
+    response.fold(
+      (errMessage) => emit(VerfyOtpFailure(errMessage: errMessage)),
+      (signUpModel) => emit(VerfyOtpSuccess()),
+    );
+  }
 }

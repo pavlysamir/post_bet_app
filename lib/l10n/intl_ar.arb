@@ -83,7 +83,8 @@
     "yes":"نعم",
     "no":"لا",
     "doChangeTheme":"هل تريد تغيير المظهر",
-    "changePassword":"تغيير كلمة المرور"
+    "changePassword":"تغيير كلمة المرور",
+    "template":"قالب"
 
 
     }
