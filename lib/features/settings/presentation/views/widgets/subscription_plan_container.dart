@@ -49,7 +49,7 @@ class SubscriptionPlansCntainer extends StatelessWidget {
               SizedBox(height: 2.h),
               Text(
                 price,
-                style: Styles.textStyle48Orange,
+                style: Styles.textStyle32Orange,
               ),
               SizedBox(height: 15.h),
               Text(

@@ -55,7 +55,7 @@ class PaymentView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Text(
                   price,
-                  style: Styles.textStyle48Orange,
+                  style: Styles.textStyle32Orange,
                 ),
               ),
               SizedBox(height: 40.h),
