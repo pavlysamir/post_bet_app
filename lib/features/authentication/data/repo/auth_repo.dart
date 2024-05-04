@@ -56,7 +56,7 @@ class AuthRepository {
       // final signUPModel = AuthResponseModle.fromJson(response);
       return Right(response);
     } on ServerException catch (e) {
-      return Left(e.errModel.errorMessage!);
+      return Left(e.errModel.error!);
     }
   }
 

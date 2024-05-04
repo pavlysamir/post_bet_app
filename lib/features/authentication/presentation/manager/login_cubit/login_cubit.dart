@@ -31,10 +31,12 @@ class LoginCubit extends Cubit<LoginState> {
       email: emailController.text,
       password: passwordController.text,
     );
-    response.fold(
-      (errMessage) => emit(LoginFailure(errMessage: errMessage)),
-      (signInModel) => emit(LoginSuccess()),
-    );
+    response.fold((errMessage) => emit(LoginFailure(errMessage: errMessage)),
+        (signInModel) {
+      emailController.clear();
+      passwordController.clear();
+      emit(LoginSuccess());
+    });
   }
 
   UserDataModel? userData;

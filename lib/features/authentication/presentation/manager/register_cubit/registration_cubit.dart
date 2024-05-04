@@ -53,16 +53,24 @@ class RegistrationCubit extends Cubit<RegistrationState> {
       email: emailController.text,
       password: passwordController.text,
     );
-    response.fold(
-      (errMessage) => emit(SignUpFailure(errMessage: errMessage)),
-      (signUpModel) => emit(SignUpSuccess()),
-    );
+    response.fold((errMessage) => emit(SignUpFailure(errMessage: errMessage)),
+        (signUpModel) {
+      emailController.clear();
+      passwordController.clear();
+      confirmPasswordController.clear();
+      nameController.clear();
+      phoneController.clear();
+
+      emit(SignUpSuccess());
+    });
   }
 
+  TextEditingController verfyController = TextEditingController();
+  var verfyFormKey = GlobalKey<FormState>();
   verfyOtp() async {
     emit(VerfyOtpLoading());
     final response = await authRepository.verfyOtp(
-      otp: '123456',
+      otp: verfyController.text,
     );
     response.fold(
       (errMessage) => emit(VerfyOtpFailure(errMessage: errMessage)),

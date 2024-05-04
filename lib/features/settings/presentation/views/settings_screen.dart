@@ -95,13 +95,6 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: 30.h),
               CustomTitleText(text: S.of(context).settings),
               SettingsIconWidget(
-                icon: const Icon(
-                  Icons.help_outline_sharp,
-                  color: Colors.white,
-                ),
-                title: S.of(context).helpCenter,
-              ),
-              SettingsIconWidget(
                 icon: const Icon(Icons.password, color: Colors.white),
                 title: S.of(context).changePassword,
                 function: () {
@@ -119,9 +112,6 @@ class SettingsScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: S.of(context).Cobons,
-              ),
-              SettingsIconWidget(
-                title: S.of(context).aboutUs,
               ),
               SettingsIconWidget(
                 function: () {
@@ -184,6 +174,16 @@ class SettingsScreen extends StatelessWidget {
                   );
                 },
                 title: S.of(context).changeTheme,
+              ),
+              SettingsIconWidget(
+                title: S.of(context).aboutUs,
+              ),
+              SettingsIconWidget(
+                icon: const Icon(
+                  Icons.help_outline_sharp,
+                  color: Colors.white,
+                ),
+                title: S.of(context).helpCenter,
               ),
               SettingsIconWidget(
                 function: () {
