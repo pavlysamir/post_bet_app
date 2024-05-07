@@ -5,6 +5,8 @@ class EndPoint {
 
   static String getOtp = "/Auth/verify-otp";
 
+  static String verfyAccount = "/Auth/verifyAccount";
+
   static String getUserDataEndPoint(id) {
     return "/User/$id";
   }
@@ -28,4 +30,5 @@ class ApiKey {
   static String location = "location";
   static String profilePic = "profileImage";
   static String authorizationHeader = "Authorization";
+  static String verfyAccount = "verfyAccount";
 }

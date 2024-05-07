@@ -100,6 +100,9 @@ class SettingsCubit extends Cubit<SettingsState> {
         .get<CashHelperSharedPreferences>()
         .removeData(key: ApiKey.email);
     await getIt.get<CashHelperSharedPreferences>().removeData(key: ApiKey.id);
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.profilePic);
 
     emit(LogOutSuccess());
   }

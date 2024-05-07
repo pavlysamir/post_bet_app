@@ -39,8 +39,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: BlocConsumer<RegistrationCubit, RegistrationState>(
         listener: (context, state) {
           if (state is SignUpSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text("success"),
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(state.data),
             ));
 
             customJustGoNavigate(

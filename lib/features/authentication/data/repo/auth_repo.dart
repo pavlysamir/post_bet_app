@@ -6,6 +6,7 @@ import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/authentication/data/models/auth_model/auth_model.dart';
+import 'package:post_bet/features/authentication/data/models/auth_model/register_model.dart';
 import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_response_model.dart';
 
 class AuthRepository {
@@ -39,7 +40,7 @@ class AuthRepository {
     }
   }
 
-  Future<Either<String, void>> signUp({
+  Future<Either<String, RegisterModel>> signUp({
     required String name,
     required String email,
     required String password,
@@ -53,8 +54,8 @@ class AuthRepository {
           ApiKey.password: password,
         },
       );
-      // final signUPModel = AuthResponseModle.fromJson(response);
-      return Right(response);
+      final signUPModel = RegisterModel.fromJson(response);
+      return Right(signUPModel);
     } on ServerException catch (e) {
       return Left(e.errModel.error!);
     }
@@ -73,17 +74,44 @@ class AuthRepository {
     }
   }
 
-  Future<Either<String, void>> verfyOtp({
+  // Future<Either<String, void>> verfyOtp({
+  //   required String otp,
+  // }) async {
+  //   try {
+  //     final response = await api.post(
+  //       EndPoint.getOtp,
+  //       data: {
+  //         ApiKey.otp: otp,
+  //       },
+  //     );
+  //     return Right(response);
+  //   } on ServerException catch (e) {
+  //     return Left(e.errModel.errorMessage!);
+  //   }
+  // }
+
+  Future<Either<String, AuthResponseModle>> verfyAccount({
+    required String eamil,
     required String otp,
   }) async {
     try {
       final response = await api.post(
-        EndPoint.getOtp,
+        EndPoint.verfyAccount,
         data: {
+          ApiKey.email: eamil,
           ApiKey.otp: otp,
         },
       );
-      return Right(response);
+      final user = AuthResponseModle.fromJson(response);
+      final decodedToken = JwtDecoder.decode(user.data.token);
+      getIt
+          .get<CashHelperSharedPreferences>()
+          .saveData(key: ApiKey.token, value: user.data.token);
+      getIt
+          .get<CashHelperSharedPreferences>()
+          .saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
+      print(decodedToken[ApiKey.id]);
+      return Right(user);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

@@ -45,25 +45,31 @@ class CustomAppBar extends StatelessWidget {
                     ),
                     getIt
                                 .get<CashHelperSharedPreferences>()
-                                .getData(key: ApiKey.profilePic) ==
+                                .getData(key: ApiKey.profilePic) !=
                             null
-                        ? const CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            radius: 20,
-                            child: Icon(Icons.person),
-                          )
-                        : CircleAvatar(
+                        ? CircleAvatar(
                             backgroundColor: Colors.transparent,
                             radius: 20,
                             child: ClipOval(
-                                child: Image.file(
-                              fit: BoxFit.fill,
-                              width: double.infinity,
-                              File(getIt
-                                  .get<CashHelperSharedPreferences>()
-                                  .getData(key: ApiKey.profilePic)),
-                            )),
+                              child: File(getIt
+                                          .get<CashHelperSharedPreferences>()
+                                          .getData(key: ApiKey.profilePic))
+                                      .existsSync() // Check if the file exists
+                                  ? Image.file(
+                                      fit: BoxFit.fill,
+                                      width: double.infinity,
+                                      File(getIt
+                                          .get<CashHelperSharedPreferences>()
+                                          .getData(key: ApiKey.profilePic)),
+                                    )
+                                  : const Icon(Icons.person),
+                            ),
                           )
+                        : const CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 20,
+                            child: Icon(Icons.person),
+                          ),
                   ],
                 ),
               ),

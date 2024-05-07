@@ -14,7 +14,6 @@ class AuthDataModel {
   final DateTime lastLoginTime;
   final bool haveAccount;
   final bool firstTime;
-  final String? tempCode;
   final String token;
 
   AuthDataModel({
@@ -33,7 +32,6 @@ class AuthDataModel {
     required this.lastLoginTime,
     required this.haveAccount,
     required this.firstTime,
-    this.tempCode,
     required this.token,
   });
 
@@ -56,7 +54,6 @@ class AuthDataModel {
       lastLoginTime: DateTime.parse(json['lastLoginTime']),
       haveAccount: json['haveAccount'],
       firstTime: json['firstTime'],
-      tempCode: json['tempCode'],
       token: json['token'],
     );
   }

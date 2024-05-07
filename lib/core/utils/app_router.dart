@@ -33,7 +33,7 @@ abstract class AppRouter {
   static const kChangePassword = '/changePassword';
 
   static final router = GoRouter(
-      initialLocation:
+      initialLocation: //kHomeLayOut,
           getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token) !=
                   null
               ? kHomeLayOut

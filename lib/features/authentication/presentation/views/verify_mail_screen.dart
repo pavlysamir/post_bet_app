@@ -38,8 +38,13 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text("success"),
             ));
+            RegistrationCubit.get(context)!.getUserProfile();
             customGoAndDeleteNavigate(
                 context: context, path: AppRouter.kHomeLayOut);
+          } else if (state is VerfyOtpFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(state.errMessage),
+            ));
           }
         },
         builder: (context, state) {
@@ -83,8 +88,8 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
                           ),
                           textInputType: TextInputType.emailAddress,
                           hintText: 'xxxxxxx',
-                          controller:
-                              RegistrationCubit.get(context)!.verfyController,
+                          controller: RegistrationCubit.get(context)!
+                              .verfyAccountOtpController,
                           validationMassage: (value) {
                             if (value.isEmpty) {
                               return 'please enter your code';
@@ -100,7 +105,7 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
                                 .verfyFormKey
                                 .currentState!
                                 .validate()) {
-                              RegistrationCubit.get(context)!.verfyOtp();
+                              RegistrationCubit.get(context)!.verfyAccountOtp();
                             }
                           }),
                     ],

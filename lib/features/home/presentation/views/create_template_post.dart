@@ -80,7 +80,10 @@ class CreateTemplatePostView extends StatelessWidget {
                           border: Border.all(color: kPrimaryKey),
                           borderRadius:
                               const BorderRadius.all(Radius.circular(10))),
-                      child: Image.asset(img),
+                      child: Image.asset(
+                        img,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
