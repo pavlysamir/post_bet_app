@@ -149,6 +149,23 @@ class SettingsScreen extends StatelessWidget {
               SettingsIconWidget(
                 icon: const Icon(Icons.delete, color: Colors.white),
                 title: S.of(context).deleteAccount,
+                function: () {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context) => PopUpDialog(
+                            context: context,
+                            function: () {
+                              SettingsCubit.get(context).deleteAccount();
+
+                              Navigator.pop(context);
+                            },
+                            title: 'Confirm Log Out',
+                            subTitle: S.of(context).doChangeTheme,
+                            colorButton1: kPoppingsRedColor,
+                            colorButton2: Colors.red,
+                            textColortcolor1: Colors.red,
+                          ));
+                },
               ),
               SettingsIconWidget(
                 function: () {

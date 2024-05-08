@@ -10,6 +10,7 @@ import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
+import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -25,7 +26,9 @@ class PostBetApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) => SettingsCubit()..initializeLanguage()),
+              create: (context) =>
+                  SettingsCubit(getIt.get<SettingsRepository>())
+                    ..initializeLanguage()),
           BlocProvider(
             create: (context) => LoginCubit(getIt.get<AuthRepository>()),
           ),

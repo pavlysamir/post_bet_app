@@ -7,11 +7,14 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit() : super(SettingsInitial());
+  SettingsCubit(this.settingsRepository) : super(SettingsInitial());
+
+  final SettingsRepository settingsRepository;
   static SettingsCubit get(context) => BlocProvider.of(context);
 
   TextEditingController currentPasswordController = TextEditingController();
@@ -105,5 +108,16 @@ class SettingsCubit extends Cubit<SettingsState> {
         .removeData(key: ApiKey.profilePic);
 
     emit(LogOutSuccess());
+  }
+
+  deleteAccount() async {
+    emit(DeleteAccountLoading());
+    final response = await settingsRepository.deleteAccount();
+    response.fold(
+      (errMessage) => emit(DeleteAccountFailure()),
+      (userData) {
+        emit(DeleteAccountSuccess());
+      },
+    );
   }
 }

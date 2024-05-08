@@ -16,3 +16,9 @@ class ChangeNewPasswordVisibility extends SettingsState {}
 class ChangeConfirmPasswordVisibility extends SettingsState {}
 
 class LogOutSuccess extends SettingsState {}
+
+class DeleteAccountSuccess extends SettingsState {}
+
+class DeleteAccountFailure extends SettingsState {}
+
+class DeleteAccountLoading extends SettingsState {}
