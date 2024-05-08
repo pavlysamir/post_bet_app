@@ -899,6 +899,826 @@ class S {
       args: [],
     );
   }
+
+  /// `Agreement to the Terms`
+  String get title1 {
+    return Intl.message(
+      'Agreement to the Terms',
+      name: 'title1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By using the application, you agree to comply with all the terms and conditions set forth in this agreement.`
+  String get description1 {
+    return Intl.message(
+      'By using the application, you agree to comply with all the terms and conditions set forth in this agreement.',
+      name: 'description1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Eligibility`
+  String get title2 {
+    return Intl.message(
+      'Eligibility',
+      name: 'title2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must be able to make a binding commitment and have the legal capacity to do so under local laws.`
+  String get description2 {
+    return Intl.message(
+      'You must be able to make a binding commitment and have the legal capacity to do so under local laws.',
+      name: 'description2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Intellectual Property Rights`
+  String get title3 {
+    return Intl.message(
+      'Intellectual Property Rights',
+      name: 'title3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must respect the intellectual property rights of the content you post through the application and not use content that violates the law.`
+  String get description3 {
+    return Intl.message(
+      'You must respect the intellectual property rights of the content you post through the application and not use content that violates the law.',
+      name: 'description3',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Responsibility`
+  String get title4 {
+    return Intl.message(
+      'Responsibility',
+      name: 'title4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are not responsible for any loss or damage resulting from your use of the application or reliance on the content available through it.`
+  String get description4 {
+    return Intl.message(
+      'We are not responsible for any loss or damage resulting from your use of the application or reliance on the content available through it.',
+      name: 'description4',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancellation and Suspension`
+  String get title5 {
+    return Intl.message(
+      'Cancellation and Suspension',
+      name: 'title5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We reserve the right to cancel or suspend the service at any time and without prior notice if any of these terms and conditions are violated.`
+  String get description5 {
+    return Intl.message(
+      'We reserve the right to cancel or suspend the service at any time and without prior notice if any of these terms and conditions are violated.',
+      name: 'description5',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Terms Updates`
+  String get title6 {
+    return Intl.message(
+      'Terms Updates',
+      name: 'title6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `These terms and conditions may be updated from time to time, and you should review them regularly to stay informed of any changes.`
+  String get description6 {
+    return Intl.message(
+      'These terms and conditions may be updated from time to time, and you should review them regularly to stay informed of any changes.',
+      name: 'description6',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Legal Settlement`
+  String get title7 {
+    return Intl.message(
+      'Legal Settlement',
+      name: 'title7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In case of a dispute arising from this agreement, it must be settled by arbitration according to the laws of the state in which the application company is headquartered.`
+  String get description7 {
+    return Intl.message(
+      'In case of a dispute arising from this agreement, it must be settled by arbitration according to the laws of the state in which the application company is headquartered.',
+      name: 'description7',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compliance with Laws`
+  String get title8 {
+    return Intl.message(
+      'Compliance with Laws',
+      name: 'title8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must comply with all local and international laws and regulations applicable to your use of the application.`
+  String get description8 {
+    return Intl.message(
+      'You must comply with all local and international laws and regulations applicable to your use of the application.',
+      name: 'description8',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compensation`
+  String get title9 {
+    return Intl.message(
+      'Compensation',
+      name: 'title9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You agree to indemnify and hold harmless the Company and its partners from any claims or losses arising from your use of the application.`
+  String get description9 {
+    return Intl.message(
+      'You agree to indemnify and hold harmless the Company and its partners from any claims or losses arising from your use of the application.',
+      name: 'description9',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Use`
+  String get title10 {
+    return Intl.message(
+      'Personal Use',
+      name: 'title10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must not use the application for any purpose other than personal or authorized purposes, including marketing or commercial exploitation.`
+  String get description10 {
+    return Intl.message(
+      'You must not use the application for any purpose other than personal or authorized purposes, including marketing or commercial exploitation.',
+      name: 'description10',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Modification and Termination Rights`
+  String get title11 {
+    return Intl.message(
+      'Modification and Termination Rights',
+      name: 'title11',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We reserve the right to modify or terminate any part of the application or services provided at any time and without prior notice.`
+  String get description11 {
+    return Intl.message(
+      'We reserve the right to modify or terminate any part of the application or services provided at any time and without prior notice.',
+      name: 'description11',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compensations and Warranties`
+  String get title12 {
+    return Intl.message(
+      'Compensations and Warranties',
+      name: 'title12',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The application is provided "as is" without any express or implied warranties, and we do not accept any responsibility for delays or unavailability of the service.`
+  String get description12 {
+    return Intl.message(
+      'The application is provided "as is" without any express or implied warranties, and we do not accept any responsibility for delays or unavailability of the service.',
+      name: 'description12',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arbitration for people`
+  String get title13 {
+    return Intl.message(
+      'Arbitration for people',
+      name: 'title13',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `- The Agreement is bound by individual arbitration, and users are not responsible for participating in any class or group against the application. \n - It is decided that it will be final and binding and cannot be appealed, so any ruling issued by it will be implemented in any legal area deprived of jurisdiction.`
+  String get description13 {
+    return Intl.message(
+      '- The Agreement is bound by individual arbitration, and users are not responsible for participating in any class or group against the application. \n - It is decided that it will be final and binding and cannot be appealed, so any ruling issued by it will be implemented in any legal area deprived of jurisdiction.',
+      name: 'description13',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use License`
+  String get title14 {
+    return Intl.message(
+      'Use License',
+      name: 'title14',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You are granted a limited, non-transferable license to the Application only in accordance with these Terms and Conditions.`
+  String get description14 {
+    return Intl.message(
+      'You are granted a limited, non-transferable license to the Application only in accordance with these Terms and Conditions.',
+      name: 'description14',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fair Use`
+  String get title15 {
+    return Intl.message(
+      'Fair Use',
+      name: 'title15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your continued use must be fair and without causing inconvenience or inconvenience to others or the company.`
+  String get description15 {
+    return Intl.message(
+      'Your continued use must be fair and without causing inconvenience or inconvenience to others or the company.',
+      name: 'description15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiver of Liabilities`
+  String get title16 {
+    return Intl.message(
+      'Waiver of Liabilities',
+      name: 'title16',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are not responsible for any damage, direct, indirect, incidental or resulting from your continued use of or reliance on the information provided through it.`
+  String get description16 {
+    return Intl.message(
+      'We are not responsible for any damage, direct, indirect, incidental or resulting from your continued use of or reliance on the information provided through it.',
+      name: 'description16',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data verification`
+  String get title17 {
+    return Intl.message(
+      'Data verification',
+      name: 'title17',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We did not verify the data you provide and the content we publish through the application to confirm the terms of use.`
+  String get description17 {
+    return Intl.message(
+      'We did not verify the data you provide and the content we publish through the application to confirm the terms of use.',
+      name: 'description17',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Changes to the Service`
+  String get title18 {
+    return Intl.message(
+      'Changes to the Service',
+      name: 'title18',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We will not be able to time, suspend or terminate any part of the Service or features provided at any time without prior notice.`
+  String get description18 {
+    return Intl.message(
+      'We will not be able to time, suspend or terminate any part of the Service or features provided at any time without prior notice.',
+      name: 'description18',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disclaimer of Warranty`
+  String get title19 {
+    return Intl.message(
+      'Disclaimer of Warranty',
+      name: 'title19',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The application is provided "as is" without any express or implied warranty, including implied warranties of merchantability or fitness for a particular purpose.`
+  String get description19 {
+    return Intl.message(
+      'The application is provided "as is" without any express or implied warranty, including implied warranties of merchantability or fitness for a particular purpose.',
+      name: 'description19',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Updates and changes`
+  String get title20 {
+    return Intl.message(
+      'Updates and changes',
+      name: 'title20',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We reserve the ability to make updates and modifications to the application and terms of use periodically, and any changes will be published on the application.`
+  String get description20 {
+    return Intl.message(
+      'We reserve the ability to make updates and modifications to the application and terms of use periodically, and any changes will be published on the application.',
+      name: 'description20',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compliance with data protection laws`
+  String get title21 {
+    return Intl.message(
+      'Compliance with data protection laws',
+      name: 'title21',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are committed to adhering to the laws and legislation related to the protection of personal data, and you should read the privacy policy.`
+  String get description21 {
+    return Intl.message(
+      'We are committed to adhering to the laws and legislation related to the protection of personal data, and you should read the privacy policy.',
+      name: 'description21',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration and accounts`
+  String get title22 {
+    return Intl.message(
+      'Registration and accounts',
+      name: 'title22',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Use of some features of the App may require personal information to be created by the Company, and you must provide accurate and up-to-date information.`
+  String get description22 {
+    return Intl.message(
+      'Use of some features of the App may require personal information to be created by the Company, and you must provide accurate and up-to-date information.',
+      name: 'description22',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `View social media policies`
+  String get title23 {
+    return Intl.message(
+      'View social media policies',
+      name: 'title23',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must choose the policies and terms of social media use of each site you interact with through the application.`
+  String get description23 {
+    return Intl.message(
+      'You must choose the policies and terms of social media use of each site you interact with through the application.',
+      name: 'description23',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Undo`
+  String get title24 {
+    return Intl.message(
+      'Undo',
+      name: 'title24',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We have nothing or prevent you from using you if you violate these terms and conditions or are bound to violate them.`
+  String get description24 {
+    return Intl.message(
+      'We have nothing or prevent you from using you if you violate these terms and conditions or are bound to violate them.',
+      name: 'description24',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Identity verification`
+  String get title25 {
+    return Intl.message(
+      'Identity verification',
+      name: 'title25',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We do not reserve a request to verify your identity or additional information may be necessary to provide some services through the application.`
+  String get description25 {
+    return Intl.message(
+      'We do not reserve a request to verify your identity or additional information may be necessary to provide some services through the application.',
+      name: 'description25',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal use only`
+  String get title26 {
+    return Intl.message(
+      'Personal use only',
+      name: 'title26',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The application must be used for personal purposes only and not used for illegal or unauthorized purposes.`
+  String get description26 {
+    return Intl.message(
+      'The application must be used for personal purposes only and not used for illegal or unauthorized purposes.',
+      name: 'description26',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Compensation for damage`
+  String get title27 {
+    return Intl.message(
+      'Compensation for damage',
+      name: 'title27',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You bear full responsibility for any casualties or damages resulting from your continued use or reliance on the information provided through it.`
+  String get description27 {
+    return Intl.message(
+      'You bear full responsibility for any casualties or damages resulting from your continued use or reliance on the information provided through it.',
+      name: 'description27',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disclaimer of Warranty`
+  String get title28 {
+    return Intl.message(
+      'Disclaimer of Warranty',
+      name: 'title28',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We disclaim all express or implied warranties, including the implied warranties of merchantability and fitness for a particular purpose.`
+  String get description28 {
+    return Intl.message(
+      'We disclaim all express or implied warranties, including the implied warranties of merchantability and fitness for a particular purpose.',
+      name: 'description28',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amendment to terms and conditions`
+  String get title29 {
+    return Intl.message(
+      'Amendment to terms and conditions',
+      name: 'title29',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We may amend these terms and conditions from a later time, and any amendments will be published on the application to notify you of this.`
+  String get description29 {
+    return Intl.message(
+      'We may amend these terms and conditions from a later time, and any amendments will be published on the application to notify you of this.',
+      name: 'description29',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiver of liability for damage`
+  String get title30 {
+    return Intl.message(
+      'Waiver of liability for damage',
+      name: 'title30',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are not responsible for any direct, indirect or consequential damage resulting from your potential use or inability to use.`
+  String get description30 {
+    return Intl.message(
+      'We are not responsible for any direct, indirect or consequential damage resulting from your potential use or inability to use.',
+      name: 'description30',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Maintain account information`
+  String get title31 {
+    return Intl.message(
+      'Maintain account information',
+      name: 'title31',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must keep the data private and not record it with others, and we are responsible for any unauthorized use of your account.`
+  String get description31 {
+    return Intl.message(
+      'You must keep the data private and not record it with others, and we are responsible for any unauthorized use of your account.',
+      name: 'description31',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ads`
+  String get title32 {
+    return Intl.message(
+      'Ads',
+      name: 'title32',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We may introduce new advertisements or offers within the application, and we reserve the choice to provide them in accordance with our advertising policy.`
+  String get description32 {
+    return Intl.message(
+      'We may introduce new advertisements or offers within the application, and we reserve the choice to provide them in accordance with our advertising policy.',
+      name: 'description32',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Copyright and License`
+  String get title33 {
+    return Intl.message(
+      'Copyright and License',
+      name: 'title33',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Submitting content via the application, we always and universally suggest that you copy, publish and modify your content.`
+  String get description33 {
+    return Intl.message(
+      'Submitting content via the application, we always and universally suggest that you copy, publish and modify your content.',
+      name: 'description33',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Modifications to the Service`
+  String get title34 {
+    return Intl.message(
+      'Modifications to the Service',
+      name: 'title34',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We reserve the right to make modifications to the application or stop`
+  String get description34 {
+    return Intl.message(
+      'We reserve the right to make modifications to the application or stop',
+      name: 'description34',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Modifications to the Service`
+  String get title35 {
+    return Intl.message(
+      'Modifications to the Service',
+      name: 'title35',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We reserve the right to make modifications to the application or stop providing certain services at any time without prior notice.`
+  String get description35 {
+    return Intl.message(
+      'We reserve the right to make modifications to the application or stop providing certain services at any time without prior notice.',
+      name: 'description35',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Negotiation and applicable law`
+  String get title36 {
+    return Intl.message(
+      'Negotiation and applicable law',
+      name: 'title36',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You agree that any dispute between you and us must be negotiated with the intention of resolving it directly and amicably, and is subject to the laws of the country where the Company is headquartered.`
+  String get description36 {
+    return Intl.message(
+      'You agree that any dispute between you and us must be negotiated with the intention of resolving it directly and amicably, and is subject to the laws of the country where the Company is headquartered.',
+      name: 'description36',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Security use`
+  String get title37 {
+    return Intl.message(
+      'Security use',
+      name: 'title37',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You must not attempt to gain unauthorized access to, damage or disable any part of the Application or data associated with it.`
+  String get description37 {
+    return Intl.message(
+      'You must not attempt to gain unauthorized access to, damage or disable any part of the Application or data associated with it.',
+      name: 'description37',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Waiver of rights`
+  String get title38 {
+    return Intl.message(
+      'Waiver of rights',
+      name: 'title38',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You acknowledge that by submitting Content to the Application, you waive any copyright or intellectual property rights you may have in the Content.`
+  String get description38 {
+    return Intl.message(
+      'You acknowledge that by submitting Content to the Application, you waive any copyright or intellectual property rights you may have in the Content.',
+      name: 'description38',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reporting violations`
+  String get title39 {
+    return Intl.message(
+      'Reporting violations',
+      name: 'title39',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `If you believe there is a violation of your intellectual property rights or usage policy, please report it so we can take appropriate action.`
+  String get description39 {
+    return Intl.message(
+      'If you believe there is a violation of your intellectual property rights or usage policy, please report it so we can take appropriate action.',
+      name: 'description39',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Final approval`
+  String get title40 {
+    return Intl.message(
+      'Final approval',
+      name: 'title40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By using the application, you acknowledge that you have read and agree to all terms and conditions of use and the privacy policy associated with it.`
+  String get description40 {
+    return Intl.message(
+      'By using the application, you acknowledge that you have read and agree to all terms and conditions of use and the privacy policy associated with it.',
+      name: 'description40',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confidentiality of information`
+  String get title41 {
+    return Intl.message(
+      'Confidentiality of information',
+      name: 'title41',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We are committed to maintaining the confidentiality of all information you provide to us through the application. We will not share, sell, transfer or disclose any personal information to any third party without your explicit consent, except where legally required, to comply with requests from judicial authorities, or to protect our rights or property.`
+  String get description41 {
+    return Intl.message(
+      'We are committed to maintaining the confidentiality of all information you provide to us through the application. We will not share, sell, transfer or disclose any personal information to any third party without your explicit consent, except where legally required, to comply with requests from judicial authorities, or to protect our rights or property.',
+      name: 'description41',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

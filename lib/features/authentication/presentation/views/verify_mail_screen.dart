@@ -33,12 +33,12 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
     return BlocProvider(
       create: (context) => RegistrationCubit(getIt.get<AuthRepository>()),
       child: BlocConsumer<RegistrationCubit, RegistrationState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is VerfyOtpSuccess) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text("success"),
             ));
-            RegistrationCubit.get(context)!.getUserProfile();
+            await RegistrationCubit.get(context)!.getUserProfile();
             customGoAndDeleteNavigate(
                 context: context, path: AppRouter.kHomeLayOut);
           } else if (state is VerfyOtpFailure) {
@@ -96,18 +96,25 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
                             }
                           }),
                       SizedBox(height: 36.h),
-                      CustomButtonLarge(
-                          text: S.of(context).submet,
-                          color: kPrimaryKey,
-                          textColor: Colors.white,
-                          function: () {
-                            if (RegistrationCubit.get(context)!
-                                .verfyFormKey
-                                .currentState!
-                                .validate()) {
-                              RegistrationCubit.get(context)!.verfyAccountOtp();
-                            }
-                          }),
+                      state is VerfyOtpLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: kPrimaryKey,
+                              ),
+                            )
+                          : CustomButtonLarge(
+                              text: S.of(context).submet,
+                              color: kPrimaryKey,
+                              textColor: Colors.white,
+                              function: () {
+                                if (RegistrationCubit.get(context)!
+                                    .verfyFormKey
+                                    .currentState!
+                                    .validate()) {
+                                  RegistrationCubit.get(context)!
+                                      .verfyAccountOtp();
+                                }
+                              })
                     ],
                   ),
                 ),

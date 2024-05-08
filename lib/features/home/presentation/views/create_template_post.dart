@@ -24,14 +24,18 @@ class CreateTemplatePostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> platformNames = [
-      'instagram',
-      'facebook',
-      'x',
+      'Instagram',
+      'Facebook Groub',
+      'X',
+      'Snapshat',
+      'Linkedin',
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
       AssetsData.faceBookIcon,
       AssetsData.xIcon,
+      AssetsData.snapshat,
+      AssetsData.linkedln,
     ];
     return BlocProvider(
       create: (context) => AddPostCubit(),
@@ -132,7 +136,11 @@ class CreatePostPlatFormItem extends StatelessWidget {
         paltformName,
         style: Theme.of(context).textTheme.titleLarge,
       ),
-      leading: Image.asset(paltformIcon),
+      leading: Image.asset(
+        paltformIcon,
+        height: 40.h,
+        width: 40.w,
+      ),
     );
   }
 }
