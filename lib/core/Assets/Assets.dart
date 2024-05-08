@@ -16,4 +16,6 @@ class AssetsData {
   static const happyEad = 'assets/images/happy_3ed.png';
   static const moledNaby = 'assets/images/moled_naby.png';
   static const happyBirthday = 'assets/images/happy_birthday.png';
+  static const snapshat = 'assets/images/snapshat.png';
+  static const linkedln = 'assets/images/linkedin-icon.png';
 }

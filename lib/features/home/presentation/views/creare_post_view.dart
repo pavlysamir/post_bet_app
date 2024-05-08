@@ -21,14 +21,18 @@ class CreatePostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> platformNames = [
-      'instagram',
-      'facebook',
-      'x',
+      'Instagram',
+      'Facebook Groub',
+      'X',
+      'Snapshat',
+      'Linkedin',
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
       AssetsData.faceBookIcon,
       AssetsData.xIcon,
+      AssetsData.snapshat,
+      AssetsData.linkedln,
     ];
     return BlocProvider(
       create: (context) => AddPostCubit(),
@@ -87,14 +91,6 @@ class CreatePostView extends StatelessWidget {
                                   AddPostCubit.get(context).pickCameraVideo();
                                 },
                               ),
-                              SizedBox(width: 10.w),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.discount,
-                                  size: 25.h,
-                                ),
-                                onPressed: () {},
-                              ),
                             ],
                           )
                         ],
@@ -128,6 +124,7 @@ class CreatePostView extends StatelessWidget {
                           ),
                         ],
                       ),
+                    SizedBox(height: 20.h),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ListView.separated(
@@ -175,7 +172,11 @@ class CreatePostPlatFormItem extends StatelessWidget {
         paltformName,
         style: Theme.of(context).textTheme.titleLarge,
       ),
-      leading: Image.asset(paltformIcon),
+      leading: Image.asset(
+        paltformIcon,
+        height: 40.h,
+        width: 40.w,
+      ),
     );
   }
 }

@@ -34,11 +34,14 @@ class PlatformListViewItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(image),
+                Image.asset(image, height: 40.h, width: 40.w),
                 SizedBox(height: 10.h),
                 Text(
                   text,
                   style: Styles.textStyle14Grey,
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               ]),
         ),

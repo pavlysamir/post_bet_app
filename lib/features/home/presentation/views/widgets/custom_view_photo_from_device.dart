@@ -22,7 +22,7 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    fit: BoxFit.fitHeight, image: _buildImageProvider()),
+                    fit: BoxFit.cover, image: _buildImageProvider()),
                 border: Border.all(color: kPrimaryKey),
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
           ),

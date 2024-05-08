@@ -12,18 +12,18 @@ class PlatformScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> platformNames = [
-      'instagram',
-      'facebook',
-      'x',
-      'instagram',
-      'instagram',
+      'Instagram',
+      'Facebook Groub',
+      'X',
+      'Snapshat',
+      'Linkedin',
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
       AssetsData.faceBookIcon,
       AssetsData.xIcon,
-      AssetsData.instagramIcon,
-      AssetsData.instagramIcon,
+      AssetsData.snapshat,
+      AssetsData.linkedln,
     ];
     return Scaffold(
       body: SafeArea(

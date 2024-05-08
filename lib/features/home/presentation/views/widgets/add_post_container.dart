@@ -54,12 +54,6 @@ class AddPostContainer extends StatelessWidget {
                       size: 15.h,
                       color: Colors.grey,
                     ),
-                    SizedBox(width: 5.w),
-                    Icon(
-                      Icons.discount,
-                      size: 15.h,
-                      color: Colors.grey,
-                    ),
                   ],
                 )
               ],

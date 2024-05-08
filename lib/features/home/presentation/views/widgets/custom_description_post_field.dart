@@ -20,7 +20,7 @@ class CustomDescriptionPostField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300.h,
+      height: 150.h,
       decoration: BoxDecoration(
         color: Theme.of(context).cardColor,
         border: Border.all(color: Colors.white),
