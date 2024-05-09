@@ -29,9 +29,6 @@ class SettingsScreen extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        String? profilePicPath = getIt
-            .get<CashHelperSharedPreferences>()
-            .getData(key: ApiKey.profilePic);
         return Scaffold(
           appBar: AppBar(
             title: Text(
@@ -111,6 +108,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               SettingsIconWidget(
                 function: () {
+                  SettingsCubit.get(context).getPlans();
                   customJustGoNavigate(
                       context: context, path: AppRouter.kSubscriptionView);
                 },

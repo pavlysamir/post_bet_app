@@ -4,6 +4,7 @@ import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/settings/data/models/plane_model.dart';
 
 class SettingsRepository {
   final ApiConsumer api;
@@ -17,6 +18,21 @@ class SettingsRepository {
         ),
       );
       return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, List<PlanModel>>> getPlans() async {
+    try {
+      final response = await api.get(EndPoint.plans);
+      List<PlanModel> plans = [];
+      for (var item in response['data']['items']) {
+        plans.add(PlanModel.fromJson(item));
+      }
+
+      print(plans);
+      return Right(plans);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

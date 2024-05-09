@@ -22,3 +22,12 @@ class DeleteAccountSuccess extends SettingsState {}
 class DeleteAccountFailure extends SettingsState {}
 
 class DeleteAccountLoading extends SettingsState {}
+
+class GetPlansSuccess extends SettingsState {}
+
+class GetPlansFailure extends SettingsState {
+  final String errMessage;
+  GetPlansFailure({required this.errMessage});
+}
+
+class GetPlansLoading extends SettingsState {}

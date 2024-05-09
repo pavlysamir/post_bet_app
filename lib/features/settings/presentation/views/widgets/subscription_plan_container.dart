@@ -7,14 +7,17 @@ class SubscriptionPlansCntainer extends StatelessWidget {
     super.key,
     required this.price,
     required this.countPosts,
-    required this.description,
+    // required this.description,
     required this.typePlan,
     required this.function,
+    required this.platForms,
   });
   final String price;
   final String countPosts;
-  final String description;
+  // final String description;
   final String typePlan;
+  final String platForms;
+
   final Function() function;
 
   @override
@@ -56,9 +59,15 @@ class SubscriptionPlansCntainer extends StatelessWidget {
                 countPosts,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
-              SizedBox(height: 5.h),
+              // SizedBox(height: 5.h),
+              // Text(
+              //   description,
+              //   style: Theme.of(context).textTheme.bodyMedium,
+              // ),
+              SizedBox(height: 20.h),
               Text(
-                description,
+                platForms,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
               SizedBox(height: 20.h),

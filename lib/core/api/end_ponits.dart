@@ -12,6 +12,12 @@ class EndPoint {
   static String getUserDataEndPoint(id) {
     return "/User/$id";
   }
+
+  static String plans = "/plans";
+
+  //   static String getPlaneDataEndPoint(padgeNumber,) {
+  //   return "/plans/$id";
+  // }
 }
 
 class ApiKey {

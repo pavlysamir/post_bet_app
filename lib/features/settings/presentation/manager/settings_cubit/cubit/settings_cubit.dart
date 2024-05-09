@@ -7,6 +7,7 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 
 part 'settings_state.dart';
@@ -117,6 +118,19 @@ class SettingsCubit extends Cubit<SettingsState> {
       (errMessage) => emit(DeleteAccountFailure()),
       (userData) {
         emit(DeleteAccountSuccess());
+      },
+    );
+  }
+
+  List<PlanModel> plans = [];
+  getPlans() async {
+    emit(GetPlansLoading());
+    final response = await settingsRepository.getPlans();
+    response.fold(
+      (errMessage) => emit(GetPlansFailure(errMessage: errMessage)),
+      (userData) {
+        plans = userData;
+        emit(GetPlansSuccess());
       },
     );
   }
