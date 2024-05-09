@@ -29,15 +29,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    IconData iconData = Icons.visibility_off;
-    bool ifPasswordVisible = true;
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) async {
-        if (state is LoginIsPasswordVisibleEye) {
-          ifPasswordVisible = !ifPasswordVisible;
-          iconData =
-              ifPasswordVisible ? Icons.visibility_off : Icons.remove_red_eye;
-        } else if (state is LoginSuccess) {
+        if (state is LoginSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text("success"),
@@ -107,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 10.h,
                     ),
                     CustomFormField(
-                      isEyeTrue: ifPasswordVisible,
+                      isEyeTrue: LoginCubit.get(context)!.ifPasswordVisible,
                       prefixIcon: const Icon(
                         Icons.lock,
                         color: kPrimaryKey,
@@ -116,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {
                           LoginCubit.get(context)!.isVisiblePasswordEye();
                         },
-                        icon: Icon(iconData),
+                        icon: Icon(LoginCubit.get(context)!.iconData),
                       ),
                       textInputType: TextInputType.visiblePassword,
                       hintText: '*************',

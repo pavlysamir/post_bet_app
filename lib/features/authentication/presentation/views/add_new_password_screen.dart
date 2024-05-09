@@ -30,8 +30,7 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     var formForgetKey = GlobalKey<FormState>();
-    IconData iconData = Icons.visibility_off;
-    bool ifPasswordVisible = true;
+
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is NewForgetPasswordSuccess) {
@@ -40,7 +39,7 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
               content: Text("Success"),
             ),
           );
-          customJustGoNavigate(context: context, path: AppRouter.kLogin);
+          customGoAndDeleteNavigate(context: context, path: AppRouter.kLogin);
         } else if (state is NewForgetPasswordFailure) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text("Failure"),
@@ -80,7 +79,7 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
                       height: 10.h,
                     ),
                     CustomFormField(
-                      isEyeTrue: ifPasswordVisible,
+                      isEyeTrue: LoginCubit.get(context)!.ifPasswordVisible,
                       prefixIcon: const Icon(
                         Icons.lock,
                         color: kPrimaryKey,
@@ -89,7 +88,7 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
                         onPressed: () {
                           LoginCubit.get(context)!.isVisiblePasswordEye();
                         },
-                        icon: Icon(iconData),
+                        icon: Icon(LoginCubit.get(context)!.iconData),
                       ),
                       textInputType: TextInputType.visiblePassword,
                       hintText: '*************',

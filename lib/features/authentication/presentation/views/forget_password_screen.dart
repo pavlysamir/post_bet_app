@@ -35,7 +35,7 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
               content: Text("check your email"),
             ),
           );
-          customJustGoNavigate(
+          customGoAndDeleteNavigate(
               context: context, path: AppRouter.kVerifyNewChangePassword);
         }
       },

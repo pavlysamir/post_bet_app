@@ -16,7 +16,8 @@ class LoginCubit extends Cubit<LoginState> {
 
   final AuthRepository authRepository;
   static LoginCubit? get(context) => BlocProvider.of(context);
-
+  IconData iconData = Icons.visibility_off;
+  bool ifPasswordVisible = true;
   TextEditingController emailController = TextEditingController();
   TextEditingController emailForForgetPasswordController =
       TextEditingController();
@@ -31,6 +32,8 @@ class LoginCubit extends Cubit<LoginState> {
   var formVerifyEmailForgetOtpKey = GlobalKey<FormState>();
 
   void isVisiblePasswordEye() {
+    ifPasswordVisible = !ifPasswordVisible;
+    iconData = ifPasswordVisible ? Icons.visibility_off : Icons.remove_red_eye;
     emit(LoginIsPasswordVisibleEye());
   }
 
@@ -95,7 +98,10 @@ class LoginCubit extends Cubit<LoginState> {
     );
     response.fold(
       (errMessage) => emit(VerifyForgetPasswordFailure(errMessage: errMessage)),
-      (verify) => emit(VerifyForgetPasswordSuccess()),
+      (verify) {
+        verfyNewPasswordOtpController.clear();
+        emit(VerifyForgetPasswordSuccess());
+      },
     );
   }
 
@@ -110,7 +116,10 @@ class LoginCubit extends Cubit<LoginState> {
     );
     response.fold(
       (errMessage) => emit(NewForgetPasswordFailure(errMessage: errMessage)),
-      (verify) => emit(NewForgetPasswordSuccess()),
+      (verify) {
+        newPasswordController.clear();
+        emit(NewForgetPasswordSuccess());
+      },
     );
   }
 }
