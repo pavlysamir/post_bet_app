@@ -18,8 +18,17 @@ class LoginCubit extends Cubit<LoginState> {
   static LoginCubit? get(context) => BlocProvider.of(context);
 
   TextEditingController emailController = TextEditingController();
+  TextEditingController emailForForgetPasswordController =
+      TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+  TextEditingController newPasswordController = TextEditingController();
+  TextEditingController verfyNewPasswordOtpController = TextEditingController();
+
   var formKey = GlobalKey<FormState>();
+
+  var formVerifyForgetOtpKey = GlobalKey<FormState>();
+  var formVerifyEmailForgetOtpKey = GlobalKey<FormState>();
 
   void isVisiblePasswordEye() {
     emit(LoginIsPasswordVisibleEye());
@@ -61,6 +70,47 @@ class LoginCubit extends Cubit<LoginState> {
 
         emit(GetUserSuccess(user: user));
       },
+    );
+  }
+
+  forgetPassword() async {
+    emit(ForgetPasswordLoading());
+    final response = await authRepository.forgetPassword(
+      eamil: emailForForgetPasswordController.text,
+    );
+    response.fold(
+        (errMessage) => emit(ForgetPasswordFailure(errMessage: errMessage)),
+        (forgetpassword) async {
+      await getIt.get<CashHelperSharedPreferences>().saveData(
+          key: 'emailforgetPassword',
+          value: emailForForgetPasswordController.text);
+      emit(ForgetPasswordSuccess());
+    });
+  }
+
+  verfyNewPasswordOtp() async {
+    emit(VerifyForgetPasswordLoading());
+    final response = await authRepository.verfyOtpForgetPassword(
+      otp: verfyNewPasswordOtpController.text,
+    );
+    response.fold(
+      (errMessage) => emit(VerifyForgetPasswordFailure(errMessage: errMessage)),
+      (verify) => emit(VerifyForgetPasswordSuccess()),
+    );
+  }
+
+  changeForgetPassword() async {
+    emit(NewForgetPasswordLoading());
+    final response = await authRepository.changeForgetPassword(
+      email: await getIt
+              .get<CashHelperSharedPreferences>()
+              .getData(key: 'emailforgetPassword') ??
+          emailForForgetPasswordController.text,
+      newPassword: newPasswordController.text,
+    );
+    response.fold(
+      (errMessage) => emit(NewForgetPasswordFailure(errMessage: errMessage)),
+      (verify) => emit(NewForgetPasswordSuccess()),
     );
   }
 }

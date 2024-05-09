@@ -4,6 +4,8 @@ class EndPoint {
   static String signUp = "/Auth/signUp";
 
   static String getOtp = "/Auth/verify-otp";
+  static String forgotPassword = "/Auth/forget-password";
+  static String changeForgetPassword = "/Auth/change-forget-password";
 
   static String verfyAccount = "/Auth/verifyAccount";
 
@@ -20,6 +22,7 @@ class ApiKey {
   static String email = "email";
   static String password = "password";
   static String otp = "otp";
+  static String newForgetPassword = "newPassword";
 
   static String token = "token";
   static String message = "message";

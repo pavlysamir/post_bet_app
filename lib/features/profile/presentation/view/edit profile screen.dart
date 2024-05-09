@@ -89,23 +89,23 @@ class EditProfileScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 30.h),
-                    Text(
-                      S.of(context).loginEmail,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomFormField(
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: kPrimaryKey,
-                        ),
-                        textInputType: TextInputType.emailAddress,
-                        hintText:
-                            '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email)}',
-                        controller: editProfileCubit.emailController,
-                        validationMassage: conditionOfValidationEmail),
+                    // Text(
+                    //   S.of(context).loginEmail,
+                    //   style: Theme.of(context).textTheme.titleLarge,
+                    // ),
+                    // SizedBox(
+                    //   height: 10.h,
+                    //),
+                    // CustomFormField(
+                    //     prefixIcon: const Icon(
+                    //       Icons.email_outlined,
+                    //       color: kPrimaryKey,
+                    //     ),
+                    //     textInputType: TextInputType.emailAddress,
+                    //     hintText:
+                    //         '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email)}',
+                    //     controller: editProfileCubit.emailController,
+                    //     validationMassage: conditionOfValidationEmail),s
                     SizedBox(height: 30.h),
                     Text(
                       S.of(context).name,

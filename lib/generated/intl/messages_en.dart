@@ -134,6 +134,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
         "enterCode": MessageLookupByLibrary.simpleMessage("Enter Code"),
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Your Email"),
+        "enterNewPassword":
+            MessageLookupByLibrary.simpleMessage("Enter New Password"),
         "expireData": MessageLookupByLibrary.simpleMessage("Expire Data"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 posts per day"),
         "forgotPassword":

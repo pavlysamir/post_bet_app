@@ -3,9 +3,11 @@ import 'package:post_bet/core/Layouts/home_layout.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/authentication/presentation/views/add_new_password_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/forget_password_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/login_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/regester_screen.dart';
+import 'package:post_bet/features/authentication/presentation/views/verfy_new_password_screen.dart';
 import 'package:post_bet/features/authentication/presentation/views/verify_mail_screen.dart';
 import 'package:post_bet/features/home/presentation/views/creare_post_view.dart';
 import 'package:post_bet/features/home/presentation/views/home_screen.dart';
@@ -31,6 +33,8 @@ abstract class AppRouter {
   static const kSubscriptionView = '/SubscriptionView';
   static const kPaymentView = '/PaymentView';
   static const kChangePassword = '/changePassword';
+  static const kNewChangePassword = '/newChangePassword';
+  static const kVerifyNewChangePassword = '/VerifyNewChangePassword';
 
   static final router = GoRouter(
       initialLocation: //kHomeLayOut,
@@ -96,5 +100,13 @@ abstract class AppRouter {
           path: kChangePassword,
           builder: (context, state) => const ChangePasswordView(),
         ),
+        GoRoute(
+          path: kNewChangePassword,
+          builder: (context, state) => const AddNewPasswordScreen(),
+        ),
+        GoRoute(
+          path: kVerifyNewChangePassword,
+          builder: (context, state) => const VerifyNewPasswordEmailScreen(),
+        )
       ]);
 }

@@ -550,6 +550,16 @@ class S {
     );
   }
 
+  /// `Enter New Password`
+  String get enterNewPassword {
+    return Intl.message(
+      'Enter New Password',
+      name: 'enterNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change Language`
   String get changeLanguage {
     return Intl.message(

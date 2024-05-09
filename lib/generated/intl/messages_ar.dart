@@ -134,6 +134,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterCode": MessageLookupByLibrary.simpleMessage("أدخل الرمز"),
         "enterEmail":
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكتروني"),
+        "enterNewPassword":
+            MessageLookupByLibrary.simpleMessage("ادخل كلمة مرور جديدة"),
         "expireData": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 منشورات في اليوم"),
         "forgotPassword":

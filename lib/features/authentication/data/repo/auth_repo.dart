@@ -116,4 +116,55 @@ class AuthRepository {
       return Left(e.errModel.errorMessage!);
     }
   }
+
+  Future<Either<String, void>> forgetPassword({
+    required String eamil,
+  }) async {
+    try {
+      final response = await api.post(
+        EndPoint.forgotPassword,
+        data: {
+          ApiKey.email: eamil,
+        },
+      );
+
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, void>> verfyOtpForgetPassword({
+    required String otp,
+  }) async {
+    try {
+      final response = await api.post(
+        EndPoint.getOtp,
+        data: {
+          ApiKey.otp: otp,
+        },
+      );
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, void>> changeForgetPassword({
+    required String email,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await api.post(
+        EndPoint.changeForgetPassword,
+        data: {
+          ApiKey.email: email,
+          ApiKey.newForgetPassword: newPassword,
+        },
+      );
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
 }
