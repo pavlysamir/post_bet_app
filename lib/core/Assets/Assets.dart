@@ -18,4 +18,11 @@ class AssetsData {
   static const happyBirthday = 'assets/images/happy_birthday.png';
   static const snapshat = 'assets/images/snapshat.png';
   static const linkedln = 'assets/images/linkedin-icon.png';
+  static const reddit = 'assets/images/reddit.png';
+  static const youtube = 'assets/images/youtube.png';
+  static const tiktok = 'assets/images/tiktok.png';
+  static const pinterest = 'assets/images/pinterest.png';
+  static const telegram = 'assets/images/telegram.png';
+
+  static const googleBusiness = 'assets/images/googleBusiness.png';
 }

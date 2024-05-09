@@ -14,16 +14,30 @@ class PlatformScreen extends StatelessWidget {
     final List<String> platformNames = [
       'Instagram',
       'Facebook Groub',
+      'Facebook Groub',
       'X',
       'Snapshat',
       'Linkedin',
+      'Reddit',
+      'Youtube',
+      'Tiktok',
+      'Pinterest',
+      'Telegram',
+      'Google Business'
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
       AssetsData.faceBookIcon,
+      AssetsData.faceBookIcon,
       AssetsData.xIcon,
       AssetsData.snapshat,
       AssetsData.linkedln,
+      AssetsData.reddit,
+      AssetsData.youtube,
+      AssetsData.tiktok,
+      AssetsData.pinterest,
+      AssetsData.telegram,
+      AssetsData.googleBusiness
     ];
     return Scaffold(
       body: SafeArea(

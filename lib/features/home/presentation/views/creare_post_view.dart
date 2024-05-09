@@ -9,8 +9,6 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_view_photo_from_device.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_view_video_from_device.dart';
 import 'package:post_bet/generated/l10n.dart';
 
 class CreatePostView extends StatelessWidget {
@@ -23,16 +21,30 @@ class CreatePostView extends StatelessWidget {
     final List<String> platformNames = [
       'Instagram',
       'Facebook Groub',
+      'Facebook Groub',
       'X',
       'Snapshat',
       'Linkedin',
+      'Reddit',
+      'Youtube',
+      'Tiktok',
+      'Pinterest',
+      'Telegram',
+      'Google Business'
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
       AssetsData.faceBookIcon,
+      AssetsData.faceBookIcon,
       AssetsData.xIcon,
       AssetsData.snapshat,
       AssetsData.linkedln,
+      AssetsData.reddit,
+      AssetsData.youtube,
+      AssetsData.tiktok,
+      AssetsData.pinterest,
+      AssetsData.telegram,
+      AssetsData.googleBusiness
     ];
     return BlocProvider(
       create: (context) => AddPostCubit(),
@@ -69,61 +81,9 @@ class CreatePostView extends StatelessWidget {
                               },
                               hintText: S.of(context).typeAnyThing,
                               textInputType: TextInputType.text),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              IconButton(
-                                icon: Icon(
-                                  Icons.image,
-                                  size: 25.h,
-                                ),
-                                onPressed: () {
-                                  AddPostCubit.get(context).pickCameraImage();
-                                },
-                              ),
-                              SizedBox(width: 10.w),
-                              IconButton(
-                                icon: Icon(
-                                  Icons.videocam_rounded,
-                                  size: 25.h,
-                                ),
-                                onPressed: () {
-                                  AddPostCubit.get(context).pickCameraVideo();
-                                },
-                              ),
-                            ],
-                          )
                         ],
                       ),
                     ),
-                    if (AddPostCubit.get(context).fileImage != null)
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          CustomViewPhotoFromDevice(
-                            file: AddPostCubit.get(context).fileImage!,
-                            function: () {
-                              AddPostCubit.get(context).clearImage();
-                            },
-                          ),
-                        ],
-                      ),
-                    if (AddPostCubit.get(context).fileVideo != null)
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          CustomViewVideoFromDevice(
-                            file: AddPostCubit.get(context).fileVideo!,
-                            function: () {
-                              AddPostCubit.get(context).clearVideo();
-                            },
-                          ),
-                        ],
-                      ),
                     SizedBox(height: 20.h),
                     Padding(
                       padding: const EdgeInsets.all(8.0),

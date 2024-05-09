@@ -23,7 +23,7 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover, image: _buildImageProvider()),
-                border: Border.all(color: kPrimaryKey),
+                // border: Border.all(color: kPrimaryKey),
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
           ),
           CircleAvatar(
