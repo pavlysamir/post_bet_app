@@ -68,4 +68,30 @@ class SettingsRepository {
       return Left(e.errModel.errorMessage!);
     }
   }
+
+  Future<Either<String, void>> getPromoCode() async {
+    try {
+      final response = await api.get(
+        EndPoint.promocode,
+      );
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, void>> changePassword({
+    required String oldPassword,
+    required String newPassword,
+  }) async {
+    try {
+      final response = await api.post(EndPoint.changePassword, data: {
+        ApiKey.oldPassword: oldPassword,
+        ApiKey.newPassword: newPassword,
+      });
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
 }

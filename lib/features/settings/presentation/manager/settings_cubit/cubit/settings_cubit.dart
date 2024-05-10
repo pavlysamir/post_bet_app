@@ -163,4 +163,37 @@ class SettingsCubit extends Cubit<SettingsState> {
       },
     );
   }
+
+  getPromoCode() async {
+    emit(GetPromocodesLoading());
+    final response = await settingsRepository.getPromoCode();
+    response.fold(
+      (errMessage) => emit(GetPromocodesFailure(errMessage: errMessage)),
+      (messageData) {
+        emit(GetPromocodesSuccess());
+      },
+    );
+  }
+
+  bool isLoading = false;
+
+  changePassword() async {
+    emit(ChangePasswordLoading());
+    isLoading = true;
+
+    final response = await settingsRepository.changePassword(
+        oldPassword: currentPasswordController.text,
+        newPassword: newPasswordController.text);
+    response.fold(
+      (errMessage) {
+        isLoading = false;
+
+        emit(ChangePasswordFailure(errMessage: errMessage));
+      },
+      (messageData) {
+        isLoading = false;
+        emit(ChangePasswordSuccess());
+      },
+    );
+  }
 }

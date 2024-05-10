@@ -188,6 +188,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               SettingsIconWidget(
                 function: () {
+                  SettingsCubit.get(context).getPromoCode();
                   customJustGoNavigate(
                       context: context, path: AppRouter.kCobonsView);
                 },

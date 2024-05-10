@@ -49,3 +49,21 @@ class GetContactUsFailure extends SettingsState {
 }
 
 class GetContactUsLoading extends SettingsState {}
+
+class GetPromocodesSuccess extends SettingsState {}
+
+class GetPromocodesFailure extends SettingsState {
+  final String errMessage;
+  GetPromocodesFailure({required this.errMessage});
+}
+
+class GetPromocodesLoading extends SettingsState {}
+
+class ChangePasswordSuccess extends SettingsState {}
+
+class ChangePasswordFailure extends SettingsState {
+  final String errMessage;
+  ChangePasswordFailure({required this.errMessage});
+}
+
+class ChangePasswordLoading extends SettingsState {}

@@ -15,7 +15,9 @@ class EndPoint {
 
   static String plans = "/plans";
   static String contactUs = "/contactUs";
+  static String promocode = "/promocode";
 
+  static String changePassword = "/Auth/change-password";
   //   static String getPlaneDataEndPoint(padgeNumber,) {
   //   return "/plans/$id";
   // }
@@ -41,4 +43,6 @@ class ApiKey {
   static String profilePic = "profileImage";
   static String authorizationHeader = "Authorization";
   static String verfyAccount = "verfyAccount";
+  static String oldPassword = "oldPassword";
+  static String newPassword = "newPassword";
 }
