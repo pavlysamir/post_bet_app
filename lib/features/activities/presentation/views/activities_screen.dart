@@ -22,11 +22,11 @@ class ActivitiesScreen extends StatelessWidget {
               height: 40.h,
             ),
             CustomTitleText(text: S.of(context).lastPosts),
-            const Expanded(
-              child: SingleChildScrollView(
-                child: LastPostsListView(),
-              ),
-            ),
+            // const Expanded(
+            //   child: SingleChildScrollView(
+            //     child: LastPostsListView(),
+            //   ),
+            // ),
           ],
         ),
       ),

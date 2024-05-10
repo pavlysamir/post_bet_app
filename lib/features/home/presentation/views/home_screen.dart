@@ -85,9 +85,9 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SliverToBoxAdapter(
-                  child: CustomHistoryPostsListView(),
-                ),
+                // const SliverToBoxAdapter(
+                //   child: CustomHistoryPostsListView(),
+                // ),
               ]));
         },
       ),

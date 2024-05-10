@@ -76,6 +76,7 @@ class CreateTemplatePostView extends StatelessWidget {
                         alignment: Alignment.bottomRight,
                         children: [
                           CustomDescriptionPostField(
+                              img: img,
                               controller:
                                   AddPostCubit.get(context).addPostController,
                               validationMassage: (value) {
@@ -86,19 +87,6 @@ class CreateTemplatePostView extends StatelessWidget {
                               hintText: S.of(context).typeAnyThing,
                               textInputType: TextInputType.text),
                         ],
-                      ),
-                    ),
-                    SizedBox(height: 20.h),
-                    Container(
-                      width: MediaQuery.of(context).size.width * 0.8,
-                      height: MediaQuery.of(context).size.height * 0.2,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: kPrimaryKey),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                      child: Image.asset(
-                        img,
-                        fit: BoxFit.cover,
                       ),
                     ),
                     Padding(

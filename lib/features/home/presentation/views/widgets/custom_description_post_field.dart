@@ -12,11 +12,14 @@ class CustomDescriptionPostField extends StatelessWidget {
     required this.validationMassage,
     required this.hintText,
     required this.textInputType,
+    this.img,
     // required this.prefexIcon,
   }) : super(key: key);
 
   final TextEditingController? controller;
   final String hintText;
+  final String? img;
+
   final TextInputType textInputType;
   final Function(String value) validationMassage;
   // final Widget prefexIcon;
@@ -93,30 +96,43 @@ class CustomDescriptionPostField extends StatelessWidget {
                     ),
                   ],
                 ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.image,
-                      size: 25.h,
-                    ),
-                    onPressed: () {
-                      AddPostCubit.get(context).pickCameraImage();
-                    },
+              if (img != null)
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                  decoration: const BoxDecoration(
+                      // border: Border.all(color: kPrimaryKey),
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Image.asset(
+                    img!,
+                    fit: BoxFit.cover,
                   ),
-                  SizedBox(width: 10.w),
-                  IconButton(
-                    icon: Icon(
-                      Icons.videocam_rounded,
-                      size: 25.h,
+                ),
+              if (img == null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(
+                      icon: Icon(
+                        Icons.image,
+                        size: 25.h,
+                      ),
+                      onPressed: () {
+                        AddPostCubit.get(context).pickCameraImage();
+                      },
                     ),
-                    onPressed: () {
-                      AddPostCubit.get(context).pickCameraVideo();
-                    },
-                  ),
-                ],
-              )
+                    SizedBox(width: 10.w),
+                    IconButton(
+                      icon: Icon(
+                        Icons.videocam_rounded,
+                        size: 25.h,
+                      ),
+                      onPressed: () {
+                        AddPostCubit.get(context).pickCameraVideo();
+                      },
+                    ),
+                  ],
+                )
             ],
           ),
         );
