@@ -14,6 +14,7 @@ class EndPoint {
   }
 
   static String plans = "/plans";
+  static String contactUs = "/contactUs";
 
   //   static String getPlaneDataEndPoint(padgeNumber,) {
   //   return "/plans/$id";

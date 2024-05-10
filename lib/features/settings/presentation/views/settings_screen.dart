@@ -198,6 +198,7 @@ class SettingsScreen extends StatelessWidget {
                 title: S.of(context).Cobons,
               ),
               SettingsIconWidget(
+                function: () {},
                 title: S.of(context).aboutUs,
               ),
               SettingsIconWidget(
@@ -206,6 +207,11 @@ class SettingsScreen extends StatelessWidget {
                   color: Colors.white,
                 ),
                 title: S.of(context).helpCenter,
+                function: () {
+                  SettingsCubit.get(context).getContactUsMessage();
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kPrivateChat);
+                },
               ),
               SettingsIconWidget(
                 function: () {

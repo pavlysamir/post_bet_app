@@ -31,3 +31,21 @@ class GetPlansFailure extends SettingsState {
 }
 
 class GetPlansLoading extends SettingsState {}
+
+class SendContactUsSuccess extends SettingsState {}
+
+class SendContactUsFailure extends SettingsState {
+  final String errMessage;
+  SendContactUsFailure({required this.errMessage});
+}
+
+class SendContactUsLoading extends SettingsState {}
+
+class GetContactUsSuccess extends SettingsState {}
+
+class GetContactUsFailure extends SettingsState {
+  final String errMessage;
+  GetContactUsFailure({required this.errMessage});
+}
+
+class GetContactUsLoading extends SettingsState {}

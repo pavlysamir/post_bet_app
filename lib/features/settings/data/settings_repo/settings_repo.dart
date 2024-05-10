@@ -4,6 +4,7 @@ import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/settings/data/models/message_model.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 
 class SettingsRepository {
@@ -33,6 +34,36 @@ class SettingsRepository {
 
       print(plans);
       return Right(plans);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, void>> sendMessageContanctUs({
+    required String message,
+    required String email,
+  }) async {
+    try {
+      final response = await api
+          .post(EndPoint.contactUs, data: {"message": message, "phone": email});
+
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, List<MessageModel>>> getMessageContanctUs() async {
+    try {
+      final response = await api.get(
+        EndPoint.contactUs,
+      );
+      List<MessageModel> messages = [];
+      for (var item in response['data']['items']) {
+        messages.add(MessageModel.fromJson(item));
+      }
+
+      return Right(messages);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }
