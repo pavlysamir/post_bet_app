@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../../../constants.dart';
 
 class CustomViewPhotoFromDevice extends StatelessWidget {
@@ -22,7 +23,7 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    fit: BoxFit.cover, image: _buildImageProvider()),
+                    fit: BoxFit.fitHeight, image: _buildImageProvider()),
                 // border: Border.all(color: kPrimaryKey),
                 borderRadius: const BorderRadius.all(Radius.circular(10))),
           ),
@@ -44,11 +45,14 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
   }
 
   ImageProvider _buildImageProvider() {
-    if (file is File) {
-      // If 'file' is a File, return FileImage
+    if (file is Uint8List) {
+      // If 'file' is a Uint8List (watermarked image data), use MemoryImage
+      return MemoryImage(file as Uint8List);
+    } else if (file is File) {
+      // If 'file' is still a File (original image), use FileImage
       return FileImage(file as File);
     } else if (file is String) {
-      // If 'file' is a String (URL), return NetworkImage
+      // If 'file' is a String (URL), use NetworkImage
       return NetworkImage(file as String);
     } else {
       // Handle other cases or throw an error

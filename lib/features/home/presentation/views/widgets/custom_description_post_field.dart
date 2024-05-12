@@ -68,14 +68,14 @@ class CustomDescriptionPostField extends StatelessWidget {
                   //prefixIcon: prefexIcon,
                 ),
               ),
-              if (AddPostCubit.get(context).fileImage != null)
+              if (AddPostCubit.get(context).image != null)
                 Column(
                   children: [
                     SizedBox(
                       height: 20.h,
                     ),
                     CustomViewPhotoFromDevice(
-                      file: AddPostCubit.get(context).fileImage!,
+                      file: AddPostCubit.get(context).image!,
                       function: () {
                         AddPostCubit.get(context).clearImage();
                       },
@@ -118,7 +118,7 @@ class CustomDescriptionPostField extends StatelessWidget {
                         size: 25.h,
                       ),
                       onPressed: () {
-                        AddPostCubit.get(context).pickCameraImage();
+                        AddPostCubit.get(context).pickImage();
                       },
                     ),
                     SizedBox(width: 10.w),

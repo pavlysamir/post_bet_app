@@ -44,20 +44,22 @@ class PrivateChat extends StatelessWidget {
                         controller: controller,
                         itemCount: SettingsCubit.get(context).messages.length,
                         itemBuilder: (context, index) {
-                          return SettingsCubit.get(context)
-                                      .messages[index]
-                                      .replyMessage ==
-                                  null
-                              ? ChatSendBubble(
-                                  message: SettingsCubit.get(context)
-                                      .messages[index]
-                                      .message,
-                                )
-                              : ChatReceiveBubble(
-                                  message: SettingsCubit.get(context)
-                                      .messages[index]
-                                      .replyMessage!,
-                                );
+                          if (SettingsCubit.get(context)
+                                  .messages[index]
+                                  .replyMessage ==
+                              null) {
+                            return ChatSendBubble(
+                              message: SettingsCubit.get(context)
+                                  .messages[index]
+                                  .message,
+                            );
+                          } else {
+                            return ChatReceiveBubble(
+                              message: SettingsCubit.get(context)
+                                  .messages[index]
+                                  .replyMessage!,
+                            );
+                          }
                         },
                         shrinkWrap: true,
                       ),

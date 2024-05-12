@@ -113,7 +113,7 @@ class AuthRepository {
       print(decodedToken[ApiKey.id]);
       return Right(user);
     } on ServerException catch (e) {
-      return Left(e.errModel.errorMessage!);
+      return Left(e.errModel.error!);
     }
   }
 

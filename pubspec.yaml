@@ -45,6 +45,8 @@ dependencies:
   dartz: ^0.10.1
   video_player: ^2.8.6
   modal_progress_hud_nsn: ^0.5.1
+  image: ^4.1.7
+  path_provider: ^2.1.3
 
 
   flutter:
