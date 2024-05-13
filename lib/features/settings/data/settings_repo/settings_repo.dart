@@ -97,11 +97,11 @@ class SettingsRepository {
   }
 
   Future<Either<String, SubscriptionModel>> subscriptePlan({
-    required String promoCode,
+    String? promoCode,
     required String planId,
   }) async {
     try {
-      final response = await api.post(EndPoint.baseUrlSubscraption, data: {
+      final response = await api.post(EndPoint.subscraption, data: {
         ApiKey.promoCode: promoCode,
         ApiKey.planId: planId,
       });

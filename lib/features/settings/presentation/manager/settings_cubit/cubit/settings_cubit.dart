@@ -9,6 +9,7 @@ import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/settings/data/models/message_model.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
+import 'package:post_bet/features/settings/data/models/subscription_model.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 
 part 'settings_state.dart';
@@ -197,16 +198,22 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
-  subscription() async {
+  SubscriptionModel? subscriptionModel;
+  subscription({
+    required String planId,
+    String? promoCode,
+  }) async {
     emit(SubscraptionLoading());
 
-    final response =
-        await settingsRepository.subscriptePlan(promoCode: '', planId: '');
+    final response = await settingsRepository.subscriptePlan(
+        promoCode: promoCode!, planId: planId);
     response.fold(
       (errMessage) {
         emit(SubscraptionFailure(errMessage: errMessage));
       },
-      (messageData) {
+      (subscriptionData) {
+        subscriptionModel = subscriptionData;
+        print('yaaaaaaarb' + subscriptionData.transactionUrl);
         emit(SubscraptionSuccess());
       },
     );

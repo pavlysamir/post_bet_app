@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
+import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_subscription_listView.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -14,7 +15,16 @@ class SubscriptionsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is SubscraptionSuccess) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return WebViewPaynet(
+              uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
+            );
+          }));
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('successfuly subscraption'),
+          ));
+        }
       },
       builder: (context, state) {
         return Scaffold(
