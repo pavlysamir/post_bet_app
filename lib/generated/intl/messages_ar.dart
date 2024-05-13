@@ -165,6 +165,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "no": MessageLookupByLibrary.simpleMessage("لا"),
+        "noBackHistoryItem":
+            MessageLookupByLibrary.simpleMessage("لا يوجد عنصر للرجوع"),
+        "noForwardHistoryItem":
+            MessageLookupByLibrary.simpleMessage("لا يوجد عنصر للتقدم"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("طريقة سهلة للمشاركة"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(

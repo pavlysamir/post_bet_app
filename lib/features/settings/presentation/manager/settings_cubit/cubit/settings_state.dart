@@ -67,3 +67,12 @@ class ChangePasswordFailure extends SettingsState {
 }
 
 class ChangePasswordLoading extends SettingsState {}
+
+class SubscraptionSuccess extends SettingsState {}
+
+class SubscraptionFailure extends SettingsState {
+  final String errMessage;
+  SubscraptionFailure({required this.errMessage});
+}
+
+class SubscraptionLoading extends SettingsState {}

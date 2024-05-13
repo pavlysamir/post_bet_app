@@ -560,6 +560,26 @@ class S {
     );
   }
 
+  /// `No Back History`
+  String get noBackHistoryItem {
+    return Intl.message(
+      'No Back History',
+      name: 'noBackHistoryItem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Forward History`
+  String get noForwardHistoryItem {
+    return Intl.message(
+      'No Forward History',
+      name: 'noForwardHistoryItem',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Change Language`
   String get changeLanguage {
     return Intl.message(

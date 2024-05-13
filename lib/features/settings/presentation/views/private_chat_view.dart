@@ -119,4 +119,21 @@ class PrivateChat extends StatelessWidget {
   //   controller.animateTo(controller.position.maxScrollExtent,
   //       duration: const Duration(seconds: 1), curve: Curves.fastOutSlowIn);
   // }
+
+  //   if (SettingsCubit.get(context)
+  //         .messages[index]
+  //         .replyMessage ==
+  //     null) {
+  //   return ChatSendBubble(
+  //     message: SettingsCubit.get(context)
+  //         .messages[index]
+  //         .message,
+  //   );
+  // } else {
+  //   return ChatReceiveBubble(
+  //     message: SettingsCubit.get(context)
+  //         .messages[index]
+  //         .replyMessage!,
+  //   );
+  // }
 }

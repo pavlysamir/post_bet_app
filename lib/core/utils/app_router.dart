@@ -113,6 +113,6 @@ abstract class AppRouter {
         GoRoute(
           path: kPrivateChat,
           builder: (context, state) => const PrivateChat(),
-        )
+        ),
       ]);
 }

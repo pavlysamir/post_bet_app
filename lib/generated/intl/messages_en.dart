@@ -163,6 +163,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noBackHistoryItem":
+            MessageLookupByLibrary.simpleMessage("No Back History"),
+        "noForwardHistoryItem":
+            MessageLookupByLibrary.simpleMessage("No Forward History"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("Easy way to share"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(

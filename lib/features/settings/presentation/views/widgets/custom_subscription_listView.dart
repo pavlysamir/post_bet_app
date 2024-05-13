@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
+import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/subscription_plan_container.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class CustomListViewSubscriptionPlan extends StatelessWidget {
   const CustomListViewSubscriptionPlan(
@@ -20,7 +22,11 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
         itemCount: count,
         itemBuilder: (context, index) {
           return SubscriptionPlansCntainer(
-            function: () {},
+            function: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return WebViewPaynet();
+              }));
+            },
             price: "${planModel[index].price}\$",
             countPosts: 'number of posts : ${planModel[index].numberOfPosts}',
             //description: '.${S.of(context).shareAllPlatform}',

@@ -50,6 +50,8 @@
     "subscribe":"Subscriptions",
     "subscribePlan":"Subscriptions Plans",
     "enterNewPassword":"Enter New Password",
+    "noBackHistoryItem":"No Back History",
+    "noForwardHistoryItem":"No Forward History",
 
 
     "changeLanguage":"Change Language",

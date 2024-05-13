@@ -196,4 +196,19 @@ class SettingsCubit extends Cubit<SettingsState> {
       },
     );
   }
+
+  subscription() async {
+    emit(SubscraptionLoading());
+
+    final response =
+        await settingsRepository.subscriptePlan(promoCode: '', planId: '');
+    response.fold(
+      (errMessage) {
+        emit(SubscraptionFailure(errMessage: errMessage));
+      },
+      (messageData) {
+        emit(SubscraptionSuccess());
+      },
+    );
+  }
 }

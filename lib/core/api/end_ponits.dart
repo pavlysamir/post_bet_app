@@ -1,4 +1,5 @@
 class EndPoint {
+  static String baseUrlSubscraption = "https://post-bet.onrender.com";
   static String baseUrl = "https://post-bet.onrender.com";
   static String login = "/Auth/login";
   static String signUp = "/Auth/signUp";
@@ -8,6 +9,8 @@ class EndPoint {
   static String changeForgetPassword = "/Auth/change-forget-password";
 
   static String verfyAccount = "/Auth/verifyAccount";
+
+  static String subscraption = "/plans/subscribe";
 
   static String getUserDataEndPoint(id) {
     return "/User/$id";
@@ -45,4 +48,6 @@ class ApiKey {
   static String verfyAccount = "verfyAccount";
   static String oldPassword = "oldPassword";
   static String newPassword = "newPassword";
+  static String promoCode = "promoCode";
+  static String planId = "planId";
 }

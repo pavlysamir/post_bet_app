@@ -6,6 +6,7 @@ import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/settings/data/models/message_model.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
+import 'package:post_bet/features/settings/data/models/subscription_model.dart';
 
 class SettingsRepository {
   final ApiConsumer api;
@@ -90,6 +91,22 @@ class SettingsRepository {
         ApiKey.newPassword: newPassword,
       });
       return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, SubscriptionModel>> subscriptePlan({
+    required String promoCode,
+    required String planId,
+  }) async {
+    try {
+      final response = await api.post(EndPoint.baseUrlSubscraption, data: {
+        ApiKey.promoCode: promoCode,
+        ApiKey.planId: planId,
+      });
+      final subscription = SubscriptionModel.fromJson(response['data']);
+      return Right(subscription);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }
