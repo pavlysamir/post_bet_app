@@ -23,6 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "aboutUs": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "aboutUsContant": MessageLookupByLibrary.simpleMessage(
+            "من نحن \n مرحبا بكم في تطبيق “PostBit” الذي يعتبر منصة مبتكرة لنشر المحتوى عبر مواقع التواصل الاجتماعي المختلفة بكل سهولة وفعالية. نحن نسعى جاهدين لتوفير تجربة متميزة للمستخدمين، حيث يمكنهم بسهولة نشر المحتوى الخاص بهم عبر مجموعة متنوعة من منصات التواصل الاجتماعي بنقرة واحدة فقط. في Postbeat، نفخر بتقديم التكنولوجيا المتقدمة والأدوات سهلة الاستخدام التي تمكن المستخدمين من إدارة ونشر محتواها بسلاسة وفعالية. سواء كنت ترغب في مشاركة الصور ومقاطع الفيديو أو النصوص والروابط، يمكنك القيام بذلك بسهولة وسرعة عبر تطبيق PostBit. تطبيق PostBit هو ملك لشركة Boulevard E-Commerce، وهي شركة مقرها في دولة الإمارات العربية المتحدة. نحن ملتزمون بتقديم خدمات عالية الجودة وتجارب مستخدمين متميزة، ونسعى دائمًا لتحسين منتجاتنا وتلبية احتياجات مجتمعنا المتنوع.\nإذا كانت لديك أية أسئلة أو اقتراحات أو كنت بحاجة إلى الدعم، فلا تتردد في الاتصال بنا. نحن هنا لمساعدتك في الحصول على أفضل تجربة ممكنة مع تطبيق BoostBit. شكرًا لك على اختيار Post Pete"),
         "accounts": MessageLookupByLibrary.simpleMessage("الحسابات"),
         "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
         "basic": MessageLookupByLibrary.simpleMessage("بسيط"),

@@ -199,7 +199,10 @@ class SettingsScreen extends StatelessWidget {
                 title: S.of(context).Cobons,
               ),
               SettingsIconWidget(
-                function: () {},
+                function: () {
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kAboutUs);
+                },
                 title: S.of(context).aboutUs,
               ),
               SettingsIconWidget(

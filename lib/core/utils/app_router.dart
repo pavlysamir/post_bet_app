@@ -14,6 +14,7 @@ import 'package:post_bet/features/home/presentation/views/home_screen.dart';
 import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dart';
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
 import 'package:post_bet/features/profile/presentation/view/edit%20profile%20screen.dart';
+import 'package:post_bet/features/settings/presentation/views/about_us_view.dart';
 import 'package:post_bet/features/settings/presentation/views/change_password_view.dart';
 import 'package:post_bet/features/settings/presentation/views/cobons_view.dart';
 import 'package:post_bet/features/settings/presentation/views/private_chat_view.dart';
@@ -37,6 +38,7 @@ abstract class AppRouter {
   static const kNewChangePassword = '/newChangePassword';
   static const kVerifyNewChangePassword = '/VerifyNewChangePassword';
   static const kPrivateChat = '/PrivateChat';
+  static const kAboutUs = '/AboutUs';
 
   static final router = GoRouter(
       initialLocation: //kHomeLayOut,
@@ -113,6 +115,10 @@ abstract class AppRouter {
         GoRoute(
           path: kPrivateChat,
           builder: (context, state) => const PrivateChat(),
+        ),
+        GoRoute(
+          path: kAboutUs,
+          builder: (context, state) => const AboutUsview(),
         ),
       ]);
 }
