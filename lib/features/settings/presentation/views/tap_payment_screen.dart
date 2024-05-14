@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:post_bet/core/utils/app_router.dart';
-import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
+import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/webview_view.dart';
 import 'package:post_bet/generated/l10n.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -26,16 +25,29 @@ class _WebViewPaynetState extends State<WebViewPaynet> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+    SettingsCubit.get(context).getPlans();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            customGoAndDeleteNavigate(
-                context: context, path: AppRouter.kHomeLayOut);
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Navigator.popUntil(
+        //         context, ModalRoute.withName(AppRouter.kHomeLayOut));
+        //   },
+        //   icon: const Icon(Icons.arrow_back),
+        // ),
         title: CustomTitleText(text: S.of(context).subscribe),
         actions: [
           IconButton(
@@ -63,12 +75,12 @@ class _WebViewPaynetState extends State<WebViewPaynet> {
                   return;
                 }
               },
-              icon: const Icon(Icons.refresh)),
+              icon: const Icon(Icons.arrow_forward_ios)),
           IconButton(
               onPressed: () async {
                 controller!.reload();
               },
-              icon: const Icon(Icons.arrow_forward_ios))
+              icon: const Icon(Icons.refresh))
         ],
       ),
       body: WebViewView(controller: controller!),

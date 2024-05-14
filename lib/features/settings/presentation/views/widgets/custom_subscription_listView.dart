@@ -46,8 +46,10 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
             itemBuilder: (context, index) {
               return SubscriptionPlansCntainer(
                 function: () async {
-                  await SettingsCubit.get(context).subscription(
-                      planId: '${planModel[index].id}', promoCode: '');
+                  planModel[index].price == 0
+                      ? null
+                      : await SettingsCubit.get(context).subscription(
+                          planId: '${planModel[index].id}', promoCode: '');
                 },
                 price: "${planModel[index].price}\$",
                 countPosts:

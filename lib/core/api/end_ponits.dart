@@ -3,11 +3,14 @@ class EndPoint {
   static String baseUrl = "https://post-bet.onrender.com";
   static String login = "/Auth/login";
   static String signUp = "/Auth/signUp";
-
+  static const String baseUrlLinkSocial =
+      'https://app.ayrshare.com/api/profiles/generateJWT';
+  static const String authorizationHeader =
+      'Bearer ZE5QBZX-0EVMJB0-MEZKHHT-H0ZEPEV';
+  static const String contentType = 'application/json';
   static String getOtp = "/Auth/verify-otp";
   static String forgotPassword = "/Auth/forget-password";
   static String changeForgetPassword = "/Auth/change-forget-password";
-
   static String verfyAccount = "/Auth/verifyAccount";
 
   static String subscraption = "/plans/subscribe";
@@ -21,6 +24,7 @@ class EndPoint {
   static String promocode = "/promocode";
 
   static String changePassword = "/Auth/change-password";
+
   //   static String getPlaneDataEndPoint(padgeNumber,) {
   //   return "/plans/$id";
   // }
@@ -30,12 +34,10 @@ class ApiKey {
   static String status = "statusCode";
   static String errorMessage = "message";
   static String error = "errors";
-
   static String email = "email";
   static String password = "password";
   static String otp = "otp";
   static String newForgetPassword = "newPassword";
-
   static String token = "token";
   static String message = "message";
   static String id = "id";
