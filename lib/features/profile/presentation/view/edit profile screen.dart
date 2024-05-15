@@ -41,7 +41,8 @@ class EditProfileScreen extends StatelessWidget {
       },
       builder: (context, state) {
         EditProfileCubit editProfileCubit = EditProfileCubit.get(context);
-
+        editProfileCubit.emailController.text =
+            getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);
         return Scaffold(
             appBar: CustomAppbareWithTitle(title: S.of(context).editProfile),
             bottomNavigationBar: BottomAppBar(
@@ -89,23 +90,24 @@ class EditProfileScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(height: 30.h),
-                    // Text(
-                    //   S.of(context).loginEmail,
-                    //   style: Theme.of(context).textTheme.titleLarge,
-                    // ),
-                    // SizedBox(
-                    //   height: 10.h,
-                    //),
-                    // CustomFormField(
-                    //     prefixIcon: const Icon(
-                    //       Icons.email_outlined,
-                    //       color: kPrimaryKey,
-                    //     ),
-                    //     textInputType: TextInputType.emailAddress,
-                    //     hintText:
-                    //         '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email)}',
-                    //     controller: editProfileCubit.emailController,
-                    //     validationMassage: conditionOfValidationEmail),s
+                    Text(
+                      S.of(context).loginEmail,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    CustomFormField(
+                        readOnly: true,
+                        prefixIcon: const Icon(
+                          Icons.email_outlined,
+                          color: kPrimaryKey,
+                        ),
+                        textInputType: TextInputType.emailAddress,
+                        hintText:
+                            '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email)}',
+                        controller: editProfileCubit.emailController,
+                        validationMassage: conditionOfValidationEmail),
                     SizedBox(height: 30.h),
                     Text(
                       S.of(context).name,

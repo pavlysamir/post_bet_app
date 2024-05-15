@@ -12,7 +12,8 @@ class CustomFormField extends StatelessWidget {
       this.suffixIcon,
       this.prefixIcon,
       this.isEyeTrue = false,
-      this.initialValue});
+      this.initialValue,
+      this.readOnly = false});
   final TextEditingController controller;
   //final String validationMassage;
   final String hintText;
@@ -22,10 +23,12 @@ class CustomFormField extends StatelessWidget {
   final Function(String value) validationMassage;
   final bool isEyeTrue;
   final String? initialValue;
+  final bool? readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly!,
       initialValue: initialValue,
       style: Theme.of(context).textTheme.titleMedium,
       obscureText: isEyeTrue,
