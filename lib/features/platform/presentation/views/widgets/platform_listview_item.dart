@@ -4,16 +4,20 @@ import 'package:post_bet/core/utils/styles.dart';
 
 class PlatformListViewItem extends StatelessWidget {
   const PlatformListViewItem(
-      {super.key, required this.image, required this.text});
+      {super.key,
+      required this.image,
+      required this.text,
+      required this.function});
   final String image;
   final String text;
+  final Function() function;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10.h),
       child: GestureDetector(
-        onTap: () {},
+        onTap: function,
         child: Container(
           width: 130.w,
           height: 60.h,

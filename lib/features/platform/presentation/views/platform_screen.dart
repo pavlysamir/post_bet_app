@@ -6,6 +6,7 @@ import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../../generated/l10n.dart';
 
 class PlatformScreen extends StatefulWidget {
@@ -81,6 +82,13 @@ class _PlatformScreenState extends State<PlatformScreen> {
                         itemCount: platformNames.length,
                         itemBuilder: (context, index) {
                           return PlatformListViewItem(
+                            function: () async {
+                              String url = PlatformCubit.get(context)!
+                                  .ayrshareResponse!
+                                  .url;
+                              launchUrl(Uri.parse(url),
+                                  mode: LaunchMode.externalApplication);
+                            },
                             image: platformIcons[index],
                             text: platformNames[index],
                           );

@@ -1,35 +1,43 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/platform/data/models/ayrshare_model.dart';
 
 class PlatFormsRepositery {
   PlatFormsRepositery();
-
+  static String profileKey =
+      getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey);
   static const String baseUrl =
       'https://app.ayrshare.com/api/profiles/generateJWT';
   static const String authorizationHeader =
-      'Bearer ZE5QBZX-0EVMJB0-MEZKHHT-H0ZEPEV';
+      'Bearer JZ71CXE-06T4YBE-KST6KRV-5AR78B2';
   static const String contentType = 'application/json';
-  static const String domain = "id-aa20p";
+  static const String domain = "id-c9o06";
   static const String privateKey =
-      "-----BEGIN RSA PRIVATE KEY-----\nMIIFLTBXBgkqhkiG9w0BBQ0wSjApBgkqhkiG9w0BBQwwHAQIr6xdTpQSmxQCAggA\nMAwGCCqGSIb3DQIJBQAwHQYJYIZIAWUDBAEqBBAGSG0wtZKWU7rdQvcmPwxPBIIE\n0GuOLu6mK3SVIH/akEDsCuYKRReiFJa8yHX0AaVzmaQY9kCjJBr6Of8hzFY6RSPK\nopeSTPNytxZDHAIlcdkQkSs4U6oKMsJnTGg2aIphF3jOTtNhRkGqreThYsKFUoUt\nGlyw9FizWo/qxN27TGxtyf9osu8eSeMvb5Ms0jjpwaih6/wpNT/y2uj48fFNtPXX\n6tRHzJKzgYfhAGhkUBemSiD9QT39BwYhN1QW913FFSM9CexDrMR4AYVTTPmZoTcT\nD8s3KmieH2RafkGo4PPLq/m7ry9/+pJweQC81Bl85qujo3MoIi+8Nk9kGDB6RYo9\nVyq5mMRyMY1lPvblZwRyTGkmSOvoBJI6CHWX5d0x4RYZwQXSIFv/0Rbnv3VD+Tz0\nd5MxFYNOMTr5fmT5oN4aDy/ma55X7WrNcc9Jrmjs9bC4wmgdn6S2c+cGlRx5UhbZ\nQxOyBd9F2pLPxnGwqGVxqIB+dOAXZkE1/oniy5GUo6EMD3h2+I9i7OTkliRCSFlM\nVZeTh+mTHEpoc2BSlAbAYL4PV1Vu8VB3B4JonyQwPglfp0tsUfQxMDe5mqyFw+vz\ngPS7c7U7UFgyOYWX+OOcNt76S0Px6JgIuPEr44U5LVFtKcDWEmFs3sedVUVsx/Ln\n3YEfRzGeIUE34aWq5/9q2WAIDSG9PzvmbJjGav+PwQghIntO4Md7LO9bQ43BneFk\nI/eR0ujSkHZ+BDrOThu9M3orOtZ1sNlBYLAVJI1wiH3noLCXHqfzY7OawAtk3PrT\nodE2RtcmqPZCiOyH9YqcUARCtHQDRlkTHUqKRG4AQyBW0VOYKGRjxpj0iT0s5ysG\n4xbrf8F0MAXTGhR7m283T66sqTWrBTngLL4Vw5Ol65ANIfX+ByxtU4sqg0ReNq/4\njIke+fyZb0oWEV0+F2KHhh5YC5MeveEVbWSznzYe4UvPiYixP9IV21d6oUsBX2jU\n7HaLxc6mWAAv0fV5fzRrl7NbS/nuVhcL4VcH53HYSJK4hBsk4XyAdNm/j+tfaSS8\nwywHzolICe2T9TeQsh3Xh59BTvHOIf9rU4WoHhLPrxCeIC/eqJF8NLCkHt3wQNhK\nJTiP7C8NaHVQ3ZweDqKPniRIrsXjwKp/WooIFEVQNnPgs0VdR4hQgfKWnd78bM8f\nVaLUJiiffjYJXDtjUwNS0qX/nbiDu55T5Wrur73tQtjWzGg7mOCzLgOJWbyVR8j/\nXQGCxykj/yjEiRPxGB8alw50x614isVkgr08yjd9fK5iV6TgFPBTCnpKBXNhgVg5\nKypfZTDJ8r5oYBW8c0XYeQ8dJakN4O2A8Qs1EHluDfwz7hlZ087gFePQgtoyT+S7\nHPONCa4H92+uD9+/oGndtjN1GKNPD54t19lKZjwAqqBriJVePVGn48GiEbt1jWOZ\nhtQUup1Wg1Qi3HD0/kI/UpvbMNJFm2BOMf6E8T/3ew77chELZ1ZyxTEbJ5ydE39S\n0NQGpZFxJKw2Oh42XmL73DAlSMgAEyTKStwUMkMn33WB2aisSGx1Cf+kmMXNTGRy\ncNJIvulNxJjueMSTTqwrj9T5I8c0fNFgJRZpltguKMLKGxLkikgPw9ugLKwieBsz\nC0Q07VkfyGz1ZhfVhxoQF0ap80HT026ad4Na1isXKxB\n-----END RSA PRIVATE KEY-----";
-  static const String profileKey = "MMB3RE0-DX1MYQF-J064PE8-F89Q370";
-  static String email = "husseinfayed86@gmail.com";
+      "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAtfv3bkiNdv8zin1M6mKrUdFYhtfQ6u0poqEAEM7YVcq9/wfA\nyD1uHvGyTVa2CGHbEc76CyNdxK34LCW7DIMoIFYZSmUzE1vSRukAlOad1VPpRgf3\nlIiNdEUyy+dpzJkJoQHzLP7qFS8O+CRupTFaJdcUokUd3YeXwMfLH+np7y9jXgSc\n9mg0726eb/3SJkHf+e8W7m8jATctg3t30xUYtXenxvUdxlQekUetkj9ITP4pxF2a\nP8CdbX48VfuptR+4XugXrPdw9zdPXTrsE50JPcTWbN35LNnFE4WKDxJ2XvOCngBR\nXnJgdE49f+m3TMx/YCeWLm07w4ptUBchQShMvwIDAQABAoIBABCoXH4rmvNU/x6X\n7eXtxoO/N1dkbXr2NB+ZlXF0at3zfbpYjH9ntsA+BxWdhce0+VdNzEUfusde1elo\nl2YDorUkXGfwZSFKVYWTHLAEf1cAZB5lFUxIcYuT1/H3yo86mjndfVOq47oGVtxE\n2ByRLLtrpA0JvubrsJV/VEBQFM8wA4i2+ZwktBRzD2+XE/A1dimvFVoMbVm+rdVI\nWU/K1OuBPRsg7Yg8L98fxr20enVuQBk9+VEgsojPs1VkW7Ks2tz3fwwG6DFK7BLl\ng95uaD2qTYgAbWLKgRBgWZ0UDccSEYUC/EWpyt7PkPhgfRg7kRM8jo9Vu1GX3cat\nKqNpEkECgYEA4fKp8e0/b9hEXIcBUYolml8vWElQEnkw8R1sBmW92fNQcYiI2z42\nIKc0l6DN3xlxf/QZ8M+vlpT1wWmtTYe/RrbgRqtJkrq+v4QYJQbWGQqZGzPFjVw6\nzdPTHH9dTn2OBVj1lsINidvvxU71OIFyOgmCroAWfrUJXcLCeKQd5/8CgYEAzjBg\nggF//OyVbSIn7hgru5oG+Y1ajPioE9EAzTGPsB4BF1/JQYk+7N3c+sgEgSrQQlzV\nIZW0iTtQzfNL7k1REn3fqKDAh28V7nky4EJFyhS4akqLSvBTdzxzQyjjr0wKZyOp\nqrcbDUO4BJ2ZpDmeKvWhl5eCbl1IBi0NIt3nm0ECgYBR4aTgvX+NwqwTdAFwUUYL\nSY9YyUixSSYJWwY400oX3+s5Gaeu/D6VWsLeaDHzNb9CBW4ZLMqPIXBmJSveuuEA\neWmRcqV4/R//O5mcYXvZG1Qc3YgsEE5nJOqOm0FvHmUHXxOxDKXnXcLomBKZ5Z9F\nlQi8wEJmrKi2R8w9+Au2dQKBgQCZpfk0x/NdQdu0IKDKz14/hW8vJcPVizKM2dGU\nFxuxLRq5FVr/KEwo7MfQZZ7dtk7NNSppxYpsPTRg1K2/ngQNGJnDqk7uXbxlIhHk\nhd5F0Zz/MB+Or3ozP2vRHzZUGgEijLPRkHNrNgx5/AtTEtCnyLUrJu8+WOrkF0xT\nsDL4QQKBgEknfRqHkCEAKN4Al6SvA8cH45fChe9NBshX5xUn1olRc9iEkXsRDMFr\nmAFNdzhs86R1n66gJ4naugRGJjYZAL/jdvN7EZ/XJskHlbvsLn1cKYL6qkOlKDru\nVopGsyhjmZNXVfSIfS+q0g5pDooYVRXth2O3FJXUpndbym0CoXGw\n-----END RSA PRIVATE KEY-----";
+
+  static String email =
+      getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);
 
   // getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);
-  static const num expiresIn = 10;
+  static const num expiresIn = 2600;
   static const String redirect = 'https://www.google.com/';
 
-  Future<Response<dynamic>> linkAccount() async {
+  Future<Either<String, AyrshareResponse>> linkAccount() async {
+    if (kDebugMode) {
+      print('aaaaaaaaaaaaaaaaaa $authorizationHeader $email');
+    }
     final Map<String, dynamic> data = {
       'domain': domain,
       'privateKey': privateKey,
       'profileKey': profileKey,
-      'email': {
-        'to': email,
-      },
-      'expiresIn': expiresIn,
       'redirect': redirect,
+      'logout': true
     };
     print(jsonEncode(data));
 
@@ -41,11 +49,21 @@ class PlatFormsRepositery {
 
     try {
       final response = await dio.post(baseUrl, data: jsonEncode(data));
-      return response; // Handle successful response
+      print(response.data['url']);
+      final pattern = RegExp('.{3000}'); // 800 is the size of each chunk
+      pattern
+          .allMatches(response.data['url'])
+          .forEach((match) => print(match.group(0)));
+      final responseAyrshare = AyrshareResponse.fromJson(response.data);
+      getIt
+          .get<CashHelperSharedPreferences>()
+          .saveData(key: 'url', value: responseAyrshare.url);
+
+      return Right(responseAyrshare); // Handle successful response
     } on DioError catch (error) {
       // Handle error based on error.type and error.response
       print('Error linking social account: ${error.message}');
-      rethrow; // Re-throw for further handling (optional)
+      return Left(error.message!); // Re-throw for further handling (optional)
     }
   }
 }
