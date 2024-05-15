@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
 
 part 'add_post_state.dart';
 
@@ -109,5 +110,33 @@ class AddPostCubit extends Cubit<AddPostState> {
       return Uint8List(0); // Handle error gracefully
     }
   }
+
+  final List<String> selectedItems = [];
+
+  final Map<String, bool> checkBoxValues = {};
+  final List<String> platformNames = [
+    'Instagram',
+    'Facebook',
+    'X',
+    'Linkedin',
+    'Reddit',
+    'Youtube',
+    'Tiktok',
+    'Pinterest',
+    'Telegram',
+    'Google Business'
+  ];
+  final List<String> platformIcons = [
+    AssetsData.instagramIcon,
+    AssetsData.faceBookIcon,
+    AssetsData.xIcon,
+    AssetsData.linkedln,
+    AssetsData.reddit,
+    AssetsData.youtube,
+    AssetsData.tiktok,
+    AssetsData.pinterest,
+    AssetsData.telegram,
+    AssetsData.googleBusiness
+  ];
 }
      // img.compositeImage(image, banner!, dstH: 35, dstW: 140, dstX: x, dstY: y);

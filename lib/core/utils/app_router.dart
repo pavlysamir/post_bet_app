@@ -41,16 +41,16 @@ abstract class AppRouter {
   static const kAboutUs = '/AboutUs';
 
   static final router = GoRouter(
-      initialLocation: //kHomeLayOut,
-          getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token) !=
-                  null
-              ? kHomeLayOut
-              : getIt
-                          .get<CashHelperSharedPreferences>()
-                          .getData(key: 'onBoarding') ==
-                      true
-                  ? kLogin
-                  : kOnBoarding,
+      initialLocation: kHomeLayOut,
+      // getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token) !=
+      //         null
+      //     ? kHomeLayOut
+      //     : getIt
+      //                 .get<CashHelperSharedPreferences>()
+      //                 .getData(key: 'onBoarding') ==
+      //             true
+      //         ? kLogin
+      //         : kOnBoarding,
       routes: [
         GoRoute(
           path: kWelcomeView,
