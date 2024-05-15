@@ -52,4 +52,6 @@ class ApiKey {
   static String newPassword = "newPassword";
   static String promoCode = "promoCode";
   static String planId = "planId";
+  static String profileKey = "profileKey";
+  static String refId = "refId";
 }

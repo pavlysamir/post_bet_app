@@ -9,6 +9,8 @@ class AuthDataModel {
   final String userType;
   final String? profileImage;
   final String? otp;
+  final String? profileKey;
+  final String? refId;
   final DateTime? otpRequestDate;
   final bool verifiedOtp;
   final DateTime lastLoginTime;
@@ -27,6 +29,8 @@ class AuthDataModel {
     required this.userType,
     this.profileImage,
     this.otp,
+    this.profileKey,
+    this.refId,
     this.otpRequestDate,
     required this.verifiedOtp,
     required this.lastLoginTime,
@@ -47,6 +51,8 @@ class AuthDataModel {
       userType: json['userType'],
       profileImage: json['profileImage'],
       otp: json['otp'],
+      profileKey: json['profileKey'],
+      refId: json['refId'],
       otpRequestDate: json['otpRequestDate'] != null
           ? DateTime.parse(json['otpRequestDate'])
           : null,

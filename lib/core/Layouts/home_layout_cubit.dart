@@ -39,6 +39,10 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   void changeBottomNavBar(int index) {
     print(getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.id));
     print(getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token));
+    print(getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.profileKey));
+    print(getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.refId));
 
     currentIndex = index;
 
