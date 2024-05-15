@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
@@ -83,10 +85,15 @@ class _PlatformScreenState extends State<PlatformScreen> {
                         itemBuilder: (context, index) {
                           return PlatformListViewItem(
                             function: () async {
-                              String url = PlatformCubit.get(context)!
-                                  .ayrshareResponse!
-                                  .url;
-                              launchUrl(Uri.parse(url),
+                              // String url = Uri.decodeFull(
+                              //     PlatformCubit.get(context)!
+                              //         .ayrshareResponse!
+                              //         .url);
+
+                              launchUrl(
+                                  Uri.parse(getIt
+                                      .get<CashHelperSharedPreferences>()
+                                      .getData(key: 'url')),
                                   mode: LaunchMode.externalApplication);
                             },
                             image: platformIcons[index],

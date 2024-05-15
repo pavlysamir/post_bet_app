@@ -24,7 +24,7 @@ class PlatFormsRepositery {
   static String email =
       getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);
 
-  // getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);
+  // getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);.com
   static const num expiresIn = 2600;
   static const String redirect = 'https://www.google.com/';
 
@@ -36,8 +36,8 @@ class PlatFormsRepositery {
       'domain': domain,
       'privateKey': privateKey,
       'profileKey': profileKey,
-      'redirect': redirect,
-      'logout': true
+      //'redirect': redirect,
+      'logout': false
     };
     print(jsonEncode(data));
 
@@ -49,15 +49,22 @@ class PlatFormsRepositery {
 
     try {
       final response = await dio.post(baseUrl, data: jsonEncode(data));
-      print(response.data['url']);
-      final pattern = RegExp('.{3000}'); // 800 is the size of each chunk
-      pattern
-          .allMatches(response.data['url'])
-          .forEach((match) => print(match.group(0)));
+
       final responseAyrshare = AyrshareResponse.fromJson(response.data);
-      getIt
-          .get<CashHelperSharedPreferences>()
-          .saveData(key: 'url', value: responseAyrshare.url);
+      final url = Uri.decodeFull(response.data['token']);
+      List<String> parts = url.split('.');
+      String? result;
+      for (int i = 0; i < parts.length; i++) {
+        result = '\n${parts[i]}';
+      }
+
+      // Split the string at every dot
+
+      getIt.get<CashHelperSharedPreferences>().saveData(
+          key: 'url',
+          value: 'https://profile.ayrshare.com?domain=id-c9o06&jwt=$result');
+
+      // print(getIt.get<CashHelperSharedPreferences>().getData(key: 'url'));
 
       return Right(responseAyrshare); // Handle successful response
     } on DioError catch (error) {
