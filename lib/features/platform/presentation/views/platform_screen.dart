@@ -8,6 +8,7 @@ import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
+import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -23,7 +24,6 @@ class _PlatformScreenState extends State<PlatformScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    PlatformCubit.get(context)!.linkAcount();
   }
 
   @override
@@ -85,16 +85,22 @@ class _PlatformScreenState extends State<PlatformScreen> {
                         itemBuilder: (context, index) {
                           return PlatformListViewItem(
                             function: () async {
-                              // String url = Uri.decodeFull(
-                              //     PlatformCubit.get(context)!
-                              //         .ayrshareResponse!
-                              //         .url);
+                              await PlatformCubit.get(context)!
+                                  .linkAcount()
+                                  .then((value) {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return WebViewPaynet(
+                                    uri: value,
+                                  );
+                                }));
+                              });
 
-                              launchUrl(
-                                  Uri.parse(getIt
-                                      .get<CashHelperSharedPreferences>()
-                                      .getData(key: 'url')),
-                                  mode: LaunchMode.externalApplication);
+                              // launchUrl(
+                              //     Uri.parse(getIt
+                              //         .get<CashHelperSharedPreferences>()
+                              //         .getData(key: 'url')),
+                              //     mode: LaunchMode.externalApplication);
                             },
                             image: platformIcons[index],
                             text: platformNames[index],

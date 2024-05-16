@@ -28,7 +28,7 @@ class PlatFormsRepositery {
   static const num expiresIn = 2600;
   static const String redirect = 'https://www.google.com/';
 
-  Future<Either<String, AyrshareResponse>> linkAccount() async {
+  Future<Either<String, String>> linkAccount() async {
     if (kDebugMode) {
       print('aaaaaaaaaaaaaaaaaa $authorizationHeader $email');
     }
@@ -51,22 +51,9 @@ class PlatFormsRepositery {
       final response = await dio.post(baseUrl, data: jsonEncode(data));
 
       final responseAyrshare = AyrshareResponse.fromJson(response.data);
-      final url = Uri.decodeFull(response.data['token']);
-      List<String> parts = url.split('.');
-      String? result;
-      for (int i = 0; i < parts.length; i++) {
-        result = '\n${parts[i]}';
-      }
+      print(responseAyrshare.url);
 
-      // Split the string at every dot
-
-      getIt.get<CashHelperSharedPreferences>().saveData(
-          key: 'url',
-          value: 'https://profile.ayrshare.com?domain=id-c9o06&jwt=$result');
-
-      // print(getIt.get<CashHelperSharedPreferences>().getData(key: 'url'));
-
-      return Right(responseAyrshare); // Handle successful response
+      return Right(responseAyrshare.url); // Handle successful response
     } on DioError catch (error) {
       // Handle error based on error.type and error.response
       print('Error linking social account: ${error.message}');

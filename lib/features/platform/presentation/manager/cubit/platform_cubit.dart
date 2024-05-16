@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:post_bet/features/platform/data/models/ayrshare_model.dart';
@@ -13,15 +14,17 @@ class PlatformCubit extends Cubit<PlatformState> {
 
   static PlatformCubit? get(context) => BlocProvider.of(context);
 
-  AyrshareResponse? ayrshareResponse;
-  linkAcount() async {
+  String url = '';
+  Future<String> linkAcount() async {
     emit(LinkAcoountLoading());
     final response = await platFormsRepositery.linkAccount();
     response.fold((l) {
       emit(LinkAcoountFailure(errMessage: l));
     }, (r) {
-      ayrshareResponse = r;
+      url = r;
+      print(url);
       emit(LinkAcoountSuccess());
     });
+    return url;
   }
 }
