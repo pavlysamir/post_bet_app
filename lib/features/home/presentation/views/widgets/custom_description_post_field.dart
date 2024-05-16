@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_view_photo_from_device.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_view_video_from_device.dart';
@@ -68,6 +69,11 @@ class CustomDescriptionPostField extends StatelessWidget {
                   //prefixIcon: prefexIcon,
                 ),
               ),
+              state is LoadingPickImage
+                  ? const Center(
+                      child: CircularProgressIndicator(color: kPrimaryKey),
+                    )
+                  : SizedBox(),
               if (AddPostCubit.get(context).image != null)
                 Column(
                   children: [

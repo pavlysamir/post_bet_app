@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:post_bet/core/api/dio_consumer.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
+import 'package:post_bet/features/home/data/post_repo.dart';
 import 'package:post_bet/features/platform/data/repo/platforms_repo.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
@@ -26,4 +27,5 @@ void setUpServiceLocator() {
   ));
 
   getIt.registerSingleton<PlatFormsRepositery>(PlatFormsRepositery());
+  getIt.registerSingleton<PostReposatory>(PostReposatory());
 }

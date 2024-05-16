@@ -74,12 +74,12 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                           if (newValue) {
                                             // Add item to selected list if checked
                                             AddPostCubit.get(context)
-                                                .selectedItems
+                                                .selectedaceInstaItems
                                                 .add(value);
                                           } else {
                                             // Remove item from selected list if unchecked
                                             AddPostCubit.get(context)
-                                                .selectedItems
+                                                .selectedaceInstaItems
                                                 .remove(value);
                                           }
                                         });
@@ -115,12 +115,12 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                           if (newValue) {
                                             // Add item to selected list if checked
                                             AddPostCubit.get(context)
-                                                .selectedItems
+                                                .selectedaceInstaItems
                                                 .add(value);
                                           } else {
                                             // Remove item from selected list if unchecked
                                             AddPostCubit.get(context)
-                                                .selectedItems
+                                                .selectedaceInstaItems
                                                 .remove(value);
                                           }
                                         });
@@ -162,6 +162,7 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                               AddPostCubit.get(context).selectedItems.add(
                                   AddPostCubit.get(context)
                                       .platformNames[widget.indrx]);
+                              print(AddPostCubit.get(context).selectedItems);
                             } else if (!value) {
                               // Remove item from selected list if unchecked
                               AddPostCubit.get(context)
@@ -171,7 +172,7 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                       AddPostCubit.get(context).checkBoxValues[
                                           AddPostCubit.get(context)
                                               .platformNames[widget.indrx]]);
-                              print('ddddd00');
+                              print(AddPostCubit.get(context).selectedItems);
                             }
                           });
                         });

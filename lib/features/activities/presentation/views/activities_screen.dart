@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
-import 'package:post_bet/features/activities/presentation/views/widgets/last_posts_list_view.dart';
 import '../../../../../generated/l10n.dart';
 
 class ActivitiesScreen extends StatelessWidget {

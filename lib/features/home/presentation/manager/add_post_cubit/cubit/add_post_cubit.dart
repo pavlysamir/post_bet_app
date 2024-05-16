@@ -8,12 +8,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/features/home/data/post_repo.dart';
 
 part 'add_post_state.dart';
 
 class AddPostCubit extends Cubit<AddPostState> {
-  AddPostCubit() : super(AddPostInitial());
+  AddPostCubit(this.postReposatory) : super(AddPostInitial());
+
+  final PostReposatory postReposatory;
   static AddPostCubit get(BuildContext context) => BlocProvider.of(context);
 
   TextEditingController addPostController = TextEditingController();
@@ -32,12 +36,17 @@ class AddPostCubit extends Cubit<AddPostState> {
   // }
   Uint8List? image;
   Future<void> pickImage() async {
+    emit(LoadingPickImage());
     final result = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (result != null) {
       final file = File(result.path);
       final imageBytes = await watermarkImage(file);
       if (imageBytes != null) {
         image = imageBytes;
+        print(imageBytes);
+
+        // store unit8List image here ;
+
         // Emit state or update bloc (if using state management)
         emit(SuccessfulPickImage());
       } else {
@@ -113,6 +122,8 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   final List<String> selectedItems = [];
 
+  final List<String> selectedaceInstaItems = [];
+
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
     'Instagram',
@@ -138,5 +149,45 @@ class AddPostCubit extends Cubit<AddPostState> {
     AssetsData.telegram,
     AssetsData.googleBusiness
   ];
+  String imgUrl = '';
+  Future<String> uploadImage(String filePath) async {
+    try {
+      emit(UploadImageLoading());
+
+      final response = await postReposatory.uploadFile(filePath);
+      print(response);
+      imgUrl = response;
+      emit(UploadImgSuccessfully());
+      return response;
+    } catch (e) {
+      emit(UploadImgFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  Future convertUint8listToFile() async {
+    final tempDir = await getTemporaryDirectory();
+    File file = await File('${tempDir.path}/image.png').create();
+    file.writeAsBytes(image!).then((value) async {
+      await uploadImage(value.path);
+      await createPost();
+    });
+  }
+
+  createPost() async {
+    try {
+      emit(CreatePostLoading());
+
+      final response = await postReposatory.createPost(
+          addPostController.text, selectedItems, imgUrl);
+      print(response);
+      emit(CreatePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
 }
      // img.compositeImage(image, banner!, dstH: 35, dstW: 140, dstX: x, dstY: y);

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 import 'package:post_bet/generated/l10n.dart';
-import '../styles.dart';
 
 class PopUpDialog extends StatelessWidget {
   const PopUpDialog({

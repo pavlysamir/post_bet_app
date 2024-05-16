@@ -18,17 +18,36 @@ class CreatePostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddPostCubit, AddPostState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is CreatePostSuccessfully) {
+          //AddPostCubit.get(context).clearImage();
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success'),
+          ));
+        } else if (state is CreatePostFailure || state is UploadImgFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: state is CreatePostFailure
+                ? Text(state.errMessage)
+                : const Text('Failure'),
+          ));
+        }
+      },
       builder: (context, state) {
         return Scaffold(
             appBar: CustomAppbareWithTitle(title: S.of(context).createPost),
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: CustomButtonLarge(
-                  text: S.of(context).share,
+                  text:
+                      state is UploadImageLoading || state is CreatePostLoading
+                          ? 'loading..'
+                          : S.of(context).share,
                   color: kPrimaryKey,
                   textColor: Colors.white,
-                  function: () {
+                  function: () async {
+                    await AddPostCubit.get(context).convertUint8listToFile();
+                    // await AddPostCubit.get(context).createPost();
+
                     print(AddPostCubit.get(context).checkBoxValues);
                     print(AddPostCubit.get(context).selectedItems);
                   }),

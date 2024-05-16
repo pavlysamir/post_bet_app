@@ -2,29 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
-import 'package:post_bet/core/utils/service_locator.dart';
-import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
 import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../../generated/l10n.dart';
 
-class PlatformScreen extends StatefulWidget {
+class PlatformScreen extends StatelessWidget {
   const PlatformScreen({super.key});
-
-  @override
-  State<PlatformScreen> createState() => _PlatformScreenState();
-}
-
-class _PlatformScreenState extends State<PlatformScreen> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
