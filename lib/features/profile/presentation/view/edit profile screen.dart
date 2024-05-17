@@ -30,7 +30,8 @@ class EditProfileScreen extends StatelessWidget {
               content: Text("success"),
             ),
           );
-          customJustGoNavigate(context: context, path: AppRouter.kHomeLayOut);
+          customGoAndDeleteNavigate(
+              context: context, path: AppRouter.kHomeLayOut);
         } else if (state is UpdateUserDataFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
@@ -43,6 +44,9 @@ class EditProfileScreen extends StatelessWidget {
         EditProfileCubit editProfileCubit = EditProfileCubit.get(context);
         editProfileCubit.emailController.text =
             getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);
+
+        editProfileCubit.nameController.text =
+            getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name);
         return Scaffold(
             appBar: CustomAppbareWithTitle(title: S.of(context).editProfile),
             bottomNavigationBar: BottomAppBar(

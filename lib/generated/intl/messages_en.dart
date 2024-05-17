@@ -35,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
+        "changeThemeConfirm":
+            MessageLookupByLibrary.simpleMessage("Confirm Change Theme"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
@@ -44,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("Current Password"),
         "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
+        "deletAccountConfirm":
+            MessageLookupByLibrary.simpleMessage("Confirm Delete Account"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "description1": MessageLookupByLibrary.simpleMessage(
             "By using the application, you agree to comply with all the terms and conditions set forth in this agreement."),
@@ -131,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Do you want change language"),
         "doChangeTheme":
             MessageLookupByLibrary.simpleMessage("Do you want change Theme"),
+        "doLogOut": MessageLookupByLibrary.simpleMessage("Do you want Log Out"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don’t have account ? register now"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -150,6 +155,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastPosts": MessageLookupByLibrary.simpleMessage("Your latest posts"),
         "letsSatrt": MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
         "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
+        "logOutConfirm":
+            MessageLookupByLibrary.simpleMessage("Confirm Log Out"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),

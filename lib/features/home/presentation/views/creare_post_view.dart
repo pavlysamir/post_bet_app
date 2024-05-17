@@ -45,7 +45,7 @@ class CreatePostView extends StatelessWidget {
                   color: kPrimaryKey,
                   textColor: Colors.white,
                   function: () async {
-                    await AddPostCubit.get(context).convertUint8listToFile();
+                    //   await AddPostCubit.get(context).convertUint8listToFile();
                     // await AddPostCubit.get(context).createPost();
 
                     print(AddPostCubit.get(context).checkBoxValues);

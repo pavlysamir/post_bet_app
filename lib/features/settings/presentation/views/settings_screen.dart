@@ -157,8 +157,8 @@ class SettingsScreen extends StatelessWidget {
 
                               Navigator.pop(context);
                             },
-                            title: 'Confirm Log Out',
-                            subTitle: S.of(context).doChangeTheme,
+                            title: S.of(context).deletAccountConfirm,
+                            subTitle: S.of(context).logOut,
                             colorButton1: kPoppingsRedColor,
                             colorButton2: Colors.red,
                             textColortcolor1: Colors.red,
@@ -175,7 +175,7 @@ class SettingsScreen extends StatelessWidget {
                         SettingsCubit.get(context).changeTheme();
                         Navigator.pop(context);
                       },
-                      title: 'Confirm Change Theme',
+                      title: S.of(context).changeThemeConfirm,
                       subTitle: S.of(context).doChangeTheme,
                       colorButton1: kPoppingsRedColor,
                       colorButton2: Colors.red,
@@ -228,8 +228,8 @@ class SettingsScreen extends StatelessWidget {
 
                         Navigator.pop(context);
                       },
-                      title: 'Confirm Log Out',
-                      subTitle: S.of(context).doChangeTheme,
+                      title: S.of(context).logOutConfirm,
+                      subTitle: S.of(context).doLogOut,
                       colorButton1: kPoppingsRedColor,
                       colorButton2: Colors.red,
                       textColortcolor1: Colors.red,

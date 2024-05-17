@@ -1759,6 +1759,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Confirm Delete Account`
+  String get deletAccountConfirm {
+    return Intl.message(
+      'Confirm Delete Account',
+      name: 'deletAccountConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Change Theme`
+  String get changeThemeConfirm {
+    return Intl.message(
+      'Confirm Change Theme',
+      name: 'changeThemeConfirm',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want Log Out`
+  String get doLogOut {
+    return Intl.message(
+      'Do you want Log Out',
+      name: 'doLogOut',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Log Out`
+  String get logOutConfirm {
+    return Intl.message(
+      'Confirm Log Out',
+      name: 'logOutConfirm',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

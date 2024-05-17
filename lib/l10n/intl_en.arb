@@ -170,6 +170,9 @@
     "title40": "Final approval",
     "description40": "By using the application, you acknowledge that you have read and agree to all terms and conditions of use and the privacy policy associated with it.",
     "title41": "Confidentiality of information",
-    "description41": "We are committed to maintaining the confidentiality of all information you provide to us through the application. We will not share, sell, transfer or disclose any personal information to any third party without your explicit consent, except where legally required, to comply with requests from judicial authorities, or to protect our rights or property."
-
+    "description41": "We are committed to maintaining the confidentiality of all information you provide to us through the application. We will not share, sell, transfer or disclose any personal information to any third party without your explicit consent, except where legally required, to comply with requests from judicial authorities, or to protect our rights or property.",
+    "deletAccountConfirm":"Confirm Delete Account",
+    "changeThemeConfirm":"Confirm Change Theme",
+    "doLogOut":"Do you want Log Out",
+    "logOutConfirm":"Confirm Log Out"
 }

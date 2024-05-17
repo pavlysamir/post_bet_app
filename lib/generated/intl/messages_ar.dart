@@ -33,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changePassword":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "changeTheme": MessageLookupByLibrary.simpleMessage("تغيير المظهر"),
+        "changeThemeConfirm":
+            MessageLookupByLibrary.simpleMessage("تغيير الموضوع"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
@@ -42,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "currentPassword":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الحالية"),
         "cvv": MessageLookupByLibrary.simpleMessage("CVV"),
+        "deletAccountConfirm":
+            MessageLookupByLibrary.simpleMessage("  تاكيد حذف الحساب"),
         "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
         "description1": MessageLookupByLibrary.simpleMessage(
             "باستخدامك التطبيق ، فأنت توافق على الالتزام بكافة الأحكام والشروط المنصوص عليها في هذه الاتفاقية."),
@@ -129,6 +133,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل تريد تغيير اللغة"),
         "doChangeTheme":
             MessageLookupByLibrary.simpleMessage("هل تريد تغيير المظهر"),
+        "doLogOut":
+            MessageLookupByLibrary.simpleMessage("هل تريد تسجيل الخروج"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ سجل الآن"),
         "editProfile":
@@ -150,6 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "lastPosts": MessageLookupByLibrary.simpleMessage("أحدث منشوراتك"),
         "letsSatrt": MessageLookupByLibrary.simpleMessage("لنبدأ"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+        "logOutConfirm":
+            MessageLookupByLibrary.simpleMessage("تاكيد تسجيل الخروج"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginButton": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),

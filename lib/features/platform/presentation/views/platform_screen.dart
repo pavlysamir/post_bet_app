@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
 import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../../generated/l10n.dart';
 
 class PlatformScreen extends StatelessWidget {
@@ -42,7 +44,14 @@ class PlatformScreen extends StatelessWidget {
     ];
     return BlocConsumer<PlatformCubit, PlatformState>(
       listener: (context, state) {
-        // TODO: implement listener
+        // if (state is LinkAcoountSuccess) {
+        //   //launchUrl(Uri.parse(state.url), mode: LaunchMode.externalApplication);
+        //   Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //     return WebViewPaynet(
+        //       uri: state.url,
+        //     );
+        //   }));
+        // }
       },
       builder: (context, state) {
         return Scaffold(
@@ -60,6 +69,14 @@ class PlatformScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
+                ElevatedButton(
+                    onPressed: () async {
+                      PlatformCubit.get(context)!.linkAcount().then((value) {
+                        launchUrl(Uri.parse(value),
+                            mode: LaunchMode.externalApplication);
+                      });
+                    },
+                    child: Text('Link Acount')),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25.w),
@@ -71,22 +88,12 @@ class PlatformScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return PlatformListViewItem(
                             function: () async {
-                              await PlatformCubit.get(context)!
-                                  .linkAcount()
-                                  .then((value) {
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder: (context) {
-                                  return WebViewPaynet(
-                                    uri: value,
-                                  );
-                                }));
-                              });
-
-                              // launchUrl(
-                              //     Uri.parse(getIt
-                              //         .get<CashHelperSharedPreferences>()
-                              //         .getData(key: 'url')),
-                              //     mode: LaunchMode.externalApplication);
+                              // Navigator.push(context,
+                              //     MaterialPageRoute(builder: (context) {
+                              //   return WebViewPaynet(
+                              //     uri: value,
+                              //   );
+                              // }));
                             },
                             image: platformIcons[index],
                             text: platformNames[index],
