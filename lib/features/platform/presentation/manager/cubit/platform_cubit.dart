@@ -21,9 +21,9 @@ class PlatformCubit extends Cubit<PlatformState> {
     response.fold((l) {
       emit(LinkAcoountFailure(errMessage: l));
     }, (r) {
-      //print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa $url');
-      emit(LinkAcoountSuccess());
       url = r;
+
+      emit(LinkAcoountSuccess());
     });
     return url!;
   }

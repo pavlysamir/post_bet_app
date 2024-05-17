@@ -88,12 +88,20 @@ class PlatformScreen extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return PlatformListViewItem(
                             function: () async {
-                              // Navigator.push(context,
-                              //     MaterialPageRoute(builder: (context) {
-                              //   return WebViewPaynet(
-                              //     uri: value,
-                              //   );
-                              // }));
+                              PlatformCubit.get(context)!
+                                  .linkAcount()
+                                  .then((value) {
+                                print(value);
+                              });
+                              //     .then((value) {
+                              //   print(value);
+                              //   Navigator.push(context,
+                              //       MaterialPageRoute(builder: (context) {
+                              //     return WebViewPaynet(
+                              //       uri: value,
+                              //     );
+                              //   }));
+                              // });
                             },
                             image: platformIcons[index],
                             text: platformNames[index],
