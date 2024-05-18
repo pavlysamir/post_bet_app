@@ -23,6 +23,8 @@ class SettingsCubit extends Cubit<SettingsState> {
   TextEditingController currentPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   TextEditingController newPasswordController = TextEditingController();
+  TextEditingController promocodeController = TextEditingController();
+
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isCurrentPasswordVisible = true;
   bool isNewPasswordVisible = true;
@@ -109,6 +111,16 @@ class SettingsCubit extends Cubit<SettingsState> {
     await getIt
         .get<CashHelperSharedPreferences>()
         .removeData(key: ApiKey.profilePic);
+
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.profileKey);
+
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.refId);
+
+    await getIt.get<CashHelperSharedPreferences>().clearData();
 
     emit(LogOutSuccess());
   }

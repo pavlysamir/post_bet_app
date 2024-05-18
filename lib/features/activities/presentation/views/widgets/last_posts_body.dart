@@ -55,6 +55,9 @@ class LastPostsContainer extends StatelessWidget {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) => PopUpDialog(
+                        function2: () {
+                          Navigator.pop(context);
+                        },
                         context: context,
                         function: () {},
                         title: 'Confirm delete post',

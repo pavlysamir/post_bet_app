@@ -114,9 +114,9 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         getIt
             .get<CashHelperSharedPreferences>()
             .saveData(key: ApiKey.name, value: user.data.name);
-        getIt
-            .get<CashHelperSharedPreferences>()
-            .saveData(key: ApiKey.profilePic, value: user.data.profileImage);
+        // getIt
+        //     .get<CashHelperSharedPreferences>()
+        //     .saveData(key: ApiKey.profilePic, value: user.data.profileImage);
 
         getIt
             .get<CashHelperSharedPreferences>()

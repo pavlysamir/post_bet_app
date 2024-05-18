@@ -38,14 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           );
           await LoginCubit.get(context)!.getUserProfile();
-          customGoAndDeleteNavigate(
-              context: context, path: AppRouter.kHomeLayOut);
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errMessage),
             ),
           );
+        } else if (state is GetUserSuccess) {
+          customGoAndDeleteNavigate(
+              context: context, path: AppRouter.kHomeLayOut);
         }
       },
       builder: (context, state) {

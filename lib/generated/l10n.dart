@@ -1799,6 +1799,66 @@ class S {
       args: [],
     );
   }
+
+  /// `15% Discount`
+  String get discount15 {
+    return Intl.message(
+      '15% Discount',
+      name: 'discount15',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook`
+  String get contentDiscount {
+    return Intl.message(
+      'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
+      name: 'contentDiscount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you have Promocode`
+  String get doPromocode {
+    return Intl.message(
+      'Do you have Promocode',
+      name: 'doPromocode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Promocode`
+  String get enterPromo {
+    return Intl.message(
+      'Enter Promocode',
+      name: 'enterPromo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Change langeuage`
+  String get confirmChangeLng {
+    return Intl.message(
+      'Confirm Change langeuage',
+      name: 'confirmChangeLng',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Delete Account`
+  String get confirmDeleteAccount {
+    return Intl.message(
+      'Confirm Delete Account',
+      name: 'confirmDeleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

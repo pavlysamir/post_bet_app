@@ -175,7 +175,14 @@
     "deletAccountConfirm":"  تاكيد حذف الحساب"  ,
     "changeThemeConfirm":"تغيير الموضوع" ,
     "doLogOut":"هل تريد تسجيل الخروج",
-    "logOutConfirm":"تاكيد تسجيل الخروج" 
+    "logOutConfirm":"تاكيد تسجيل الخروج" ,
+    "discount15":"خصم 15%",
+    "contentDiscount":"الباقة المجانية هي باقة مجانية تتضمن 10 قبلات شهرية فقط انستقرام + + فيسبوك",
+    "doPromocode":"هل لديك كود الخصم",
+    "enterPromo":"ادخل كود الخصم",
+    "confirmChangeLng":"تاكيد تغيير اللغة",
+    "confirmDeleteAccount":"تاكيد حذف الحساب"
+
 }
     
     

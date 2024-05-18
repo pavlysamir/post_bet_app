@@ -35,4 +35,8 @@ class CashHelperSharedPreferences {
   }) async {
     return await sharedPreferences?.remove(key);
   }
+
+  Future<dynamic> clearData() async {
+    return await sharedPreferences?.clear();
+  }
 }

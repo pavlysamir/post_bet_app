@@ -128,7 +128,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   final List<String> platformNames = [
     'Instagram',
     'Facebook',
-    'X',
+    'twitter',
     'Linkedin',
     'Reddit',
     'Youtube',
@@ -169,8 +169,10 @@ class AddPostCubit extends Cubit<AddPostState> {
     final tempDir = await getTemporaryDirectory();
     File file = await File('${tempDir.path}/image.png').create();
     file.writeAsBytes(image!).then((value) async {
-      await uploadImage(value.path);
-      await createPost();
+      await uploadImage(value.path).then((value) async {
+        await createPost();
+      });
+      // await createPost();
     });
   }
 

@@ -8,7 +8,6 @@ import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
 import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../../generated/l10n.dart';
 
 class PlatformScreen extends StatelessWidget {
@@ -72,11 +71,18 @@ class PlatformScreen extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () async {
                       PlatformCubit.get(context)!.linkAcount().then((value) {
-                        launchUrl(Uri.parse(value),
-                            mode: LaunchMode.externalApplication);
+                        // launchUrl(Uri.parse(value),
+                        //     mode: LaunchMode.externalApplication);
+
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return WebViewPaynet(
+                            uri: value,
+                          );
+                        }));
                       });
                     },
-                    child: Text('Link Acount')),
+                    child: const Text('Link Account')),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25.w),
@@ -87,22 +93,7 @@ class PlatformScreen extends StatelessWidget {
                         itemCount: platformNames.length,
                         itemBuilder: (context, index) {
                           return PlatformListViewItem(
-                            function: () async {
-                              PlatformCubit.get(context)!
-                                  .linkAcount()
-                                  .then((value) {
-                                print(value);
-                              });
-                              //     .then((value) {
-                              //   print(value);
-                              //   Navigator.push(context,
-                              //       MaterialPageRoute(builder: (context) {
-                              //     return WebViewPaynet(
-                              //       uri: value,
-                              //     );
-                              //   }));
-                              // });
-                            },
+                            function: () async {},
                             image: platformIcons[index],
                             text: platformNames[index],
                           );

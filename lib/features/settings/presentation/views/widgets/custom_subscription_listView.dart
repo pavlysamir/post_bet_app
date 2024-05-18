@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/subscription_plan_container.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 class CustomListViewSubscriptionPlan extends StatelessWidget {
   const CustomListViewSubscriptionPlan({
@@ -46,10 +52,29 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
             itemBuilder: (context, index) {
               return SubscriptionPlansCntainer(
                 function: () async {
-                  planModel[index].price == 0
-                      ? null
-                      : await SettingsCubit.get(context).subscription(
-                          planId: '${planModel[index].id}', promoCode: '');
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) => PopUpDialog(
+                      context: context,
+                      function: () {
+                        customJustGoNavigate(
+                            context: context, path: AppRouter.kEnterPromo);
+                      },
+                      title: S.of(context).doPromocode,
+                      subTitle: '',
+                      colorButton1: kPoppingsRedColor,
+                      colorButton2: Colors.red,
+                      textColortcolor1: Colors.red,
+                      textColortcolor2: Colors.white,
+                      function2: () async {
+                        planModel[index].price == 0
+                            ? null
+                            : await SettingsCubit.get(context).subscription(
+                                planId: '${planModel[index].id}',
+                                promoCode: '');
+                      },
+                    ),
+                  );
                 },
                 price: "${planModel[index].price}\$",
                 countPosts:
@@ -58,6 +83,57 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                 typePlan: planModel[index].name,
                 platForms:
                     'FaceBook : ${planModel[index].facebook} , Twitter : ${planModel[index].twitter} , Instagram : ${planModel[index].instagram} , TikTok : ${planModel[index].tiktok} , pinterest : ${planModel[index].pinterest} , linkedin : ${planModel[index].linkedin} , reddit : ${planModel[index].reddit} ',
+                widgets: [
+                  planModel[index].facebook
+                      ? Image.asset(
+                          AssetsData.faceBookIcon,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].twitter
+                      ? Image.asset(
+                          AssetsData.xIcon,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].instagram
+                      ? Image.asset(
+                          AssetsData.instagramIcon,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].linkedin
+                      ? Image.asset(
+                          AssetsData.linkedln,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].pinterest
+                      ? Image.asset(
+                          AssetsData.pinterest,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].reddit
+                      ? Image.asset(
+                          AssetsData.reddit,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].tiktok
+                      ? Image.asset(
+                          AssetsData.tiktok,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                ],
               );
             });
       },

@@ -11,12 +11,14 @@ class SubscriptionPlansCntainer extends StatelessWidget {
     required this.typePlan,
     required this.function,
     required this.platForms,
+    required this.widgets,
   });
   final String price;
   final String countPosts;
   // final String description;
   final String typePlan;
   final String platForms;
+  final List<Widget> widgets;
 
   final Function() function;
 
@@ -65,10 +67,10 @@ class SubscriptionPlansCntainer extends StatelessWidget {
               //   style: Theme.of(context).textTheme.bodyMedium,
               // ),
               SizedBox(height: 20.h),
-              Text(
-                platForms,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: widgets,
               ),
               SizedBox(height: 20.h),
             ],

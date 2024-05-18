@@ -38,8 +38,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeThemeConfirm":
             MessageLookupByLibrary.simpleMessage("Confirm Change Theme"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
+        "confirmChangeLng":
+            MessageLookupByLibrary.simpleMessage("Confirm Change langeuage"),
+        "confirmDeleteAccount":
+            MessageLookupByLibrary.simpleMessage("Confirm Delete Account"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "contentDiscount": MessageLookupByLibrary.simpleMessage(
+            "Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook"),
         "createAccount": MessageLookupByLibrary.simpleMessage(
             "Create an account to start using postbet"),
         "createPost": MessageLookupByLibrary.simpleMessage("Create a Post"),
@@ -131,11 +137,14 @@ class MessageLookup extends MessageLookupByLibrary {
             "You must comply with all local and international laws and regulations applicable to your use of the application."),
         "description9": MessageLookupByLibrary.simpleMessage(
             "You agree to indemnify and hold harmless the Company and its partners from any claims or losses arising from your use of the application."),
+        "discount15": MessageLookupByLibrary.simpleMessage("15% Discount"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("Do you want change language"),
         "doChangeTheme":
             MessageLookupByLibrary.simpleMessage("Do you want change Theme"),
         "doLogOut": MessageLookupByLibrary.simpleMessage("Do you want Log Out"),
+        "doPromocode":
+            MessageLookupByLibrary.simpleMessage("Do you have Promocode"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don’t have account ? register now"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -143,6 +152,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterEmail": MessageLookupByLibrary.simpleMessage("Enter Your Email"),
         "enterNewPassword":
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
+        "enterPromo": MessageLookupByLibrary.simpleMessage("Enter Promocode"),
         "expireData": MessageLookupByLibrary.simpleMessage("Expire Data"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 posts per day"),
         "forgotPassword":

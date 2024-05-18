@@ -30,55 +30,11 @@ class CobonsView extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
-                  const CobonItem(
-                    packageType: 'Free ',
+                  CobonItem(
+                    packageType: S.of(context).discount15,
                     color: Colors.grey,
                     cobonCode: '01222',
-                    cobonTitle:
-                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  CobonItem(
-                    packageType: 'Bronze ',
-                    color: Colors.brown.shade300,
-                    cobonCode: '01222',
-                    cobonTitle:
-                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  CobonItem(
-                    packageType: 'Silver ',
-                    color: Colors.grey.shade300,
-                    cobonCode: '01222',
-                    cobonTitle:
-                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  const CobonItem(
-                    packageType: 'Gold ',
-                    color: Colors.amber,
-                    cobonCode: '01222',
-                    cobonTitle:
-                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  CobonItem(
-                    packageType: 'Bussiness ',
-                    color: Colors.blue.shade100,
-                    cobonCode: '01222',
-                    cobonTitle:
-                        'Free package It is a free package that includes only 10 monthly kisses Instagram + Facebook',
-                  ),
-                  SizedBox(
-                    height: 30.h,
+                    cobonTitle: S.of(context).contentDiscount,
                   ),
                 ],
               ),

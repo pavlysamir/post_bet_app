@@ -36,8 +36,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeThemeConfirm":
             MessageLookupByLibrary.simpleMessage("تغيير الموضوع"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
+        "confirmChangeLng":
+            MessageLookupByLibrary.simpleMessage("تاكيد تغيير اللغة"),
+        "confirmDeleteAccount":
+            MessageLookupByLibrary.simpleMessage("تاكيد حذف الحساب"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "contentDiscount": MessageLookupByLibrary.simpleMessage(
+            "الباقة المجانية هي باقة مجانية تتضمن 10 قبلات شهرية فقط انستقرام + + فيسبوك"),
         "createAccount": MessageLookupByLibrary.simpleMessage(
             "إنشاء حساب لبدء استخدام بوستبيت"),
         "createPost": MessageLookupByLibrary.simpleMessage("إنشاء منشور"),
@@ -129,12 +135,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "يجب أن تلتزم بجميع القوانين واللوائح المحلية والدولية التي تنطبق على استخدامك للتطبيق."),
         "description9": MessageLookupByLibrary.simpleMessage(
             "أنت توافق على تعويض شركة شركائها عن أي مطالبات أو خسائر ناشئة عن استخدامك للتطبيق."),
+        "discount15": MessageLookupByLibrary.simpleMessage("خصم 15%"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("هل تريد تغيير اللغة"),
         "doChangeTheme":
             MessageLookupByLibrary.simpleMessage("هل تريد تغيير المظهر"),
         "doLogOut":
             MessageLookupByLibrary.simpleMessage("هل تريد تسجيل الخروج"),
+        "doPromocode":
+            MessageLookupByLibrary.simpleMessage("هل لديك كود الخصم"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ سجل الآن"),
         "editProfile":
@@ -144,6 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل بريدك الإلكتروني"),
         "enterNewPassword":
             MessageLookupByLibrary.simpleMessage("ادخل كلمة مرور جديدة"),
+        "enterPromo": MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
         "expireData": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 منشورات في اليوم"),
         "forgotPassword":

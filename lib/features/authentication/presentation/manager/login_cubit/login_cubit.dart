@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
@@ -37,6 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginIsPasswordVisibleEye());
   }
 
+  String image = '';
   signIn() async {
     emit(LoginLoading());
     final response = await authRepository.login(
@@ -45,6 +49,7 @@ class LoginCubit extends Cubit<LoginState> {
     );
     response.fold((errMessage) => emit(LoginFailure(errMessage: errMessage)),
         (signInModel) {
+      image = signInModel.data.profileImage!;
       emailController.clear();
       passwordController.clear();
       emit(LoginSuccess());
@@ -57,19 +62,21 @@ class LoginCubit extends Cubit<LoginState> {
     final response = await authRepository.getUserProfile();
     response.fold(
       (errMessage) => emit(GetUserFailure(errMessage: errMessage)),
-      (user) {
+      (user) async {
         userData = user.data;
         print(' hellloooooooooooooooooo ${user.data.name}');
         getIt
             .get<CashHelperSharedPreferences>()
             .saveData(key: ApiKey.name, value: user.data.name);
-        getIt
-            .get<CashHelperSharedPreferences>()
-            .saveData(key: ApiKey.profilePic, value: user.data.profileImage);
 
         getIt
             .get<CashHelperSharedPreferences>()
             .saveData(key: ApiKey.email, value: user.data.email);
+        imageFile = File(user.data.profileImage!);
+        print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $imageFile');
+        getIt
+            .get<CashHelperSharedPreferences>()
+            .saveData(key: ApiKey.profilePic, value: imageFile!.path);
 
         emit(GetUserSuccess(user: user));
       },

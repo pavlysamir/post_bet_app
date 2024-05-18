@@ -2,17 +2,23 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 
 class PostReposatory {
   PostReposatory();
   static const String baseUrlUbloadImg =
       'https://app.ayrshare.com/api/media/upload';
+  static String profileKey =
+      getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey);
 
-  static const String baseUrlPsting =
-      'https://app.ayrshare.com/api/media/upload';
+  static const String baseUrlPosting =
+      'https://post-bet.onrender.com/Posting/post';
+  // 'https://post-bet.onrender.com/Posting/post';
 
   static const String authorizationHeader =
-      'Bearer JZ71CXE-06T4YBE-KST6KRV-5AR78B2';
+      'Bearer RTXFBZB-BW845M5-GAA8QE4-08PQ2ZR';
   static const String contentType = 'application/json';
 
   Future<String> uploadFile(String filePath) async {
@@ -26,6 +32,7 @@ class PostReposatory {
     dio.options.headers = <String, dynamic>{
       'Authorization': authorizationHeader,
       'Content-Type': contentType,
+      'Profile-Key': profileKey
     };
 
     try {
@@ -43,24 +50,28 @@ class PostReposatory {
 
   Future<Response> createPost(String postContent,
       List<String> selectedPlatforms, String mediaUrl) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
     final dio = Dio();
 
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': selectedPlatforms
-          .map((platform) => {'platform': platform, 'isSelected': true})
+          .map((platform) => {"platform": platform, "isSelected": true})
           .toList(),
       'mediaUrls': mediaUrl,
     };
 
-    dio.options.headers = <String, dynamic>{
-      'Authorization': authorizationHeader,
-      'Content-Type': contentType,
-    };
+    // dio.options.headers = <String, dynamic>{
+    //   'Authorization': authorizationHeader,
+    //   'Content-Type': contentType,
+    //   'Profile-Key': profileKey
+    // };
     final jsonData = jsonEncode(data);
     try {
       final response = await dio.post(
-        baseUrlUbloadImg,
+        baseUrlPosting,
         data: jsonData,
       );
       print(response);

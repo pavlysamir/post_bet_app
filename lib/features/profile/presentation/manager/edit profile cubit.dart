@@ -28,6 +28,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
       file = File(image.path);
+      print(file);
       emit(SuccessfulPickImage());
     } else {
       emit(FailPickImage());

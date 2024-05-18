@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/api_consumer.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/errors/exceptions.dart';
@@ -27,21 +31,33 @@ class AuthRepository {
       );
       final user = AuthResponseModle.fromJson(response);
       final decodedToken = JwtDecoder.decode(user.data.token);
-      getIt
+      await getIt
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.token, value: user.data.token);
-      getIt
+      await getIt
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
 
-      getIt
-          .get<CashHelperSharedPreferences>()
-          .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
-      getIt
+      // await getIt
+      //     .get<CashHelperSharedPreferences>()
+      //     .saveData(key: ApiKey.profilePic, value: user.data.profileImage)
+      //     .then((value) {
+      //   imageFile = File(user.data.profileImage!);
+      //   print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $imageFile');
+      // });
+
+      print(
+          'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profilePic)}');
+
+      // await getIt
+      //     .get<CashHelperSharedPreferences>()
+      //     .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
+      await getIt
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.refId, value: user.data.refId);
 
       print(decodedToken[ApiKey.id]);
+
       return Right(user);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
@@ -76,7 +92,9 @@ class AuthRepository {
           getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.id),
         ),
       );
-      return Right(UserDataResponseModel.fromJson(response));
+      final user = UserDataResponseModel.fromJson(response);
+      print(user.data.profileImage);
+      return Right(user);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }
@@ -119,9 +137,9 @@ class AuthRepository {
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
 
-      getIt
-          .get<CashHelperSharedPreferences>()
-          .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
+      // getIt
+      //     .get<CashHelperSharedPreferences>()
+      //     .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
       getIt
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.refId, value: user.data.refId);

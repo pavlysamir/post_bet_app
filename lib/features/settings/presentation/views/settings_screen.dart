@@ -119,12 +119,15 @@ class SettingsScreen extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) => PopUpDialog(
+                      function2: () {
+                        Navigator.pop(context);
+                      },
                       context: context,
                       function: () {
                         SettingsCubit.get(context).changeLanguage();
                         Navigator.pop(context);
                       },
-                      title: 'Confirm Change langeuage',
+                      title: S.of(context).confirmChangeLng,
                       subTitle: S.of(context).doChangeLanguage,
                       colorButton1: kPoppingsRedColor,
                       colorButton2: Colors.red,
@@ -151,6 +154,9 @@ class SettingsScreen extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) => PopUpDialog(
+                            function2: () {
+                              Navigator.pop(context);
+                            },
                             context: context,
                             function: () {
                               SettingsCubit.get(context).deleteAccount();
@@ -170,6 +176,9 @@ class SettingsScreen extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) => PopUpDialog(
+                      function2: () {
+                        Navigator.pop(context);
+                      },
                       context: context,
                       function: () {
                         SettingsCubit.get(context).changeTheme();
@@ -222,6 +231,9 @@ class SettingsScreen extends StatelessWidget {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) => PopUpDialog(
+                      function2: () {
+                        Navigator.pop(context);
+                      },
                       context: context,
                       function: () {
                         SettingsCubit.get(context).logout();

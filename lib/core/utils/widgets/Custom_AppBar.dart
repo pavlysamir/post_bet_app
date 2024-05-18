@@ -31,7 +31,9 @@ class CustomAppBar extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Image.asset(
-                      AssetsData.postBetName,
+                      AssetsData.postBetImage,
+                      height: 50.h,
+                      width: 120.w,
                     ),
                     const Spacer(),
                     state is GetUserLoading

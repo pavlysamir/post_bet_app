@@ -5,17 +5,17 @@ import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 import 'package:post_bet/generated/l10n.dart';
 
 class PopUpDialog extends StatelessWidget {
-  const PopUpDialog({
-    super.key,
-    required this.context,
-    required this.function,
-    required this.title,
-    required this.subTitle,
-    this.colorButton1 = kPrimaryKey,
-    this.textColortcolor1 = Colors.white,
-    this.colorButton2 = kPrimaryKey,
-    this.textColortcolor2 = Colors.white,
-  });
+  const PopUpDialog(
+      {super.key,
+      required this.context,
+      required this.function,
+      required this.title,
+      required this.subTitle,
+      this.colorButton1 = kPrimaryKey,
+      this.textColortcolor1 = Colors.white,
+      this.colorButton2 = kPrimaryKey,
+      this.textColortcolor2 = Colors.white,
+      required this.function2});
   final BuildContext context;
   final Function() function;
   final String title;
@@ -24,6 +24,7 @@ class PopUpDialog extends StatelessWidget {
   final Color colorButton2;
   final Color textColortcolor1;
   final Color textColortcolor2;
+  final Function() function2;
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +71,7 @@ class PopUpDialog extends StatelessWidget {
                 text: S.of(context).no,
                 textColortcolor: textColortcolor2,
                 color: colorButton2,
-                function: () {
-                  Navigator.pop(context);
-                },
+                function: function2,
               ),
             ],
           ),
