@@ -155,9 +155,11 @@ class AddPostCubit extends Cubit<AddPostState> {
       emit(UploadImageLoading());
 
       final response = await postReposatory.uploadFile(filePath);
-      print(response);
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
       imgUrl = response;
+      print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imgUrl');
       emit(UploadImgSuccessfully());
+      createPost(imageUrl: imgUrl);
       return response;
     } catch (e) {
       emit(UploadImgFailure(errMessage: e.toString()));
@@ -165,18 +167,21 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  String? uploasedImg;
   Future convertUint8listToFile() async {
     final tempDir = await getTemporaryDirectory();
     File file = await File('${tempDir.path}/image.png').create();
     file.writeAsBytes(image!).then((value) async {
+      uploasedImg = value.path;
+      print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
       await uploadImage(value.path).then((value) async {
-        await createPost();
+        //await createPost(imageUrl: imgUrl);
       });
       // await createPost();
     });
   }
 
-  createPost() async {
+  createPost({required String imageUrl}) async {
     try {
       emit(CreatePostLoading());
 

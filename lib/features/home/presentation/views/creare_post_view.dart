@@ -47,12 +47,15 @@ class CreatePostView extends StatelessWidget {
                   function: () async {
                     // AddPostCubit.get(context).addPostController.text != null
                     //     ?
-                    await AddPostCubit.get(context).createPost();
-                    // : await AddPostCubit.get(context)
-                    //     .convertUint8listToFile();
-                    //     .then((value) {
-                    //   AddPostCubit.get(context).createPost();
-                    // });
+                    //AddPostCubit.get(context).createPost();
+                    if (AddPostCubit.get(context).image != null) {
+                      await AddPostCubit.get(context).convertUint8listToFile();
+                    } else if (AddPostCubit.get(context).fileVideo != null) {
+                      await AddPostCubit.get(context).uploadImage(
+                          AddPostCubit.get(context).fileVideo!.path);
+                    } else {
+                      await AddPostCubit.get(context).createPost(imageUrl: '');
+                    }
 
                     print(AddPostCubit.get(context).checkBoxValues);
                     print(AddPostCubit.get(context).selectedItems);

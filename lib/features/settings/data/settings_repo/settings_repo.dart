@@ -5,6 +5,8 @@ import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/settings/data/models/message_model.dart';
+import 'package:post_bet/features/settings/data/models/my_subscription_model.dart';
+import 'package:post_bet/features/settings/data/models/parse_subscription_response.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/data/models/subscription_model.dart';
 
@@ -106,24 +108,59 @@ class SettingsRepository {
         ApiKey.planId: planId,
       });
       final subscription = SubscriptionModel.fromJson(response['data']);
+
       return Right(subscription);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }
   }
 
-  Future<Either<String, void>> confirmSubscriptePlan() async {
+  Future<Either<String, void>> confirmSubscriptePlan({
+    required String chargeId,
+  }) async {
     try {
-      final refId =
-          getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.refId);
-      final encodedRefId = Uri.encodeComponent(refId);
-
-      final response = await api.get(EndPoint.confirnSubscribeEndPoint(
-              //encodedRefId,
-              '3890d766482d0bb999c2feed6b687b7ed694c4c6'),
-          data: {'3890d766482d0bb999c2feed6b687b7ed694c4c6'});
-      final confirmSubscription = SubscriptionModel.fromJson(response);
+      final response = await api
+          .get(EndPoint.confirnSubscribeEndPoint(chargeId), data: {chargeId});
       return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, String>> mySubscriptePlan() async {
+    try {
+      final response = await api.get(
+        EndPoint.mySubscraption,
+      );
+      SubscriptionResponse myListResponse =
+          SubscriptionResponse.fromJson(response['data']);
+      String myCharger = '';
+      // Iterate over the list of subscriptions
+      for (var subscription in myListResponse.subscriptions) {
+        if (subscription.paymentStatus == 'Paid') {
+          // Save the id of the subscription with paymentStatus == 'Paid'
+          await getIt
+              .get<CashHelperSharedPreferences>()
+              .saveData(key: ApiKey.mySubscribeId, value: subscription.id);
+
+          await getIt
+              .get<CashHelperSharedPreferences>()
+              .saveData(key: ApiKey.chargeId, value: subscription.chargeId);
+
+          myCharger = subscription.chargeId;
+
+          // Optionally, print the id to verify
+          print('Saved subscription id: ${subscription.id}');
+        }
+      }
+
+      // Example: also save the chargeId of the first subscription in the list
+      MySubscriptionModel firstSubscription = myListResponse.subscriptions[0];
+
+      // Print the chargeId to verify
+      print(myCharger);
+
+      return Right(myCharger);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

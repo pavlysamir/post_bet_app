@@ -1,11 +1,14 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 
@@ -36,42 +39,57 @@ class CustomAppBar extends StatelessWidget {
                       width: 120.w,
                     ),
                     const Spacer(),
-                    state is GetUserLoading
-                        ? Text('Hello',
-                            style: Theme.of(context).textTheme.titleLarge)
-                        : Text(
-                            '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
-                            style: Theme.of(context).textTheme.titleLarge),
-                    const SizedBox(
-                      width: 5,
-                    ),
-                    getIt
-                                .get<CashHelperSharedPreferences>()
-                                .getData(key: ApiKey.profilePic) !=
-                            null
-                        ? CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 20,
-                            child: ClipOval(
-                              child: File(getIt
-                                          .get<CashHelperSharedPreferences>()
-                                          .getData(key: ApiKey.profilePic))
-                                      .existsSync() // Check if the file exists
-                                  ? Image.file(
-                                      fit: BoxFit.fill,
-                                      width: double.infinity,
-                                      File(getIt
-                                          .get<CashHelperSharedPreferences>()
-                                          .getData(key: ApiKey.profilePic)),
-                                    )
-                                  : const Icon(Icons.person),
-                            ),
-                          )
-                        : const CircleAvatar(
-                            backgroundColor: Colors.grey,
-                            radius: 20,
-                            child: Icon(Icons.person),
+                    GestureDetector(
+                      onTap: () {
+                        customJustGoNavigate(
+                            context: context, path: AppRouter.kEditProfile);
+                      },
+                      child: Row(
+                        children: [
+                          state is GetUserLoading
+                              ? Text('Hello',
+                                  style: Theme.of(context).textTheme.titleLarge)
+                              : Text(
+                                  '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
+                                  style:
+                                      Theme.of(context).textTheme.titleLarge),
+                          const SizedBox(
+                            width: 5,
                           ),
+                          getIt
+                                      .get<CashHelperSharedPreferences>()
+                                      .getData(key: ApiKey.profilePic) !=
+                                  null
+                              ? CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  radius: 20,
+                                  child: ClipOval(
+                                    child: File(getIt
+                                                .get<
+                                                    CashHelperSharedPreferences>()
+                                                .getData(
+                                                    key: ApiKey.profilePic))
+                                            .existsSync() // Check if the file exists
+                                        ? Image.file(
+                                            fit: BoxFit.fill,
+                                            width: double.infinity,
+                                            File(getIt
+                                                .get<
+                                                    CashHelperSharedPreferences>()
+                                                .getData(
+                                                    key: ApiKey.profilePic)),
+                                          )
+                                        : const Icon(Icons.person),
+                                  ),
+                                )
+                              : const CircleAvatar(
+                                  backgroundColor: Colors.grey,
+                                  radius: 20,
+                                  child: Icon(Icons.person),
+                                ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),

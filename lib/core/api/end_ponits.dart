@@ -28,10 +28,17 @@ class EndPoint {
   static String promocode = "/promocode";
 
   static String changePassword = "/Auth/change-password";
+  static String mySubscraption = "/plans/mySubscribtions";
+
+  // static String mySubscraption(id) {
+  //   return "/plans/mySubscribtions/$id";
+  // }
 
   //   static String getPlaneDataEndPoint(padgeNumber,) {
   //   return "/plans/$id";
   // }
+  //
+  //https://post-bet.onrender.com/plans/mySubscribtions
 }
 
 class ApiKey {
@@ -57,5 +64,11 @@ class ApiKey {
   static String promoCode = "promoCode";
   static String planId = "planId";
   static String profileKey = "profileKey";
+
   static String refId = "refId";
+  static String chargeId = "chargeId";
+  static String transactionUrl = "transactionUrl";
+  static String plan = "plan";
+  static String mySubscribeId = "id";
+  static String limitNumberOfPostsPerDay = "limitNumberOfPostsPerDay";
 }

@@ -85,3 +85,12 @@ class ConfirmSubscraptionFailure extends SettingsState {
 }
 
 class ConfirmSubscraptionLoading extends SettingsState {}
+
+class MySubscraptionSuccess extends SettingsState {}
+
+class MySubscraptionFailure extends SettingsState {
+  final String errMessage;
+  MySubscraptionFailure({required this.errMessage});
+}
+
+class MySubscraptionLoading extends SettingsState {}

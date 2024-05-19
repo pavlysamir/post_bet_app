@@ -8,7 +8,6 @@ import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
-import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/subscription_plan_container.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -23,26 +22,8 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isFree = false;
     return BlocConsumer<SettingsCubit, SettingsState>(
-      listener: (context, state) {
-        if (state is SubscraptionSuccess && isFree == false) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return WebViewPaynet(
-              uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
-            );
-          }));
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('successfuly subscraption'),
-          ));
-        } else if (state is SubscraptionFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errMessage),
-            ),
-          );
-        }
-      },
+      listener: (context, state) async {},
       builder: (context, state) {
         return ListView.separated(
             separatorBuilder: (context, index) {
@@ -54,17 +35,20 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
             itemBuilder: (context, index) {
               return SubscriptionPlansCntainer(
                 function: () async {
-                  if (planModel[index].price == 0) {
+                  if (planModel[index].isFree == true) {
                     //call confirm subscription
-                    SettingsCubit.get(context).confirmSubscription();
-                  } else {
+                    await SettingsCubit.get(context).mySubscription();
+                  } else if (planModel[index].isFree == false) {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) => PopUpDialog(
                         context: context,
-                        function: () {
+                        function: () async {
+                          await SettingsCubit.get(context).mySubscription();
+
                           customJustGoNavigate(
                               context: context, path: AppRouter.kEnterPromo);
+                          Navigator.pop(context);
                         },
                         title: S.of(context).doPromocode,
                         subTitle: '',
@@ -73,13 +57,10 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                         textColortcolor1: Colors.red,
                         textColortcolor2: Colors.white,
                         function2: () async {
-                          await SettingsCubit.get(context)
-                              .subscription(
-                                  planId: '${planModel[index].id}',
-                                  promoCode: '')
-                              .then((value) {
-                            isFree = false;
-                          });
+                          Navigator.pop(context);
+
+                          await SettingsCubit.get(context).subscription(
+                              planId: '${planModel[index].id}', promoCode: '');
                         },
                       ),
                     );

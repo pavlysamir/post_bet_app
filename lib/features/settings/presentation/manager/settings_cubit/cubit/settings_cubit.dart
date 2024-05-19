@@ -231,16 +231,33 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
-  confirmSubscription() async {
+  Future<void> confirmSubscription() async {
     emit(ConfirmSubscraptionLoading());
 
-    final response = await settingsRepository.confirmSubscriptePlan();
+    final response =
+        await settingsRepository.confirmSubscriptePlan(chargeId: chargeId);
     response.fold(
       (errMessage) {
         emit(ConfirmSubscraptionFailure(errMessage: errMessage));
       },
       (confirmSubscriptionData) {
         emit(ConfirmSubscraptionSuccess());
+      },
+    );
+  }
+
+  String chargeId = '';
+  Future<void> mySubscription() async {
+    emit(MySubscraptionLoading());
+
+    final response = await settingsRepository.mySubscriptePlan();
+    response.fold(
+      (errMessage) {
+        emit(MySubscraptionFailure(errMessage: errMessage));
+      },
+      (myChargerId) {
+        chargeId = myChargerId;
+        emit(MySubscraptionSuccess());
       },
     );
   }

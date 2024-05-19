@@ -13,9 +13,16 @@ class PostReposatory {
   static String profileKey =
       getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey);
 
-  static const String baseUrlPosting =
-      'https://post-bet.onrender.com/Posting/post';
+  static String id = getIt
+      .get<CashHelperSharedPreferences>()
+      .getData(key: ApiKey.mySubscribeId);
+
+  // static String baseUrlPosting =
+  //     'https://post-bet.onrender.com/Posting/post/$id';
   // 'https://post-bet.onrender.com/Posting/post';
+  static String baseUrlPosting(id) {
+    return 'https://post-bet.onrender.com/Posting/post/$id';
+  }
 
   static const String authorizationHeader =
       'Bearer RTXFBZB-BW845M5-GAA8QE4-08PQ2ZR';
@@ -66,7 +73,7 @@ class PostReposatory {
       'platform': selectedPlatforms
           .map((platform) => {"platform": platform, "isSelected": true})
           .toList(),
-      //'mediaUrls': mediaUrl,
+      'mediaUrls': mediaUrl,
     };
 
     if (token != null) {
@@ -76,9 +83,13 @@ class PostReposatory {
       };
     }
     final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
     try {
       final response = await dio.post(
-        baseUrlPosting,
+        baseUrlPosting(id),
         data: jsonData,
       );
       print(response);
