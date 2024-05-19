@@ -19,6 +19,10 @@ class EndPoint {
     return "/User/$id";
   }
 
+  static String confirnSubscribeEndPoint(refId) {
+    return "/plans/subscribe/confirmPayment/$refId";
+  }
+
   static String plans = "/plans";
   static String contactUs = "/contactUs";
   static String promocode = "/promocode";

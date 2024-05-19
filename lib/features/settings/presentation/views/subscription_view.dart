@@ -16,11 +16,11 @@ class SubscriptionsView extends StatelessWidget {
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
         if (state is SubscraptionSuccess) {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return WebViewPaynet(
-              uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
-            );
-          }));
+          // Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //   return WebViewPaynet(
+          //     uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
+          //   );
+          // }));
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('successfuly subscraption'),
           ));

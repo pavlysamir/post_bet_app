@@ -45,7 +45,11 @@ class CreatePostView extends StatelessWidget {
                   color: kPrimaryKey,
                   textColor: Colors.white,
                   function: () async {
-                    await AddPostCubit.get(context).convertUint8listToFile();
+                    // AddPostCubit.get(context).addPostController.text != null
+                    //     ?
+                    await AddPostCubit.get(context).createPost();
+                    // : await AddPostCubit.get(context)
+                    //     .convertUint8listToFile();
                     //     .then((value) {
                     //   AddPostCubit.get(context).createPost();
                     // });

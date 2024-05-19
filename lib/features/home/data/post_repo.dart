@@ -32,7 +32,7 @@ class PostReposatory {
     dio.options.headers = <String, dynamic>{
       'Authorization': authorizationHeader,
       'Content-Type': contentType,
-      'Profile-Key': profileKey
+      //'Profile-Key': profileKey
     };
 
     try {
@@ -53,6 +53,12 @@ class PostReposatory {
     print(selectedPlatforms
         .map((platform) => {"platform": platform, "isSelected": true})
         .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
     final dio = Dio();
 
     final Map<String, dynamic> data = {
@@ -60,14 +66,15 @@ class PostReposatory {
       'platform': selectedPlatforms
           .map((platform) => {"platform": platform, "isSelected": true})
           .toList(),
-      'mediaUrls': mediaUrl,
+      //'mediaUrls': mediaUrl,
     };
 
-    // dio.options.headers = <String, dynamic>{
-    //   'Authorization': authorizationHeader,
-    //   'Content-Type': contentType,
-    //   'Profile-Key': profileKey
-    // };
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
     final jsonData = jsonEncode(data);
     try {
       final response = await dio.post(

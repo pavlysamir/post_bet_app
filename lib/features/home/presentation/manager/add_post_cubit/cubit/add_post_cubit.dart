@@ -128,7 +128,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   final List<String> platformNames = [
     'Instagram',
     'Facebook',
-    'twitter',
+    'Twitter',
     'Linkedin',
     'Reddit',
     'Youtube',

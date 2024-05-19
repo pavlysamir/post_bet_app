@@ -1,9 +1,5 @@
-import 'dart:io';
-
 import 'package:dartz/dartz.dart';
-import 'package:flutter/material.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
-import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/api_consumer.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/errors/exceptions.dart';
@@ -49,9 +45,9 @@ class AuthRepository {
       print(
           'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profilePic)}');
 
-      // await getIt
-      //     .get<CashHelperSharedPreferences>()
-      //     .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
+      await getIt
+          .get<CashHelperSharedPreferences>()
+          .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
       await getIt
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.refId, value: user.data.refId);

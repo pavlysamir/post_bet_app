@@ -8,6 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
+import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/subscription_plan_container.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -22,14 +23,15 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isFree = false;
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
-        if (state is SubscraptionSuccess) {
-          // Navigator.push(context, MaterialPageRoute(builder: (context) {
-          //   return WebViewPaynet(
-          //     uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
-          //   );
-          // }));
+        if (state is SubscraptionSuccess && isFree == false) {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return WebViewPaynet(
+              uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
+            );
+          }));
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('successfuly subscraption'),
           ));
@@ -52,29 +54,36 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
             itemBuilder: (context, index) {
               return SubscriptionPlansCntainer(
                 function: () async {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => PopUpDialog(
+                  if (planModel[index].price == 0) {
+                    //call confirm subscription
+                    SettingsCubit.get(context).confirmSubscription();
+                  } else {
+                    showDialog(
                       context: context,
-                      function: () {
-                        customJustGoNavigate(
-                            context: context, path: AppRouter.kEnterPromo);
-                      },
-                      title: S.of(context).doPromocode,
-                      subTitle: '',
-                      colorButton1: kPoppingsRedColor,
-                      colorButton2: Colors.red,
-                      textColortcolor1: Colors.red,
-                      textColortcolor2: Colors.white,
-                      function2: () async {
-                        planModel[index].price == 0
-                            ? null
-                            : await SettingsCubit.get(context).subscription(
-                                planId: '${planModel[index].id}',
-                                promoCode: '');
-                      },
-                    ),
-                  );
+                      builder: (BuildContext context) => PopUpDialog(
+                        context: context,
+                        function: () {
+                          customJustGoNavigate(
+                              context: context, path: AppRouter.kEnterPromo);
+                        },
+                        title: S.of(context).doPromocode,
+                        subTitle: '',
+                        colorButton1: kPoppingsRedColor,
+                        colorButton2: Colors.red,
+                        textColortcolor1: Colors.red,
+                        textColortcolor2: Colors.white,
+                        function2: () async {
+                          await SettingsCubit.get(context)
+                              .subscription(
+                                  planId: '${planModel[index].id}',
+                                  promoCode: '')
+                              .then((value) {
+                            isFree = false;
+                          });
+                        },
+                      ),
+                    );
+                  }
                 },
                 price: "${planModel[index].price}\$",
                 countPosts:

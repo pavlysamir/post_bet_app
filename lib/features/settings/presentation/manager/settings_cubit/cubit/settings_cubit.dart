@@ -230,4 +230,18 @@ class SettingsCubit extends Cubit<SettingsState> {
       },
     );
   }
+
+  confirmSubscription() async {
+    emit(ConfirmSubscraptionLoading());
+
+    final response = await settingsRepository.confirmSubscriptePlan();
+    response.fold(
+      (errMessage) {
+        emit(ConfirmSubscraptionFailure(errMessage: errMessage));
+      },
+      (confirmSubscriptionData) {
+        emit(ConfirmSubscraptionSuccess());
+      },
+    );
+  }
 }

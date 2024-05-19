@@ -111,4 +111,21 @@ class SettingsRepository {
       return Left(e.errModel.errorMessage!);
     }
   }
+
+  Future<Either<String, void>> confirmSubscriptePlan() async {
+    try {
+      final refId =
+          getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.refId);
+      final encodedRefId = Uri.encodeComponent(refId);
+
+      final response = await api.get(EndPoint.confirnSubscribeEndPoint(
+              //encodedRefId,
+              '3890d766482d0bb999c2feed6b687b7ed694c4c6'),
+          data: {'3890d766482d0bb999c2feed6b687b7ed694c4c6'});
+      final confirmSubscription = SubscriptionModel.fromJson(response);
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
 }
