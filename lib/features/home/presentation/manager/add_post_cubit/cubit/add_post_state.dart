@@ -34,3 +34,13 @@ class CreatePostFailure extends AddPostState {
 }
 
 class CreatePostLoading extends AddPostState {}
+
+class UploadVideoSuccessfully extends AddPostState {}
+
+class UploadVideoFailure extends AddPostState {
+  final String errMessage;
+
+  UploadVideoFailure({required this.errMessage});
+}
+
+class UploadVideoLoading extends AddPostState {}

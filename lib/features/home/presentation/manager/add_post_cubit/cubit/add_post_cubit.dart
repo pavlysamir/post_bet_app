@@ -1,6 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
-import 'package:flutter/services.dart' as services;
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 import 'package:bloc/bloc.dart';
@@ -64,7 +62,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     final video = await ImagePicker().pickVideo(source: ImageSource.gallery);
     if (video != null) {
       fileVideo = File(video.path);
-      print(fileVideo.toString());
+      print('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy ${fileVideo!.path}');
       emit(SuccessfulPickImage());
     } else {
       emit(FailPickImage());
@@ -154,17 +152,32 @@ class AddPostCubit extends Cubit<AddPostState> {
     try {
       emit(UploadImageLoading());
 
-      final response = await postReposatory.uploadFile(filePath);
+      final response = await postReposatory.uploadFile(fileVideo!.path);
       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
       imgUrl = response;
       print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imgUrl');
-      emit(UploadImgSuccessfully());
+      emit(UploadVideoSuccessfully());
       createPost(imageUrl: imgUrl);
       return response;
     } catch (e) {
       emit(UploadImgFailure(errMessage: e.toString()));
       return e.toString();
     }
+  }
+
+  String videoUrl = '';
+  uploadVideo() async {
+    emit(UploadVideoLoading());
+    final response =
+        await postReposatory.getUploadUrl(fileName: fileVideo!.path);
+
+    response.fold((l) {
+      emit(UploadVideoFailure(errMessage: l));
+    }, (upload) {
+      videoUrl = upload;
+      emit(UploadImgSuccessfully());
+      createPost(imageUrl: videoUrl);
+    });
   }
 
   String? uploasedImg;
@@ -186,7 +199,7 @@ class AddPostCubit extends Cubit<AddPostState> {
       emit(CreatePostLoading());
 
       final response = await postReposatory.createPost(
-          addPostController.text, selectedItems, imgUrl);
+          addPostController.text, selectedItems, imageUrl);
       print(response);
       emit(CreatePostSuccessfully());
       return response;

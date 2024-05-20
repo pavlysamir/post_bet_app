@@ -51,8 +51,8 @@ class CreatePostView extends StatelessWidget {
                     if (AddPostCubit.get(context).image != null) {
                       await AddPostCubit.get(context).convertUint8listToFile();
                     } else if (AddPostCubit.get(context).fileVideo != null) {
-                      await AddPostCubit.get(context).uploadImage(
-                          AddPostCubit.get(context).fileVideo!.path);
+                      await AddPostCubit.get(context).uploadVideo();
+                      //  AddPostCubit.get(context).fileVideo!.path);
                     } else {
                       await AddPostCubit.get(context).createPost(imageUrl: '');
                     }

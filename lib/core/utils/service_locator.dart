@@ -27,5 +27,8 @@ void setUpServiceLocator() {
   ));
 
   getIt.registerSingleton<PlatFormsRepositery>(PlatFormsRepositery());
-  getIt.registerSingleton<PostReposatory>(PostReposatory());
+
+  getIt.registerSingleton<PostReposatory>(PostReposatory(
+    getIt.get<DioConsumer>(),
+  ));
 }
