@@ -95,7 +95,7 @@ class CustomDescriptionPostField extends StatelessWidget {
                       height: 20.h,
                     ),
                     CustomViewVideoFromDevice(
-                      file: AddPostCubit.get(context).fileVideo!,
+                      file: AddPostCubit.get(context).displayVideo!,
                       function: () {
                         AddPostCubit.get(context).clearVideo();
                       },

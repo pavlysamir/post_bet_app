@@ -15,6 +15,8 @@ class RemoveFileImage extends AddPostState {}
 
 class RemoveFileVideo extends AddPostState {}
 
+class RemovePostContant extends AddPostState {}
+
 class UploadImgSuccessfully extends AddPostState {}
 
 class UploadImgFailure extends AddPostState {
@@ -44,3 +46,13 @@ class UploadVideoFailure extends AddPostState {
 }
 
 class UploadVideoLoading extends AddPostState {}
+
+class VerifyVideoSuccessfully extends AddPostState {}
+
+class VerifyVideoFailure extends AddPostState {
+  final String errMessage;
+
+  VerifyVideoFailure({required this.errMessage});
+}
+
+class VerifyVideoLoading extends AddPostState {}

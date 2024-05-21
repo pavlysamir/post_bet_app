@@ -20,7 +20,7 @@ class CreatePostView extends StatelessWidget {
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
         if (state is CreatePostSuccessfully) {
-          //AddPostCubit.get(context).clearImage();
+          AddPostCubit.get(context).clearpostContant();
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success'),
           ));
@@ -54,7 +54,7 @@ class CreatePostView extends StatelessWidget {
                       await AddPostCubit.get(context).uploadVideo();
                       //  AddPostCubit.get(context).fileVideo!.path);
                     } else {
-                      await AddPostCubit.get(context).createPost(imageUrl: '');
+                      await AddPostCubit.get(context).createTextPost();
                     }
 
                     print(AddPostCubit.get(context).checkBoxValues);

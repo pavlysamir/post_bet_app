@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 import 'package:bloc/bloc.dart';
@@ -57,11 +59,18 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
-  File? fileVideo;
+  File? displayVideo;
+  String? base64String;
+  XFile? fileVideo;
+  Uint8List? videoBytes;
   Future<void> pickCameraVideo() async {
     final video = await ImagePicker().pickVideo(source: ImageSource.gallery);
     if (video != null) {
-      fileVideo = File(video.path);
+      fileVideo = video;
+      displayVideo = File(fileVideo!.path);
+      videoBytes = File(fileVideo!.path).readAsBytesSync();
+      base64String = base64Encode(videoBytes!);
+      print(base64String);
       print('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy ${fileVideo!.path}');
       emit(SuccessfulPickImage());
     } else {
@@ -152,31 +161,49 @@ class AddPostCubit extends Cubit<AddPostState> {
     try {
       emit(UploadImageLoading());
 
-      final response = await postReposatory.uploadFile(fileVideo!.path);
+      final response = await postReposatory.uploadFile(filePath);
       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
       imgUrl = response;
       print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imgUrl');
       emit(UploadVideoSuccessfully());
-      createPost(imageUrl: imgUrl);
+      createImagePost();
       return response;
     } catch (e) {
+      print(e.toString());
       emit(UploadImgFailure(errMessage: e.toString()));
       return e.toString();
     }
   }
 
-  String videoUrl = '';
+  String? videoUrl;
   uploadVideo() async {
     emit(UploadVideoLoading());
-    final response =
-        await postReposatory.getUploadUrl(fileName: fileVideo!.path);
+
+    final response = await postReposatory.getUploadUrl(fileVideo!.path);
 
     response.fold((l) {
       emit(UploadVideoFailure(errMessage: l));
+      print(l);
     }, (upload) {
       videoUrl = upload;
       emit(UploadImgSuccessfully());
-      createPost(imageUrl: videoUrl);
+      //verifyVideo();
+      createVideoPost();
+    });
+  }
+
+  verifyVideo() async {
+    emit(VerifyVideoLoading());
+
+    final response = await postReposatory.verifyUrl();
+
+    response.fold((l) {
+      print(l.toString());
+      emit(VerifyVideoFailure(errMessage: l));
+      print(l);
+    }, (verify) {
+      emit(VerifyVideoSuccessfully());
+      createVideoPost();
     });
   }
 
@@ -194,12 +221,31 @@ class AddPostCubit extends Cubit<AddPostState> {
     });
   }
 
-  createPost({required String imageUrl}) async {
+  createImagePost() async {
     try {
       emit(CreatePostLoading());
 
       final response = await postReposatory.createPost(
-          addPostController.text, selectedItems, imageUrl);
+          addPostController.text, selectedItems, imgUrl);
+      print(response);
+      emit(CreatePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
+
+      return e.toString();
+    }
+  }
+
+  createVideoPost() async {
+    try {
+      emit(CreatePostLoading());
+
+      final response = await postReposatory.createVideoPost(
+        addPostController.text,
+        selectedItems,
+      );
       print(response);
       emit(CreatePostSuccessfully());
       return response;
@@ -208,6 +254,30 @@ class AddPostCubit extends Cubit<AddPostState> {
       emit(CreatePostFailure(errMessage: e.toString()));
       return e.toString();
     }
+  }
+
+  createTextPost() async {
+    try {
+      emit(CreatePostLoading());
+
+      final response = await postReposatory.createPost(
+          addPostController.text, selectedItems, '');
+      print(response);
+      emit(CreatePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  void clearpostContant() {
+    fileVideo = null;
+    image = null;
+    displayVideo = null;
+
+    emit(RemovePostContant());
   }
 }
      // img.compositeImage(image, banner!, dstH: 35, dstW: 140, dstX: x, dstY: y);
