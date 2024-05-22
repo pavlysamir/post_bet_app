@@ -38,20 +38,23 @@ class CreatePostView extends StatelessWidget {
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: CustomButtonLarge(
-                  text:
-                      state is UploadImageLoading || state is CreatePostLoading
-                          ? 'loading..'
-                          : S.of(context).share,
+                  text: state is UploadImageLoading ||
+                          state is CreatePostLoading ||
+                          state is UploadVideoLoading
+                      ? 'loading..'
+                      : S.of(context).share,
                   color: kPrimaryKey,
                   textColor: Colors.white,
                   function: () async {
                     // AddPostCubit.get(context).addPostController.text != null
                     //     ?
                     //AddPostCubit.get(context).createPost();
-                    if (AddPostCubit.get(context).image != null) {
-                      await AddPostCubit.get(context).convertUint8listToFile();
+                    if (AddPostCubit.get(context).postImages.isNotEmpty) {
+                      await AddPostCubit.get(context).uploadImage();
                     } else if (AddPostCubit.get(context).fileVideo != null) {
-                      await AddPostCubit.get(context).uploadVideo();
+                      await AddPostCubit.get(context)
+                          .uploadVideo()
+                          .then((value) => null);
                       //  AddPostCubit.get(context).fileVideo!.path);
                     } else {
                       await AddPostCubit.get(context).createTextPost();

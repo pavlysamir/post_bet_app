@@ -1,14 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:image/image.dart' as img;
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 
@@ -22,40 +20,24 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   TextEditingController addPostController = TextEditingController();
 
-  // File? fileImage;
-  // Future<void> pickCameraImage() async {
-  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //   if (image != null) {
-  //     fileImage = File(image.path);
-  //     watermarkImage(fileImage!, AssetsData.faceBookIcon);
-  //     emit(SuccessfulPickImage());
-  //   } else {
-  //     emit(FailPickImage());
-  //     return;
-  //   }
-  // }
-  Uint8List? image;
-  Future<void> pickImage() async {
-    emit(LoadingPickImage());
-    final result = await ImagePicker().pickImage(source: ImageSource.gallery);
-    if (result != null) {
-      final file = File(result.path);
-      final imageBytes = await watermarkImage(file);
-      if (imageBytes != null) {
-        image = imageBytes;
-        print(imageBytes);
+  List<File> postImages = [];
 
-        // store unit8List image here ;
+  // Uint8List? image;
+  Future<void> getPostImageFromDevice() async {
+    final picker = ImagePicker();
+    final pickedImage = await picker.pickImage(source: ImageSource.gallery);
 
-        // Emit state or update bloc (if using state management)
-        emit(SuccessfulPickImage());
-      } else {
-        // Emit state or update bloc with error (if using state management)
-        emit(FailPickImage());
+    if (pickedImage != null) {
+      postImages.add(File(pickedImage.path));
+      if (kDebugMode) {
+        print(postImages.length);
       }
+      emit(SuccessfulPickImage());
     } else {
-      // Emit state or update bloc with cancel message (if using state management)
-      return;
+      if (kDebugMode) {
+        print('No error selected');
+      }
+      emit(FailPickImage());
     }
   }
 
@@ -80,7 +62,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
   void clearImage() {
-    image = null;
+    postImages.clear();
     emit(RemoveFileImage());
   }
 
@@ -89,43 +71,43 @@ class AddPostCubit extends Cubit<AddPostState> {
     emit(RemoveFileVideo());
   }
 
-  Future<Uint8List?> watermarkImage(File imageFile) async {
-    final img.Image? image =
-        await img.decodeImage(await imageFile.readAsBytes());
-    if (image != null) {
-      const String logoPath =
-          'assets/images/logo.png'; // Replace with your logo path
-      // final img.Image? logo =
-      //     await img.decodeImage(await File(logoPath).readAsBytes());
+  // Future<Uint8List?> watermarkImage(File imageFile) async {
+  //   final img.Image? image =
+  //       await img.decodeImage(await imageFile.readAsBytes());
+  //   if (image != null) {
+  //     const String logoPath =
+  //         'assets/images/logo.png'; // Replace with your logo path
+  //     // final img.Image? logo =
+  //     //     await img.decodeImage(await File(logoPath).readAsBytes());
 
-      final img.Image? logo =
-          await img.decodeImage(await loadAssetAsBytes(logoPath));
+  //     final img.Image? logo =
+  //         await img.decodeImage(await loadAssetAsBytes(logoPath));
 
-      // Adjust watermark position and size based on your requirements
-      final int logoWidth = logo!.width;
-      final int logoHeight = logo.height;
-      final int x = image.width - (5 * logoWidth);
-      final int y = image.height - 60;
+  //     // Adjust watermark position and size based on your requirements
+  //     final int logoWidth = logo!.width;
+  //     final int logoHeight = logo.height;
+  //     final int x = image.width - (5 * logoWidth);
+  //     final int y = image.height - 60;
 
-      // Composite the logo onto the image (adjust blending mode as needed)
-      img.compositeImage(image, logo, dstH: 35, dstW: 200, dstX: x, dstY: y);
+  //     // Composite the logo onto the image (adjust blending mode as needed)
+  //     img.compositeImage(image, logo, dstH: 35, dstW: 200, dstX: x, dstY: y);
 
-      // Convert the watermarked image to a byte array
-      final pngBytes = img.encodePng(image);
-      return pngBytes;
-    }
-    return null;
-  }
+  //     // Convert the watermarked image to a byte array
+  //     final pngBytes = img.encodePng(image);
+  //     return pngBytes;
+  //   }
+  //   return null;
+  // }
 
-  Future<Uint8List> loadAssetAsBytes(String assetPath) async {
-    try {
-      final bytes = await rootBundle.load(assetPath);
-      return bytes.buffer.asUint8List();
-    } catch (e) {
-      print('Error loading asset: $e');
-      return Uint8List(0); // Handle error gracefully
-    }
-  }
+  // Future<Uint8List> loadAssetAsBytes(String assetPath) async {
+  //   try {
+  //     final bytes = await rootBundle.load(assetPath);
+  //     return bytes.buffer.asUint8List();
+  //   } catch (e) {
+  //     print('Error loading asset: $e');
+  //     return Uint8List(0); // Handle error gracefully
+  //   }
+  // }
 
   final List<String> selectedItems = [];
 
@@ -156,18 +138,25 @@ class AddPostCubit extends Cubit<AddPostState> {
     AssetsData.telegram,
     AssetsData.googleBusiness
   ];
-  String imgUrl = '';
-  Future<String> uploadImage(String filePath) async {
+  List<String> imgUrl = [];
+  uploadImage() async {
     try {
       emit(UploadImageLoading());
+      final meadiaUrls = postImages.map((image) async {
+        final response = await postReposatory.uploadFile(image.path);
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+        imgUrl.add(response);
+        print(
+            'لالالالالالالالالالالالالالالالالالالالالالالالالالالالا$imgUrl');
+        emit(UploadImgSuccessfully());
 
-      final response = await postReposatory.uploadFile(filePath);
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
-      imgUrl = response;
-      print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imgUrl');
-      emit(UploadVideoSuccessfully());
-      createImagePost();
-      return response;
+        return response;
+      }).toList();
+
+      Future.wait(meadiaUrls).then((value) {
+        createImagePost(imgUrls: value);
+      });
+      return imgUrl;
     } catch (e) {
       print(e.toString());
       emit(UploadImgFailure(errMessage: e.toString()));
@@ -175,18 +164,38 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
-  String? videoUrl;
-  uploadVideo() async {
-    emit(UploadVideoLoading());
+  String vidUrl = '';
 
-    final response = await postReposatory.getUploadUrl(fileVideo!.path);
+  Future<String> uploadVideo() async {
+    try {
+      emit(UploadVideoLoading());
+
+      final response = await postReposatory.uploadVideoFile([fileVideo!]);
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      vidUrl = response.first;
+      print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$vidUrl');
+      emit(UploadVideoSuccessfully());
+      createVideoPost();
+      return response.first;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadVideoFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  String? videoUrl;
+  getVideoUel() async {
+    emit(GetVideoLoading());
+
+    final response = await postReposatory.getUploadUrl();
 
     response.fold((l) {
-      emit(UploadVideoFailure(errMessage: l));
+      emit(GetVideoFailure(errMessage: l));
       print(l);
     }, (upload) {
       videoUrl = upload;
-      emit(UploadImgSuccessfully());
+      emit(GetVideoSuccessfully());
       //verifyVideo();
       createVideoPost();
     });
@@ -207,26 +216,26 @@ class AddPostCubit extends Cubit<AddPostState> {
     });
   }
 
-  String? uploasedImg;
-  Future convertUint8listToFile() async {
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/image.png').create();
-    file.writeAsBytes(image!).then((value) async {
-      uploasedImg = value.path;
-      print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
-      await uploadImage(value.path).then((value) async {
-        //await createPost(imageUrl: imgUrl);
-      });
-      // await createPost();
-    });
-  }
+  // String? uploasedImg;
+  // Future convertUint8listToFile() async {
+  //   final tempDir = await getTemporaryDirectory();
+  //   File file = await File('${tempDir.path}/image.png').create();
+  //   file.writeAsBytes(image!).then((value) async {
+  //     uploasedImg = value.path;
+  //     print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
+  //     await uploadImage(value.path).then((value) async {
+  //       //await createPost(imageUrl: imgUrl);
+  //     });
+  //     // await createPost();
+  //   });
+  // }
 
-  createImagePost() async {
+  createImagePost({required List<String> imgUrls}) async {
     try {
       emit(CreatePostLoading());
 
       final response = await postReposatory.createPost(
-          addPostController.text, selectedItems, imgUrl);
+          addPostController.text, selectedItems, imgUrls);
       print(response);
       emit(CreatePostSuccessfully());
       return response;
@@ -260,8 +269,8 @@ class AddPostCubit extends Cubit<AddPostState> {
     try {
       emit(CreatePostLoading());
 
-      final response = await postReposatory.createPost(
-          addPostController.text, selectedItems, '');
+      final response = await postReposatory
+          .createPost(addPostController.text, selectedItems, ['']);
       print(response);
       emit(CreatePostSuccessfully());
       return response;
@@ -274,7 +283,7 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   void clearpostContant() {
     fileVideo = null;
-    image = null;
+    postImages.clear();
     displayVideo = null;
 
     emit(RemovePostContant());

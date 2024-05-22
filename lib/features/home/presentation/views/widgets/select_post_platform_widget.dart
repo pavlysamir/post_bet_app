@@ -29,7 +29,7 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
     'Reel',
   ];
   List<String> facebook = [
-    'Groubs',
+    'Groups',
     'Pages',
   ];
   @override
@@ -76,11 +76,15 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                             AddPostCubit.get(context)
                                                 .selectedaceInstaItems
                                                 .add(value);
+                                            print(AddPostCubit.get(context)
+                                                .selectedaceInstaItems);
                                           } else {
                                             // Remove item from selected list if unchecked
                                             AddPostCubit.get(context)
                                                 .selectedaceInstaItems
                                                 .remove(value);
+                                            print(AddPostCubit.get(context)
+                                                .selectedaceInstaItems);
                                           }
                                         });
                                       },
@@ -117,11 +121,15 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                             AddPostCubit.get(context)
                                                 .selectedaceInstaItems
                                                 .add(value);
+                                            print(AddPostCubit.get(context)
+                                                .selectedaceInstaItems);
                                           } else {
                                             // Remove item from selected list if unchecked
                                             AddPostCubit.get(context)
                                                 .selectedaceInstaItems
                                                 .remove(value);
+                                            print(AddPostCubit.get(context)
+                                                .selectedaceInstaItems);
                                           }
                                         });
                                       },

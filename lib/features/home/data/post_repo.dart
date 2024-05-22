@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:post_bet/core/api/api_consumer.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
@@ -15,22 +16,19 @@ class PostReposatory {
   String baseUrlUbloadImg = 'https://app.ayrshare.com/api/media/upload';
 
   String baseUrlUbloadVideo = ' https://app.ayrshare.com/api/media/uploadUrl';
-  // String profileKey =
-  //     getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey);
 
   String? id = getIt
       .get<CashHelperSharedPreferences>()
       .getData(key: ApiKey.mySubscribeId);
 
-  // static String baseUrlPosting =
-  //     'https://post-bet.onrender.com/Posting/post/$id';
-  // 'https://post-bet.onrender.com/Posting/post';
   String baseUrlPosting(id) {
     return 'https://post-bet.onrender.com/Posting/post/$id';
   }
 
   String authorizationHeader = 'Bearer Z0XN85Z-CQRMH8W-QQE6FY4-2Y85SXW';
   String contentType = 'application/json';
+  String? fileName;
+  List<String> meadiaUrl = [];
 
   Future<String> uploadFile(String filePath) async {
     final file = File(filePath);
@@ -59,10 +57,42 @@ class PostReposatory {
     }
   }
 
+  Future<List<String>> uploadVideoFile(List<XFile> filePath) async {
+    filePath.map((e) async {
+      final file = File(e.path);
+      final formData = FormData.fromMap({
+        'file': await MultipartFile.fromFile(e.path,
+            filename: file.path.split('/').last),
+      });
+      print(formData);
+      final dio = Dio();
+      dio.options.headers = <String, dynamic>{
+        'Authorization': authorizationHeader,
+        'Content-Type': contentType,
+        //'Profile-Key': profileKey
+      };
+
+      try {
+        final response = await dio.post(
+          baseUrlUbloadImg,
+          data: formData,
+        );
+
+        fileName = response.data['fileName'];
+        meadiaUrl.add(response.data['url']);
+        print(response.data);
+      } on DioError catch (error) {
+        print('Error uploading file: ${error.message}');
+        rethrow; // Re-throw for further handling if needed
+      }
+    });
+
+    return meadiaUrl;
+  }
+
   String? accessUrl;
-  Future<Either<String, String>> getUploadUrl(String fileName) async {
+  Future<Either<String, String>> getUploadUrl() async {
     try {
-      File videoFile = File(fileName);
       print(fileName);
       final dio = Dio();
       dio.options.headers = <String, dynamic>{
@@ -71,7 +101,7 @@ class PostReposatory {
       final response = await dio.get(
         'https://app.ayrshare.com/api/media/uploadUrl',
         queryParameters: {
-          'fileName': Uri.encodeComponent(fileName),
+          'fileName': fileName,
           'contentType': 'video/mp4',
         },
       );
@@ -110,7 +140,7 @@ class PostReposatory {
   }
 
   Future<Response> createPost(String postContent,
-      List<String> selectedPlatforms, String mediaUrl) async {
+      List<String> selectedPlatforms, List<String> mediaUrl) async {
     print(selectedPlatforms
         .map((platform) => {"platform": platform, "isSelected": true})
         .toList());
@@ -174,7 +204,7 @@ class PostReposatory {
       'platform': selectedPlatforms
           .map((platform) => {"platform": platform, "isSelected": true})
           .toList(),
-      'mediaUrls': accessUrl,
+      'mediaUrls': meadiaUrl,
       'isVideo': true
     };
 

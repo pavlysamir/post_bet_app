@@ -73,15 +73,15 @@ class CustomDescriptionPostField extends StatelessWidget {
                   ? const Center(
                       child: CircularProgressIndicator(color: kPrimaryKey),
                     )
-                  : SizedBox(),
-              if (AddPostCubit.get(context).image != null)
+                  : const SizedBox(),
+              if (AddPostCubit.get(context).postImages.isNotEmpty)
                 Column(
                   children: [
                     SizedBox(
                       height: 20.h,
                     ),
                     CustomViewPhotoFromDevice(
-                      file: AddPostCubit.get(context).image!,
+                      file: AddPostCubit.get(context).postImages[0],
                       function: () {
                         AddPostCubit.get(context).clearImage();
                       },
@@ -124,7 +124,7 @@ class CustomDescriptionPostField extends StatelessWidget {
                         size: 25.h,
                       ),
                       onPressed: () {
-                        AddPostCubit.get(context).pickImage();
+                        AddPostCubit.get(context).getPostImageFromDevice();
                       },
                     ),
                     SizedBox(width: 10.w),

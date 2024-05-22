@@ -56,3 +56,13 @@ class VerifyVideoFailure extends AddPostState {
 }
 
 class VerifyVideoLoading extends AddPostState {}
+
+class GetVideoSuccessfully extends AddPostState {}
+
+class GetVideoFailure extends AddPostState {
+  final String errMessage;
+
+  GetVideoFailure({required this.errMessage});
+}
+
+class GetVideoLoading extends AddPostState {}
