@@ -388,7 +388,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     fileVideo = null;
     image = null;
     displayVideo = null;
-
+    addPostController.clear();
     emit(RemovePostContant());
   }
 

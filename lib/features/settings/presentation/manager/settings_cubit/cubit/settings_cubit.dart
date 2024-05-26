@@ -250,6 +250,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
+  MySubscriptionModel? mySubscriptionModel;
   List<MySubscriptionModel> mySubscriptionList = [];
   String chargeId = '';
   Future<void> mySubscription() async {
@@ -264,7 +265,7 @@ class SettingsCubit extends Cubit<SettingsState> {
         chargeId = getIt.get<CashHelperSharedPreferences>().getData(
               key: ApiKey.chargeId,
             );
-        mySubscriptionList = mySubscraption;
+        mySubscriptionModel = mySubscraption;
 
         emit(MySubscraptionSuccess());
       },

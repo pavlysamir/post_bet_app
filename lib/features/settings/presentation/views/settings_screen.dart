@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,10 +21,13 @@ import 'package:post_bet/features/settings/presentation/views/widgets/setting_ic
 import '../../../../../generated/l10n.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-
+  SettingsScreen({super.key});
+  dynamic profilePic =
+      getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profilePic);
   @override
   Widget build(BuildContext context) {
+    Uint8List profileImage = base64Decode(profilePic.toString());
+
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
         if (state is LogOutSuccess) {
@@ -55,30 +60,30 @@ class SettingsScreen extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      getIt
-                                  .get<CashHelperSharedPreferences>()
-                                  .getData(key: ApiKey.profilePic) !=
-                              null
+                      profilePic != null
                           ? CircleAvatar(
                               backgroundColor: Colors.transparent,
                               radius: 20,
                               child: ClipOval(
-                                child: File(getIt
-                                            .get<CashHelperSharedPreferences>()
-                                            .getData(key: ApiKey.profilePic))
-                                        .existsSync() // Check if the file exists
-                                    ? Image.file(
-                                        fit: BoxFit.fill,
-                                        width: double.infinity,
-                                        File(getIt
-                                            .get<CashHelperSharedPreferences>()
-                                            .getData(key: ApiKey.profilePic)),
-                                      )
-                                    : const Icon(Icons.person),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.1,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.fitHeight,
+                                      image: MemoryImage(profileImage),
+                                    ),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
+                                  ),
+                                ),
                               ),
                             )
                           : const CircleAvatar(
-                              backgroundColor: Colors.grey,
+                              backgroundColor: Colors.black,
                               radius: 20,
                               child: Icon(Icons.person),
                             ),

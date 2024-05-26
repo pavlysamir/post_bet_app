@@ -1,6 +1,6 @@
 class EndPoint {
   static String baseUrlSubscraption = "https://post-bet.onrender.com";
-  static String baseUrl = "https://post-bet.onrender.com";
+  static String baseUrl = "http://195.35.0.65:4000";
   //'http://195.35.0.65:4000';
   // "https://post-bet.onrender.com";
   static String login = "/Auth/login";

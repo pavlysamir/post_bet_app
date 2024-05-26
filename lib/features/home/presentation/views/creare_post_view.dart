@@ -44,7 +44,8 @@ class CreatePostView extends StatelessWidget {
                           state is CreatePostLoading ||
                           state is UploadVideoLoading ||
                           state is UploadFaceBookImageStoryLoading ||
-                          state is UploadFaceBookReelLoading
+                          state is UploadFaceBookReelLoading ||
+                          state is CreateFaceBookStoryLoading
                       ? 'loading..'
                       : S.of(context).share,
                   color: kPrimaryKey,

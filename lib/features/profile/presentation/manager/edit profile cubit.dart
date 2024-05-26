@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -22,11 +23,14 @@ class EditProfileCubit extends Cubit<EditProfileState> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-
+  String? base64Image;
   File? file;
   Future<void> pickCameraImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
+      final bytes = await File(image.path).readAsBytes();
+      base64Image = base64Encode(bytes);
+      print('pppppppppppppppppppppppppppppppppppppppppppppp$base64Image');
       file = File(image.path);
       print(file);
       emit(SuccessfulPickImage());
@@ -41,7 +45,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     final response = await profileRepository.updateProfileData(
       name: nameController.text,
       email: emailController.text,
-      profilePic: file!.path ??
+      profilePic: base64Image ??
           'https://firebasestorage.googleapis.com/v0/b/yappy-app-ef720.appspot.com/o/posts%2FprofileImg.png?alt=media&token=1ad84aae-172b-4b68-b199-d59ab8e7107d',
     );
     response.fold(

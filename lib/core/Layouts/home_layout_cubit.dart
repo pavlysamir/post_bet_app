@@ -33,11 +33,14 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
     const HomeScreen(),
     const ActivitiesScreen(),
     const PlatformScreen(),
-    const SettingsScreen(),
+    SettingsScreen(),
   ];
 
   void changeBottomNavBar(int index) {
     print(getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.id));
+    print(getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId));
     print(getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token));
     print(getIt
         .get<CashHelperSharedPreferences>()

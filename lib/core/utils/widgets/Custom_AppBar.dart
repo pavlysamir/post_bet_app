@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:convert';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,6 +25,8 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Uint8List profileImage = base64Decode(profilePic.toString());
+
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         return Padding(
@@ -73,7 +75,7 @@ class CustomAppBar extends StatelessWidget {
                                       decoration: BoxDecoration(
                                         image: DecorationImage(
                                           fit: BoxFit.fitHeight,
-                                          image: _buildImageProvider(),
+                                          image: MemoryImage(profileImage),
                                         ),
                                         borderRadius: const BorderRadius.all(
                                           Radius.circular(10),
@@ -104,22 +106,22 @@ class CustomAppBar extends StatelessWidget {
     );
   }
 
-  ImageProvider _buildImageProvider() {
-    if (profilePic is Uint8List) {
-      // If 'profilePic' is a Uint8List, use MemoryImage
-      return MemoryImage(profilePic as Uint8List);
-    } else if (profilePic is String) {
-      // If 'profilePic' is a String (file path or URL), check if it's a valid file path
-      if (Uri.tryParse(profilePic)?.isAbsolute == true) {
-        // If it's an absolute URL, use NetworkImage
-        return NetworkImage(profilePic as String);
-      } else {
-        // Otherwise, assume it's a file path and use FileImage
-        return FileImage(File(profilePic as String));
-      }
-    } else {
-      // Handle other cases or throw an error
-      throw ArgumentError('Invalid file type');
-    }
-  }
+  // ImageProvider _buildImageProvider() {
+  //   if (profileImage is Uint8List) {
+  //     // If 'profilePic' is a Uint8List, use MemoryImage
+  //     return MemoryImage(profilePic as Uint8List);
+  //   } else if (profilePic is String) {
+  //     // If 'profilePic' is a String (file path or URL), check if it's a valid file path
+  //     if (Uri.tryParse(profilePic)?.isAbsolute == true) {
+  //       // If it's an absolute URL, use NetworkImage
+  //       return NetworkImage(profilePic as String);
+  //     } else {
+  //       // Otherwise, assume it's a file path and use FileImage
+  //       return FileImage(File(profilePic as String));
+  //     }
+  //   } else {
+  //     // Handle other cases or throw an error
+  //     throw ArgumentError('Invalid file type');
+  //   }
+  // }
 }

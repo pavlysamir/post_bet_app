@@ -9,7 +9,6 @@ import 'package:post_bet/features/profile/data/models/profile_model.dart';
 class ProfileRepository {
   final ApiConsumer api;
   ProfileRepository({required this.api});
-
   Future<Either<String, ProfileResponseModle>> updateProfileData({
     required String name,
     required String email,
