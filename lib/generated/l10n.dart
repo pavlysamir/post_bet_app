@@ -1859,6 +1859,16 @@ class S {
       args: [],
     );
   }
+
+  /// `No Posts`
+  String get noPosts {
+    return Intl.message(
+      'No Posts',
+      name: 'noPosts',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

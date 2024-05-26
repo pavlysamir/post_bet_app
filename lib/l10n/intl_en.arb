@@ -180,6 +180,7 @@
     "doPromocode":"Do you have Promocode",
     "enterPromo":"Enter Promocode",
     "confirmChangeLng":"Confirm Change langeuage",
-    "confirmDeleteAccount":"Confirm Delete Account"
+    "confirmDeleteAccount":"Confirm Delete Account",
+    "noPosts":"No Posts"
 
 }

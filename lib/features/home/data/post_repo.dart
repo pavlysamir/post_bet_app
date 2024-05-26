@@ -25,10 +25,11 @@ class PostReposatory {
   //     'https://post-bet.onrender.com/Posting/post/$id';
   // 'https://post-bet.onrender.com/Posting/post';
   String baseUrlPosting(id) {
-    return 'https://post-bet.onrender.com/Posting/post/70';
+    return 'https://post-bet.onrender.com/Posting/post/$id';
   }
 
-  String authorizationHeader = 'Bearer Z0XN85Z-CQRMH8W-QQE6FY4-2Y85SXW';
+  String authorizationHeader =
+      'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}';
   String contentType = 'application/json';
 
   Future<String> uploadFile(String filePath) async {
@@ -40,7 +41,8 @@ class PostReposatory {
     print(formData);
     final dio = Dio();
     dio.options.headers = <String, dynamic>{
-      'Authorization': authorizationHeader,
+      'Authorization':
+          'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
       'Content-Type': contentType,
       //'Profile-Key': profileKey
     };
@@ -109,7 +111,7 @@ class PostReposatory {
   // }
 
   Future<Response> createPost(String postContent,
-      List<String> selectedPlatforms, String mediaUrl) async {
+      List<String> selectedPlatforms, List<String> mediaUrl) async {
     print(selectedPlatforms
         .map((platform) => {"platform": platform, "isSelected": true})
         .toList());
@@ -126,7 +128,7 @@ class PostReposatory {
       'platform': selectedPlatforms
           .map((platform) => {"platform": platform, "isSelected": true})
           .toList(),
-      'mediaUrls': [mediaUrl],
+      'mediaUrls': mediaUrl,
     };
 
     if (token != null) {
@@ -284,6 +286,98 @@ class PostReposatory {
     try {
       final response = await dio.post(
         baseUrlPosting(id),
+        data: data,
+      );
+      print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createFaceeBookImageStory(
+      String postContent, String mediaUrl) async {
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      "post": "", // Ignored by stories
+      "platforms": ["facebook"],
+      "mediaUrls": [mediaUrl],
+      "faceBookOptions": {"stories": true}
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization':
+            'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+        // 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        //baseUrlPosting(id),
+        'https://app.ayrshare.com/api/post',
+        data: data,
+      );
+      print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createFaceeBookVideoStory(
+      String postContent, String mediaUrl) async {
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      "post": "", // Ignored by stories
+      "platforms": ["facebook"],
+      "mediaUrls": [mediaUrl],
+      "faceBookOptions": {"stories": true},
+      'isVideo': true
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization':
+            'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+
+        //'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        // baseUrlPosting(id),
+        'https://app.ayrshare.com/api/post',
         data: data,
       );
       print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');

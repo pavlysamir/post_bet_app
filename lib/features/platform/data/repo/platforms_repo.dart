@@ -18,12 +18,12 @@ class PlatFormsRepositery {
       getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey);
   static const String baseUrl =
       'https://app.ayrshare.com/api/profiles/generateJWT';
-  static const String authorizationHeader =
-      'Bearer RTXFBZB-BW845M5-GAA8QE4-08PQ2ZR';
+  static String authorizationHeader =
+      'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}';
   static const String contentType = 'application/json';
-  static const String domain = "id-z44be";
+  static const String domain = "id-8sdfv";
   static const String privateKey =
-      "-----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEAoIambr2xD7oheMJ9PtL0hLf51R/ncUgCG4NOoiKen2vav1ot\nhcHjg+vWHixAmbjR6a+oAn6XADj7nddTCFJOEUeCpFJrtP5Y57aC4ZL5Esd/3eS7\neFqjrcABUNSoHqRCf3CEazqDarS8j3/UTMbBYqXNGRkYrzeqJ8HvhgHBd793jTCS\njMqBGIEfTsE55D161e9c1rwPP2UWbZov1UtwmxUJKQ19UxMV6LWCB52ZyvE6iH5u\niCyBq/Nh7Qlb5RNEaB9kCmP2AQQhfMpwXXMZdefTu5J9NXjcYcMBmKL/ik9X9XN2\ned07WtpqqHxA5alEYk9Vk331/wBkz0xEkMoJsQIDAQABAoIBAAW6vJi+BEJ0kSKF\nZZE/GAtfIieDVaBHUszu1zkF/Y2g3LxA8JhCMvfHzHsD9xPNgw+BTaC2KjdPsVph\nP7VPs7nd6KmrB+1cOSnfC6WXuHRdQsD1m6PYb1hhnqJnDq+WSwnPpyhJHLzrocHI\n7RfG7crSsmLzkHwbg2MbIsyQhjpbAH1U+6TizAYYwoXnm6K+ZzPRzaZ4jHR2DlrU\nKi+qxnvn5mxUftpgKVP+5ercE5uowG6hEb8LfC8m5sP1STkONyvC3Ec/4+9qkcT7\nKYQb3oO571lxotKR+ABHj6vfir7oFWWGSDSQmVoKzs/ftbtO5kWMvvSZuxbbsKBb\nzBN5ooECgYEA2Mu65O4pjZTxzqFyz30lJWYfvKWf/evWLVsVW4d4vgDcMyIrBz4t\n/WShi2W70IWygb9bigOc/IiBx/+kRo+mHttJpgpYifBEv9EmNhNFDgBKCl+bbLXh\ngwFqkIM0URtvYZD+4HsHc4SEYo37z4z7NX3r5zd3cotR64U5diUhPPECgYEAvY37\nzYJYIIUoH/9/P/8JyKRNROn9vxtGss0oTr9mvkr/jEBE0QPjgA8PHcxcLIlY7F+i\nKSO4OKoB/hUr7zlVbXTdEg3C3mnAVR692exYabTaNExGfZqT9lg56aDWwxGUe3Z6\n75BKxS52AT5T/1wj7s27Wp8z7NJcIjHvoK9MmMECgYAIZ9XGPIm16Jl7hnz6GIMR\nMSV33gAXC0bRmV95ngYLb+MZxHBgpoOH+Jfe3MHsctKZ/z5gWoWCsRQ/GeVXqwgo\n2B3B51LJflxcB5Lws8yQn2g/gLd4/pBQ0QQ9uCiWIHcwFDwdngeK7g9n9tNVl8TB\nrTExVNA3y7kQZaj1sLjaMQKBgGNfLNOG8pZR2EA2HEq7dDCYWd234YuvS/fub6Qg\n2UcHYELxamI87KY0vtL7UJMUieaZGBUDIc+q6JKAHOEzqGJScpbFWhRpUigNjq/R\nJGR+KCpklkvAnrL1e57L7+qhq7qx2S7/8QLAIaLzPuvPLRNDDWYrsfgEK8LNdPdD\nDx/BAoGAW/T3FLAFH4yoROJlhxj/daPZsLp4UvbiNKF97qtEj+24BiaQl0yIOdtw\nU4FV92+kOl5gKjhUe/AtnginYCo1hcGK0ACQ+eWWfW5sRFTx0DQIRIkfZPO8io+Q\n6sVDVRlhjbwUA56vwzo6O/ZEwSZ+LP5gkfKr0DWXjx8gxqYZw4s=\n-----END RSA PRIVATE KEY-----";
+      "-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEAwIXFODkBUC09mGBjgVjnmqNhTt1ZokH7FeHfuuxZlNLuDUdj\n30rWSGn8HgF4QQDADS2sAjJNPnGfSVTESElow98BwLPsKHoATdockWv0Bk6GCTS4\nsM+W9VNOvy14RUM9+WaFRbmHczXSuENxwoUMKZHD3NOUTC0rmwP+5V34tgL1P311\njkEjJv31ljAZG2a/dNxJHScGVZp5mfedpk/lVYrOIFnd/Jh3RCzXHtOePvcbEC1n\n2uSSXbguPRqWd/a2uIpc0B8hUBSXgiXw/OGtO6PBIwF+9w4SzUvEQ3S195tKma4Y\nanf99XI/qVTLIi0Of9aiWAPXgyWoqwUdtPz9xQIDAQABAoIBADxKSBJMy8v7dvQe\nj1rE6DbFnmYPrI/DIOnf4+wKMx2HlrQC3NRi/8sKocEVzb5xiTM3T8waS5VYCL1y\ntcs7bfsU/dwGnFiqqCi5OsQRrghBk/kTERmR0OD/10PIbgcmwSQ2xlqo+LGMM/Kv\ncFMtzjrAYrlnauQWKzcu36adsJLyvBmO60VWpu0aWXttKoEgLv5gwtiqECpdhh3T\nuWFB5SALVnBQaQ4k1XQR4+gdTPBpa5sXqbgeN1+qmRj4Bd/ilXjDchQSmFHPsFhW\nevTs81kMOf7byGBrHohhWOAEfOWgwZKpfuYD9L45SCae7oIosCaZ7kzhalllRUTA\nLZRNLJsCgYEA4+CVusG+MLKgmzfNk3JhGKrUqm6zkUgJ6hzQ0teLbUe9ZJ2gS2Bq\nCY2ehqJ8Ijx5F78vGt/7WBudYZbhSzBEr5wW+NDXNtc5dMIdBitGzasNB/Zn+06o\n2NLWida8q3ShKdFiPFJdkvf78CCGrX74WKUzak1FCQn42mMOw3zE6hMCgYEA2Eg1\nnDK6A6owzYVJscgY8+l/S0pu7nVhGvNlaBlMqZMR3fFUUHzDEWESGOdZb5PF3coo\nW4O1cz0Y0BW93uSGfAvBiGnSOs8SoOArNAh+7EmtC0x45KSdsdR9dSIHffvRh9CI\nwskHetxB4tdrGw+EYyN88ffZ/Vt8kMlU+oK588cCgYAh+0K4x92By5FxtB+e5kae\ndBMkmz+B4blAxS1K08PB9xnCIFNgCi+l3w2NzDswq83vAZ6XpmEH4Y5VmDdejAMi\nIOe4EQSW8/9obu3/FoMHdoOJ9W/KJQ++zaoaggA+nTTPVJ8OmcXEfeB/DYqn4rBM\nH86MApvR3j/S6USxWDDRKwKBgQCwHoUBT9FnoJQjF7G+AnpHTNGqhs80gQL1BlSC\nY2+o+qjm+Vi2PhI+ubQZ8XJDyKqsg60/cE42q/7jm4DE24SjyJLtOXbHCs5ZkJG9\nyllIomo2NCyRy3baU3ViB7bgIUordWWYcEkWA/vm85I1M/qTHFfnVfP+OxyBbmEz\nqXYxCwKBgQDLrcBxEwdDTBxVnK7RdAEPen3M49RZ76jkAIvMeyujG4X+dkR68VPH\nduZvrg6zy/yZnu1SwirUpBwTGh5GZj9/aSeWavOzDu97OUrGMoD4V1F3xqMogTIn\nEtnExOIJtmqwevUdZGmP7cGmIbhhcYy9I12NrsM2OVuF3mUIUbXgSQ==\n-----END RSA PRIVATE KEY-----";
   static const String urlComponent =
       'https://profile.ayrshare.com?domain=id-c9o06&jwt=https://profile.ayrshare.com?domain=id-c9o06&jwt=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.\neyJhcGlLZXkiOnsiaXYiOiJlZGUzMGE3MDM1MDcyOWU3YjVkNmQzZDliNTlhM2FjMSIsImNvbnRlbnQiOiIzZDA2NWViZjAzNmU2MGZiZWY0ZmQ4YTYyNWEwYzcxZTc5ZWE4ZGFlNTczMWQwYTUwZjFiZjA5YSJ9LCJwcm9maWxlS2V5Ijp7Iml2IjoiZWRlMzBhNzAzNTA3MjllN2I1ZDZkM2Q5YjU5YTNhYzEiLCJjb250ZW50IjoiN2QwNDRhYjU1MzQ0NDlkYmZkNGVmN2E5M2E5YTlkMWMyOGM3OWRmMDRhMGZjYmM1MWMwYWMxOWEifSwiaWF0IjoxNzE1ODk3NTk1LCJleHAiOjE3MTU4OTc4OTUsImF1ZCI6Imh0dHBzOi8vcHJvZmlsZS5heXJzaGFyZS5jb20iLCJpc3MiOiJpZC1jOW8wNiIsInN1YiI6InN1cHBvcnRAYXlyc2hhcmUuY29tIn0.\n';
   // getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);.com
@@ -34,7 +34,9 @@ class PlatFormsRepositery {
     final Map<String, dynamic> data = {
       'domain': domain,
       'privateKey': privateKey,
-      'profileKey': profileKey,
+      'profileKey': getIt
+          .get<CashHelperSharedPreferences>()
+          .getData(key: ApiKey.profileKey),
       'logout': true,
       'redirect': redirect,
       //'verify': true
@@ -42,7 +44,7 @@ class PlatFormsRepositery {
 
     final Dio dio = Dio();
     dio.options.headers = <String, dynamic>{
-      'Authorization': authorizationHeader,
+      'Authorization': 'Bearer TH8S6RT-67ZMT2F-HTB3ZSH-PFEAPER',
       'Content-Type': contentType,
     };
 

@@ -59,7 +59,7 @@ class PlatformScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomAppBar(
+                CustomAppBar(
                   image: 'd',
                 ),
                 SizedBox(

@@ -19,8 +19,8 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.2,
+            width: MediaQuery.of(context).size.width * 0.2,
+            height: MediaQuery.of(context).size.height * 0.13,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.fitHeight, image: _buildImageProvider()),

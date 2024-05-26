@@ -1,6 +1,6 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
@@ -13,12 +13,15 @@ import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
+  CustomAppBar({
     Key? key,
     required this.image,
   }) : super(key: key);
 
   final String image;
+
+  dynamic profilePic =
+      getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profilePic);
 
   @override
   Widget build(BuildContext context) {
@@ -51,42 +54,40 @@ class CustomAppBar extends StatelessWidget {
                                   style: Theme.of(context).textTheme.titleLarge)
                               : Text(
                                   '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
-                                  style:
-                                      Theme.of(context).textTheme.titleLarge),
+                                  style: Theme.of(context).textTheme.titleLarge,
+                                ),
                           const SizedBox(
                             width: 5,
                           ),
-                          getIt
-                                      .get<CashHelperSharedPreferences>()
-                                      .getData(key: ApiKey.profilePic) !=
-                                  null
-                              ? CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  radius: 20,
-                                  child: ClipOval(
-                                    child: File(getIt
-                                                .get<
-                                                    CashHelperSharedPreferences>()
-                                                .getData(
-                                                    key: ApiKey.profilePic))
-                                            .existsSync() // Check if the file exists
-                                        ? Image.file(
-                                            fit: BoxFit.fill,
-                                            width: double.infinity,
-                                            File(getIt
-                                                .get<
-                                                    CashHelperSharedPreferences>()
-                                                .getData(
-                                                    key: ApiKey.profilePic)),
-                                          )
-                                        : const Icon(Icons.person),
+                          if (profilePic != null)
+                            CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              radius: 20,
+                              child: ClipOval(
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.1,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.1,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.fitHeight,
+                                      image: NetworkImage(
+                                          "https:/${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profilePic)}"),
+                                    ),
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(10),
+                                    ),
                                   ),
-                                )
-                              : const CircleAvatar(
-                                  backgroundColor: Colors.grey,
-                                  radius: 20,
-                                  child: Icon(Icons.person),
                                 ),
+                              ),
+                            )
+                          else
+                            const CircleAvatar(
+                              backgroundColor: Colors.grey,
+                              radius: 20,
+                              child: Icon(Icons.person),
+                            ),
                         ],
                       ),
                     ),
@@ -102,5 +103,24 @@ class CustomAppBar extends StatelessWidget {
         );
       },
     );
+  }
+
+  ImageProvider _buildImageProvider() {
+    if (profilePic is Uint8List) {
+      // If 'profilePic' is a Uint8List, use MemoryImage
+      return MemoryImage(profilePic as Uint8List);
+    } else if (profilePic is String) {
+      // If 'profilePic' is a String (file path or URL), check if it's a valid file path
+      if (Uri.tryParse(profilePic)?.isAbsolute == true) {
+        // If it's an absolute URL, use NetworkImage
+        return NetworkImage(profilePic as String);
+      } else {
+        // Otherwise, assume it's a file path and use FileImage
+        return FileImage(File(profilePic as String));
+      }
+    } else {
+      // Handle other cases or throw an error
+      throw ArgumentError('Invalid file type');
+    }
   }
 }

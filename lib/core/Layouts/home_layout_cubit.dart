@@ -43,6 +43,9 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
         .get<CashHelperSharedPreferences>()
         .getData(key: ApiKey.profileKey));
     print(getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.refId));
+    print(getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.profilePic));
 
     currentIndex = index;
 

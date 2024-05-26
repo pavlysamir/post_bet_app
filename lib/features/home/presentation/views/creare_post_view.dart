@@ -19,7 +19,9 @@ class CreatePostView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
-        if (state is CreatePostSuccessfully) {
+        if (state is CreatePostSuccessfully ||
+            state is CreateFaceBookReelSuccessfully ||
+            state is CreateFaceBookStorySuccessfully) {
           AddPostCubit.get(context).clearpostContant();
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success'),
@@ -38,18 +40,29 @@ class CreatePostView extends StatelessWidget {
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               child: CustomButtonLarge(
-                  text:
-                      state is UploadImageLoading || state is CreatePostLoading
-                          ? 'loading..'
-                          : S.of(context).share,
+                  text: state is UploadImageLoading ||
+                          state is CreatePostLoading ||
+                          state is UploadVideoLoading ||
+                          state is UploadFaceBookImageStoryLoading ||
+                          state is UploadFaceBookReelLoading
+                      ? 'loading..'
+                      : S.of(context).share,
                   color: kPrimaryKey,
                   textColor: Colors.white,
                   function: () async {
                     // AddPostCubit.get(context).addPostController.text != null
                     //     ?
                     //AddPostCubit.get(context).createPost();
-                    if (AddPostCubit.get(context).image != null) {
-                      await AddPostCubit.get(context).convertUint8listToFile();
+
+                    if (AddPostCubit.get(context).imageFile != null &&
+                        AddPostCubit.get(context)
+                            .selectedaceInstaItems
+                            .contains('Story')) {
+                      await AddPostCubit.get(context).uploadImageStory();
+                    } else if (AddPostCubit.get(context)
+                        .postImages
+                        .isNotEmpty) {
+                      await AddPostCubit.get(context).uploadImage();
                     } else if (AddPostCubit.get(context).fileVideo != null &&
                         AddPostCubit.get(context)
                             .selectedaceInstaItems

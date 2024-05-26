@@ -38,9 +38,12 @@ class _LoginScreenState extends State<VerifyEmailScreen> {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
               content: Text("success"),
             ));
-            await RegistrationCubit.get(context)!.getUserProfile();
-            customGoAndDeleteNavigate(
-                context: context, path: AppRouter.kHomeLayOut);
+            await RegistrationCubit.get(context)!
+                .getUserProfile()
+                .then((value) {
+              customGoAndDeleteNavigate(
+                  context: context, path: AppRouter.kHomeLayOut);
+            });
           } else if (state is VerfyOtpFailure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.errMessage),

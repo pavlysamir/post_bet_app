@@ -49,7 +49,7 @@ class LoginCubit extends Cubit<LoginState> {
     );
     response.fold((errMessage) => emit(LoginFailure(errMessage: errMessage)),
         (signInModel) {
-      image = signInModel.data.profileImage!;
+      // image = signInModel.data.profileImage!;
       emailController.clear();
       passwordController.clear();
       emit(LoginSuccess());

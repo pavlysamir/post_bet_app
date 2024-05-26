@@ -129,6 +129,9 @@ class SettingsRepository {
 
   Future<Either<String, String>> mySubscriptePlan() async {
     try {
+      await getIt
+          .get<CashHelperSharedPreferences>()
+          .removeData(key: ApiKey.mySubscribeId);
       final response = await api.get(
         EndPoint.mySubscraption,
       );

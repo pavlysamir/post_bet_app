@@ -133,9 +133,9 @@ class AuthRepository {
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
 
-      // getIt
-      //     .get<CashHelperSharedPreferences>()
-      //     .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
+      getIt
+          .get<CashHelperSharedPreferences>()
+          .saveData(key: ApiKey.profileKey, value: user.data.profileKey);
       getIt
           .get<CashHelperSharedPreferences>()
           .saveData(key: ApiKey.refId, value: user.data.refId);

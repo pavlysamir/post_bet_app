@@ -189,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد عنصر للرجوع"),
         "noForwardHistoryItem":
             MessageLookupByLibrary.simpleMessage("لا يوجد عنصر للتقدم"),
+        "noPosts": MessageLookupByLibrary.simpleMessage("لا يوجد منشورات"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("طريقة سهلة للمشاركة"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(

@@ -181,7 +181,8 @@
     "doPromocode":"هل لديك كود الخصم",
     "enterPromo":"ادخل كود الخصم",
     "confirmChangeLng":"تاكيد تغيير اللغة",
-    "confirmDeleteAccount":"تاكيد حذف الحساب"
+    "confirmDeleteAccount":"تاكيد حذف الحساب",
+    "noPosts":"لا يوجد منشورات"
 
 }
     

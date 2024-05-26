@@ -1,6 +1,8 @@
 class EndPoint {
   static String baseUrlSubscraption = "https://post-bet.onrender.com";
   static String baseUrl = "https://post-bet.onrender.com";
+  //'http://195.35.0.65:4000';
+  // "https://post-bet.onrender.com";
   static String login = "/Auth/login";
   static String signUp = "/Auth/signUp";
   static const String baseUrlLinkSocial =

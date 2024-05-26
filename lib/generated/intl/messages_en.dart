@@ -186,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No Back History"),
         "noForwardHistoryItem":
             MessageLookupByLibrary.simpleMessage("No Forward History"),
+        "noPosts": MessageLookupByLibrary.simpleMessage("No Posts"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("Easy way to share"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(

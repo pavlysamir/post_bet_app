@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 import 'package:bloc/bloc.dart';
@@ -34,11 +35,22 @@ class AddPostCubit extends Cubit<AddPostState> {
   //   }
   // }
   Uint8List? image;
+  List<File> postImages = [];
+  File? imageFile;
   Future<void> pickImage() async {
     emit(LoadingPickImage());
     final result = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (result != null) {
+      postImages.add(File(result.path));
+      if (kDebugMode) {
+        print(postImages.length);
+        print('imaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaage${File(result.path).path}');
+      }
+      //imageFile = result;
       final file = File(result.path);
+      imageFile = file;
+      print('imaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaage${imageFile!.path}');
+
       final imageBytes = await watermarkImage(file);
       if (imageBytes != null) {
         image = imageBytes;
@@ -58,6 +70,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  List<File> postVideos = [];
   File? displayVideo;
   String? base64String;
   XFile? fileVideo;
@@ -65,6 +78,10 @@ class AddPostCubit extends Cubit<AddPostState> {
   Future<void> pickCameraVideo() async {
     final video = await ImagePicker().pickVideo(source: ImageSource.gallery);
     if (video != null) {
+      postVideos.add(File(video.path));
+      if (kDebugMode) {
+        print(postVideos.length);
+      }
       fileVideo = video;
       displayVideo = File(fileVideo!.path);
       videoBytes = File(fileVideo!.path).readAsBytesSync();
@@ -79,13 +96,40 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
   void clearImage() {
-    image = null;
+    postImages.clear();
     emit(RemoveFileImage());
   }
 
   void clearVideo() {
     fileVideo = null;
     emit(RemoveFileVideo());
+  }
+
+  void removePostImageFromDevice(int numOfImg) {
+    if (numOfImg == 1) {
+      // postImage1 = null;
+      postImages.removeAt(0);
+      if (kDebugMode) {
+        print(postImages.length);
+      }
+      emit(RemovePostImagePickedState());
+    } else if (numOfImg == 2) {
+      //postImage2 = null;
+      postImages.removeAt(1);
+      if (kDebugMode) {
+        print(postImages.length);
+      }
+
+      emit(RemovePostImagePickedState());
+    } else if (numOfImg == 3) {
+      //postImage3 = null;
+      postImages.removeAt(2);
+      if (kDebugMode) {
+        print(postImages.length);
+      }
+
+      emit(RemovePostImagePickedState());
+    }
   }
 
   Future<Uint8List?> watermarkImage(File imageFile) async {
@@ -155,22 +199,30 @@ class AddPostCubit extends Cubit<AddPostState> {
     AssetsData.telegram,
     AssetsData.googleBusiness
   ];
+
+  List<String> imagesUrls = [];
   String? imgUrl;
-  Future<String> uploadImage(String filePath) async {
+  uploadImage() async {
     try {
       emit(UploadImageLoading());
-
-      final response = await postReposatory.uploadFile(filePath);
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
-      imgUrl = response;
-      print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imgUrl');
+      final upload = postImages.map((image) async {
+        await postReposatory.uploadFile(image.path).then((value) {
+          imagesUrls.add(value);
+          print('ccccccccccccccccccccccccccccccc${value}');
+        });
+      }).toList();
+      print(
+          'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imagesUrls');
       emit(UploadImgSuccessfully());
-      createImagePost();
-      return response;
+      Future.wait(upload).then((value) {
+        createImagePost();
+      });
+      // final response = await postReposatory.uploadFile(filePath);
+      // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      // imgUrl = response;
     } catch (e) {
       print(e.toString());
       emit(UploadImgFailure(errMessage: e.toString()));
-      return e.toString();
     }
   }
 
@@ -214,6 +266,26 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  String? imgStoryUrl;
+  uploadImageStory() async {
+    try {
+      emit(UploadFaceBookImageStoryLoading());
+
+      final response = await postReposatory.uploadFile(imageFile!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imgStoryUrl = response;
+      print('لkokokokokokokokokokokokoko$imgStoryUrl');
+      emit(UploadFaceBookImageStorySuccessfully());
+      createFaceBookImageSrory();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadFaceBookImageStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
   // verifyVideo() async {
   //   emit(VerifyVideoLoading());
 
@@ -236,9 +308,23 @@ class AddPostCubit extends Cubit<AddPostState> {
     file.writeAsBytes(image!).then((value) async {
       uploasedImg = value.path;
       print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
-      await uploadImage(value.path).then((value) async {
-        //await createPost(imageUrl: imgUrl);
-      });
+      // await uploadImage(value.path).then((value) async {
+      //await createPost(imageUrl: imgUrl);
+      //  });
+      // await createPost();
+    });
+  }
+
+  String? uploasedStoryImg;
+  Future convertUint8listToFileFaceStory() async {
+    final tempDir = await getTemporaryDirectory();
+    File file = await File('${tempDir.path}/image.png').create();
+    file.writeAsBytes(image!).then((value) async {
+      uploasedStoryImg = value.path;
+      print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
+      // await uploadImage(value.path).then((value) async {
+      //   //await createPost(imageUrl: imgUrl);
+      // });
       // await createPost();
     });
   }
@@ -248,7 +334,7 @@ class AddPostCubit extends Cubit<AddPostState> {
       emit(CreatePostLoading());
 
       final response = await postReposatory.createPost(
-          addPostController.text, selectedItems, imgUrl!);
+          addPostController.text, selectedItems, imagesUrls);
       print(response);
       emit(CreatePostSuccessfully());
       return response;
@@ -320,6 +406,24 @@ class AddPostCubit extends Cubit<AddPostState> {
     } catch (e) {
       print(e.toString());
       emit(CreateFaceBookReelFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createFaceBookImageSrory() async {
+    try {
+      emit(CreateFaceBookStoryLoading());
+
+      final response = await postReposatory.createFaceeBookImageStory(
+        addPostController.text,
+        imgStoryUrl!,
+      );
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateFaceBookStorySuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateFaceBookStoryFailure(errMessage: e.toString()));
       return e.toString();
     }
   }

@@ -8,6 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_text_button_forgot_password.dart';
+import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
@@ -37,7 +38,9 @@ class _LoginScreenState extends State<LoginScreen> {
               content: Text("success"),
             ),
           );
-          await LoginCubit.get(context)!.getUserProfile();
+          await LoginCubit.get(context)!.getUserProfile().then((value) {
+            SettingsCubit.get(context).mySubscription();
+          });
         } else if (state is LoginFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

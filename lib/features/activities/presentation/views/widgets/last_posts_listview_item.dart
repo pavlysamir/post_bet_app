@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
+import 'package:post_bet/features/activities/data/models/ayrshare_post_model.dart';
 import 'package:post_bet/features/activities/presentation/views/widgets/last_posts_body.dart';
 
 class LastPostsListViewItem extends StatelessWidget {
-  const LastPostsListViewItem({super.key});
-
+  const LastPostsListViewItem({super.key, required this.post});
+  final AyrsharePostResponse post;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -17,7 +18,9 @@ class LastPostsListViewItem extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: 16.w,
             ),
-            child: const LastPostsContainer()),
+            child: LastPostsContainer(
+              post: post,
+            )),
         SizedBox(
           height: 40.h,
         ),
