@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
-
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
-import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../generated/l10n.dart';
 
@@ -18,8 +18,7 @@ class PlatformScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<String> platformNames = [
       'Instagram',
-      'Facebook Groub',
-      'Facebook Groub',
+      'Facebook Group',
       'X',
       'Linkedin',
       'Reddit',
@@ -31,7 +30,6 @@ class PlatformScreen extends StatelessWidget {
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
-      AssetsData.faceBookIcon,
       AssetsData.faceBookIcon,
       AssetsData.xIcon,
       AssetsData.linkedln,
@@ -69,21 +67,37 @@ class PlatformScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                ElevatedButton(
-                    onPressed: () async {
-                      PlatformCubit.get(context)!.linkAcount().then((value) {
-                        launchUrl(Uri.parse(value),
-                            mode: LaunchMode.externalApplication);
+                state is LinkAcoountLoading
+                    ? Center(
+                        child: SizedBox(
+                            height: 25.h,
+                            width: 25.w,
+                            child: const CircularProgressIndicator(
+                              color: kPrimaryKey,
+                            )),
+                      )
+                    : Center(
+                        child: ElevatedButton(
+                            onPressed: () async {
+                              PlatformCubit.get(context)!
+                                  .linkAcount()
+                                  .then((value) {
+                                launchUrl(Uri.parse(value),
+                                    mode: LaunchMode.externalApplication);
 
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) {
-                        //   return WebViewPaynet(
-                        //     uri: value,
-                        //   );
-                        // }));
-                      });
-                    },
-                    child: const Text('Link Account')),
+                                // Navigator.push(context,
+                                //     MaterialPageRoute(builder: (context) {
+                                //   return WebViewPaynet(
+                                //     uri: value,
+                                //   );
+                                // }));
+                              });
+                            },
+                            child: const Text(
+                              'Link Account',
+                              style: TextStyle(color: kPrimaryKey),
+                            )),
+                      ),
                 Expanded(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25.w),

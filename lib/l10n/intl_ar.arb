@@ -182,7 +182,11 @@
     "enterPromo":"ادخل كود الخصم",
     "confirmChangeLng":"تاكيد تغيير اللغة",
     "confirmDeleteAccount":"تاكيد حذف الحساب",
-    "noPosts":"لا يوجد منشورات"
+    "noPosts":"لا يوجد منشورات",
+    "mySbscription":"متابعة الاشتراكات",
+    "noSubscriptions":"لا يوجد اشتراكات"
+
+
 
 }
     

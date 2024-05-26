@@ -8,6 +8,7 @@ import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/settings/data/models/message_model.dart';
+import 'package:post_bet/features/settings/data/models/my_subscription_model.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/data/models/subscription_model.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
@@ -249,6 +250,7 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
+  List<MySubscriptionModel> mySubscriptionList = [];
   String chargeId = '';
   Future<void> mySubscription() async {
     emit(MySubscraptionLoading());
@@ -258,8 +260,12 @@ class SettingsCubit extends Cubit<SettingsState> {
       (errMessage) {
         emit(MySubscraptionFailure(errMessage: errMessage));
       },
-      (myChargerId) {
-        chargeId = myChargerId;
+      (mySubscraption) {
+        chargeId = getIt.get<CashHelperSharedPreferences>().getData(
+              key: ApiKey.chargeId,
+            );
+        mySubscriptionList = mySubscraption;
+
         emit(MySubscraptionSuccess());
       },
     );

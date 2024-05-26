@@ -1869,6 +1869,26 @@ class S {
       args: [],
     );
   }
+
+  /// `My Subscription`
+  String get mySbscription {
+    return Intl.message(
+      'My Subscription',
+      name: 'mySbscription',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Subscriptions`
+  String get noSubscriptions {
+    return Intl.message(
+      'No Subscriptions',
+      name: 'noSubscriptions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

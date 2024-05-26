@@ -75,14 +75,6 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: 30.h,
                       ),
-                      const CustomLineSeperator(),
-                      SizedBox(
-                        height: 34.h,
-                      ),
-                      CustomTitleText(text: S.of(context).history),
-                      SizedBox(
-                        height: 30.h,
-                      ),
                     ],
                   ),
                 ),

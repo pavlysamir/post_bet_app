@@ -179,6 +179,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "logoutSuccess":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج بنجاح"),
+        "mySbscription":
+            MessageLookupByLibrary.simpleMessage("متابعة الاشتراكات"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "nameCard": MessageLookupByLibrary.simpleMessage("اسم على البطاقة"),
         "newPassword":
@@ -190,6 +192,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noForwardHistoryItem":
             MessageLookupByLibrary.simpleMessage("لا يوجد عنصر للتقدم"),
         "noPosts": MessageLookupByLibrary.simpleMessage("لا يوجد منشورات"),
+        "noSubscriptions":
+            MessageLookupByLibrary.simpleMessage("لا يوجد اشتراكات"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("طريقة سهلة للمشاركة"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(

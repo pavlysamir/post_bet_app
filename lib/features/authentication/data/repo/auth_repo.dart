@@ -32,7 +32,7 @@ class AuthRepository {
           .saveData(key: ApiKey.token, value: user.data.token);
       await getIt
           .get<CashHelperSharedPreferences>()
-          .saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
+          .saveData(key: ApiKey.id, value: user.data.id);
 
       // await getIt
       //     .get<CashHelperSharedPreferences>()
@@ -131,7 +131,7 @@ class AuthRepository {
           .saveData(key: ApiKey.token, value: user.data.token);
       getIt
           .get<CashHelperSharedPreferences>()
-          .saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);
+          .saveData(key: ApiKey.id, value: user.data.id);
 
       getIt
           .get<CashHelperSharedPreferences>()

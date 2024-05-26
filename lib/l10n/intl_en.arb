@@ -181,6 +181,9 @@
     "enterPromo":"Enter Promocode",
     "confirmChangeLng":"Confirm Change langeuage",
     "confirmDeleteAccount":"Confirm Delete Account",
-    "noPosts":"No Posts"
+    "noPosts":"No Posts",
+    "mySbscription":"My Subscription",
+    "noSubscriptions":"No Subscriptions"
+ 
 
 }

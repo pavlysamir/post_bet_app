@@ -71,6 +71,6 @@ class ApiKey {
   static String chargeId = "chargeId";
   static String transactionUrl = "transactionUrl";
   static String plan = "plan";
-  static String mySubscribeId = "id";
+  static String mySubscribeId = "subscrabtionId";
   static String limitNumberOfPostsPerDay = "limitNumberOfPostsPerDay";
 }

@@ -13,7 +13,9 @@ class AyrsharePostResponse {
       shortenLinks; // Whether links in the post were shortened by Ayrshare
   final String status; // Status of the post ("success" in this case)
   final String type; // Posting type ("now" for immediate posting)
-  final DateTime created; // Date and time the post was created on Ayrshare
+  final DateTime created;
+  bool? isVideo;
+  // Date and time the post was created on Ayrshare
 
   AyrsharePostResponse({
     required this.id,
@@ -27,6 +29,7 @@ class AyrsharePostResponse {
     required this.status,
     required this.type,
     required this.created,
+    this.isVideo,
   });
 
   factory AyrsharePostResponse.fromJson(Map<String, dynamic> json) =>
@@ -44,6 +47,7 @@ class AyrsharePostResponse {
         status: json['status'],
         type: json['type'],
         created: DateTime.parse(json['created']),
+        isVideo: json['isVideo'],
       );
 }
 

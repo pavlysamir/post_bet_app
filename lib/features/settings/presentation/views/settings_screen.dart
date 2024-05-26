@@ -12,6 +12,7 @@ import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
+import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/terms_conditions_view.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
@@ -45,6 +46,7 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: 26.h),
               InkWell(
                 onTap: () {
+                  LoginCubit.get(context)!.getUserProfile();
                   customJustGoNavigate(
                       context: context, path: AppRouter.kEditProfile);
                 },
@@ -113,6 +115,14 @@ class SettingsScreen extends StatelessWidget {
                       context: context, path: AppRouter.kSubscriptionView);
                 },
                 title: S.of(context).subscribe,
+              ),
+              SettingsIconWidget(
+                function: () {
+                  SettingsCubit.get(context).mySubscription();
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kMySubscription);
+                },
+                title: S.of(context).mySbscription,
               ),
               SettingsIconWidget(
                 function: () {

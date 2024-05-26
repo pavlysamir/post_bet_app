@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/features/activities/data/models/ayrshare_post_model.dart';
 import 'package:post_bet/features/activities/presentation/views/widgets/custom_view_post_image.dart';
+import 'package:post_bet/features/activities/presentation/views/widgets/custom_view_video_post.dart';
 
 class LastPostsContainer extends StatelessWidget {
   const LastPostsContainer({super.key, required this.post});
@@ -38,7 +39,7 @@ class LastPostsContainer extends StatelessWidget {
               height: 8.h,
             ),
             Text(
-              post.post,
+              post.platforms.toString(),
               style: Styles.textStyle12BoldGrey,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -82,6 +83,14 @@ class LastPostsContainer extends StatelessWidget {
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
+                      if (post.isVideo == true)
+                        SizedBox(
+                          height: 80.h,
+                          width: 200.w,
+                          child: CustomViewVideoPost(
+                            file: post.mediaUrls.first,
+                          ),
+                        ),
                       post.mediaUrls.isNotEmpty
                           ? CustomViewPostPhoto(
                               file: post.mediaUrls[0],

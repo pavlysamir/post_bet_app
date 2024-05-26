@@ -127,7 +127,7 @@ class SettingsRepository {
     }
   }
 
-  Future<Either<String, String>> mySubscriptePlan() async {
+  Future<Either<String, List<MySubscriptionModel>>> mySubscriptePlan() async {
     try {
       await getIt
           .get<CashHelperSharedPreferences>()
@@ -135,6 +135,11 @@ class SettingsRepository {
       final response = await api.get(
         EndPoint.mySubscraption,
       );
+      List<MySubscriptionModel> myListSubscrabtiopn = [];
+
+      for (var item in response['data']) {
+        myListSubscrabtiopn.add(MySubscriptionModel.fromJson(item));
+      }
       SubscriptionResponse myListResponse =
           SubscriptionResponse.fromJson(response['data']);
       String myCharger = '';
@@ -166,7 +171,7 @@ class SettingsRepository {
       // // Print the chargeId to verify
       // print(myCharger);
 
-      return Right(myCharger);
+      return Right(myListSubscrabtiopn);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

@@ -59,35 +59,34 @@ class CustomAppBar extends StatelessWidget {
                           const SizedBox(
                             width: 5,
                           ),
-                          if (profilePic != null)
-                            CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              radius: 20,
-                              child: ClipOval(
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.1,
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.1,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      fit: BoxFit.fitHeight,
-                                      image: NetworkImage(
-                                          "https:/${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profilePic)}"),
-                                    ),
-                                    borderRadius: const BorderRadius.all(
-                                      Radius.circular(10),
+                          profilePic != null
+                              ? CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  radius: 20,
+                                  child: ClipOval(
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.1,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.1,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          fit: BoxFit.fitHeight,
+                                          image: _buildImageProvider(),
+                                        ),
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(10),
+                                        ),
+                                      ),
                                     ),
                                   ),
+                                )
+                              : const CircleAvatar(
+                                  backgroundColor: Colors.black,
+                                  radius: 20,
+                                  child: Icon(Icons.person),
                                 ),
-                              ),
-                            )
-                          else
-                            const CircleAvatar(
-                              backgroundColor: Colors.grey,
-                              radius: 20,
-                              child: Icon(Icons.person),
-                            ),
                         ],
                       ),
                     ),

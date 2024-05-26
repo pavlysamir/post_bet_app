@@ -49,7 +49,7 @@ class _CustomViewVideoFromDeviceState extends State<CustomViewVideoFromDevice> {
         height: MediaQuery.of(context).size.height * 0.13,
         decoration: const BoxDecoration(
             //border: Border.all(color: kPrimaryKey),
-            borderRadius: const BorderRadius.all(Radius.circular(10))),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Stack(
           alignment: AlignmentDirectional.topEnd,
           children: [

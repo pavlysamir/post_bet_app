@@ -177,6 +177,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "logoutConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "logoutSuccess": MessageLookupByLibrary.simpleMessage("Logout success"),
+        "mySbscription":
+            MessageLookupByLibrary.simpleMessage("My Subscription"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "nameCard": MessageLookupByLibrary.simpleMessage("Name on card"),
         "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
@@ -187,6 +189,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "noForwardHistoryItem":
             MessageLookupByLibrary.simpleMessage("No Forward History"),
         "noPosts": MessageLookupByLibrary.simpleMessage("No Posts"),
+        "noSubscriptions":
+            MessageLookupByLibrary.simpleMessage("No Subscriptions"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("Easy way to share"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(
