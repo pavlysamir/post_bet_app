@@ -367,7 +367,7 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   createVideoPost() async {
     try {
-      emit(CreatePostLoading());
+      emit(CreateVideoPostLoading());
 
       final response = await postReposatory.createVideoPost(
         addPostController.text,
@@ -375,16 +375,18 @@ class AddPostCubit extends Cubit<AddPostState> {
         videoUrl!,
       );
       print(response);
-      emit(CreatePostSuccessfully());
+      emit(CreateVideoPostSuccessfully());
       return response;
     } catch (e) {
       print(e.toString());
-      emit(CreatePostFailure(errMessage: e.toString()));
+      emit(CreateVideoPostFailure(errMessage: e.toString()));
       return e.toString();
     }
   }
 
   void clearpostContant() {
+    postImages.clear();
+    print(postImages.length);
     fileVideo = null;
     image = null;
     displayVideo = null;

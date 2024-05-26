@@ -98,3 +98,13 @@ class CreateFaceBookStoryFailure extends AddPostState {
 }
 
 class CreateFaceBookStoryLoading extends AddPostState {}
+
+class CreateVideoPostSuccessfully extends AddPostState {}
+
+class CreateVideoPostFailure extends AddPostState {
+  final String errMessage;
+
+  CreateVideoPostFailure({required this.errMessage});
+}
+
+class CreateVideoPostLoading extends AddPostState {}

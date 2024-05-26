@@ -21,7 +21,9 @@ class CreatePostView extends StatelessWidget {
       listener: (context, state) {
         if (state is CreatePostSuccessfully ||
             state is CreateFaceBookReelSuccessfully ||
-            state is CreateFaceBookStorySuccessfully) {
+            state is CreateFaceBookStorySuccessfully ||
+            state is CreateVideoPostSuccessfully ||
+            state is UploadFaceBookImageStorySuccessfully) {
           AddPostCubit.get(context).clearpostContant();
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success'),
@@ -72,7 +74,11 @@ class CreatePostView extends StatelessWidget {
                     } else if (AddPostCubit.get(context).fileVideo != null) {
                       await AddPostCubit.get(context).uploadVideo();
                       //  AddPostCubit.get(context).fileVideo!.path);
-                    } else {
+                    } else if (AddPostCubit.get(context).fileVideo == null &&
+                        AddPostCubit.get(context).imageFile == null &&
+                        AddPostCubit.get(context).postImages.isEmpty &&
+                        AddPostCubit.get(context).addPostController.text !=
+                            null) {
                       await AddPostCubit.get(context).createTextPost();
                     }
 
