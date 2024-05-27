@@ -94,3 +94,12 @@ class MySubscraptionFailure extends SettingsState {
 }
 
 class MySubscraptionLoading extends SettingsState {}
+
+class MyPlanSuccess extends SettingsState {}
+
+class MyPlanFailure extends SettingsState {
+  final String errMessage;
+  MyPlanFailure({required this.errMessage});
+}
+
+class MyPlanLoading extends SettingsState {}

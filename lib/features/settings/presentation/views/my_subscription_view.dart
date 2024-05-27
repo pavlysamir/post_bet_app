@@ -26,14 +26,14 @@ class MySubscriptionView extends StatelessWidget {
             ),
             title: CustomTitleText(text: S.of(context).subscribe),
           ),
-          body: state is MySubscraptionLoading
+          body: state is MyPlanLoading
               ? const Center(
                   child: CircularProgressIndicator(
                   color: kPrimaryKey,
                 ))
               : SettingsCubit.get(context).mySubscriptionModel == null
                   ? Center(child: Text(S.of(context).noSubscriptions))
-                  : state is MySubscraptionSuccess
+                  : state is MyPlanSuccess
                       ? SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

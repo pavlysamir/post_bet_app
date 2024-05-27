@@ -265,9 +265,28 @@ class SettingsCubit extends Cubit<SettingsState> {
         chargeId = getIt.get<CashHelperSharedPreferences>().getData(
               key: ApiKey.chargeId,
             );
-        mySubscriptionModel = mySubscraption;
+        mySubscriptionList = mySubscraption;
 
         emit(MySubscraptionSuccess());
+      },
+    );
+  }
+
+  Future<void> myPlan() async {
+    emit(MyPlanLoading());
+
+    final response = await settingsRepository.myPlan();
+    response.fold(
+      (errMessage) {
+        emit(MyPlanFailure(errMessage: errMessage));
+      },
+      (mySubscraption) {
+        chargeId = getIt.get<CashHelperSharedPreferences>().getData(
+              key: ApiKey.chargeId,
+            );
+        mySubscriptionModel = mySubscraption;
+
+        emit(MyPlanSuccess());
       },
     );
   }

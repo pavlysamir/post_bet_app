@@ -92,25 +92,37 @@ class LastPostsContainer extends StatelessWidget {
                           ),
                         ),
                       post.mediaUrls.isNotEmpty
-                          ? CustomViewPostPhoto(
-                              file: post.mediaUrls[0],
+                          ? SizedBox(
+                              width: 90.w,
+                              child: CustomViewPostPhoto(
+                                file: post.mediaUrls[0],
+                              ),
                             )
                           : const SizedBox(
                               height: 0,
+                              width: 0,
                             ),
                       post.mediaUrls.length >= 2
-                          ? CustomViewPostPhoto(
-                              file: post.mediaUrls[1],
+                          ? SizedBox(
+                              width: 90.w,
+                              child: CustomViewPostPhoto(
+                                file: post.mediaUrls[1],
+                              ),
                             )
                           : const SizedBox(
                               height: 0,
+                              width: 0,
                             ),
                       post.mediaUrls.length >= 3
-                          ? CustomViewPostPhoto(
-                              file: post.mediaUrls[2],
+                          ? SizedBox(
+                              width: 90.w,
+                              child: CustomViewPostPhoto(
+                                file: post.mediaUrls[2],
+                              ),
                             )
                           : const SizedBox(
                               height: 0,
+                              width: 0,
                             ),
                     ],
                   )

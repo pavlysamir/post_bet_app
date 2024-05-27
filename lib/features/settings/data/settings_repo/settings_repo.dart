@@ -127,7 +127,7 @@ class SettingsRepository {
     }
   }
 
-  Future<Either<String, MySubscriptionModel>> mySubscriptePlan() async {
+  Future<Either<String, List<MySubscriptionModel>>> mySubscriptePlan() async {
     try {
       await getIt
           .get<CashHelperSharedPreferences>()
@@ -136,11 +136,57 @@ class SettingsRepository {
         EndPoint.mySubscraption,
       );
       List<MySubscriptionModel> myListSubscrabtiopn = [];
-      MySubscriptionModel? mySubscriptionModel;
 
       for (var item in response['data']) {
         myListSubscrabtiopn.add(MySubscriptionModel.fromJson(item));
       }
+      SubscriptionResponse myListResponse =
+          SubscriptionResponse.fromJson(response['data']);
+      String myCharger = '';
+      // Iterate over the list of subscriptions
+      for (var subscription in myListResponse.subscriptions) {
+        if (subscription.paymentStatus == 'Paid') {
+          // Save the id of the subscription with paymentStatus == 'Paid'
+          await getIt
+              .get<CashHelperSharedPreferences>()
+              .saveData(key: ApiKey.mySubscribeId, value: subscription.id);
+
+          // Optionally, print the id to verify
+          print('Saved subscription id: ${subscription.id}');
+        }
+      }
+      await getIt.get<CashHelperSharedPreferences>().saveData(
+          key: ApiKey.chargeId,
+          value: myListResponse.subscriptions.last.chargeId);
+      myCharger = myListResponse.subscriptions.last.chargeId;
+
+      await getIt.get<CashHelperSharedPreferences>().saveData(
+          key: ApiKey.mySubscribeId,
+          value: myListResponse.subscriptions.last.id);
+
+      print(myCharger);
+      // Example: also save the chargeId of the first subscription in the list
+      MySubscriptionModel firstSubscription = myListResponse.subscriptions[0];
+
+      // // Print the chargeId to verify
+      // print(myCharger);
+
+      return Right(myListSubscrabtiopn);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, MySubscriptionModel>> myPlan() async {
+    try {
+      await getIt
+          .get<CashHelperSharedPreferences>()
+          .removeData(key: ApiKey.mySubscribeId);
+      final response = await api.get(
+        EndPoint.mySubscraption,
+      );
+      MySubscriptionModel? mySubscriptionModel;
+
       SubscriptionResponse myListResponse =
           SubscriptionResponse.fromJson(response['data']);
       String myCharger = '';
