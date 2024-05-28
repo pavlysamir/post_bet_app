@@ -22,18 +22,17 @@ class CreatePostView extends StatelessWidget {
         if (state is CreatePostSuccessfully ||
             state is CreateFaceBookReelSuccessfully ||
             state is CreateFaceBookStorySuccessfully ||
-            state is CreateVideoPostSuccessfully ||
-            state is UploadFaceBookImageStorySuccessfully) {
-          AddPostCubit.get(context).clearpostContant();
+            state is CreateVideoPostSuccessfully) {
+          //AddPostCubit.get(context).clearpostContant();
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success'),
           ));
         } else if (state is CreatePostFailure || state is UploadImgFailure) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: state is CreatePostFailure
-                ? Text(state.errMessage)
-                : const Text('Failure'),
-          ));
+          // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          //   content: state is CreatePostFailure
+          //       ? Text(state.errMessage)
+          //       : const Text('Failure'),
+          // ));
         }
       },
       builder: (context, state) {
@@ -60,28 +59,104 @@ class CreatePostView extends StatelessWidget {
                     if (AddPostCubit.get(context).imageFile != null &&
                         AddPostCubit.get(context)
                             .selectedaceInstaItems
-                            .contains('Story')) {
+                            .contains('Story FaceBook')) {
                       await AddPostCubit.get(context).uploadImageStory();
-                    } else if (AddPostCubit.get(context)
-                        .postImages
-                        .isNotEmpty) {
-                      await AddPostCubit.get(context).uploadImage();
-                    } else if (AddPostCubit.get(context).fileVideo != null &&
+                    }
+                    if (AddPostCubit.get(context).imageFile != null &&
+                        AddPostCubit.get(context)
+                            .selectedInstaItems
+                            .contains('Story Instagram')) {
+                      await AddPostCubit.get(context)
+                          .uploadInstagramImageStory();
+                    }
+                    if (AddPostCubit.get(context).imageFile != null &&
                         AddPostCubit.get(context)
                             .selectedaceInstaItems
-                            .contains('Reel')) {
+                            .contains('Post FaceBook')) {
+                      await AddPostCubit.get(context).uploadFaceBokImage();
+                    }
+                    if (AddPostCubit.get(context).imageFile != null &&
+                        AddPostCubit.get(context)
+                            .selectedInstaItems
+                            .contains('Post Instagram')) {
+                      await AddPostCubit.get(context).uploadInstagramImage();
+                    }
+                    if (AddPostCubit.get(context).postImages.isNotEmpty &&
+                        AddPostCubit.get(context).platformNames.isNotEmpty) {
+                      await AddPostCubit.get(context).uploadImage();
+                    }
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context)
+                            .selectedaceInstaItems
+                            .contains('Reel FaceBook')) {
                       await AddPostCubit.get(context).uploadReelVideo();
-                    } else if (AddPostCubit.get(context).fileVideo != null) {
-                      await AddPostCubit.get(context).uploadVideo();
-                      //  AddPostCubit.get(context).fileVideo!.path);
-                    } else if (AddPostCubit.get(context).fileVideo == null &&
-                        AddPostCubit.get(context).imageFile == null &&
-                        AddPostCubit.get(context).postImages.isEmpty &&
-                        AddPostCubit.get(context).addPostController.text !=
-                            null) {
-                      await AddPostCubit.get(context).createTextPost();
+                    }
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context)
+                            .selectedInstaItems
+                            .contains('Reel Instagram')) {
+                      await AddPostCubit.get(context)
+                          .uploadInstagramReelVideo();
                     }
 
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context)
+                            .selectedInstaItems
+                            .contains('Story Instagram')) {
+                      await AddPostCubit.get(context)
+                          .uploadVideoStoryInstagramVideo();
+                    }
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context)
+                            .selectedaceInstaItems
+                            .contains('Story FaceBook')) {
+                      await AddPostCubit.get(context)
+                          .uploadVideoStoryFsaceBookVideo();
+                    }
+
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context)
+                            .selectedaceInstaItems
+                            .contains('Post FaceBook')) {
+                      await AddPostCubit.get(context).uploadFaceBookVideo();
+                    }
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context)
+                            .selectedInstaItems
+                            .contains('Post Instagram')) {
+                      await AddPostCubit.get(context).uploadInstagramVideo();
+                    }
+                    if (AddPostCubit.get(context).fileVideo != null &&
+                        AddPostCubit.get(context).platformNames.isNotEmpty &&
+                        AddPostCubit.get(context).selectedaceInstaItems == [] &&
+                        AddPostCubit.get(context).selectedInstaItems == []) {
+                      await AddPostCubit.get(context).uploadVideo();
+                      //  AddPostCubit.get(context).fileVideo!.path);
+                    }
+                    if (AddPostCubit.get(context).addPostController.text !=
+                            null &&
+                        AddPostCubit.get(context).fileVideo == null &&
+                        AddPostCubit.get(context).postImages.isEmpty) {
+                      await AddPostCubit.get(context).createTextPost();
+                    }
+                    if (AddPostCubit.get(context)
+                            .selectedaceInstaItems
+                            .contains('Post FaceBook') &&
+                        AddPostCubit.get(context).addPostController.text !=
+                            null &&
+                        AddPostCubit.get(context).fileVideo == null &&
+                        AddPostCubit.get(context).postImages.isEmpty) {
+                      await AddPostCubit.get(context).createFaceBookTextPost();
+                    }
+                    if (AddPostCubit.get(context)
+                            .selectedInstaItems
+                            .contains('Post Instagram') &&
+                        AddPostCubit.get(context).postImages.isEmpty &&
+                        AddPostCubit.get(context).fileVideo == null &&
+                        AddPostCubit.get(context).addPostController.text !=
+                            null) {
+                      await AddPostCubit.get(context).createInstagramTextPost();
+                    }
                     print(AddPostCubit.get(context).checkBoxValues);
                     print(AddPostCubit.get(context).selectedItems);
                   }),

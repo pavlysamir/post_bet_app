@@ -157,6 +157,100 @@ class PostReposatory {
     }
   }
 
+  Future<Response> createFaceBookPost(String postContent,
+      List<String> selectedPlatforms, List<String> mediaUrl) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Facebook", "isSelected": true}
+      ],
+      'mediaUrls': mediaUrl,
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createInstagramPost(String postContent,
+      List<String> selectedPlatforms, List<String> mediaUrl) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Instagram", "isSelected": true}
+      ],
+      'mediaUrls': mediaUrl,
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
   Future<Response> createTextPost(
     String postContent,
     List<String> selectedPlatforms,
@@ -177,6 +271,102 @@ class PostReposatory {
       'platform': selectedPlatforms
           .map((platform) => {"platform": platform, "isSelected": true})
           .toList(),
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createFaceBookTextPost(
+    String postContent,
+    List<String> selectedPlatforms,
+  ) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Facebook", "isSelected": true}
+      ],
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createInstagramTextPost(
+    String postContent,
+    List<String> selectedPlatforms,
+  ) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Instagram", "isSelected": true}
+      ],
     };
 
     if (token != null) {
@@ -249,7 +439,142 @@ class PostReposatory {
     }
   }
 
+  Future<Response> createFaceBookVideoPost(String postContent,
+      List<String> selectedPlatforms, String mediaUrl) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Facebook", "isSelected": true}
+      ],
+      'mediaUrls': [mediaUrl],
+      'isVideo': true
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createInstagramVideoPost(String postContent,
+      List<String> selectedPlatforms, String mediaUrl) async {
+    print(selectedPlatforms
+        .map((platform) => {"platform": platform, "isSelected": true})
+        .toList());
+
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Instagram", "isSelected": true}
+      ],
+      'mediaUrls': [mediaUrl],
+      'isVideo': true
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
   Future<Response> createFaceeBookReel(
+      String postContent, String mediaUrl) async {
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      'post': postContent,
+      'platform': [
+        {"platform": "Instagram", "isSelected": true}
+      ],
+      'mediaUrls': mediaUrl,
+      'faceBookOptions': [
+        {'reels': true, 'title': postContent}
+      ],
+      'isVideo': true
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createInstagramReel(
       String postContent, String mediaUrl) async {
     String? token =
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
@@ -264,8 +589,8 @@ class PostReposatory {
         {"platform": "Facebook", "isSelected": true}
       ],
       'mediaUrls': mediaUrl,
-      'faceBookOptions': [
-        {'reels': true, 'title': postContent}
+      'instagramOptions': [
+        {"reels": true, "shareReelsFeed": true, "thumbNailOffset": 0}
       ],
       'isVideo': true
     };
@@ -355,15 +680,14 @@ class PostReposatory {
       "platforms": ["facebook"],
       "mediaUrls": [mediaUrl],
       "faceBookOptions": {"stories": true},
-      'isVideo': true
+      "isVideo": true
     };
 
     if (token != null) {
       dio.options.headers = <String, dynamic>{
         'Authorization':
             'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
-
-        //'Bearer $token',
+        // 'Bearer $token',
         'Content-Type': contentType,
       };
     }
@@ -376,7 +700,98 @@ class PostReposatory {
     print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
     try {
       final response = await dio.post(
-        // baseUrlPosting(id),
+        //baseUrlPosting(id),
+        'https://app.ayrshare.com/api/post',
+        data: data,
+      );
+      print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createInstagramImageStory(
+      String postContent, String mediaUrl) async {
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      "post": "", // Ignored by stories
+      "platforms": ["instagram"],
+      "mediaUrls": [mediaUrl],
+      "instagramOptions": {"stories": true},
+      "isVideo": true
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization':
+            'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+        // 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        //baseUrlPosting(id),
+        'https://app.ayrshare.com/api/post',
+        data: data,
+      );
+      print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Response> createInstagramVideoStory(
+      String postContent, String mediaUrl) async {
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    // If token is not null, add it to the request headers as a Bearer token
+
+    final dio = Dio();
+
+    final Map<String, dynamic> data = {
+      "post": "", // Ignored by stories
+      "platforms": ["instagram"],
+      "mediaUrls": [mediaUrl],
+      "instagramOptions": {"stories": true}
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization':
+            'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+        // 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+
+    print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
+    try {
+      final response = await dio.post(
+        //baseUrlPosting(id),
         'https://app.ayrshare.com/api/post',
         data: data,
       );

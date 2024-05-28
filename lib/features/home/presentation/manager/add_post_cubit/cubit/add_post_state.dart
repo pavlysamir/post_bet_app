@@ -37,6 +37,36 @@ class CreatePostFailure extends AddPostState {
 
 class CreatePostLoading extends AddPostState {}
 
+class CreateFacePostSuccessfully extends AddPostState {}
+
+class CreateFacePostFailure extends AddPostState {
+  final String errMessage;
+
+  CreateFacePostFailure({required this.errMessage});
+}
+
+class CreateFacePostLoading extends AddPostState {}
+
+class CreateFaceTextPostSuccessfully extends AddPostState {}
+
+class CreateFaceTextPostFailure extends AddPostState {
+  final String errMessage;
+
+  CreateFaceTextPostFailure({required this.errMessage});
+}
+
+class CreateFaceTextPostLoading extends AddPostState {}
+
+class CreateInstagramTextPostSuccessfully extends AddPostState {}
+
+class CreateInstagramTextPostFailure extends AddPostState {
+  final String errMessage;
+
+  CreateInstagramTextPostFailure({required this.errMessage});
+}
+
+class CreateInstagramTextPostLoading extends AddPostState {}
+
 class UploadVideoSuccessfully extends AddPostState {}
 
 class UploadVideoFailure extends AddPostState {
@@ -69,6 +99,14 @@ class UploadFaceBookImageStoryFailure extends AddPostState {
 
 class UploadFaceBookImageStoryLoading extends AddPostState {}
 
+class UploadInstagramImageStoryFailure extends AddPostState {
+  final String errMessage;
+
+  UploadInstagramImageStoryFailure({required this.errMessage});
+}
+
+class UploadInstagramImageStoryLoading extends AddPostState {}
+
 class VerifyVideoSuccessfully extends AddPostState {}
 
 class VerifyVideoFailure extends AddPostState {
@@ -89,6 +127,36 @@ class CreateFaceBookReelFailure extends AddPostState {
 
 class CreateFaceBookReelLoading extends AddPostState {}
 
+class CreateInstagramReelSuccessfully extends AddPostState {}
+
+class CreateInstagramReelFailure extends AddPostState {
+  final String errMessage;
+
+  CreateInstagramReelFailure({required this.errMessage});
+}
+
+class CreateInstagramReelLoading extends AddPostState {}
+
+class CreateInstagramVideoStorySuccessfully extends AddPostState {}
+
+class CreateInstagramVideoStoryFailure extends AddPostState {
+  final String errMessage;
+
+  CreateInstagramVideoStoryFailure({required this.errMessage});
+}
+
+class CreateInstagramVideoStoryLoading extends AddPostState {}
+
+class CreateFaceBookVideoStorySuccessfully extends AddPostState {}
+
+class CreateFaceBookVideoStoryFailure extends AddPostState {
+  final String errMessage;
+
+  CreateFaceBookVideoStoryFailure({required this.errMessage});
+}
+
+class CreateFaceBookVideoStoryLoading extends AddPostState {}
+
 class CreateFaceBookStorySuccessfully extends AddPostState {}
 
 class CreateFaceBookStoryFailure extends AddPostState {
@@ -99,6 +167,16 @@ class CreateFaceBookStoryFailure extends AddPostState {
 
 class CreateFaceBookStoryLoading extends AddPostState {}
 
+class CreateInstagramStorySuccessfully extends AddPostState {}
+
+class CreateInstagramStoryFailure extends AddPostState {
+  final String errMessage;
+
+  CreateInstagramStoryFailure({required this.errMessage});
+}
+
+class CreateInstagramStoryLoading extends AddPostState {}
+
 class CreateVideoPostSuccessfully extends AddPostState {}
 
 class CreateVideoPostFailure extends AddPostState {
@@ -108,3 +186,23 @@ class CreateVideoPostFailure extends AddPostState {
 }
 
 class CreateVideoPostLoading extends AddPostState {}
+
+class CreateFaceBookVideoPostSuccessfully extends AddPostState {}
+
+class CreateFaceBookVideoPostFailure extends AddPostState {
+  final String errMessage;
+
+  CreateFaceBookVideoPostFailure({required this.errMessage});
+}
+
+class CreateFaceBookVideoPostLoading extends AddPostState {}
+
+class CreateInstagramVideoPostSuccessfully extends AddPostState {}
+
+class CreateInstagramVideoPostFailure extends AddPostState {
+  final String errMessage;
+
+  CreateInstagramVideoPostFailure({required this.errMessage});
+}
+
+class CreateInstagramVideoPostLoading extends AddPostState {}

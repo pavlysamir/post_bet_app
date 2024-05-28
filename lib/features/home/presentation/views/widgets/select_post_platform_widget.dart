@@ -24,14 +24,14 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
   bool initialValue2 = false;
 
   List<String> instagram = [
-    'Post',
-    'Story',
-    'Reel',
+    'Post Instagram',
+    'Story Instagram',
+    'Reel Instagram',
   ];
   List<String> facebook = [
-    'Post',
-    'Story',
-    'Reel',
+    'Post FaceBook',
+    'Story FaceBook',
+    'Reel FaceBook',
   ];
   @override
   Widget build(BuildContext context) {
@@ -44,9 +44,9 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           widget.paltformName == 'Instagram' ||
-                  widget.paltformName == 'Facebook Pages'
+                  widget.paltformName == 'Facebook'
               ? SizedBox(
-                  width: 120.w,
+                  width: 200.w,
                   child: DropdownButton<String>(
                     // value: dropdownValue,
                     items: widget.paltformName == 'Instagram'
@@ -75,12 +75,12 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                           if (newValue) {
                                             // Add item to selected list if checked
                                             AddPostCubit.get(context)
-                                                .selectedaceInstaItems
+                                                .selectedInstaItems
                                                 .add(value);
                                           } else {
                                             // Remove item from selected list if unchecked
                                             AddPostCubit.get(context)
-                                                .selectedaceInstaItems
+                                                .selectedInstaItems
                                                 .remove(value);
                                           }
                                         });

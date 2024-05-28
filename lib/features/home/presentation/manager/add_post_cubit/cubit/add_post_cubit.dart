@@ -36,6 +36,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   // }
   Uint8List? image;
   List<File> postImages = [];
+
   File? imageFile;
   Future<void> pickImage() async {
     emit(LoadingPickImage());
@@ -96,7 +97,10 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
   void clearImage() {
+    imagesUrls.clear();
+    imagesFaceUrls.clear();
     postImages.clear();
+
     emit(RemoveFileImage());
   }
 
@@ -109,6 +113,13 @@ class AddPostCubit extends Cubit<AddPostState> {
     if (numOfImg == 1) {
       // postImage1 = null;
       postImages.removeAt(0);
+
+      if (imagesFaceUrls.isNotEmpty) {
+        imagesFaceUrls.removeAt(0);
+      }
+      if (imagesInstaUrls.isNotEmpty) {
+        imagesInstaUrls.removeAt(0);
+      }
       if (kDebugMode) {
         print(postImages.length);
       }
@@ -116,6 +127,13 @@ class AddPostCubit extends Cubit<AddPostState> {
     } else if (numOfImg == 2) {
       //postImage2 = null;
       postImages.removeAt(1);
+
+      if (imagesFaceUrls.isNotEmpty) {
+        imagesFaceUrls.removeAt(1);
+      }
+      if (imagesInstaUrls.isNotEmpty) {
+        imagesInstaUrls.removeAt(1);
+      }
       if (kDebugMode) {
         print(postImages.length);
       }
@@ -124,6 +142,12 @@ class AddPostCubit extends Cubit<AddPostState> {
     } else if (numOfImg == 3) {
       //postImage3 = null;
       postImages.removeAt(2);
+      if (imagesFaceUrls.isNotEmpty) {
+        imagesFaceUrls.removeAt(2);
+      }
+      if (imagesInstaUrls.isNotEmpty) {
+        imagesInstaUrls.removeAt(2);
+      }
       if (kDebugMode) {
         print(postImages.length);
       }
@@ -173,11 +197,12 @@ class AddPostCubit extends Cubit<AddPostState> {
   final List<String> selectedItems = [];
 
   final List<String> selectedaceInstaItems = [];
+  final List<String> selectedInstaItems = [];
 
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
     'Instagram',
-    'Facebook Pages',
+    'Facebook',
     'Twitter',
     'Linkedin',
     'Reddit',
@@ -226,6 +251,57 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  List<String> imagesFaceUrls = [];
+  uploadFaceBokImage() async {
+    try {
+      emit(UploadImageLoading());
+      final upload = postImages.map((image) async {
+        await postReposatory.uploadFile(image.path).then((value) {
+          imagesFaceUrls.add(value);
+          print('ccccccccccccccccccccccccccccccc${value}');
+        });
+      }).toList();
+      print(
+          'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imagesFaceUrls');
+      emit(UploadImgSuccessfully());
+      Future.wait(upload).then((value) {
+        createFaceBookImagePost();
+      });
+      // final response = await postReposatory.uploadFile(filePath);
+      // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      // imgUrl = response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadImgFailure(errMessage: e.toString()));
+    }
+  }
+
+  List<String> imagesInstaUrls = [];
+
+  uploadInstagramImage() async {
+    try {
+      emit(UploadImageLoading());
+      final upload = postImages.map((image) async {
+        await postReposatory.uploadFile(image.path).then((value) {
+          imagesInstaUrls.add(value);
+          print('ccccccccccccccccccccccccccccccc${value}');
+        });
+      }).toList();
+      print(
+          'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imagesInstaUrls');
+      emit(UploadImgSuccessfully());
+      Future.wait(upload).then((value) {
+        createInstagramImagePost();
+      });
+      // final response = await postReposatory.uploadFile(filePath);
+      // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      // imgUrl = response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadImgFailure(errMessage: e.toString()));
+    }
+  }
+
   String? videoUrl;
   uploadVideo() async {
     try {
@@ -238,6 +314,48 @@ class AddPostCubit extends Cubit<AddPostState> {
       print('لالالالالالالالالالالالالالالالالالالالالالالالالالالا$videoUrl');
       emit(UploadVideoSuccessfully());
       createVideoPost();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadVideoFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  String? videoFaceUrl;
+  uploadFaceBookVideo() async {
+    try {
+      emit(UploadVideoLoading());
+
+      final response = await postReposatory.uploadFile(fileVideo!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      videoFaceUrl = response;
+      print(
+          'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$videoFaceUrl');
+      emit(UploadVideoSuccessfully());
+      createFaceBookVideoPost();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadVideoFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  String? videoInstaUrl;
+  uploadInstagramVideo() async {
+    try {
+      emit(UploadVideoLoading());
+
+      final response = await postReposatory.uploadFile(fileVideo!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      videoFaceUrl = response;
+      print(
+          'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$videoFaceUrl');
+      emit(UploadVideoSuccessfully());
+      createInstagramVideoPost();
       return response;
     } catch (e) {
       print(e.toString());
@@ -266,6 +384,66 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  String? videoIstareelUrl;
+  uploadInstagramReelVideo() async {
+    try {
+      emit(UploadFaceBookReelLoading());
+
+      final response = await postReposatory.uploadFile(fileVideo!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      videoIstareelUrl = response;
+      print('لkokokokokokokokokokokokoko$videoIstareelUrl');
+      emit(UploadFaceBookReelSuccessfully());
+      createInstagramReel();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadFaceBookReelFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  String? videoStoryFaceBookUrl;
+  uploadVideoStoryFsaceBookVideo() async {
+    try {
+      emit(UploadFaceBookReelLoading());
+
+      final response = await postReposatory.uploadFile(fileVideo!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      videoStoryFaceBookUrl = response;
+      print('لkokokokokokokokokokokokoko$videoStoryFaceBookUrl');
+      emit(UploadFaceBookReelSuccessfully());
+      createVideoFaceBookStory();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadFaceBookReelFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  String? videoStoryInstagramUrl;
+  uploadVideoStoryInstagramVideo() async {
+    try {
+      emit(UploadFaceBookReelLoading());
+
+      final response = await postReposatory.uploadFile(fileVideo!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      videoStoryInstagramUrl = response;
+      print('لkokokokokokokokokokokokoko$videoStoryInstagramUrl');
+      emit(UploadFaceBookReelSuccessfully());
+      createVideoInstagramStory();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadFaceBookReelFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
   String? imgStoryUrl;
   uploadImageStory() async {
     try {
@@ -275,6 +453,7 @@ class AddPostCubit extends Cubit<AddPostState> {
 
       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
       imgStoryUrl = response;
+
       print('لkokokokokokokokokokokokoko$imgStoryUrl');
       emit(UploadFaceBookImageStorySuccessfully());
       createFaceBookImageSrory();
@@ -282,6 +461,25 @@ class AddPostCubit extends Cubit<AddPostState> {
     } catch (e) {
       print(e.toString());
       emit(UploadFaceBookImageStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  uploadInstagramImageStory() async {
+    try {
+      emit(UploadInstagramImageStoryLoading());
+
+      final response = await postReposatory.uploadFile(imageFile!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imgStoryUrl = response;
+      print('لkokokokokokokokokokokokoko$imgStoryUrl');
+      emit(UploadFaceBookImageStorySuccessfully());
+      createInstagramImageSrory();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadInstagramImageStoryFailure(errMessage: e.toString()));
       return e.toString();
     }
   }
@@ -346,6 +544,40 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  createFaceBookImagePost() async {
+    try {
+      emit(CreateFacePostLoading());
+
+      final response = await postReposatory.createFaceBookPost(
+          addPostController.text, selectedItems, imagesFaceUrls);
+      print(response);
+      emit(CreateFacePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
+
+      return e.toString();
+    }
+  }
+
+  createInstagramImagePost() async {
+    try {
+      emit(CreatePostLoading());
+
+      final response = await postReposatory.createInstagramPost(
+          addPostController.text, selectedItems, imagesInstaUrls);
+      print(response);
+      emit(CreatePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
+
+      return e.toString();
+    }
+  }
+
   createTextPost() async {
     try {
       emit(CreatePostLoading());
@@ -360,6 +592,44 @@ class AddPostCubit extends Cubit<AddPostState> {
     } catch (e) {
       print(e.toString());
       emit(CreatePostFailure(errMessage: e.toString()));
+
+      return e.toString();
+    }
+  }
+
+  createFaceBookTextPost() async {
+    try {
+      emit(CreateFaceTextPostLoading());
+
+      final response = await postReposatory.createFaceBookTextPost(
+        addPostController.text,
+        selectedItems,
+      );
+      print(response);
+      emit(CreateFaceTextPostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateFaceTextPostFailure(errMessage: e.toString()));
+
+      return e.toString();
+    }
+  }
+
+  createInstagramTextPost() async {
+    try {
+      emit(CreateInstagramTextPostLoading());
+
+      final response = await postReposatory.createInstagramTextPost(
+        addPostController.text,
+        selectedItems,
+      );
+      print(response);
+      emit(CreateInstagramTextPostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateInstagramTextPostFailure(errMessage: e.toString()));
 
       return e.toString();
     }
@@ -380,6 +650,44 @@ class AddPostCubit extends Cubit<AddPostState> {
     } catch (e) {
       print(e.toString());
       emit(CreateVideoPostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createFaceBookVideoPost() async {
+    try {
+      emit(CreateFaceBookVideoPostLoading());
+
+      final response = await postReposatory.createFaceBookVideoPost(
+        addPostController.text,
+        selectedItems,
+        videoFaceUrl!,
+      );
+      print(response);
+      emit(CreateFaceBookVideoPostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateFaceBookVideoPostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createInstagramVideoPost() async {
+    try {
+      emit(CreateInstagramVideoPostLoading());
+
+      final response = await postReposatory.createInstagramVideoPost(
+        addPostController.text,
+        selectedItems,
+        videoInstaUrl!,
+      );
+      print(response);
+      emit(CreateInstagramVideoPostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateInstagramVideoPostFailure(errMessage: e.toString()));
       return e.toString();
     }
   }
@@ -412,6 +720,60 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  createInstagramReel() async {
+    try {
+      emit(CreateInstagramReelLoading());
+
+      final response = await postReposatory.createInstagramReel(
+        addPostController.text,
+        videoIstareelUrl!,
+      );
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateInstagramReelSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateInstagramReelFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createVideoFaceBookStory() async {
+    try {
+      emit(CreateFaceBookVideoStoryLoading());
+
+      final response = await postReposatory.createFaceeBookVideoStory(
+        addPostController.text,
+        videoStoryFaceBookUrl!,
+      );
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateFaceBookVideoStorySuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateFaceBookVideoStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createVideoInstagramStory() async {
+    try {
+      emit(CreateInstagramVideoStoryLoading());
+
+      final response = await postReposatory.createInstagramVideoStory(
+        addPostController.text,
+        videoStoryInstagramUrl!,
+      );
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateInstagramVideoStorySuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateInstagramVideoStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
   createFaceBookImageSrory() async {
     try {
       emit(CreateFaceBookStoryLoading());
@@ -426,6 +788,24 @@ class AddPostCubit extends Cubit<AddPostState> {
     } catch (e) {
       print(e.toString());
       emit(CreateFaceBookStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createInstagramImageSrory() async {
+    try {
+      emit(CreateInstagramStoryLoading());
+
+      final response = await postReposatory.createInstagramImageStory(
+        addPostController.text,
+        imgStoryUrl!,
+      );
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateVideoPostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateVideoPostFailure(errMessage: e.toString()));
       return e.toString();
     }
   }
