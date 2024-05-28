@@ -24,17 +24,27 @@ class CreatePostView extends StatelessWidget {
             state is CreateFaceBookStorySuccessfully ||
             state is CreateVideoPostSuccessfully ||
             state is CreateFaceBookVideoPostSuccessfully ||
-            state is CreateFacePostSuccessfully) {
+            state is CreateFacePostSuccessfully ||
+            state is CreateInstagramReelSuccessfully ||
+            state is CreateInstagramStorySuccessfully) {
           //AddPostCubit.get(context).clearpostContant();
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success'),
           ));
-        } else if (state is CreatePostFailure || state is UploadImgFailure) {
-          // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          //   content: state is CreatePostFailure
-          //       ? Text(state.errMessage)
-          //       : const Text('Failure'),
-          // ));
+        } else if (state is CreatePostFailure ||
+            state is UploadImgFailure ||
+            state is UploadVideoFailure ||
+            state is UploadFaceBookImageStoryFailure ||
+            state is UploadFaceBookReelFailure ||
+            state is CreateFaceBookStoryFailure ||
+            state is CreateVideoPostFailure ||
+            state is CreateFacePostFailure ||
+            state is CreateFaceBookVideoPostFailure ||
+            state is UploadInstagramImageStoryFailure ||
+            state is CreateInstagramReelFailure ||
+            state is CreateInstagramStoryFailure) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(const SnackBar(content: Text('Failure')));
         }
       },
       builder: (context, state) {
@@ -48,7 +58,13 @@ class CreatePostView extends StatelessWidget {
                           state is UploadVideoLoading ||
                           state is UploadFaceBookImageStoryLoading ||
                           state is UploadFaceBookReelLoading ||
-                          state is CreateFaceBookStoryLoading
+                          state is CreateFaceBookStoryLoading ||
+                          state is CreateVideoPostLoading ||
+                          state is CreateFacePostLoading ||
+                          state is CreateFaceBookVideoPostLoading ||
+                          state is UploadInstagramImageStoryLoading ||
+                          state is CreateInstagramReelLoading ||
+                          state is CreateInstagramStoryLoading
                       ? 'loading..'
                       : S.of(context).share,
                   color: kPrimaryKey,

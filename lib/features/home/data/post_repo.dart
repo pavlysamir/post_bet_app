@@ -539,23 +539,22 @@ class PostReposatory {
     final dio = Dio();
 
     final Map<String, dynamic> data = {
-      'post': postContent,
-      'platform': [
-        {"platform": "Instagram", "isSelected": true}
-      ],
-      'mediaUrls': mediaUrl,
-      'faceBookOptions': [
-        {'reels': true, 'title': postContent}
-      ],
-      'isVideo': true
+      "post": "", // Ignored by stories
+      "platforms": ["facebook"],
+      "mediaUrls": [mediaUrl],
+      "faceBookOptions": {"reels": true},
+      "isVideo": true
     };
 
     if (token != null) {
       dio.options.headers = <String, dynamic>{
-        'Authorization': 'Bearer $token',
+        'Authorization':
+            'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+        // 'Bearer $token',
         'Content-Type': contentType,
       };
     }
+
     final jsonData = jsonEncode(data);
 
     int? id = getIt
@@ -565,7 +564,8 @@ class PostReposatory {
     print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
     try {
       final response = await dio.post(
-        baseUrlPosting(id),
+        //baseUrlPosting(id),
+        'https://app.ayrshare.com/api/post',
         data: data,
       );
       print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
@@ -586,20 +586,19 @@ class PostReposatory {
     final dio = Dio();
 
     final Map<String, dynamic> data = {
-      'post': postContent,
-      'platform': [
-        {"platform": "Facebook", "isSelected": true}
-      ],
-      'mediaUrls': mediaUrl,
-      'instagramOptions': [
-        {"reels": true, "shareReelsFeed": true, "thumbNailOffset": 0}
-      ],
-      'isVideo': true
+      "post": "",
+      "mediaUrls": [mediaUrl],
+      "instagramOptions": {
+        "reels": true, // required for Reels
+      },
+      "isVideo": true
     };
 
     if (token != null) {
       dio.options.headers = <String, dynamic>{
-        'Authorization': 'Bearer $token',
+        'Authorization':
+            'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+        // 'Bearer $token',
         'Content-Type': contentType,
       };
     }
@@ -612,7 +611,8 @@ class PostReposatory {
     print('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb $id');
     try {
       final response = await dio.post(
-        baseUrlPosting(id),
+        //baseUrlPosting(id),
+        'https://app.ayrshare.com/api/post',
         data: data,
       );
       print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr $response');
@@ -773,7 +773,8 @@ class PostReposatory {
       "post": "", // Ignored by stories
       "platforms": ["instagram"],
       "mediaUrls": [mediaUrl],
-      "instagramOptions": {"stories": true}
+      "instagramOptions": {"stories": true},
+      "isVideo": true
     };
 
     if (token != null) {
