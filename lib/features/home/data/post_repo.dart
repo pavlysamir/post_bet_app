@@ -397,9 +397,11 @@ class PostReposatory {
 
   Future<Response> createVideoPost(String postContent,
       List<String> selectedPlatforms, String mediaUrl) async {
-    print(selectedPlatforms
-        .map((platform) => {"platform": platform, "isSelected": true})
-        .toList());
+    print(
+        '111111111111111111111111111111111 ${selectedPlatforms.map((platform) => {
+              "platform": platform,
+              "isSelected": true
+            }).toList()}');
 
     String? token =
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
