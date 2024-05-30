@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
-import 'package:post_bet/features/activities/presentation/views/activities_screen.dart';
 import 'package:post_bet/features/home/presentation/views/home_screen.dart';
 import 'package:post_bet/features/platform/presentation/views/platform_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/settings_screen.dart';
+import 'package:post_bet/features/settings/presentation/views/subscription_view.dart';
 part 'home_layout_state.dart';
 
 class HomeLayoutCubit extends Cubit<HomeLayoutState> {
@@ -31,7 +31,7 @@ class HomeLayoutCubit extends Cubit<HomeLayoutState> {
   int currentIndex = 0;
   List screens = [
     const HomeScreen(),
-    const ActivitiesScreen(),
+    const SubscriptionsView(),
     const PlatformScreen(),
     SettingsScreen(),
   ];

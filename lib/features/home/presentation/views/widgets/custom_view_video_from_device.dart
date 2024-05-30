@@ -45,7 +45,7 @@ class _CustomViewVideoFromDeviceState extends State<CustomViewVideoFromDevice> {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         alignment: Alignment.center,
-        width: MediaQuery.of(context).size.width * 0.7,
+        width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.13,
         decoration: const BoxDecoration(
             //border: Border.all(color: kPrimaryKey),
@@ -55,7 +55,7 @@ class _CustomViewVideoFromDeviceState extends State<CustomViewVideoFromDevice> {
           children: [
             _videoController.value.isInitialized
                 ? AspectRatio(
-                    aspectRatio: _videoController.value.aspectRatio * 4,
+                    aspectRatio: _videoController.value.aspectRatio * 5,
                     child: VideoPlayer(_videoController),
                   )
                 : Container(), // Show nothing if video is not initialized

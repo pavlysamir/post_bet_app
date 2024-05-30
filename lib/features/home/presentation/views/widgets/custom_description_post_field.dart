@@ -78,7 +78,7 @@ class CustomDescriptionPostField extends StatelessWidget {
                 Column(
                   children: [
                     SizedBox(
-                      height: 20.h,
+                      height: 10.h,
                     ),
                     AddPostCubit.get(context).postImages.isEmpty
                         ? const SizedBox(
@@ -88,37 +88,43 @@ class CustomDescriptionPostField extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               AddPostCubit.get(context).postImages.isNotEmpty
-                                  ? CustomViewPhotoFromDevice(
-                                      function: () {
-                                        AddPostCubit.get(context)
-                                            .removePostImageFromDevice(1);
-                                      },
-                                      file: AddPostCubit.get(context)
-                                          .postImages[0],
+                                  ? Expanded(
+                                      child: CustomViewPhotoFromDevice(
+                                        function: () {
+                                          AddPostCubit.get(context)
+                                              .removePostImageFromDevice(1);
+                                        },
+                                        file: AddPostCubit.get(context)
+                                            .postImages[0],
+                                      ),
                                     )
                                   : const SizedBox(
                                       height: 0,
                                     ),
                               AddPostCubit.get(context).postImages.length >= 2
-                                  ? CustomViewPhotoFromDevice(
-                                      function: () {
-                                        AddPostCubit.get(context)
-                                            .removePostImageFromDevice(2);
-                                      },
-                                      file: AddPostCubit.get(context)
-                                          .postImages[1],
+                                  ? Expanded(
+                                      child: CustomViewPhotoFromDevice(
+                                        function: () {
+                                          AddPostCubit.get(context)
+                                              .removePostImageFromDevice(2);
+                                        },
+                                        file: AddPostCubit.get(context)
+                                            .postImages[1],
+                                      ),
                                     )
                                   : const SizedBox(
                                       height: 0,
                                     ),
                               AddPostCubit.get(context).postImages.length == 3
-                                  ? CustomViewPhotoFromDevice(
-                                      function: () {
-                                        AddPostCubit.get(context)
-                                            .removePostImageFromDevice(3);
-                                      },
-                                      file: AddPostCubit.get(context)
-                                          .postImages[2],
+                                  ? Expanded(
+                                      child: CustomViewPhotoFromDevice(
+                                        function: () {
+                                          AddPostCubit.get(context)
+                                              .removePostImageFromDevice(3);
+                                        },
+                                        file: AddPostCubit.get(context)
+                                            .postImages[2],
+                                      ),
                                     )
                                   : const SizedBox(
                                       height: 0,
@@ -175,15 +181,17 @@ class CustomDescriptionPostField extends StatelessWidget {
                             },
                           ),
                     SizedBox(width: 10.w),
-                    IconButton(
-                      icon: Icon(
-                        Icons.videocam_rounded,
-                        size: 25.h,
-                      ),
-                      onPressed: () {
-                        AddPostCubit.get(context).pickCameraVideo();
-                      },
-                    ),
+                    AddPostCubit.get(context).fileVideo == null
+                        ? IconButton(
+                            icon: Icon(
+                              Icons.videocam_rounded,
+                              size: 25.h,
+                            ),
+                            onPressed: () {
+                              AddPostCubit.get(context).pickCameraVideo();
+                            },
+                          )
+                        : const SizedBox(),
                   ],
                 )
             ],

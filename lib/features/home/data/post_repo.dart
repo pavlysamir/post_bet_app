@@ -728,7 +728,6 @@ class PostReposatory {
       "platforms": ["instagram"],
       "mediaUrls": [mediaUrl],
       "instagramOptions": {"stories": true},
-      "isVideo": true
     };
 
     if (token != null) {

@@ -14,18 +14,18 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 1),
       child: Stack(
         alignment: AlignmentDirectional.topEnd,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.2,
-            height: MediaQuery.of(context).size.height * 0.13,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.15,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    fit: BoxFit.fitHeight, image: _buildImageProvider()),
+                    fit: BoxFit.cover, image: _buildImageProvider()),
                 // border: Border.all(color: kPrimaryKey),
-                borderRadius: const BorderRadius.all(Radius.circular(10))),
+                borderRadius: const BorderRadius.all(Radius.circular(2))),
           ),
           CircleAvatar(
             backgroundColor: Colors.white,

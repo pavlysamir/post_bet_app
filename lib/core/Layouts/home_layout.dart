@@ -44,9 +44,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(
-                      Icons.calendar_month,
+                      Icons.subscriptions_outlined,
                     ),
-                    label: S.of(context).activities,
+                    label: S.of(context).subscribe,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(
