@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/assets/Assets.dart';
+
 import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
-import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
+
+import 'package:post_bet/features/home/presentation/manager/add_post_templete/add_post_templete_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/select_post_platform_widget.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/select_temlete_post_plateform_widget.dart';
 import 'package:post_bet/generated/l10n.dart';
 
 class CreateTemplatePostView extends StatelessWidget {
@@ -23,47 +24,12 @@ class CreateTemplatePostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> platformNames = [
-      'Instagram',
-      'Facebook',
-      'X',
-      'Linkedin',
-      'Reddit',
-      'Youtube',
-      'Tiktok',
-      'Pinterest',
-      'Telegram',
-      'Google Business'
-    ];
-    final List<String> platformIcons = [
-      AssetsData.instagramIcon,
-      AssetsData.faceBookIcon,
-      AssetsData.xIcon,
-      AssetsData.linkedln,
-      AssetsData.reddit,
-      AssetsData.youtube,
-      AssetsData.tiktok,
-      AssetsData.pinterest,
-      AssetsData.telegram,
-      AssetsData.googleBusiness
-    ];
-    return BlocConsumer<AddPostCubit, AddPostState>(
+    return BlocConsumer<AddPostTempleteCubit, AddPostTempleteState>(
       listener: (context, state) {},
       builder: (context, state) {
-        AddPostCubit.get(context).addPostController.text = text;
+        AddPostTempleteCubit.get(context).addPostTempleteController.text = text;
         return Scaffold(
             appBar: CustomAppbareWithTitle(title: S.of(context).createPost),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: CustomButtonLarge(
-                  text: S.of(context).share,
-                  color: kPrimaryKey,
-                  textColor: Colors.white,
-                  function: () {
-                    print(AddPostCubit.get(context).checkBoxValues);
-                    print(AddPostCubit.get(context).selectedItems);
-                  }),
-            ),
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -75,8 +41,8 @@ class CreateTemplatePostView extends StatelessWidget {
                       children: [
                         CustomDescriptionPostField(
                             img: img,
-                            controller:
-                                AddPostCubit.get(context).addPostController,
+                            controller: AddPostTempleteCubit.get(context)
+                                .addPostTempleteController,
                             validationMassage: (value) {
                               if (value.isEmpty) {
                                 return 'please write anything';
@@ -87,6 +53,45 @@ class CreateTemplatePostView extends StatelessWidget {
                       ],
                     ),
                   ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12),
+                    child: CustomButtonLarge(
+                        text: S.of(context).share,
+                        color: kPrimaryKey,
+                        textColor: Colors.white,
+                        function: () async {
+                          if (AddPostTempleteCubit.get(context)
+                              .selectedaceInstaItems
+                              .contains('Post FaceBook')) {
+                            await AddPostTempleteCubit.get(context)
+                                .uploadFaceBokImage(image: img);
+                          }
+                          if (AddPostTempleteCubit.get(context)
+                              .selectedInstaItems
+                              .contains('Post Instagram')) {
+                            await AddPostTempleteCubit.get(context)
+                                .uploadInstagramImage(image: img);
+                          }
+                          if (AddPostTempleteCubit.get(context)
+                              .platformNames
+                              .isNotEmpty) {
+                            await AddPostTempleteCubit.get(context)
+                                .uploadImage(image: img);
+                          }
+
+                          print(
+                              AddPostTempleteCubit.get(context).checkBoxValues);
+                          print(
+                              AddPostTempleteCubit.get(context).selectedItems);
+                        }),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView.separated(
@@ -95,12 +100,16 @@ class CreateTemplatePostView extends StatelessWidget {
                         separatorBuilder: (context, index) {
                           return const CustomLineSeperator();
                         },
-                        itemCount: platformNames.length,
+                        itemCount: AddPostTempleteCubit.get(context)
+                            .platformNames
+                            .length,
                         itemBuilder: (context, index) {
-                          return CreatePostPlatFormItem(
+                          return CreateTempletePostPlatFormItem(
                             indrx: index,
-                            paltformIcon: platformIcons[index],
-                            paltformName: platformNames[index],
+                            paltformIcon: AddPostTempleteCubit.get(context)
+                                .platformIcons[index],
+                            paltformName: AddPostTempleteCubit.get(context)
+                                .platformNames[index],
                           );
                         }),
                   ),

@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:post_bet/core/api/api_consumer.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:flutter/services.dart' show ByteData, rootBundle;
 
 class PostReposatory {
   final ApiConsumer api;
@@ -50,6 +52,49 @@ class PostReposatory {
     try {
       final response = await dio.post(
         baseUrlUbloadImg,
+        data: formData,
+      );
+      print(response.data);
+      return response.data['url'];
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<String> uploadTempleteFile(String assetPath) async {
+    // Load the image from assets as bytes
+    final ByteData byteData = await rootBundle.load(assetPath);
+    final List<int> imageData = byteData.buffer.asUint8List();
+
+    // Create a MultipartFile from the image bytes
+    final multipartFile = MultipartFile.fromBytes(
+      imageData,
+      filename: assetPath.split('/').last,
+    );
+
+    final formData = FormData.fromMap({
+      'file': multipartFile,
+    });
+
+    print(formData);
+
+    final dio = Dio();
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+    dio.options.headers = <String, dynamic>{
+      'Authorization':
+          'Bearer ${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey)}',
+      'Content-Type': 'multipart/form-data',
+    };
+
+    try {
+      final response = await dio.post(
+        baseUrlUbloadImg, // Replace this with your actual upload URL
         data: formData,
       );
       print(response.data);
@@ -122,6 +167,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
 
     final Map<String, dynamic> data = {
       'post': postContent,
@@ -169,7 +220,18 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': [
@@ -216,7 +278,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': [
@@ -265,7 +332,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': selectedPlatforms
@@ -313,7 +385,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': [
@@ -361,7 +438,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': [
@@ -407,7 +489,12 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': selectedPlatforms
@@ -451,7 +538,12 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': [
@@ -495,7 +587,12 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       'post': postContent,
       'platform': [
@@ -537,7 +634,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       "post": "", // Ignored by stories
       "platforms": ["facebook"],
@@ -584,7 +686,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       "post": "",
       "mediaUrls": [mediaUrl],
@@ -631,7 +738,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       "post": "", // Ignored by stories
       "platforms": ["facebook"],
@@ -676,7 +788,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       "post": "", // Ignored by stories
       "platforms": ["facebook"],
@@ -722,7 +839,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       "post": "", // Ignored by stories
       "platforms": ["instagram"],
@@ -767,7 +889,12 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
     final Map<String, dynamic> data = {
       "post": "", // Ignored by stories
       "platforms": ["instagram"],

@@ -12,6 +12,7 @@ import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
+import 'package:post_bet/features/home/presentation/manager/add_post_templete/add_post_templete_cubit.dart';
 import 'package:post_bet/features/platform/data/repo/platforms_repo.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
@@ -50,6 +51,10 @@ class PostBetApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => AddPostCubit(getIt.get<PostReposatory>()),
+          ),
+          BlocProvider(
+            create: (context) =>
+                AddPostTempleteCubit(getIt.get<PostReposatory>()),
           ),
           BlocProvider(
             create: (context) => GetPostsCubit(getIt.get<ActivitiesRepo>()),

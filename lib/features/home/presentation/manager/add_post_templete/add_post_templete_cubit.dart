@@ -1,101 +1,150 @@
-// import 'package:bloc/bloc.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:meta/meta.dart';
-// import 'package:post_bet/core/Assets/Assets.dart';
-// import 'package:post_bet/features/home/data/post_repo.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meta/meta.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/features/home/data/post_repo.dart';
 
-// part 'add_post_templete_state.dart';
+part 'add_post_templete_state.dart';
 
-// class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
-//   AddPostTempleteCubit(this.postReposatory) : super(AddPostTempleteInitial());
+class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
+  AddPostTempleteCubit(this.postReposatory) : super(AddPostTempleteInitial());
 
-//   final PostReposatory postReposatory;
-//   static AddPostTempleteCubit get(BuildContext context) =>
-//       BlocProvider.of(context);
+  final PostReposatory postReposatory;
+  static AddPostTempleteCubit get(BuildContext context) =>
+      BlocProvider.of(context);
 
-//   TextEditingController addPostTempleteController = TextEditingController();
+  TextEditingController addPostTempleteController = TextEditingController();
 
-//   final List<String> selectedItems = [];
+  final List<String> selectedItems = [];
 
-//   final List<String> selectedaceInstaItems = [];
-//   final List<String> selectedInstaItems = [];
+  final List<String> selectedaceInstaItems = [];
+  final List<String> selectedInstaItems = [];
 
-//   final Map<String, bool> checkBoxValues = {};
-//   final List<String> platformNames = [
-//     'Instagram',
-//     'Facebook',
-//     'Twitter',
-//     'Linkedin',
-//     'Reddit',
-//     'Youtube',
-//     'Tiktok',
-//     'Pinterest',
-//     'Telegram',
-//     'Google Business'
-//   ];
-//   final List<String> platformIcons = [
-//     AssetsData.instagramIcon,
-//     AssetsData.faceBookIcon,
-//     AssetsData.xIcon,
-//     AssetsData.linkedln,
-//     AssetsData.reddit,
-//     AssetsData.youtube,
-//     AssetsData.tiktok,
-//     AssetsData.pinterest,
-//     AssetsData.telegram,
-//     AssetsData.googleBusiness
-//   ];
+  final Map<String, bool> checkBoxValues = {};
+  final List<String> platformNames = [
+    'Instagram',
+    'Facebook',
+    'Twitter',
+    'Linkedin',
+    'Reddit',
+    'Youtube',
+    'Tiktok',
+    'Pinterest',
+    'Telegram',
+    'Google Business'
+  ];
+  final List<String> platformIcons = [
+    AssetsData.instagramIcon,
+    AssetsData.faceBookIcon,
+    AssetsData.xIcon,
+    AssetsData.linkedln,
+    AssetsData.reddit,
+    AssetsData.youtube,
+    AssetsData.tiktok,
+    AssetsData.pinterest,
+    AssetsData.telegram,
+    AssetsData.googleBusiness
+  ];
 
+  createImagePost({required String image}) async {
+    try {
+      emit(CreatePostLoading());
 
-//   createImagePost() async {
-//     try {
-//       emit(CreatePostLoading());
+      final response = await postReposatory
+          .createPost(addPostTempleteController.text, selectedItems, [image]);
+      print(response);
+      emit(CreatePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
 
-//       final response = await postReposatory.createPost(
-//           addPostController.text, selectedItems, imagesUrls);
-//       print(response);
-//       emit(CreatePostSuccessfully());
-//       return response;
-//     } catch (e) {
-//       print(e.toString());
-//       emit(CreatePostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
 
-//       return e.toString();
-//     }
-//   }
+  createFaceBookImagePost({required String image}) async {
+    try {
+      emit(CreateFacePostLoading());
 
-//   createFaceBookImagePost() async {
-//     try {
-//       emit(CreateFacePostLoading());
+      final response = await postReposatory.createFaceBookPost(
+          addPostTempleteController.text, selectedItems, [image]);
+      print(response);
+      emit(CreateFacePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
 
-//       final response = await postReposatory.createFaceBookPost(
-//           addPostController.text, selectedItems, imagesFaceUrls);
-//       print(response);
-//       emit(CreateFacePostSuccessfully());
-//       return response;
-//     } catch (e) {
-//       print(e.toString());
-//       emit(CreatePostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
 
-//       return e.toString();
-//     }
-//   }
+  createInstagramImagePost({required String image}) async {
+    try {
+      emit(CreatePostLoading());
 
-//   createInstagramImagePost() async {
-//     try {
-//       emit(CreatePostLoading());
+      final response = await postReposatory.createInstagramPost(
+          addPostTempleteController.text, selectedItems, [image]);
+      print(response);
+      emit(CreatePostSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreatePostFailure(errMessage: e.toString()));
 
-//       final response = await postReposatory.createInstagramPost(
-//           addPostController.text, selectedItems, imagesInstaUrls);
-//       print(response);
-//       emit(CreatePostSuccessfully());
-//       return response;
-//     } catch (e) {
-//       print(e.toString());
-//       emit(CreatePostFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
 
-//       return e.toString();
-//     }
-//   }
-// }
+  String? imgUrl;
+  uploadImage({required String image}) async {
+    try {
+      emit(UploadImageLoading());
+      final response = await postReposatory.uploadTempleteFile(image);
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imgUrl = response;
+      print("nmmnmnmnmnmnmnmnmnmnmn$imgUrl");
+      emit(UploadImgSuccessfully());
+
+      createImagePost(image: imgUrl!);
+    } catch (e) {
+      print(e.toString());
+      emit(UploadImgFailure(errMessage: e.toString()));
+    }
+  }
+
+  String? imagesFaceUrls;
+  uploadFaceBokImage({required String image}) async {
+    try {
+      emit(UploadImageLoading());
+      final response = await postReposatory.uploadTempleteFile(image);
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imagesFaceUrls = response;
+
+      emit(UploadImgSuccessfully());
+      createFaceBookImagePost(image: imagesFaceUrls!);
+    } catch (e) {
+      print(e.toString());
+      emit(UploadImgFailure(errMessage: e.toString()));
+    }
+  }
+
+  String? imagesInstaUrls;
+
+  uploadInstagramImage({required String image}) async {
+    try {
+      emit(UploadImageLoading());
+      final response = await postReposatory.uploadTempleteFile(image);
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imagesFaceUrls = response;
+
+      emit(UploadImgSuccessfully());
+      createInstagramImagePost(image: imagesInstaUrls!);
+    } catch (e) {
+      print(e.toString());
+      emit(UploadImgFailure(errMessage: e.toString()));
+    }
+  }
+}
