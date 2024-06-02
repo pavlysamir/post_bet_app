@@ -47,7 +47,7 @@ abstract class AppRouter {
 
   static final router = GoRouter(
       initialLocation:
-          //kHomeLayOut,
+          //kOnBoarding,
           getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token) !=
                   null
               ? kHomeLayOut

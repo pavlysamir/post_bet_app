@@ -5,9 +5,9 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
-import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_subscription_listView.dart';
 import 'package:post_bet/generated/l10n.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SubscriptionsView extends StatefulWidget {
   const SubscriptionsView({super.key});
@@ -29,27 +29,28 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) async {
         if (state is SubscraptionSuccess) {
-          await Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return WebViewPaynet(
-              uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
-            );
-          }));
-          // launchUrl(
-          //     Uri.parse(
-          //       SettingsCubit.get(context).subscriptionModel!.transactionUrl,
-          //     ),
-          //     mode: LaunchMode.externalApplication);
+          // await Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //   return WebViewPaynet(
+          //     uri: SettingsCubit.get(context).subscriptionModel!.transactionUrl,
+          //   );
+          // }));
+          launchUrl(
+              Uri.parse(
+                SettingsCubit.get(context).subscriptionModel!.transactionUrl,
+              ),
+              mode: LaunchMode.externalApplication);
           await SettingsCubit.get(context).mySubscription();
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('successfuly subscraption'),
           ));
         } else if (state is MySubscraptionSuccess) {
-          await SettingsCubit.get(context).confirmSubscription().then((value) {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('successfuly subscraption'),
-            ));
-            SettingsCubit.get(context).getPlans();
-          });
+          // await SettingsCubit.get(context).confirmSubscription().then((value) {
+          //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          //     content: Text('successfuly subscraption'),
+          //   ));
+          //   SettingsCubit.get(context).getPlans();
+          // });
+          SettingsCubit.get(context).getPlans();
         } else if (state is SubscraptionFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

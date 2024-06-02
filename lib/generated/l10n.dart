@@ -80,6 +80,16 @@ class S {
     );
   }
 
+  /// `Build an engaged`
+  String get onBoardingSlider4 {
+    return Intl.message(
+      'Build an engaged',
+      name: 'onBoardingSlider4',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Share posts , images and videos with just one click `
   String get onBoardingSlider1subTitle1 {
     return Intl.message(
@@ -105,6 +115,16 @@ class S {
     return Intl.message(
       'Postbet make you easily manage and share you posts ',
       name: 'onBoardingSlider3subTitle1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Auto- publish posts to your instgram business profile, or set reminders to finish `
+  String get onBoardingSlider4subTitle1 {
+    return Intl.message(
+      'Auto- publish posts to your instgram business profile, or set reminders to finish ',
+      name: 'onBoardingSlider4subTitle1',
       desc: '',
       args: [],
     );

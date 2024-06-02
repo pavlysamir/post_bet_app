@@ -15,11 +15,11 @@ class CustomAuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 40.h,
-        width: 222.w,
+        width: double.infinity,
         decoration: BoxDecoration(
           border: Border.all(color: kBlackColor),
           color: Colors.white,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(100),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

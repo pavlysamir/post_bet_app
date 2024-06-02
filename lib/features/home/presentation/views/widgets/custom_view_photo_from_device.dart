@@ -20,7 +20,7 @@ class CustomViewPhotoFromDevice extends StatelessWidget {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.15,
+            height: MediaQuery.of(context).size.height * 0.3,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover, image: _buildImageProvider()),

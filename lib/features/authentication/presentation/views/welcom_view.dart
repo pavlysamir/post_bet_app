@@ -15,79 +15,82 @@ class WelcomScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 76.h,
-            ),
-            Image.asset(AssetsData.loginLogo),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  S.of(context).welcome,
-                  style: Theme.of(context).textTheme.displayLarge,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'POSTBET',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayLarge!
-                      .copyWith(color: kPrimaryKey),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            Text(
-              S.of(context).letsSatrt,
-              style: Styles.textStyle14Grey,
-            ),
-            SizedBox(
-              height: 25.h,
-            ),
-            const CustomAuthButton(
-              image: AssetsData.googleIcon,
-              text: 'Continue with Google',
-            ),
-            SizedBox(
-              height: 18.h,
-            ),
-            const CustomAuthButton(
-              image: AssetsData.emailIcon,
-              text: 'Continue with Email',
-            ),
-            SizedBox(
-              height: 26.h,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  S.of(context).haveAccount,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    customGoAndDeleteNavigate(
-                        context: context, path: AppRouter.kLogin);
-                  },
-                  child: Text(S.of(context).login,
-                      style: Styles.textStyle14Orange),
-                ),
-              ],
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 76.h,
+              ),
+              Image.asset(AssetsData.loginLogo),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    S.of(context).welcome,
+                    style: Theme.of(context).textTheme.displayLarge,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'POSTBET',
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge!
+                        .copyWith(color: kPrimaryKey),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                S.of(context).letsSatrt,
+                style: Styles.textStyle14Grey,
+              ),
+              SizedBox(
+                height: 25.h,
+              ),
+              const CustomAuthButton(
+                image: AssetsData.googleIcon,
+                text: 'Continue with Google',
+              ),
+              SizedBox(
+                height: 18.h,
+              ),
+              const CustomAuthButton(
+                image: AssetsData.emailIcon,
+                text: 'Continue with Email',
+              ),
+              SizedBox(
+                height: 26.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    S.of(context).haveAccount,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      customGoAndDeleteNavigate(
+                          context: context, path: AppRouter.kLogin);
+                    },
+                    child: Text(S.of(context).login,
+                        style: Styles.textStyle14Orange),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

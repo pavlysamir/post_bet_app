@@ -38,6 +38,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           image: AssetsData.onBoarding3,
           title: S.of(context).onBoardingSlider3,
           messege: S.of(context).onBoardingSlider3subTitle1),
+      OnBoardingModel(
+          image: AssetsData.onBoarding4,
+          title: S.of(context).onBoardingSlider4,
+          messege: S.of(context).onBoardingSlider4subTitle1),
     ];
 
     return Scaffold(
@@ -124,7 +128,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         .get<CashHelperSharedPreferences>()
         .saveData(key: 'onBoarding', value: true)
         .then((value) {
-      customGoAndDeleteNavigate(context: context, path: AppRouter.kLogin);
+      customGoAndDeleteNavigate(context: context, path: AppRouter.kWelcomeView);
     });
   }
 }

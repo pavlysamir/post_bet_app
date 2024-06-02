@@ -203,6 +203,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ALO with postbet"),
         "onBoardingSlider3subTitle1": MessageLookupByLibrary.simpleMessage(
             "Postbet make you easily manage and share you posts "),
+        "onBoardingSlider4":
+            MessageLookupByLibrary.simpleMessage("Build an engaged"),
+        "onBoardingSlider4subTitle1": MessageLookupByLibrary.simpleMessage(
+            "Auto- publish posts to your instgram business profile, or set reminders to finish "),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "paymentAmount": MessageLookupByLibrary.simpleMessage("Pay amount"),

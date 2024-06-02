@@ -206,6 +206,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ALO مع بوستبيت"),
         "onBoardingSlider3subTitle1": MessageLookupByLibrary.simpleMessage(
             "بوستبيت يجعل من السهل عليك إدارة ومشاركة منشوراتك"),
+        "onBoardingSlider4":
+            MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
+        "onBoardingSlider4subTitle1": MessageLookupByLibrary.simpleMessage(
+            "قم بنشر المنشورات تلقائيًا على ملف تعريف الأعمال الخاص بك على Instagram، أو قم بتعيين التذكيرات حتى النهاية"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "pay": MessageLookupByLibrary.simpleMessage("دفع"),
         "paymentAmount": MessageLookupByLibrary.simpleMessage("مبلغ الدفع"),
