@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
@@ -8,6 +9,7 @@ import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_text_button_forgot_password.dart';
+import 'package:post_bet/features/settings/presentation/views/terms_conditions_view.dart';
 import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
@@ -161,7 +163,30 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(
                       height: 40.h,
-                    )
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          S.of(context).agreeTerms,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        const SizedBox(
+                          width: 1,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return TermsAndConditionsScreen();
+                            }));
+                          },
+                          child: Text(S.of(context).termsAndConditions,
+                              style: Styles.textStyle14Orange),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

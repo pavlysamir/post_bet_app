@@ -33,7 +33,7 @@ class MySubscriptionView extends StatelessWidget {
                 ))
               : SettingsCubit.get(context).mySubscriptionModel == null
                   ? Center(child: Text(S.of(context).noSubscriptions))
-                  : state is MyPlanSuccess
+                  : state is ConfirmSubscraptionSuccess
                       ? SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

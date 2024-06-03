@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
@@ -17,6 +20,11 @@ class CreatePostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var myyPlatForms =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.platForms);
+    var platformIconss = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.platFormsIcons);
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
         if (state is CreatePostSuccessfully ||
@@ -208,15 +216,12 @@ class CreatePostView extends StatelessWidget {
                         separatorBuilder: (context, index) {
                           return const CustomLineSeperator();
                         },
-                        itemCount:
-                            AddPostCubit.get(context).platformNames.length,
+                        itemCount: myPlatForms.length,
                         itemBuilder: (context, index) {
                           return CreatePostPlatFormItem(
                             indrx: index,
-                            paltformIcon:
-                                AddPostCubit.get(context).platformIcons[index],
-                            paltformName:
-                                AddPostCubit.get(context).platformNames[index],
+                            paltformIcon: platformIcons[index],
+                            paltformName: myPlatForms[index],
                           );
                         }),
                   ),

@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "who are we \n Welcome to the “PostBit” application, which is an innovative platform for publishing content across various social media sites with ease and effectiveness. We strive to provide a premium experience to users, where they can easily publish their content across a variety of social platforms with just one click.At Postbeat, we pride ourselves on providing advanced technology and easy-to-use tools that enable users to manage and publish their content smoothly and effectively. Whether you want to share photos and videos or text and links, you can do so easily and quickly via the PostBit app.PostBit application is the property of Boulevard E-Commerce, a company based in the United Arab Emirates. We are committed to providing high-quality services and outstanding user experiences, and are always striving to improve our products and meet the needs of our diverse community.\nIf you have any questions, suggestions or need support, please feel free to contact us. We are here to help you have the best possible experience with the BoostBit app.Thank you for choosing Post Pete"),
         "accounts": MessageLookupByLibrary.simpleMessage("Accounts"),
         "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+        "agreeTerms": MessageLookupByLibrary.simpleMessage(
+            "By SignUp yoi agree to the terms and conditions"),
         "basic": MessageLookupByLibrary.simpleMessage("Basic Plan"),
         "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "changeLanguage":
@@ -137,6 +139,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "You must comply with all local and international laws and regulations applicable to your use of the application."),
         "description9": MessageLookupByLibrary.simpleMessage(
             "You agree to indemnify and hold harmless the Company and its partners from any claims or losses arising from your use of the application."),
+        "detailsFaceBook": MessageLookupByLibrary.simpleMessage(
+            "can share 3 images per post,one video, text"),
+        "detailsInstagram": MessageLookupByLibrary.simpleMessage(
+            "can share 3 images per post,one video, text"),
+        "detailsLinkedIn": MessageLookupByLibrary.simpleMessage(
+            "can share one image per post"),
+        "detailsPintrest": MessageLookupByLibrary.simpleMessage(
+            "can share one image per post"),
+        "detailsReddit": MessageLookupByLibrary.simpleMessage(
+            "can share one image per post"),
+        "detailsTelegrame": MessageLookupByLibrary.simpleMessage(
+            "can share one image per post"),
+        "detailsTiktok":
+            MessageLookupByLibrary.simpleMessage("can share one video"),
+        "detailsX": MessageLookupByLibrary.simpleMessage(
+            "can share 3 images per post,one video, text"),
         "discount15": MessageLookupByLibrary.simpleMessage("15% Discount"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("Do you want change language"),
@@ -154,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
         "enterPromo": MessageLookupByLibrary.simpleMessage("Enter Promocode"),
         "expireData": MessageLookupByLibrary.simpleMessage("Expire Data"),
+        "faceBook": MessageLookupByLibrary.simpleMessage("FaceBook"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 posts per day"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
@@ -211,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "paymentAmount": MessageLookupByLibrary.simpleMessage("Pay amount"),
         "platform": MessageLookupByLibrary.simpleMessage("Platform"),
+        "pleaseGo": MessageLookupByLibrary.simpleMessage("Please Go to "),
         "premium": MessageLookupByLibrary.simpleMessage("Premium Plan"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),
@@ -218,6 +238,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerName": MessageLookupByLibrary.simpleMessage("Name"),
         "registerPassword": MessageLookupByLibrary.simpleMessage("Password"),
         "resetPassword": MessageLookupByLibrary.simpleMessage("Reset Password"),
+        "seeAll": MessageLookupByLibrary.simpleMessage("See All"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "shareAllPlatform":
@@ -308,9 +329,15 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Unlimited posts per day"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("Verify Your Email"),
+        "welcomTextButton1": MessageLookupByLibrary.simpleMessage(
+            "I’am new to postbet, let’s sign up"),
+        "welcomTextButton2":
+            MessageLookupByLibrary.simpleMessage("I already have an account"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome to "),
         "welcomeBack":
             MessageLookupByLibrary.simpleMessage("Welcome back to postbet"),
+        "whatUCanPost":
+            MessageLookupByLibrary.simpleMessage("What you can post?"),
         "yes": MessageLookupByLibrary.simpleMessage("Yes"),
         "zip": MessageLookupByLibrary.simpleMessage("Zip / Postal code")
       };

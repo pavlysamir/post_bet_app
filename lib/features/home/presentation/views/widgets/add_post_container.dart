@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -15,7 +19,15 @@ class AddPostContainer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: GestureDetector(
         onTap: () {
-          customJustGoNavigate(context: context, path: AppRouter.kAddPostView);
+          getIt
+                      .get<CashHelperSharedPreferences>()
+                      .getData(key: ApiKey.platForms) ==
+                  null
+              ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                      '${S.of(context).pleaseGo}${S.of(context).mySbscription}')))
+              : customJustGoNavigate(
+                  context: context, path: AppRouter.kAddPostView);
         },
         child: Container(
           height: 150.h,

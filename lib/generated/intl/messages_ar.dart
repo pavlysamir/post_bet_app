@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "من نحن \n مرحبا بكم في تطبيق “PostBit” الذي يعتبر منصة مبتكرة لنشر المحتوى عبر مواقع التواصل الاجتماعي المختلفة بكل سهولة وفعالية. نحن نسعى جاهدين لتوفير تجربة متميزة للمستخدمين، حيث يمكنهم بسهولة نشر المحتوى الخاص بهم عبر مجموعة متنوعة من منصات التواصل الاجتماعي بنقرة واحدة فقط. في Postbeat، نفخر بتقديم التكنولوجيا المتقدمة والأدوات سهلة الاستخدام التي تمكن المستخدمين من إدارة ونشر محتواها بسلاسة وفعالية. سواء كنت ترغب في مشاركة الصور ومقاطع الفيديو أو النصوص والروابط، يمكنك القيام بذلك بسهولة وسرعة عبر تطبيق PostBit. تطبيق PostBit هو ملك لشركة Boulevard E-Commerce، وهي شركة مقرها في دولة الإمارات العربية المتحدة. نحن ملتزمون بتقديم خدمات عالية الجودة وتجارب مستخدمين متميزة، ونسعى دائمًا لتحسين منتجاتنا وتلبية احتياجات مجتمعنا المتنوع.\nإذا كانت لديك أية أسئلة أو اقتراحات أو كنت بحاجة إلى الدعم، فلا تتردد في الاتصال بنا. نحن هنا لمساعدتك في الحصول على أفضل تجربة ممكنة مع تطبيق BoostBit. شكرًا لك على اختيار Post Pete"),
         "accounts": MessageLookupByLibrary.simpleMessage("الحسابات"),
         "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
+        "agreeTerms": MessageLookupByLibrary.simpleMessage(
+            "بالتسجيل فإنك توافق على الشروط والأحكام"),
         "basic": MessageLookupByLibrary.simpleMessage("بسيط"),
         "cardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
@@ -135,6 +137,22 @@ class MessageLookup extends MessageLookupByLibrary {
             "يجب أن تلتزم بجميع القوانين واللوائح المحلية والدولية التي تنطبق على استخدامك للتطبيق."),
         "description9": MessageLookupByLibrary.simpleMessage(
             "أنت توافق على تعويض شركة شركائها عن أي مطالبات أو خسائر ناشئة عن استخدامك للتطبيق."),
+        "detailsFaceBook": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة 3 صور في كل مشاركة، مقطع فيديو واحد، نص"),
+        "detailsInstagram": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة 3 صور لكل مشاركة، مقطع فيديو واحد، نص"),
+        "detailsLinkedIn": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة صورة واحدة في كل مشاركة"),
+        "detailsPintrest": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة صورة واحدة في كل مشاركة"),
+        "detailsReddit": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة صورة واحدة في كل مشاركة"),
+        "detailsTelegrame": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة صورة واحدة في كل مشاركة"),
+        "detailsTiktok": MessageLookupByLibrary.simpleMessage(
+            ":يمكن مشاركة مقطع فيديو واحد"),
+        "detailsX": MessageLookupByLibrary.simpleMessage(
+            "يمكن مشاركة 3 صور لكل مشاركة، فيديو واحد، نص"),
         "discount15": MessageLookupByLibrary.simpleMessage("خصم 15%"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("هل تريد تغيير اللغة"),
@@ -155,6 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل كلمة مرور جديدة"),
         "enterPromo": MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
         "expireData": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
+        "faceBook": MessageLookupByLibrary.simpleMessage("فيس بوك"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 منشورات في اليوم"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
@@ -214,6 +233,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "pay": MessageLookupByLibrary.simpleMessage("دفع"),
         "paymentAmount": MessageLookupByLibrary.simpleMessage("مبلغ الدفع"),
         "platform": MessageLookupByLibrary.simpleMessage("المنصات"),
+        "pleaseGo": MessageLookupByLibrary.simpleMessage("الرجاء الذهاب الى"),
         "premium": MessageLookupByLibrary.simpleMessage("مميز"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل"),
@@ -223,6 +243,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "registerPassword": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "resetPassword":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
+        "seeAll": MessageLookupByLibrary.simpleMessage("اظهار الكل"),
         "settings": MessageLookupByLibrary.simpleMessage("الإعدادات"),
         "share": MessageLookupByLibrary.simpleMessage("مشاركة"),
         "shareAllPlatform":
@@ -294,9 +315,15 @@ class MessageLookup extends MessageLookupByLibrary {
             "عدد غير محدود من المنشورات في اليوم"),
         "verifyEmail":
             MessageLookupByLibrary.simpleMessage("تحقق من بريدك الإلكتروني"),
+        "welcomTextButton1": MessageLookupByLibrary.simpleMessage(
+            "أنا جديد على postbet، فلنقم بالتسجيل"),
+        "welcomTextButton2":
+            MessageLookupByLibrary.simpleMessage("لدي حساب بالفعل"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا بك في"),
         "welcomeBack":
             MessageLookupByLibrary.simpleMessage("مرحبًا مرة أخرى في postbet"),
+        "whatUCanPost":
+            MessageLookupByLibrary.simpleMessage("ماذا يمكنك نشره؟"),
         "yes": MessageLookupByLibrary.simpleMessage("نعم"),
         "zip": MessageLookupByLibrary.simpleMessage("الرمز البريدي")
       };

@@ -56,39 +56,32 @@ class WelcomScreen extends StatelessWidget {
               SizedBox(
                 height: 25.h,
               ),
-              const CustomAuthButton(
+              CustomAuthButton(
+                color: kPrimaryKey,
                 image: AssetsData.googleIcon,
-                text: 'Continue with Google',
+                text: S.of(context).welcomTextButton1,
+                colorTxt: Colors.white,
+                function: () {
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kRegistretion);
+                },
               ),
               SizedBox(
                 height: 18.h,
               ),
-              const CustomAuthButton(
+              CustomAuthButton(
+                colorTxt: kPrimaryKey,
+                color: Colors.white,
                 image: AssetsData.emailIcon,
-                text: 'Continue with Email',
+                text: S.of(context).welcomTextButton2,
+                function: () {
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kLogin);
+                },
               ),
               SizedBox(
                 height: 26.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    S.of(context).haveAccount,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      customGoAndDeleteNavigate(
-                          context: context, path: AppRouter.kLogin);
-                    },
-                    child: Text(S.of(context).login,
-                        style: Styles.textStyle14Orange),
-                  ),
-                ],
-              )
             ],
           ),
         ),

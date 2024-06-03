@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/styles.dart';
 
 class PlatformListViewItem extends StatelessWidget {
@@ -20,11 +21,11 @@ class PlatformListViewItem extends StatelessWidget {
         onTap: function,
         child: Container(
           width: 130.w,
-          height: 60.h,
+          height: 50.h,
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Colors.white),
+            border: Border.all(color: kPrimaryKey),
             boxShadow: [
               BoxShadow(
                 color: Theme.of(context).shadowColor,

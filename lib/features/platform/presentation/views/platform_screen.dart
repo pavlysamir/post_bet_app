@@ -22,11 +22,9 @@ class PlatformScreen extends StatelessWidget {
       'X',
       'Linkedin',
       'Reddit',
-      'Youtube',
       'Tiktok',
       'Pinterest',
       'Telegram',
-      'Google Business'
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
@@ -34,11 +32,9 @@ class PlatformScreen extends StatelessWidget {
       AssetsData.xIcon,
       AssetsData.linkedln,
       AssetsData.reddit,
-      AssetsData.youtube,
       AssetsData.tiktok,
       AssetsData.pinterest,
       AssetsData.telegram,
-      AssetsData.googleBusiness
     ];
     return BlocConsumer<PlatformCubit, PlatformState>(
       listener: (context, state) {
@@ -78,6 +74,9 @@ class PlatformScreen extends StatelessWidget {
                       )
                     : Center(
                         child: ElevatedButton(
+                            style: const ButtonStyle(
+                                backgroundColor:
+                                    MaterialStatePropertyAll(kPrimaryKey)),
                             onPressed: () async {
                               PlatformCubit.get(context)!
                                   .linkAcount()
@@ -95,7 +94,7 @@ class PlatformScreen extends StatelessWidget {
                             },
                             child: const Text(
                               'Link Account',
-                              style: TextStyle(color: kPrimaryKey),
+                              style: TextStyle(color: Colors.white),
                             )),
                       ),
                 Expanded(

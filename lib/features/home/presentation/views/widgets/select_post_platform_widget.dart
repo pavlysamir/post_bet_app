@@ -125,6 +125,8 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                             AddPostCubit.get(context)
                                                 .selectedaceInstaItems
                                                 .remove(value);
+                                            print(AddPostCubit.get(context)
+                                                .selectedaceInstaItems);
                                           }
                                         });
                                       },
@@ -143,9 +145,9 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                         AddPostCubit.get(context)
                             .checkBoxValues
                             .removeWhere((key, value) => key != newValue);
-                        AddPostCubit.get(context)
-                            .selectedItems
-                            .removeWhere((value) => value != newValue);
+                        // AddPostCubit.get(context)
+                        //     .selectedItems
+                        //     .remove((value) => value == value);
                       });
                     },
                   ),
@@ -167,6 +169,10 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                       .platformNames[widget.indrx]);
                               print(AddPostCubit.get(context).selectedItems);
                             } else if (!value) {
+                              AddPostCubit.get(context)
+                                  .selectedItems
+                                  .remove(value);
+                              print(AddPostCubit.get(context).selectedItems);
                               // Remove item from selected list if unchecked
                               AddPostCubit.get(context)
                                   .selectedItems

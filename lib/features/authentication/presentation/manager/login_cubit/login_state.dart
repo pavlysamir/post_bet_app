@@ -16,6 +16,15 @@ class LoginFailure extends LoginState {
   LoginFailure({required this.errMessage});
 }
 
+class MyPlansLoading extends LoginState {}
+
+class MyPlansSuccess extends LoginState {}
+
+class MyPlansFailure extends LoginState {
+  final String errMessage;
+  MyPlansFailure({required this.errMessage});
+}
+
 final class GetUserSuccess extends LoginState {
   final UserDataResponseModel user;
 

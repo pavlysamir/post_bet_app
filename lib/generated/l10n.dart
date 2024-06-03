@@ -130,6 +130,156 @@ class S {
     );
   }
 
+  /// `I’am new to postbet, let’s sign up`
+  String get welcomTextButton1 {
+    return Intl.message(
+      'I’am new to postbet, let’s sign up',
+      name: 'welcomTextButton1',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I already have an account`
+  String get welcomTextButton2 {
+    return Intl.message(
+      'I already have an account',
+      name: 'welcomTextButton2',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `By SignUp yoi agree to the terms and conditions`
+  String get agreeTerms {
+    return Intl.message(
+      'By SignUp yoi agree to the terms and conditions',
+      name: 'agreeTerms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Go to `
+  String get pleaseGo {
+    return Intl.message(
+      'Please Go to ',
+      name: 'pleaseGo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What you can post?`
+  String get whatUCanPost {
+    return Intl.message(
+      'What you can post?',
+      name: 'whatUCanPost',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `FaceBook`
+  String get faceBook {
+    return Intl.message(
+      'FaceBook',
+      name: 'faceBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share 3 images per post,one video, text`
+  String get detailsFaceBook {
+    return Intl.message(
+      'can share 3 images per post,one video, text',
+      name: 'detailsFaceBook',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share 3 images per post,one video, text`
+  String get detailsInstagram {
+    return Intl.message(
+      'can share 3 images per post,one video, text',
+      name: 'detailsInstagram',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share one video`
+  String get detailsTiktok {
+    return Intl.message(
+      'can share one video',
+      name: 'detailsTiktok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share 3 images per post,one video, text`
+  String get detailsX {
+    return Intl.message(
+      'can share 3 images per post,one video, text',
+      name: 'detailsX',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share one image per post`
+  String get detailsPintrest {
+    return Intl.message(
+      'can share one image per post',
+      name: 'detailsPintrest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share one image per post`
+  String get detailsTelegrame {
+    return Intl.message(
+      'can share one image per post',
+      name: 'detailsTelegrame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share one image per post`
+  String get detailsReddit {
+    return Intl.message(
+      'can share one image per post',
+      name: 'detailsReddit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `can share one image per post`
+  String get detailsLinkedIn {
+    return Intl.message(
+      'can share one image per post',
+      name: 'detailsLinkedIn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `See All`
+  String get seeAll {
+    return Intl.message(
+      'See All',
+      name: 'seeAll',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Next`
   String get next {
     return Intl.message(

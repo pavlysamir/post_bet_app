@@ -6,6 +6,7 @@ import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/authentication/data/models/auth_model/auth_model.dart';
+import 'package:post_bet/features/authentication/data/models/auth_model/login_model.dart';
 import 'package:post_bet/features/authentication/data/models/auth_model/register_model.dart';
 import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_response_model.dart';
 
@@ -13,7 +14,7 @@ class AuthRepository {
   final ApiConsumer api;
   AuthRepository({required this.api});
 
-  Future<Either<String, AuthResponseModle>> login({
+  Future<Either<String, UserResponse>> login({
     required String email,
     required String password,
   }) async {
@@ -25,7 +26,7 @@ class AuthRepository {
           ApiKey.password: password,
         },
       );
-      final user = AuthResponseModle.fromJson(response);
+      final user = UserResponse.fromJson(response);
       final decodedToken = JwtDecoder.decode(user.data.token);
       await getIt
           .get<CashHelperSharedPreferences>()
@@ -54,7 +55,48 @@ class AuthRepository {
 
       print(decodedToken[ApiKey.id]);
 
+      //myPlan(subscription: user.data.userProgramSubscriptions);
+
       return Right(user);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, UserProgramSubscription>> myPlan(
+      {required List<UserProgramSubscription> subscriptions}) async {
+    try {
+      await getIt
+          .get<CashHelperSharedPreferences>()
+          .removeData(key: ApiKey.mySubscribeId);
+      // final response = await api.get(
+      //   EndPoint.mySubscraption,
+      // );
+      UserProgramSubscription? mySubscriptionModel;
+
+      // Iterate over the list of subscriptions
+      for (var subscription in subscriptions) {
+        if (subscription.paymentStatus == 'Paid') {
+          // Save the id of the subscription with paymentStatus == 'Paid'
+          await getIt
+              .get<CashHelperSharedPreferences>()
+              .saveData(key: ApiKey.mySubscribeId, value: subscription.id);
+
+          mySubscriptionModel = subscription;
+
+          // Optionally, print the id to verify
+          print('Saved subscription id: ${subscription.id}');
+          print('yaaaaaaaaaaaaaaaaaaaaaaaaaaaaaarb${mySubscriptionModel}');
+        }
+      }
+
+      await getIt
+          .get<CashHelperSharedPreferences>()
+          .saveData(key: ApiKey.mySubscribeId, value: subscriptions.last.id);
+      mySubscriptionModel = subscriptions.last;
+      print(mySubscriptionModel);
+
+      return Right(mySubscriptionModel!);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

@@ -1,5 +1,5 @@
 class EndPoint {
-  static String baseUrl = "https://195.35.0.65:4000";
+  static String baseUrl = "https://postbet.ae";
 
   static String login = "/Auth/login";
   static String signUp = "/Auth/signUp";
@@ -71,4 +71,6 @@ class ApiKey {
   static String plan = "plan";
   static String mySubscribeId = "subscrabtionId";
   static String limitNumberOfPostsPerDay = "limitNumberOfPostsPerDay";
+  static String platForms = "platforms";
+  static String platFormsIcons = "platforms";
 }

@@ -27,7 +27,7 @@ class PostReposatory {
   //     'https://post-bet.onrender.com/Posting/post/$id';
   // 'https://post-bet.onrender.com/Posting/post';
   String baseUrlPosting(id) {
-    return 'https://195.35.0.65:4000/Posting/post/$id';
+    return 'https://postbet.ae/Posting/post/$id';
   }
 
   String authorizationHeader =

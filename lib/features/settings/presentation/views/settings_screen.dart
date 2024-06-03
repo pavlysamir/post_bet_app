@@ -123,7 +123,9 @@ class SettingsScreen extends StatelessWidget {
               ),
               SettingsIconWidget(
                 function: () {
-                  SettingsCubit.get(context).myPlan();
+                  SettingsCubit.get(context).myPlan().then((value) {
+                    SettingsCubit.get(context).confirmSubscription();
+                  });
                   customJustGoNavigate(
                       context: context, path: AppRouter.kMySubscription);
                 },

@@ -205,24 +205,20 @@ class AddPostCubit extends Cubit<AddPostState> {
     'Facebook',
     'Twitter',
     'Linkedin',
-    'Reddit',
-    'Youtube',
-    'Tiktok',
-    'Pinterest',
     'Telegram',
-    'Google Business'
+    'Pinterest',
+    'Tiktok',
+    'Reddit',
   ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,
     AssetsData.faceBookIcon,
     AssetsData.xIcon,
     AssetsData.linkedln,
-    AssetsData.reddit,
-    AssetsData.youtube,
-    AssetsData.tiktok,
-    AssetsData.pinterest,
     AssetsData.telegram,
-    AssetsData.googleBusiness
+    AssetsData.pinterest,
+    AssetsData.tiktok,
+    AssetsData.reddit,
   ];
 
   List<String> imagesUrls = [];
@@ -530,7 +526,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   createImagePost() async {
     try {
       emit(CreatePostLoading());
-
+      print('/////////////////////////////////$imagesUrls');
       final response = await postReposatory.createPost(
           addPostController.text, selectedItems, imagesUrls);
       print(response);

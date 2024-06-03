@@ -213,6 +213,7 @@ class SettingsRepository {
       await getIt.get<CashHelperSharedPreferences>().saveData(
           key: ApiKey.mySubscribeId,
           value: myListResponse.subscriptions.last.id);
+      mySubscriptionModel = myListResponse.subscriptions.last;
 
       print(myCharger);
       // Example: also save the chargeId of the first subscription in the list

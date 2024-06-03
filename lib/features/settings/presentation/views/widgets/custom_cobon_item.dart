@@ -19,7 +19,7 @@ class CobonItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         //padding: EdgeInsets.all(8.h),
-        height: 202.h,
+        height: 300.h,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
@@ -33,95 +33,77 @@ class CobonItem extends StatelessWidget {
             ),
           ],
         ),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: color,
+        child: Container(
+            color: Colors.white,
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              SizedBox(
+                height: 15.h,
+              ),
+              CircleAvatar(
+                radius: 55.r,
+                backgroundColor: Colors.black,
                 child: Center(
-                  child: CircleAvatar(
-                    radius: 60,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 55,
-                      backgroundColor: color,
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        packageType,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
+                  child: Text(
+                    packageType,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  cobonTitle,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.labelLarge,
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+              const Spacer(),
+              SizedBox(
+                width: 80.w,
+                height: 40.h,
+                child: TextFormField(
+                  initialValue: cobonCode,
+                  readOnly: true,
+                  style: Theme.of(context).textTheme.titleMedium,
+                  onTapOutside: (event) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10.0, horizontal: 10.0),
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.enabledBorder,
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Colors.white), // Border color changes to red
+                      borderRadius: BorderRadius.circular(14),
                     ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 3,
-              child: Container(
-                  color: Colors.white,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Text(
-                            cobonTitle,
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.labelLarge,
-                            maxLines: 4,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                        const Spacer(),
-                        SizedBox(
-                          width: 80.w,
-                          height: 40.h,
-                          child: TextFormField(
-                            initialValue: cobonCode,
-                            readOnly: true,
-                            style: Theme.of(context).textTheme.titleMedium,
-                            onTapOutside: (event) {
-                              FocusManager.instance.primaryFocus?.unfocus();
-                            },
-                            decoration: InputDecoration(
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 10.0, horizontal: 10.0),
-                              enabledBorder: Theme.of(context)
-                                  .inputDecorationTheme
-                                  .enabledBorder,
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
-                                    color: Colors
-                                        .white), // Border color changes to red
-                                borderRadius: BorderRadius.circular(14),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 12.h,
-                        )
-                        // TextButton(
-                        //   onPressed: () {},
-                        //   child: Container(
-                        //     height: 40.h,
-                        //     decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(14),
-                        //     ),
-                        //     width: double.infinity,
-                        //     child: Align(
-                        //       alignment: Alignment.center,
-                        //       child: Text(
-                        //         'Read more',
-                        //         style: Theme.of(context).textTheme.titleLarge,
-                        //       ),
-                        //     ),
-                        //   ),
-                        // )
-                      ])),
-            )
-          ],
-        ));
+              SizedBox(
+                height: 12.h,
+              )
+              // TextButton(
+              //   onPressed: () {},
+              //   child: Container(
+              //     height: 40.h,
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.circular(14),
+              //     ),
+              //     width: double.infinity,
+              //     child: Align(
+              //       alignment: Alignment.center,
+              //       child: Text(
+              //         'Read more',
+              //         style: Theme.of(context).textTheme.titleLarge,
+              //       ),
+              //     ),
+              //   ),
+              // )
+            ])));
   }
 }

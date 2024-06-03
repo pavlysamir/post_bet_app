@@ -10,6 +10,7 @@ import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/register_cubit/registration_cubit.dart';
+import 'package:post_bet/features/settings/presentation/views/terms_conditions_view.dart';
 import 'package:post_bet/generated/l10n.dart';
 import '../../../../../../constants.dart';
 import '../../../../../../core/utils/styles.dart';
@@ -58,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(44.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -198,6 +199,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                       SizedBox(
                         height: 30.h,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            S.of(context).agreeTerms,
+                          ),
+                          const SizedBox(
+                            width: 1,
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return TermsAndConditionsScreen();
+                              }));
+                            },
+                            child: Text(S.of(context).termsAndConditions,
+                                style: Styles.textStyle14Orange),
+                          ),
+                        ],
                       ),
                       Center(
                         child: GestureDetector(

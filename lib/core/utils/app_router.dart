@@ -11,6 +11,7 @@ import 'package:post_bet/features/authentication/presentation/views/verfy_new_pa
 import 'package:post_bet/features/authentication/presentation/views/verify_mail_screen.dart';
 import 'package:post_bet/features/home/presentation/views/creare_post_view.dart';
 import 'package:post_bet/features/home/presentation/views/home_screen.dart';
+import 'package:post_bet/features/home/presentation/views/whatCanPost_view.dart';
 import 'package:post_bet/features/on_boarding/presentations/on_boarding_view.dart';
 import 'package:post_bet/features/authentication/presentation/views/welcom_view.dart';
 import 'package:post_bet/features/profile/presentation/view/edit%20profile%20screen.dart';
@@ -44,10 +45,11 @@ abstract class AppRouter {
 
   static const kEnterPromo = '/EnterPromo';
   static const kMySubscription = '/MySubscription';
+  static const kWhatCanPost = '/WhatCanPost';
 
   static final router = GoRouter(
       initialLocation:
-          //kOnBoarding,
+          // kOnBoarding,
           getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token) !=
                   null
               ? kHomeLayOut
@@ -133,6 +135,10 @@ abstract class AppRouter {
         GoRoute(
           path: kMySubscription,
           builder: (context, state) => const MySubscriptionView(),
+        ),
+        GoRoute(
+          path: kWhatCanPost,
+          builder: (context, state) => WhatCanPostView(),
         ),
       ]);
 }

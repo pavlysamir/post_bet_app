@@ -28,11 +28,9 @@ class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
     'Twitter',
     'Linkedin',
     'Reddit',
-    'Youtube',
     'Tiktok',
     'Pinterest',
     'Telegram',
-    'Google Business'
   ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,
@@ -40,11 +38,9 @@ class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
     AssetsData.xIcon,
     AssetsData.linkedln,
     AssetsData.reddit,
-    AssetsData.youtube,
     AssetsData.tiktok,
     AssetsData.pinterest,
     AssetsData.telegram,
-    AssetsData.googleBusiness
   ];
 
   createImagePost({required String image}) async {

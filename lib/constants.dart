@@ -15,3 +15,5 @@ const k5A5A5A = Color(0xff5A5A5A);
 const k323232 = Color(0xff323232);
 
 File? imageFile;
+List<String> myPlatForms = [];
+List<String> platformIcons = [];

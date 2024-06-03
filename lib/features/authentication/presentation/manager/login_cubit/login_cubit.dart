@@ -8,6 +8,7 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/authentication/data/models/auth_model/login_model.dart';
 import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_model.dart';
 import 'package:post_bet/features/authentication/data/models/user_data_model/user_data_response_model.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
@@ -53,6 +54,20 @@ class LoginCubit extends Cubit<LoginState> {
       emailController.clear();
       passwordController.clear();
       emit(LoginSuccess());
+
+      myPlans(subscription: signInModel.data.userProgramSubscriptions);
+    });
+  }
+
+  myPlans({required List<UserProgramSubscription> subscription}) async {
+    emit(MyPlansLoading());
+    final response = await authRepository.myPlan(subscriptions: subscription);
+    response.fold((errMessage) => emit(MyPlansFailure(errMessage: errMessage)),
+        (signInModel) {
+      // image = signInModel.data.profileImage!;
+      emailController.clear();
+      passwordController.clear();
+      emit(MyPlansSuccess());
     });
   }
 

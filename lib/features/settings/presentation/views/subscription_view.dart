@@ -5,6 +5,7 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
+
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_subscription_listView.dart';
 import 'package:post_bet/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
