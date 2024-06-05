@@ -6,6 +6,7 @@ class MySubscriptionModel {
   final String chargeId;
   final String transactionUrl;
   final Plan plan;
+  final String endSubscriptionDate;
 
   MySubscriptionModel({
     required this.id,
@@ -15,6 +16,7 @@ class MySubscriptionModel {
     required this.chargeId,
     required this.transactionUrl,
     required this.plan,
+    required this.endSubscriptionDate,
   });
 
   factory MySubscriptionModel.fromJson(Map<String, dynamic> json) =>
@@ -26,6 +28,7 @@ class MySubscriptionModel {
         chargeId: json['chargeId'] as String,
         transactionUrl: json['transactionUrl'] as String,
         plan: Plan.fromJson(json['plan'] as Map<String, dynamic>),
+        endSubscriptionDate: json['endSubscriptionDate'] as String,
       );
 }
 
@@ -42,6 +45,8 @@ class Plan {
   final bool tiktok;
   final bool pinterest;
   final bool reddit;
+  final bool YouTube;
+  final bool GoogleBusiness;
 
   Plan({
     required this.name,
@@ -56,6 +61,8 @@ class Plan {
     required this.tiktok,
     required this.pinterest,
     required this.reddit,
+    required this.YouTube,
+    required this.GoogleBusiness,
   });
 
   factory Plan.fromJson(Map<String, dynamic> json) => Plan(
@@ -71,5 +78,7 @@ class Plan {
         tiktok: json['TikTok'] as bool,
         pinterest: json['Pinterest'] as bool,
         reddit: json['Reddit'] as bool,
+        YouTube: json['YouTube'] as bool,
+        GoogleBusiness: json['GoogleBusiness'] as bool,
       );
 }
