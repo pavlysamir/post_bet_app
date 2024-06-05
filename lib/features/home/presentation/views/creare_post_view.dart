@@ -146,7 +146,7 @@ class CreatePostView extends StatelessWidget {
                           await AddPostCubit.get(context)
                               .handleAction()
                               .then((value) {
-                            Future.delayed(const Duration(seconds: 13))
+                            Future.delayed(const Duration(seconds: 18))
                                 .then((value) {
                               customGoAndDeleteNavigate(
                                   context: context,
