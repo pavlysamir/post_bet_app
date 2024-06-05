@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 
 class CreatePostPlatFormItem extends StatefulWidget {
@@ -8,11 +9,13 @@ class CreatePostPlatFormItem extends StatefulWidget {
     required this.paltformName,
     required this.paltformIcon,
     required this.indrx,
+    required this.platformDescription,
   });
 
   final String paltformName;
   final String paltformIcon;
   final int indrx;
+  final String platformDescription;
 
   @override
   State<CreatePostPlatFormItem> createState() => _CreatePostPlatFormItemState();
@@ -23,32 +26,66 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
   bool initialValue = false;
   bool initialValue2 = false;
 
+  late AddPostCubit addPostCubit;
+
   List<String> instagram = [
-    'Post Instagram',
-    'Story Instagram',
-    'Reel Instagram',
+    'Post',
+    'Story',
+    'Reel',
   ];
   List<String> facebook = [
-    'Post FaceBook',
-    'Story FaceBook',
-    'Reel FaceBook',
+    'Post .',
+    'Story .',
+    'Reel .',
   ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Access the AddPostCubit and store the reference
+    addPostCubit = AddPostCubit.get(context);
+  }
+
+  @override
+  void dispose() {
+    // Safely use the stored reference
+    addPostCubit.checkBoxValues.clear();
+    addPostCubit.selectedInstaItems.clear();
+    addPostCubit.selectedaceInstaItems.clear();
+    addPostCubit.selectedItems.clear();
+    addPostCubit.addPostController.text = '';
+    addPostCubit.postImages.clear();
+    addPostCubit.fileVideo = null;
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            widget.paltformName,
-            style: Theme.of(context).textTheme.titleLarge,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.paltformName,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                widget.platformDescription,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Colors.grey, fontSize: 10),
+              ),
+            ],
           ),
           widget.paltformName == 'Instagram' ||
                   widget.paltformName == 'Facebook'
               ? SizedBox(
-                  width: 200.w,
+                  width: 150.w,
                   child: DropdownButton<String>(
-                    // value: dropdownValue,
                     items: widget.paltformName == 'Instagram'
                         ? instagram
                             .map<DropdownMenuItem<String>>((String value) {
@@ -64,23 +101,18 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                   ),
                                   StatefulBuilder(
                                     builder: (context, setState) => Checkbox(
-                                      value: AddPostCubit.get(context)
-                                              .checkBoxValues[value] ??
-                                          false,
+                                      value:
+                                          addPostCubit.checkBoxValues[value] ??
+                                              false,
                                       onChanged: (bool? newValue) {
                                         setState(() {
-                                          AddPostCubit.get(context)
-                                                  .checkBoxValues[value] =
+                                          addPostCubit.checkBoxValues[value] =
                                               newValue!;
                                           if (newValue) {
-                                            // Add item to selected list if checked
-                                            AddPostCubit.get(context)
-                                                .selectedInstaItems
+                                            addPostCubit.selectedInstaItems
                                                 .add(value);
                                           } else {
-                                            // Remove item from selected list if unchecked
-                                            AddPostCubit.get(context)
-                                                .selectedInstaItems
+                                            addPostCubit.selectedInstaItems
                                                 .remove(value);
                                           }
                                         });
@@ -105,27 +137,24 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                                   ),
                                   StatefulBuilder(
                                     builder: (context, setState) => Checkbox(
-                                      value: AddPostCubit.get(context)
-                                              .checkBoxValues[value] ??
-                                          false,
+                                      checkColor: Colors.white,
+                                      activeColor: kPrimaryKey,
+                                      value:
+                                          addPostCubit.checkBoxValues[value] ??
+                                              false,
                                       onChanged: (bool? newValue) {
                                         setState(() {
-                                          AddPostCubit.get(context)
-                                                  .checkBoxValues[value] =
+                                          addPostCubit.checkBoxValues[value] =
                                               newValue!;
                                           if (newValue) {
-                                            // Add item to selected list if checked
-                                            AddPostCubit.get(context)
-                                                .selectedaceInstaItems
+                                            addPostCubit.selectedaceInstaItems
                                                 .add(value);
-                                            print(AddPostCubit.get(context)
+                                            print(addPostCubit
                                                 .selectedaceInstaItems);
                                           } else {
-                                            // Remove item from selected list if unchecked
-                                            AddPostCubit.get(context)
-                                                .selectedaceInstaItems
+                                            addPostCubit.selectedaceInstaItems
                                                 .remove(value);
-                                            print(AddPostCubit.get(context)
+                                            print(addPostCubit
                                                 .selectedaceInstaItems);
                                           }
                                         });
@@ -136,55 +165,43 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                               ),
                             );
                           }).toList(),
-
-                    // Step 5. Update dropdown value and handle checkbox state changes.
                     onChanged: (String? newValue) {
                       setState(() {
                         dropdownValue = newValue!;
-                        // Reset checkboxes for other items (optional)
-                        AddPostCubit.get(context)
-                            .checkBoxValues
+                        addPostCubit.checkBoxValues
                             .removeWhere((key, value) => key != newValue);
-                        // AddPostCubit.get(context)
-                        //     .selectedItems
-                        //     .remove((value) => value == value);
                       });
                     },
                   ),
-                ) // ignore: unnecessary_this
+                )
               : StatefulBuilder(
                   builder: (context, setState) {
                     return Checkbox(
-                        value: initialValue,
-                        onChanged: (value) {
-                          setState(() {
-                            initialValue = value!;
-                            AddPostCubit.get(context).checkBoxValues[
-                                AddPostCubit.get(context)
-                                    .platformNames[widget.indrx]] = value;
-                            if (value) {
-                              // Add item to selected list if checked
-                              AddPostCubit.get(context).selectedItems.add(
-                                  AddPostCubit.get(context)
-                                      .platformNames[widget.indrx]);
-                              print(AddPostCubit.get(context).selectedItems);
-                            } else if (!value) {
-                              AddPostCubit.get(context)
-                                  .selectedItems
-                                  .remove(value);
-                              print(AddPostCubit.get(context).selectedItems);
-                              // Remove item from selected list if unchecked
-                              AddPostCubit.get(context)
-                                  .selectedItems
-                                  .removeWhere((value) =>
-                                      value !=
-                                      AddPostCubit.get(context).checkBoxValues[
-                                          AddPostCubit.get(context)
-                                              .platformNames[widget.indrx]]);
-                              print(AddPostCubit.get(context).selectedItems);
-                            }
-                          });
+                      checkColor: Colors.white,
+                      activeColor: kPrimaryKey,
+                      value: initialValue,
+                      onChanged: (value) {
+                        setState(() {
+                          initialValue = value!;
+                          if (value) {
+                            addPostCubit.selectedItems
+                                .add(addPostCubit.platformNames[widget.indrx]);
+                            addPostCubit.checkBoxValues[addPostCubit
+                                .platformNames[widget.indrx]] = value;
+                            print(addPostCubit.checkBoxValues);
+                            print(addPostCubit.selectedItems);
+                          } else {
+                            addPostCubit.selectedItems.remove(
+                                addPostCubit.platformNames[widget.indrx]);
+                            print(addPostCubit.selectedItems);
+                            addPostCubit.selectedItems.remove(
+                                addPostCubit.checkBoxValues[addPostCubit
+                                    .platformNames[widget.indrx]] = value);
+                            print(addPostCubit.selectedItems);
+                          }
                         });
+                      },
+                    );
                   },
                 ),
         ],

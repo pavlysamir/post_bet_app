@@ -59,7 +59,7 @@ class PlatformScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                CustomTitleText(text: S.of(context).platform),
+                CustomTitleText(text: S.of(context).availableAccounts),
                 SizedBox(
                   height: 40.h,
                 ),
@@ -92,9 +92,9 @@ class PlatformScreen extends StatelessWidget {
                                 // }));
                               });
                             },
-                            child: const Text(
-                              'Link Account',
-                              style: TextStyle(color: Colors.white),
+                            child: Text(
+                              S.of(context).linkAcount,
+                              style: const TextStyle(color: Colors.white),
                             )),
                       ),
                 Expanded(

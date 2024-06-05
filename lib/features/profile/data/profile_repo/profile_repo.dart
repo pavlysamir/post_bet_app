@@ -9,7 +9,7 @@ import 'package:post_bet/features/profile/data/models/profile_model.dart';
 class ProfileRepository {
   final ApiConsumer api;
   ProfileRepository({required this.api});
-  Future<Either<String, ProfileResponseModle>> updateProfileData({
+  Future<Either<String, void>> updateProfileData({
     required String name,
     required String email,
     required String profilePic,
@@ -25,7 +25,7 @@ class ProfileRepository {
           ApiKey.profilePic: profilePic,
         },
       );
-      return Right(ProfileResponseModle.fromJson(response));
+      return Right(response);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

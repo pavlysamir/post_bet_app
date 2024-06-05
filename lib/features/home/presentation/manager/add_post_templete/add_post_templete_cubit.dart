@@ -32,6 +32,24 @@ class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
     'Pinterest',
     'Telegram',
   ];
+  List<String> descriptionPlatform = [
+    'Posts, Story, Video',
+    'Posts, Story, Video',
+    'Posts, Video',
+    'Posts, Video',
+    'image',
+    'image',
+    'Video',
+    'image',
+  ];
+
+  List<String> descriptionPlatformsmall = [
+    'Posts, Story, Video',
+    'Posts, Story, Video',
+    'Posts, Video',
+    'Posts, Video',
+    'image',
+  ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,
     AssetsData.faceBookIcon,

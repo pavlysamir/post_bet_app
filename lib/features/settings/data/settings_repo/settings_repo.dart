@@ -8,6 +8,8 @@ import 'package:post_bet/features/settings/data/models/message_model.dart';
 import 'package:post_bet/features/settings/data/models/my_subscription_model.dart';
 import 'package:post_bet/features/settings/data/models/parse_subscription_response.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
+import 'package:post_bet/features/settings/data/models/promo_code_check_model.dart';
+import 'package:post_bet/features/settings/data/models/promo_codes_model.dart';
 import 'package:post_bet/features/settings/data/models/subscription_model.dart';
 
 class SettingsRepository {
@@ -72,12 +74,28 @@ class SettingsRepository {
     }
   }
 
-  Future<Either<String, void>> getPromoCode() async {
+  Future<Either<String, PromoCodeResponse>> getPromoCode() async {
     try {
       final response = await api.get(
         EndPoint.promocode,
       );
-      return Right(response);
+      final promocodes = PromoCodeResponse.fromJson(response);
+
+      return Right(promocodes);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
+    }
+  }
+
+  Future<Either<String, PromoCodeDetails>> getCheckPromoCode(
+      {required String id, required String planId}) async {
+    try {
+      final response = await api.get(
+        EndPoint.getCheckPromoCodeEndPoint(id, planId),
+      );
+      final checkPromocodes = PromoCodeCheckModel.fromJson(response['data']);
+
+      return Right(checkPromocodes.data);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }
@@ -92,6 +110,7 @@ class SettingsRepository {
         ApiKey.oldPassword: oldPassword,
         ApiKey.newPassword: newPassword,
       });
+
       return Right(response);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);

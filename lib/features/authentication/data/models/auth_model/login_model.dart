@@ -160,16 +160,40 @@ class UserProgramSubscription {
 class Plan {
   final int id;
   final String name;
+  final bool facebook;
+  final bool instagram;
+  final bool linkedIn;
+  final bool twitter;
+  final bool telegram;
+  final bool tiktok;
+  final bool pinterest;
+  final bool reddit;
 
   Plan({
     required this.id,
     required this.name,
+    required this.facebook,
+    required this.instagram,
+    required this.linkedIn,
+    required this.twitter,
+    required this.telegram,
+    required this.tiktok,
+    required this.pinterest,
+    required this.reddit,
   });
 
   factory Plan.fromJson(Map<String, dynamic> json) {
     return Plan(
       id: json['id'],
       name: json['name'],
+      facebook: json['Facebook'] as bool,
+      instagram: json['Instagram'] as bool,
+      linkedIn: json['LinkedIn'] as bool,
+      twitter: json['Twitter'] as bool,
+      telegram: json['Telegram'] as bool,
+      tiktok: json['TikTok'] as bool,
+      pinterest: json['Pinterest'] as bool,
+      reddit: json['Reddit'] as bool,
     );
   }
 
@@ -177,6 +201,14 @@ class Plan {
     return {
       'id': id,
       'name': name,
+      'Facebook': facebook,
+      'Instagram': instagram,
+      'LinkedIn': linkedIn,
+      'Twitter': twitter,
+      'Telegram': telegram,
+      'TikTok': tiktok,
+      'Pinterest': pinterest,
+      'Reddit': reddit,
     };
   }
 }

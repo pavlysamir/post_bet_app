@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
@@ -20,6 +22,9 @@ class CreatePostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String title = S.of(context).share;
+
+    final addPostCubit = AddPostCubit.get(context);
     var myyPlatForms =
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.platForms);
     var platformIconss = getIt
@@ -27,17 +32,44 @@ class CreatePostView extends StatelessWidget {
         .getData(key: ApiKey.platFormsIcons);
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
-        if (state is CreatePostSuccessfully ||
-            state is CreateFaceBookReelSuccessfully ||
-            state is CreateFaceBookStorySuccessfully ||
-            state is CreateVideoPostSuccessfully ||
-            state is CreateFaceBookVideoPostSuccessfully ||
-            state is CreateFacePostSuccessfully ||
-            state is CreateInstagramReelSuccessfully ||
-            state is CreateInstagramStorySuccessfully) {
-          //AddPostCubit.get(context).clearpostContant();
+        if (state is CreatePostSuccessfully) {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('success'),
+            content: Text('success Share Post'),
+          ));
+        }
+        if (state is CreateFaceBookReelSuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Facebook Reel'),
+          ));
+        }
+        if (state is CreateFaceBookStorySuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Facebook Story'),
+          ));
+        }
+        if (state is CreateVideoPostSuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Video Post'),
+          ));
+        }
+        if (state is CreateFaceBookVideoPostSuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Video Facebook Post'),
+          ));
+        }
+        if (state is CreateFacePostSuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Facebook Post'),
+          ));
+        }
+        if (state is CreateInstagramReelSuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Instagram Reel'),
+          ));
+        }
+        if (state is CreateInstagramStorySuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share Instagram Story'),
           ));
         } else if (state is CreatePostFailure ||
             state is UploadImgFailure ||
@@ -58,133 +90,6 @@ class CreatePostView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
             appBar: CustomAppbareWithTitle(title: S.of(context).createPost),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              child: CustomButtonLarge(
-                  text: state is UploadImageLoading ||
-                          state is CreatePostLoading ||
-                          state is UploadVideoLoading ||
-                          state is UploadFaceBookImageStoryLoading ||
-                          state is UploadFaceBookReelLoading ||
-                          state is CreateFaceBookStoryLoading ||
-                          state is CreateVideoPostLoading ||
-                          state is CreateFacePostLoading ||
-                          state is CreateFaceBookVideoPostLoading ||
-                          state is UploadInstagramImageStoryLoading ||
-                          state is CreateInstagramReelLoading ||
-                          state is CreateInstagramStoryLoading
-                      ? 'loading..'
-                      : S.of(context).share,
-                  color: kPrimaryKey,
-                  textColor: Colors.white,
-                  function: () async {
-                    // AddPostCubit.get(context).addPostController.text != null
-                    //     ?
-                    //AddPostCubit.get(context).createPost();
-
-                    if (AddPostCubit.get(context).imageFile != null &&
-                        AddPostCubit.get(context)
-                            .selectedaceInstaItems
-                            .contains('Story FaceBook')) {
-                      await AddPostCubit.get(context).uploadImageStory();
-                    }
-                    if (AddPostCubit.get(context).imageFile != null &&
-                        AddPostCubit.get(context)
-                            .selectedInstaItems
-                            .contains('Story Instagram')) {
-                      await AddPostCubit.get(context)
-                          .uploadInstagramImageStory();
-                    }
-                    if (AddPostCubit.get(context).imageFile != null &&
-                        AddPostCubit.get(context)
-                            .selectedaceInstaItems
-                            .contains('Post FaceBook')) {
-                      await AddPostCubit.get(context).uploadFaceBokImage();
-                    }
-                    if (AddPostCubit.get(context).imageFile != null &&
-                        AddPostCubit.get(context)
-                            .selectedInstaItems
-                            .contains('Post Instagram')) {
-                      await AddPostCubit.get(context).uploadInstagramImage();
-                    }
-                    if (AddPostCubit.get(context).postImages.isNotEmpty &&
-                        AddPostCubit.get(context).platformNames.isNotEmpty) {
-                      await AddPostCubit.get(context).uploadImage();
-                    }
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context)
-                            .selectedaceInstaItems
-                            .contains('Reel FaceBook')) {
-                      await AddPostCubit.get(context).uploadReelVideo();
-                    }
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context)
-                            .selectedInstaItems
-                            .contains('Reel Instagram')) {
-                      await AddPostCubit.get(context)
-                          .uploadInstagramReelVideo();
-                    }
-
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context)
-                            .selectedInstaItems
-                            .contains('Story Instagram')) {
-                      await AddPostCubit.get(context)
-                          .uploadVideoStoryInstagramVideo();
-                    }
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context)
-                            .selectedaceInstaItems
-                            .contains('Story FaceBook')) {
-                      await AddPostCubit.get(context)
-                          .uploadVideoStoryFsaceBookVideo();
-                    }
-
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context)
-                            .selectedaceInstaItems
-                            .contains('Post FaceBook')) {
-                      await AddPostCubit.get(context).uploadFaceBookVideo();
-                    }
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context)
-                            .selectedInstaItems
-                            .contains('Post Instagram')) {
-                      await AddPostCubit.get(context).uploadInstagramVideo();
-                    }
-                    if (AddPostCubit.get(context).fileVideo != null &&
-                        AddPostCubit.get(context).platformNames.isNotEmpty) {
-                      await AddPostCubit.get(context).uploadVideo();
-                      //  AddPostCubit.get(context).fileVideo!.path);
-                    }
-                    if (AddPostCubit.get(context).addPostController.text !=
-                            null &&
-                        AddPostCubit.get(context).fileVideo == null &&
-                        AddPostCubit.get(context).postImages.isEmpty) {
-                      await AddPostCubit.get(context).createTextPost();
-                    }
-                    if (AddPostCubit.get(context)
-                            .selectedaceInstaItems
-                            .contains('Post FaceBook') &&
-                        AddPostCubit.get(context).addPostController.text !=
-                            null &&
-                        AddPostCubit.get(context).fileVideo == null &&
-                        AddPostCubit.get(context).postImages.isEmpty) {
-                      await AddPostCubit.get(context).createFaceBookTextPost();
-                    }
-                    if (AddPostCubit.get(context)
-                            .selectedInstaItems
-                            .contains('Post Instagram') &&
-                        AddPostCubit.get(context).postImages.isEmpty &&
-                        AddPostCubit.get(context).fileVideo == null &&
-                        AddPostCubit.get(context).addPostController.text !=
-                            null) {
-                      await AddPostCubit.get(context).createInstagramTextPost();
-                    }
-                    print(AddPostCubit.get(context).checkBoxValues);
-                    print(AddPostCubit.get(context).selectedItems);
-                  }),
-            ),
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -209,6 +114,54 @@ class CreatePostView extends StatelessWidget {
                   ),
                   SizedBox(height: 20.h),
                   Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12),
+                    child: CustomButtonLarge(
+                        text: title,
+                        color: kPrimaryKey,
+                        textColor: Colors.white,
+                        function: () async {
+                          if (AddPostCubit.get(context)
+                                      .addPostController
+                                      .text
+                                      .isEmpty &&
+                                  AddPostCubit.get(context).fileVideo == null &&
+                                  AddPostCubit.get(context)
+                                      .postImages
+                                      .isEmpty ||
+                              AddPostCubit.get(context)
+                                  .checkBoxValues
+                                  .isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(S.of(context).pleaseWrite)));
+                          }
+
+                          title = S.of(context).loading;
+                          // Future.delayed(const Duration(seconds: 17))
+                          //     .then((value) {
+                          //   customGoAndDeleteNavigate(
+                          //       context: context, path: AppRouter.kHomeLayOut);
+                          // });
+
+                          await AddPostCubit.get(context)
+                              .handleAction()
+                              .then((value) {
+                            Future.delayed(const Duration(seconds: 13))
+                                .then((value) {
+                              customGoAndDeleteNavigate(
+                                  context: context,
+                                  path: AppRouter.kHomeLayOut);
+                            });
+                          });
+
+                          print(AddPostCubit.get(context).checkBoxValues);
+                          print(AddPostCubit.get(context).selectedItems);
+                        }),
+                  ),
+                  SizedBox(
+                    height: 12.h,
+                  ),
+                  Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListView.separated(
                         shrinkWrap: true,
@@ -216,12 +169,28 @@ class CreatePostView extends StatelessWidget {
                         separatorBuilder: (context, index) {
                           return const CustomLineSeperator();
                         },
-                        itemCount: myPlatForms.length,
+                        itemCount: getIt
+                            .get<CashHelperSharedPreferences>()
+                            .getData(key: ApiKey.platForms)
+                            .length,
                         itemBuilder: (context, index) {
                           return CreatePostPlatFormItem(
                             indrx: index,
-                            paltformIcon: platformIcons[index],
-                            paltformName: myPlatForms[index],
+                            paltformIcon: getIt
+                                .get<CashHelperSharedPreferences>()
+                                .getData(key: ApiKey.platFormsIcons)[index],
+                            paltformName: getIt
+                                .get<CashHelperSharedPreferences>()
+                                .getData(key: ApiKey.platForms)[index],
+                            platformDescription: getIt
+                                        .get<CashHelperSharedPreferences>()
+                                        .getData(key: ApiKey.platFormsIcons)
+                                        .length ==
+                                    5
+                                ? AddPostCubit.get(context)
+                                    .descriptionPlatformsmall[index]
+                                : AddPostCubit.get(context)
+                                    .descriptionPlatform[index],
                           );
                         }),
                   ),

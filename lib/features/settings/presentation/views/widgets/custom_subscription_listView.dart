@@ -8,6 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
+import 'package:post_bet/features/settings/presentation/views/enter_promocode_view.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/subscription_plan_container.dart';
 import 'package:post_bet/generated/l10n.dart';
 
@@ -44,17 +45,21 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                       builder: (BuildContext context) => PopUpDialog(
                         context: context,
                         function: () async {
-                          await SettingsCubit.get(context).mySubscription();
+                          //await SettingsCubit.get(context).mySubscription();
 
-                          customJustGoNavigate(
-                              context: context, path: AppRouter.kEnterPromo);
                           Navigator.pop(context);
+
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return EnterPromoView(
+                                planeId: '${planModel[index].id}');
+                          }));
                         },
                         title: S.of(context).doPromocode,
                         subTitle: '',
-                        colorButton1: kPoppingsRedColor,
-                        colorButton2: Colors.red,
-                        textColortcolor1: Colors.red,
+                        colorButton1: Colors.white,
+                        colorButton2: kPrimaryKey,
+                        textColortcolor1: kPrimaryKey,
                         textColortcolor2: Colors.white,
                         function2: () async {
                           Navigator.pop(context);
@@ -66,9 +71,9 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                     );
                   }
                 },
-                price: "${planModel[index].price}\$",
+                price: "${planModel[index].price} AED",
                 countPosts:
-                    'number of posts : ${planModel[index].numberOfPosts}',
+                    'number of posts : ${planModel[index].numberOfPosts ?? '∞'}',
                 //description: '.${S.of(context).shareAllPlatform}',
                 typePlan: planModel[index].name,
                 platForms:

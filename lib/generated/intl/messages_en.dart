@@ -28,8 +28,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "who are we \n Welcome to the “PostBit” application, which is an innovative platform for publishing content across various social media sites with ease and effectiveness. We strive to provide a premium experience to users, where they can easily publish their content across a variety of social platforms with just one click.At Postbeat, we pride ourselves on providing advanced technology and easy-to-use tools that enable users to manage and publish their content smoothly and effectively. Whether you want to share photos and videos or text and links, you can do so easily and quickly via the PostBit app.PostBit application is the property of Boulevard E-Commerce, a company based in the United Arab Emirates. We are committed to providing high-quality services and outstanding user experiences, and are always striving to improve our products and meet the needs of our diverse community.\nIf you have any questions, suggestions or need support, please feel free to contact us. We are here to help you have the best possible experience with the BoostBit app.Thank you for choosing Post Pete"),
         "accounts": MessageLookupByLibrary.simpleMessage("Accounts"),
         "activities": MessageLookupByLibrary.simpleMessage("Activities"),
+        "aed": MessageLookupByLibrary.simpleMessage("AED"),
         "agreeTerms": MessageLookupByLibrary.simpleMessage(
             "By SignUp yoi agree to the terms and conditions"),
+        "amazingMessage": MessageLookupByLibrary.simpleMessage(
+            "Write an amazing description in this "),
+        "availableAccounts":
+            MessageLookupByLibrary.simpleMessage("Available Accounts"),
         "basic": MessageLookupByLibrary.simpleMessage("Basic Plan"),
         "cardNumber": MessageLookupByLibrary.simpleMessage("Card Number"),
         "changeLanguage":
@@ -39,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeTheme": MessageLookupByLibrary.simpleMessage("Change Theme"),
         "changeThemeConfirm":
             MessageLookupByLibrary.simpleMessage("Confirm Change Theme"),
+        "cobons": MessageLookupByLibrary.simpleMessage("Cobons"),
         "code": MessageLookupByLibrary.simpleMessage("Code"),
         "confirmChangeLng":
             MessageLookupByLibrary.simpleMessage("Confirm Change langeuage"),
@@ -155,7 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("can share one video"),
         "detailsX": MessageLookupByLibrary.simpleMessage(
             "can share 3 images per post,one video, text"),
-        "discount15": MessageLookupByLibrary.simpleMessage("15% Discount"),
+        "discount": MessageLookupByLibrary.simpleMessage(" Discount"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("Do you want change language"),
         "doChangeTheme":
@@ -163,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "doLogOut": MessageLookupByLibrary.simpleMessage("Do you want Log Out"),
         "doPromocode":
             MessageLookupByLibrary.simpleMessage("Do you have Promocode"),
+        "doneSubscribe": MessageLookupByLibrary.simpleMessage("Subscribe"),
         "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
             "Don’t have account ? register now"),
         "editProfile": MessageLookupByLibrary.simpleMessage("Edit Profile"),
@@ -183,6 +190,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "lastPosts": MessageLookupByLibrary.simpleMessage("Your latest posts"),
         "letsSatrt": MessageLookupByLibrary.simpleMessage("Let’s Get Started"),
+        "linkAcount": MessageLookupByLibrary.simpleMessage("Link Acounts"),
+        "loading": MessageLookupByLibrary.simpleMessage("Loading..."),
         "logOut": MessageLookupByLibrary.simpleMessage("Log Out"),
         "logOutConfirm":
             MessageLookupByLibrary.simpleMessage("Confirm Log Out"),
@@ -196,6 +205,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "logoutConfirm": MessageLookupByLibrary.simpleMessage("Confirm"),
         "logoutSuccess": MessageLookupByLibrary.simpleMessage("Logout success"),
+        "menu": MessageLookupByLibrary.simpleMessage("Menu"),
         "mySbscription":
             MessageLookupByLibrary.simpleMessage("My Subscription"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -229,8 +239,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "pay": MessageLookupByLibrary.simpleMessage("Pay"),
         "paymentAmount": MessageLookupByLibrary.simpleMessage("Pay amount"),
-        "platform": MessageLookupByLibrary.simpleMessage("Platform"),
+        "platform": MessageLookupByLibrary.simpleMessage("Accounts"),
         "pleaseGo": MessageLookupByLibrary.simpleMessage("Please Go to "),
+        "pleaseWrite": MessageLookupByLibrary.simpleMessage(
+            "please write or Select something"),
         "premium": MessageLookupByLibrary.simpleMessage("Premium Plan"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "registerButton": MessageLookupByLibrary.simpleMessage("Register"),

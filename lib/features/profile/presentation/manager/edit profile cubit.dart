@@ -53,17 +53,18 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       (userData) {
         removeProfileCashedData();
 
+        emit(UpdateUserDataSuccess());
         getIt
             .get<CashHelperSharedPreferences>()
-            .saveData(key: ApiKey.name, value: userData.data.name);
-        getIt.get<CashHelperSharedPreferences>().saveData(
-            key: ApiKey.profilePic, value: userData.data.profileImage);
-        print(userData.data.profileImage);
+            .saveData(key: ApiKey.name, value: nameController.text);
+        getIt
+            .get<CashHelperSharedPreferences>()
+            .saveData(key: ApiKey.profilePic, value: base64Image);
+        print(base64Image);
 
         getIt
             .get<CashHelperSharedPreferences>()
-            .saveData(key: ApiKey.email, value: userData.data.email);
-        emit(UpdateUserDataSuccess());
+            .saveData(key: ApiKey.email, value: emailController.text);
       },
     );
   }

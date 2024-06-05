@@ -48,7 +48,7 @@ class WhatCanPostView extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back_ios, color: kPrimaryKey),
           ),
-          title: CustomTitleText(text: S.of(context).Cobons),
+          title: CustomTitleText(text: S.of(context).whatUCanPost),
         ),
         body: SafeArea(
             child: ListView.builder(
@@ -64,7 +64,7 @@ class WhatCanPostView extends StatelessWidget {
                       height: 20.h,
                     ),
                     Container(
-                      height: 250.h,
+                      height: 200.h,
                       width: MediaQuery.of(context).size.width,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
@@ -98,9 +98,7 @@ class WhatCanPostView extends StatelessWidget {
                                 platformNames[index],
                                 style: Theme.of(context).textTheme.titleLarge,
                               ),
-                              SizedBox(
-                                height: 15.h,
-                              ),
+                              const Spacer(),
                               Text(
                                 platformsDetails[index],
                                 style: Theme.of(context)

@@ -32,7 +32,7 @@
     "enterEmail": "ادخل بريدك الإلكتروني",
     "home": "الصفحة الرئيسية",
     "activities": "الأنشطة",
-    "platform": "المنصات",
+    "platform": "الحسابات",
     "settings": "الإعدادات",
     "logout": "تسجيل الخروج",
     "logoutAreYouSure": "هل أنت متأكد؟",
@@ -201,7 +201,20 @@
     "detailsPintrest":"يمكن مشاركة صورة واحدة في كل مشاركة",
     "detailsTelegrame":"يمكن مشاركة صورة واحدة في كل مشاركة",
     "detailsReddit":"يمكن مشاركة صورة واحدة في كل مشاركة",
-    "detailsLinkedIn":"يمكن مشاركة صورة واحدة في كل مشاركة"
+    "detailsLinkedIn":"يمكن مشاركة صورة واحدة في كل مشاركة",
+    "amazingMessage":"اكتب وصفا مذهلا في هذا",
+    "aed":"درهم" ,
+    "discount":" خصم",
+    "doneSubscribe":"اشتراك",
+    "cobons":"القسائم",
+    "menu":"القائمة",
+    "linkAcount":"ربط الحسابات",
+    "availableAccounts":"الحسابات المتاحة",
+    "loading":"جاري التحميل",
+    "pleaseWrite":"من فضلك قم بكتابة نص او تحديد شيء"
+
+
+
 
 
 

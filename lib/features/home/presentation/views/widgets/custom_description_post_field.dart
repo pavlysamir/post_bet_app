@@ -74,7 +74,7 @@ class CustomDescriptionPostField extends StatelessWidget {
                       child: CircularProgressIndicator(color: kPrimaryKey),
                     )
                   : const SizedBox(),
-              if (AddPostCubit.get(context).image != null)
+              if (AddPostCubit.get(context).postImages.isNotEmpty)
                 Column(
                   children: [
                     SizedBox(

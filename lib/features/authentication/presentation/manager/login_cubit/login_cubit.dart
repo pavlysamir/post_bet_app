@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
@@ -63,10 +64,61 @@ class LoginCubit extends Cubit<LoginState> {
     emit(MyPlansLoading());
     final response = await authRepository.myPlan(subscriptions: subscription);
     response.fold((errMessage) => emit(MyPlansFailure(errMessage: errMessage)),
-        (signInModel) {
+        (mySubscriptionModel) {
       // image = signInModel.data.profileImage!;
       emailController.clear();
       passwordController.clear();
+
+      mySubscriptionModel.plan.facebook
+          ? {
+              myPlatForms.add('Facebook'),
+              platformIcons.add(AssetsData.faceBookIcon)
+            }
+          : null;
+      mySubscriptionModel.plan.instagram
+          ? {
+              myPlatForms.add('Instagram'),
+              platformIcons.add(AssetsData.instagramIcon)
+            }
+          : null;
+      mySubscriptionModel.plan.twitter
+          ? {myPlatForms.add('Twitter'), platformIcons.add(AssetsData.xIcon)}
+          : null;
+      mySubscriptionModel.plan.linkedIn
+          ? {
+              myPlatForms.add('LinkedIn'),
+              platformIcons.add(AssetsData.linkedln)
+            }
+          : null;
+      mySubscriptionModel.plan.telegram
+          ? {
+              myPlatForms.add('Telegram'),
+              platformIcons.add(AssetsData.telegram)
+            }
+          : null;
+      mySubscriptionModel.plan.pinterest
+          ? {
+              myPlatForms.add('Pinterest'),
+              platformIcons.add(AssetsData.pinterest)
+            }
+          : null;
+      mySubscriptionModel.plan.tiktok
+          ? {myPlatForms.add('Tiktok'), platformIcons.add(AssetsData.tiktok)}
+          : null;
+      mySubscriptionModel.plan.reddit
+          ? {myPlatForms.add('Reddit'), platformIcons.add(AssetsData.reddit)}
+          : null;
+
+      getIt.get<CashHelperSharedPreferences>().saveData(
+            key: ApiKey.platForms,
+            value: myPlatForms,
+          );
+
+      getIt.get<CashHelperSharedPreferences>().saveData(
+            key: ApiKey.platFormsIcons,
+            value: platformIcons,
+          );
+
       emit(MyPlansSuccess());
     });
   }

@@ -56,6 +56,9 @@ void handleDioExceptions(DioException e) {
         case 504: // Server exception
           throw ServerException(
               errModel: ErrorModel.fromJson(e.response!.data));
+        case 413: // Server exception
+          throw ServerException(
+              errModel: ErrorModel.fromJson(e.response!.data));
       }
   }
 }

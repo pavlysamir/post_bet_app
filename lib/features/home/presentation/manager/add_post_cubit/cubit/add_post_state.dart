@@ -206,3 +206,13 @@ class CreateInstagramVideoPostFailure extends AddPostState {
 }
 
 class CreateInstagramVideoPostLoading extends AddPostState {}
+
+class ShareActionSuccessfully extends AddPostState {}
+
+class ShareActionFailure extends AddPostState {
+  final String errMessage;
+
+  ShareActionFailure({required this.errMessage});
+}
+
+class ShareActionLoading extends AddPostState {}

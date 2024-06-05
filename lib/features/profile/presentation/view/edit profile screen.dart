@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
@@ -34,8 +35,8 @@ class EditProfileScreen extends StatelessWidget {
               context: context, path: AppRouter.kHomeLayOut);
         } else if (state is UpdateUserDataFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("failure"),
+            SnackBar(
+              content: Text(state.errMessage),
             ),
           );
         }

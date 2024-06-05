@@ -128,10 +128,10 @@ abstract class AppRouter {
           path: kAboutUs,
           builder: (context, state) => const AboutUsview(),
         ),
-        GoRoute(
-          path: kEnterPromo,
-          builder: (context, state) => const EnterPromoView(),
-        ),
+        // GoRoute(
+        //   path: kEnterPromo,
+        //   builder: (context, state) => const EnterPromoView(),
+        // ),
         GoRoute(
           path: kMySubscription,
           builder: (context, state) => const MySubscriptionView(),

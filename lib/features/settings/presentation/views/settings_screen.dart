@@ -222,7 +222,7 @@ class SettingsScreen extends StatelessWidget {
                   Icons.local_offer,
                   color: Colors.white,
                 ),
-                title: S.of(context).Cobons,
+                title: S.of(context).cobons,
               ),
               SettingsIconWidget(
                 function: () {
@@ -230,6 +230,17 @@ class SettingsScreen extends StatelessWidget {
                       context: context, path: AppRouter.kAboutUs);
                 },
                 title: S.of(context).aboutUs,
+              ),
+              SettingsIconWidget(
+                icon: const Icon(
+                  Icons.post_add,
+                  color: Colors.white,
+                ),
+                function: () {
+                  customJustGoNavigate(
+                      context: context, path: AppRouter.kWhatCanPost);
+                },
+                title: S.of(context).whatUCanPost,
               ),
               SettingsIconWidget(
                 icon: const Icon(

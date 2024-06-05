@@ -1,9 +1,7 @@
-import 'package:post_bet/features/profile/data/models/profile_data_model.dart';
-
 class ProfileResponseModle {
   final bool success;
   final int status;
-  final ProfileDataModel data;
+  final String data;
 
   ProfileResponseModle({
     required this.success,
@@ -15,7 +13,7 @@ class ProfileResponseModle {
     return ProfileResponseModle(
       success: json['success'],
       status: json['status'],
-      data: ProfileDataModel.fromJson(json['data']),
+      data: json['data'],
     );
   }
 }

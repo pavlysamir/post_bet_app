@@ -21,20 +21,25 @@ class AddPostCubit extends Cubit<AddPostState> {
   static AddPostCubit get(BuildContext context) => BlocProvider.of(context);
 
   TextEditingController addPostController = TextEditingController();
+  List<String> descriptionPlatform = [
+    'Posts, Story, Video',
+    'Posts, Story, Video',
+    'Posts, Video',
+    'Posts, Video',
+    'image',
+    'image',
+    'Video',
+    'image',
+  ];
 
-  // File? fileImage;
-  // Future<void> pickCameraImage() async {
-  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //   if (image != null) {
-  //     fileImage = File(image.path);
-  //     watermarkImage(fileImage!, AssetsData.faceBookIcon);
-  //     emit(SuccessfulPickImage());
-  //   } else {
-  //     emit(FailPickImage());
-  //     return;
-  //   }
-  // }
-  Uint8List? image;
+  List<String> descriptionPlatformsmall = [
+    'Posts, Story, Video',
+    'Posts, Story, Video',
+    'Posts, Video',
+    'Posts, Video',
+    'image',
+  ];
+
   List<File> postImages = [];
 
   File? imageFile;
@@ -52,21 +57,10 @@ class AddPostCubit extends Cubit<AddPostState> {
       imageFile = file;
       print('imaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaage${imageFile!.path}');
 
-      final imageBytes = await watermarkImage(file);
-      if (imageBytes != null) {
-        image = imageBytes;
-        print(imageBytes);
-
-        // store unit8List image here ;
-
-        // Emit state or update bloc (if using state management)
-        emit(SuccessfulPickImage());
-      } else {
-        // Emit state or update bloc with error (if using state management)
-        emit(FailPickImage());
-      }
+      emit(SuccessfulPickImage());
     } else {
-      // Emit state or update bloc with cancel message (if using state management)
+      emit(FailPickImage());
+
       return;
     }
   }
@@ -153,44 +147,6 @@ class AddPostCubit extends Cubit<AddPostState> {
       }
 
       emit(RemovePostImagePickedState());
-    }
-  }
-
-  Future<Uint8List?> watermarkImage(File imageFile) async {
-    final img.Image? image =
-        await img.decodeImage(await imageFile.readAsBytes());
-    if (image != null) {
-      const String logoPath =
-          'assets/images/logo.png'; // Replace with your logo path
-      // final img.Image? logo =
-      //     await img.decodeImage(await File(logoPath).readAsBytes());
-
-      final img.Image? logo =
-          await img.decodeImage(await loadAssetAsBytes(logoPath));
-
-      // Adjust watermark position and size based on your requirements
-      final int logoWidth = logo!.width;
-      final int logoHeight = logo.height;
-      final int x = image.width - (5 * logoWidth);
-      final int y = image.height - 60;
-
-      // Composite the logo onto the image (adjust blending mode as needed)
-      img.compositeImage(image, logo, dstH: 35, dstW: 200, dstX: x, dstY: y);
-
-      // Convert the watermarked image to a byte array
-      final pngBytes = img.encodePng(image);
-      return pngBytes;
-    }
-    return null;
-  }
-
-  Future<Uint8List> loadAssetAsBytes(String assetPath) async {
-    try {
-      final bytes = await rootBundle.load(assetPath);
-      return bytes.buffer.asUint8List();
-    } catch (e) {
-      print('Error loading asset: $e');
-      return Uint8List(0); // Handle error gracefully
     }
   }
 
@@ -480,48 +436,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
-  // verifyVideo() async {
-  //   emit(VerifyVideoLoading());
-
-  //   final response = await postReposatory.verifyUrl();
-
-  //   response.fold((l) {
-  //     print(l.toString());
-  //     emit(VerifyVideoFailure(errMessage: l));
-  //     print(l);
-  //   }, (verify) {
-  //     emit(VerifyVideoSuccessfully());
-  //     createVideoPost();
-  //   });
-  // }
-
-  String? uploasedImg;
-  Future convertUint8listToFile() async {
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/image.png').create();
-    file.writeAsBytes(image!).then((value) async {
-      uploasedImg = value.path;
-      print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
-      // await uploadImage(value.path).then((value) async {
-      //await createPost(imageUrl: imgUrl);
-      //  });
-      // await createPost();
-    });
-  }
-
   String? uploasedStoryImg;
-  Future convertUint8listToFileFaceStory() async {
-    final tempDir = await getTemporaryDirectory();
-    File file = await File('${tempDir.path}/image.png').create();
-    file.writeAsBytes(image!).then((value) async {
-      uploasedStoryImg = value.path;
-      print('yarrrrrrrrrrrrrrrb value.path ${uploasedImg}');
-      // await uploadImage(value.path).then((value) async {
-      //   //await createPost(imageUrl: imgUrl);
-      // });
-      // await createPost();
-    });
-  }
 
   createImagePost() async {
     try {
@@ -634,7 +549,6 @@ class AddPostCubit extends Cubit<AddPostState> {
   createVideoPost() async {
     try {
       emit(CreateVideoPostLoading());
-
       final response = await postReposatory.createVideoPost(
         addPostController.text,
         selectedItems,
@@ -692,7 +606,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     postImages.clear();
     print(postImages.length);
     fileVideo = null;
-    image = null;
+    //image = null;
     displayVideo = null;
     addPostController.clear();
     emit(RemovePostContant());
@@ -805,5 +719,77 @@ class AddPostCubit extends Cubit<AddPostState> {
       return e.toString();
     }
   }
+
+  Future<void> handleActionShare() async {
+    emit(ShareActionLoading());
+    try {
+      // Upload images
+      await handleAction().then((value) {});
+      // Emit success state after all operations are completed
+    } catch (e) {
+      // Emit failure state if any error occurs
+      emit(ShareActionFailure(errMessage: e.toString()));
+    }
+  }
+
+  Future<void> handleAction() async {
+    if (imageFile != null && selectedaceInstaItems.contains('Story .')) {
+      await uploadImageStory();
+    }
+    if (imageFile != null && selectedInstaItems.contains('Story')) {
+      await uploadInstagramImageStory();
+    }
+    if (imageFile != null && selectedaceInstaItems.contains('Post .')) {
+      await uploadFaceBokImage();
+    }
+    if (imageFile != null && selectedInstaItems.contains('Post')) {
+      await uploadInstagramImage();
+    }
+    if (postImages.isNotEmpty && platformNames.isNotEmpty) {
+      await uploadImage();
+    }
+
+    // Upload videos
+    if (fileVideo != null && selectedaceInstaItems.contains('Reel .')) {
+      await uploadReelVideo();
+    }
+    if (fileVideo != null && selectedInstaItems.contains('Reel')) {
+      await uploadInstagramReelVideo();
+    }
+    if (fileVideo != null && selectedInstaItems.contains('Story')) {
+      await uploadVideoStoryInstagramVideo();
+    }
+    if (fileVideo != null && selectedaceInstaItems.contains('Story .')) {
+      await uploadVideoStoryFsaceBookVideo();
+    }
+    if (fileVideo != null && selectedaceInstaItems.contains('Post .')) {
+      await uploadFaceBookVideo();
+    }
+    if (fileVideo != null && selectedInstaItems.contains('Post')) {
+      await uploadInstagramVideo();
+    }
+    if (fileVideo != null && platformNames.isNotEmpty) {
+      await uploadVideo();
+    }
+
+    // Create text posts
+    if (addPostController.text.isNotEmpty &&
+        fileVideo == null &&
+        postImages.isEmpty) {
+      await createTextPost();
+    }
+    if (selectedaceInstaItems.contains('Post .') &&
+        addPostController.text.isNotEmpty &&
+        fileVideo == null &&
+        postImages.isEmpty) {
+      await createFaceBookTextPost();
+    }
+    if (selectedInstaItems.contains('Post') &&
+        postImages.isEmpty &&
+        fileVideo == null &&
+        addPostController.text.isNotEmpty) {
+      await createInstagramTextPost();
+    }
+  }
 }
-     // img.compositeImage(image, banner!, dstH: 35, dstW: 140, dstX: x, dstY: y);
+// img.compositeImage(image, banner!, dstH: 35, dstW: 140, dstX: x, dstY: y);

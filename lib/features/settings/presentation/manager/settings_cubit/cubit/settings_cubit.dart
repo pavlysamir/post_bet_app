@@ -11,6 +11,8 @@ import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/settings/data/models/message_model.dart';
 import 'package:post_bet/features/settings/data/models/my_subscription_model.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
+import 'package:post_bet/features/settings/data/models/promo_code_check_model.dart';
+import 'package:post_bet/features/settings/data/models/promo_codes_model.dart';
 import 'package:post_bet/features/settings/data/models/subscription_model.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 
@@ -28,6 +30,8 @@ class SettingsCubit extends Cubit<SettingsState> {
   TextEditingController promocodeController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKeyPromoCode = GlobalKey<FormState>();
+
   bool isCurrentPasswordVisible = true;
   bool isNewPasswordVisible = true;
   bool isConfirmPasswordVisible = true;
@@ -125,6 +129,12 @@ class SettingsCubit extends Cubit<SettingsState> {
         .get<CashHelperSharedPreferences>()
         .removeData(key: ApiKey.mySubscribeId);
 
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.platForms);
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.platFormsIcons);
     await getIt.get<CashHelperSharedPreferences>().clearData();
 
     emit(LogOutSuccess());
@@ -182,13 +192,29 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
   }
 
+  List<PromoCode> promoCode = [];
   getPromoCode() async {
     emit(GetPromocodesLoading());
     final response = await settingsRepository.getPromoCode();
     response.fold(
       (errMessage) => emit(GetPromocodesFailure(errMessage: errMessage)),
-      (messageData) {
+      (promoCodes) {
+        promoCode = promoCodes.data.items;
         emit(GetPromocodesSuccess());
+      },
+    );
+  }
+
+  PromoCodeDetails? myPromoCodeDetails;
+  getPromoCodeDetails({required String id, required String planeId}) async {
+    emit(GetPromocodesDetailsLoading());
+    final response =
+        await settingsRepository.getCheckPromoCode(id: id, planId: planeId);
+    response.fold(
+      (errMessage) => emit(GetPromocodesDetailsFailure(errMessage: errMessage)),
+      (promoCodeDetails) {
+        myPromoCodeDetails = promoCodeDetails;
+        emit(GetPromocodesDetailsSuccess());
       },
     );
   }

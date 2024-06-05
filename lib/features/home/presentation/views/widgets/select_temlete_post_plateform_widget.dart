@@ -8,11 +8,13 @@ class CreateTempletePostPlatFormItem extends StatefulWidget {
     required this.paltformName,
     required this.paltformIcon,
     required this.indrx,
+    required this.platformDescription,
   });
 
   final String paltformName;
   final String paltformIcon;
   final int indrx;
+  final String platformDescription;
 
   @override
   State<CreateTempletePostPlatFormItem> createState() =>
@@ -24,31 +26,63 @@ class _CreatePostPlatFormItemState
   String dropdownValue = 'Post';
   bool initialValue = false;
   bool initialValue2 = false;
+  late AddPostTempleteCubit addPostTempleteCubit;
 
   List<String> instagram = [
-    'Post Instagram',
-    'Story Instagram',
-    'Reel Instagram',
+    'Post',
+    'Story',
+    'Reel',
   ];
   List<String> facebook = [
-    'Post FaceBook',
-    'Story FaceBook',
-    'Reel FaceBook',
+    'Post .',
+    'Story .',
+    'Reel .',
   ];
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Access the AddPostCubit and store the reference
+    addPostTempleteCubit = AddPostTempleteCubit.get(context);
+  }
+
+  @override
+  void dispose() {
+    // Safely use the stored reference
+    addPostTempleteCubit.checkBoxValues.clear();
+    addPostTempleteCubit.selectedInstaItems.clear();
+    addPostTempleteCubit.selectedItems.clear();
+    addPostTempleteCubit.addPostTempleteController.text = '';
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            widget.paltformName,
-            style: Theme.of(context).textTheme.titleLarge,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                widget.paltformName,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              Text(
+                widget.platformDescription,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Colors.grey, fontSize: 10),
+              ),
+            ],
           ),
           widget.paltformName == 'Instagram' ||
                   widget.paltformName == 'Facebook'
               ? SizedBox(
-                  width: 200.w,
+                  width: 150.w,
                   child: DropdownButton<String>(
                     // value: dropdownValue,
                     items: widget.paltformName == 'Instagram'
@@ -66,22 +100,22 @@ class _CreatePostPlatFormItemState
                                   ),
                                   StatefulBuilder(
                                     builder: (context, setState) => Checkbox(
-                                      value: AddPostTempleteCubit.get(context)
+                                      value: addPostTempleteCubit
                                               .checkBoxValues[value] ??
                                           false,
                                       onChanged: (bool? newValue) {
                                         setState(() {
-                                          AddPostTempleteCubit.get(context)
+                                          addPostTempleteCubit
                                                   .checkBoxValues[value] =
                                               newValue!;
                                           if (newValue) {
                                             // Add item to selected list if checked
-                                            AddPostTempleteCubit.get(context)
+                                            addPostTempleteCubit
                                                 .selectedInstaItems
                                                 .add(value);
                                           } else {
                                             // Remove item from selected list if unchecked
-                                            AddPostTempleteCubit.get(context)
+                                            addPostTempleteCubit
                                                 .selectedInstaItems
                                                 .remove(value);
                                           }
@@ -107,25 +141,24 @@ class _CreatePostPlatFormItemState
                                   ),
                                   StatefulBuilder(
                                     builder: (context, setState) => Checkbox(
-                                      value: AddPostTempleteCubit.get(context)
+                                      value: addPostTempleteCubit
                                               .checkBoxValues[value] ??
                                           false,
                                       onChanged: (bool? newValue) {
                                         setState(() {
-                                          AddPostTempleteCubit.get(context)
+                                          addPostTempleteCubit
                                                   .checkBoxValues[value] =
                                               newValue!;
                                           if (newValue) {
                                             // Add item to selected list if checked
-                                            AddPostTempleteCubit.get(context)
+                                            addPostTempleteCubit
                                                 .selectedaceInstaItems
                                                 .add(value);
-                                            print(AddPostTempleteCubit.get(
-                                                    context)
+                                            print(addPostTempleteCubit
                                                 .selectedaceInstaItems);
                                           } else {
                                             // Remove item from selected list if unchecked
-                                            AddPostTempleteCubit.get(context)
+                                            addPostTempleteCubit
                                                 .selectedaceInstaItems
                                                 .remove(value);
                                           }
@@ -143,12 +176,8 @@ class _CreatePostPlatFormItemState
                       setState(() {
                         dropdownValue = newValue!;
                         // Reset checkboxes for other items (optional)
-                        AddPostTempleteCubit.get(context)
-                            .checkBoxValues
+                        addPostTempleteCubit.checkBoxValues
                             .removeWhere((key, value) => key != newValue);
-                        AddPostTempleteCubit.get(context)
-                            .selectedItems
-                            .removeWhere((value) => value != newValue);
                       });
                     },
                   ),
@@ -160,29 +189,31 @@ class _CreatePostPlatFormItemState
                         onChanged: (value) {
                           setState(() {
                             initialValue = value!;
-                            AddPostTempleteCubit.get(context).checkBoxValues[
-                                AddPostTempleteCubit.get(context)
-                                    .platformNames[widget.indrx]] = value;
+                            // addPostTempleteCubit.checkBoxValues[
+                            //     addPostTempleteCubit
+                            //         .platformNames[widget.indrx]] = value;
                             if (value) {
-                              // Add item to selected list if checked
-                              AddPostTempleteCubit.get(context)
-                                  .selectedItems
-                                  .add(AddPostTempleteCubit.get(context)
+                              addPostTempleteCubit.selectedItems.add(
+                                  addPostTempleteCubit
                                       .platformNames[widget.indrx]);
-                              print(AddPostTempleteCubit.get(context)
-                                  .selectedItems);
-                            } else if (!value) {
+                              addPostTempleteCubit.checkBoxValues[
+                                  addPostTempleteCubit
+                                      .platformNames[widget.indrx]] = value;
+                              print(addPostTempleteCubit.checkBoxValues);
+                              print(addPostTempleteCubit.selectedItems);
+                              // Add item to selected list if checked
+                            } else {
+                              addPostTempleteCubit.selectedItems.remove(
+                                  addPostTempleteCubit
+                                      .platformNames[widget.indrx]);
+                              print(addPostTempleteCubit.selectedItems);
+                              addPostTempleteCubit.selectedItems.remove(
+                                  addPostTempleteCubit.checkBoxValues[
+                                          addPostTempleteCubit
+                                              .platformNames[widget.indrx]] =
+                                      value);
+                              print(addPostTempleteCubit.selectedItems);
                               // Remove item from selected list if unchecked
-                              AddPostTempleteCubit.get(context)
-                                  .selectedItems
-                                  .removeWhere((value) =>
-                                      value !=
-                                      AddPostTempleteCubit.get(context)
-                                              .checkBoxValues[
-                                          AddPostTempleteCubit.get(context)
-                                              .platformNames[widget.indrx]]);
-                              print(AddPostTempleteCubit.get(context)
-                                  .selectedItems);
                             }
                           });
                         });

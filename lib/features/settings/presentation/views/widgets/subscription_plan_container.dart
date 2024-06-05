@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/styles.dart';
+import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 class SubscriptionPlansCntainer extends StatelessWidget {
   const SubscriptionPlansCntainer({
@@ -26,55 +29,62 @@ class SubscriptionPlansCntainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 23),
-      child: GestureDetector(
-        onTap: function,
-        child: Container(
-          // height: 200.h,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Theme.of(context).cardColor,
-            border: Border.all(color: Colors.white),
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 2,
-                blurRadius: 4,
-                //offset: const Offset(0, 2), // changes position of shadow
-              ),
-            ],
-          ),
-          child: Column(
-            children: [
-              SizedBox(height: 17.h),
-              Text(
-                typePlan,
-                style: Theme.of(context).textTheme.labelLarge,
-              ),
-              SizedBox(height: 2.h),
-              Text(
-                price,
-                style: Styles.textStyle32Orange,
-              ),
-              SizedBox(height: 15.h),
-              Text(
-                countPosts,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              // SizedBox(height: 5.h),
-              // Text(
-              //   description,
-              //   style: Theme.of(context).textTheme.bodyMedium,
-              // ),
-              SizedBox(height: 20.h),
+      child: Container(
+        // height: 200.h,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Theme.of(context).cardColor,
+          border: Border.all(color: Colors.white),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 2,
+              blurRadius: 4,
+              //offset: const Offset(0, 2), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Column(
+          children: [
+            SizedBox(height: 17.h),
+            Text(
+              typePlan,
+              style: Theme.of(context).textTheme.labelLarge,
+            ),
+            SizedBox(height: 2.h),
+            Text(
+              price,
+              style: Styles.textStyle32Orange,
+            ),
+            SizedBox(height: 15.h),
+            Text(
+              countPosts,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            // SizedBox(height: 5.h),
+            // Text(
+            //   description,
+            //   style: Theme.of(context).textTheme.bodyMedium,
+            // ),
+            SizedBox(height: 20.h),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: widgets,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: widgets,
+            ),
+            SizedBox(height: 20.h),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CustomButtonLarge(
+                text: S.of(context).subscribe,
+                color: kPrimaryKey,
+                textColor: Colors.white,
+                function: function,
               ),
-              SizedBox(height: 20.h),
-            ],
-          ),
+            ),
+            SizedBox(height: 20.h),
+          ],
         ),
       ),
     );

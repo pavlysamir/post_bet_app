@@ -27,6 +27,14 @@ class EndPoint {
   static String contactUs = "/contactUs";
   static String promocode = "/promocode";
 
+  static String promoCodeEndPoint(id) {
+    return "/promocode/$id";
+  }
+
+  static String getCheckPromoCodeEndPoint(id, planId) {
+    return "/promocode/checkPromoCode/$id/$planId";
+  }
+
   static String changePassword = "/Auth/change-password";
   static String mySubscraption = "/plans/mySubscribtions";
 
@@ -72,5 +80,5 @@ class ApiKey {
   static String mySubscribeId = "subscrabtionId";
   static String limitNumberOfPostsPerDay = "limitNumberOfPostsPerDay";
   static String platForms = "platforms";
-  static String platFormsIcons = "platforms";
+  static String platFormsIcons = "platformsIcons";
 }

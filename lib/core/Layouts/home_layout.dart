@@ -56,9 +56,9 @@ class _HomeLayoutState extends State<HomeLayout> {
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(
-                      Icons.settings,
+                      Icons.menu,
                     ),
-                    label: S.of(context).settings,
+                    label: S.of(context).menu,
                   ),
                 ],
                 currentIndex: cubit.currentIndex,

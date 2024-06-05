@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 
 class MySubscriptionPlansCntainer extends StatelessWidget {
   const MySubscriptionPlansCntainer({
@@ -64,17 +62,17 @@ class MySubscriptionPlansCntainer extends StatelessWidget {
             ),
             SizedBox(height: 20.h),
 
-            CustomButtonSmall(
-                width: 150.w,
-                function: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Done'),
-                    ),
-                  );
-                },
-                text: 'confirm plan',
-                borderColor: kPrimaryKey),
+            // CustomButtonSmall(
+            //     width: 150.w,
+            //     function: () {
+            //       ScaffoldMessenger.of(context).showSnackBar(
+            //         const SnackBar(
+            //           content: Text('Done'),
+            //         ),
+            //       );
+            //     },
+            //     text: 'confirm plan',
+            //     borderColor: kPrimaryKey),
           ],
         ),
       ),

@@ -30,7 +30,12 @@ class CustomListViewMySubscriptionPlan extends StatelessWidget {
             itemBuilder: (context, index) {
               return MySubscriptionPlansCntainer(
                 countPosts:
-                    'number of posts : ${myListSubscrabtiopn[index].plan.numberOfPosts}',
+                    'number of posts : ${myListSubscrabtiopn[index].plan.numberOfPosts ?? '∞'}',
+
+                //  myListSubscrabtiopn[index].plan.numberOfPosts ==
+                //         null
+                //     ? 'number of posts : ${myListSubscrabtiopn[index].plan.numberOfPosts ?? '∞'}'
+                //     : 'number of posts : ∞',
                 platForms:
                     'FaceBook : ${myListSubscrabtiopn[index].plan.facebook} ,Twitter : ${myListSubscrabtiopn[index].plan.twitter} ,Instagram : ${myListSubscrabtiopn[index].plan.instagram} ,TikTok : ${myListSubscrabtiopn[index].plan.tiktok} ,pinterest : ${myListSubscrabtiopn[index].plan.pinterest} , linkedin : ${myListSubscrabtiopn[index].plan.linkedIn} ,  reddit : ${myListSubscrabtiopn[index].plan.reddit} ',
                 widgets: [

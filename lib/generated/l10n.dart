@@ -280,6 +280,26 @@ class S {
     );
   }
 
+  /// `Write an amazing description in this `
+  String get amazingMessage {
+    return Intl.message(
+      'Write an amazing description in this ',
+      name: 'amazingMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AED`
+  String get aed {
+    return Intl.message(
+      'AED',
+      name: 'aed',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Next`
   String get next {
     return Intl.message(
@@ -480,10 +500,10 @@ class S {
     );
   }
 
-  /// `Platform`
+  /// `Accounts`
   String get platform {
     return Intl.message(
-      'Platform',
+      'Accounts',
       name: 'platform',
       desc: '',
       args: [],
@@ -1970,11 +1990,11 @@ class S {
     );
   }
 
-  /// `15% Discount`
-  String get discount15 {
+  /// ` Discount`
+  String get discount {
     return Intl.message(
-      '15% Discount',
-      name: 'discount15',
+      ' Discount',
+      name: 'discount',
       desc: '',
       args: [],
     );
@@ -2055,6 +2075,76 @@ class S {
     return Intl.message(
       'No Subscriptions',
       name: 'noSubscriptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subscribe`
+  String get doneSubscribe {
+    return Intl.message(
+      'Subscribe',
+      name: 'doneSubscribe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cobons`
+  String get cobons {
+    return Intl.message(
+      'Cobons',
+      name: 'cobons',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Menu`
+  String get menu {
+    return Intl.message(
+      'Menu',
+      name: 'menu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Link Acounts`
+  String get linkAcount {
+    return Intl.message(
+      'Link Acounts',
+      name: 'linkAcount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Available Accounts`
+  String get availableAccounts {
+    return Intl.message(
+      'Available Accounts',
+      name: 'availableAccounts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading...`
+  String get loading {
+    return Intl.message(
+      'Loading...',
+      name: 'loading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `please write or Select something`
+  String get pleaseWrite {
+    return Intl.message(
+      'please write or Select something',
+      name: 'pleaseWrite',
       desc: '',
       args: [],
     );

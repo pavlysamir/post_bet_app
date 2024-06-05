@@ -27,8 +27,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "من نحن \n مرحبا بكم في تطبيق “PostBit” الذي يعتبر منصة مبتكرة لنشر المحتوى عبر مواقع التواصل الاجتماعي المختلفة بكل سهولة وفعالية. نحن نسعى جاهدين لتوفير تجربة متميزة للمستخدمين، حيث يمكنهم بسهولة نشر المحتوى الخاص بهم عبر مجموعة متنوعة من منصات التواصل الاجتماعي بنقرة واحدة فقط. في Postbeat، نفخر بتقديم التكنولوجيا المتقدمة والأدوات سهلة الاستخدام التي تمكن المستخدمين من إدارة ونشر محتواها بسلاسة وفعالية. سواء كنت ترغب في مشاركة الصور ومقاطع الفيديو أو النصوص والروابط، يمكنك القيام بذلك بسهولة وسرعة عبر تطبيق PostBit. تطبيق PostBit هو ملك لشركة Boulevard E-Commerce، وهي شركة مقرها في دولة الإمارات العربية المتحدة. نحن ملتزمون بتقديم خدمات عالية الجودة وتجارب مستخدمين متميزة، ونسعى دائمًا لتحسين منتجاتنا وتلبية احتياجات مجتمعنا المتنوع.\nإذا كانت لديك أية أسئلة أو اقتراحات أو كنت بحاجة إلى الدعم، فلا تتردد في الاتصال بنا. نحن هنا لمساعدتك في الحصول على أفضل تجربة ممكنة مع تطبيق BoostBit. شكرًا لك على اختيار Post Pete"),
         "accounts": MessageLookupByLibrary.simpleMessage("الحسابات"),
         "activities": MessageLookupByLibrary.simpleMessage("الأنشطة"),
+        "aed": MessageLookupByLibrary.simpleMessage("درهم"),
         "agreeTerms": MessageLookupByLibrary.simpleMessage(
             "بالتسجيل فإنك توافق على الشروط والأحكام"),
+        "amazingMessage":
+            MessageLookupByLibrary.simpleMessage("اكتب وصفا مذهلا في هذا"),
+        "availableAccounts":
+            MessageLookupByLibrary.simpleMessage("الحسابات المتاحة"),
         "basic": MessageLookupByLibrary.simpleMessage("بسيط"),
         "cardNumber": MessageLookupByLibrary.simpleMessage("رقم البطاقة"),
         "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
@@ -37,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeTheme": MessageLookupByLibrary.simpleMessage("تغيير المظهر"),
         "changeThemeConfirm":
             MessageLookupByLibrary.simpleMessage("تغيير الموضوع"),
+        "cobons": MessageLookupByLibrary.simpleMessage("القسائم"),
         "code": MessageLookupByLibrary.simpleMessage("الرمز"),
         "confirmChangeLng":
             MessageLookupByLibrary.simpleMessage("تاكيد تغيير اللغة"),
@@ -153,7 +159,7 @@ class MessageLookup extends MessageLookupByLibrary {
             ":يمكن مشاركة مقطع فيديو واحد"),
         "detailsX": MessageLookupByLibrary.simpleMessage(
             "يمكن مشاركة 3 صور لكل مشاركة، فيديو واحد، نص"),
-        "discount15": MessageLookupByLibrary.simpleMessage("خصم 15%"),
+        "discount": MessageLookupByLibrary.simpleMessage(" خصم"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("هل تريد تغيير اللغة"),
         "doChangeTheme":
@@ -162,6 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("هل تريد تسجيل الخروج"),
         "doPromocode":
             MessageLookupByLibrary.simpleMessage("هل لديك كود الخصم"),
+        "doneSubscribe": MessageLookupByLibrary.simpleMessage("اشتراك"),
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟ سجل الآن"),
         "editProfile":
@@ -184,6 +191,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "lastPosts": MessageLookupByLibrary.simpleMessage("أحدث منشوراتك"),
         "letsSatrt": MessageLookupByLibrary.simpleMessage("لنبدأ"),
+        "linkAcount": MessageLookupByLibrary.simpleMessage("ربط الحسابات"),
+        "loading": MessageLookupByLibrary.simpleMessage("جاري التحميل"),
         "logOut": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "logOutConfirm":
             MessageLookupByLibrary.simpleMessage("تاكيد تسجيل الخروج"),
@@ -198,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logoutConfirm": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "logoutSuccess":
             MessageLookupByLibrary.simpleMessage("تم تسجيل الخروج بنجاح"),
+        "menu": MessageLookupByLibrary.simpleMessage("القائمة"),
         "mySbscription":
             MessageLookupByLibrary.simpleMessage("متابعة الاشتراكات"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
@@ -232,8 +242,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "pay": MessageLookupByLibrary.simpleMessage("دفع"),
         "paymentAmount": MessageLookupByLibrary.simpleMessage("مبلغ الدفع"),
-        "platform": MessageLookupByLibrary.simpleMessage("المنصات"),
+        "platform": MessageLookupByLibrary.simpleMessage("الحسابات"),
         "pleaseGo": MessageLookupByLibrary.simpleMessage("الرجاء الذهاب الى"),
+        "pleaseWrite": MessageLookupByLibrary.simpleMessage(
+            "من فضلك قم بكتابة نص او تحديد شيء"),
         "premium": MessageLookupByLibrary.simpleMessage("مميز"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
         "registerButton": MessageLookupByLibrary.simpleMessage("تسجيل"),

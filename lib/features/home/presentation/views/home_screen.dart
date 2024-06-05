@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
@@ -86,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       const CustomLineSeperator(),
                       SizedBox(
-                        height: 15.h,
+                        height: 30.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -95,7 +97,11 @@ class HomeScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                customJustGoNavigate(
+                                    context: context,
+                                    path: AppRouter.kWhatCanPost);
+                              },
                               child: Text(
                                 S.of(context).seeAll,
                                 style: const TextStyle(color: kPrimaryKey),
@@ -105,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 15.h,
+                        height: 30.h,
                       ),
                       const CustomWhatCanPostContainer(),
                       SizedBox(

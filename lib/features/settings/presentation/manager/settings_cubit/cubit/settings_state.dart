@@ -59,6 +59,15 @@ class GetPromocodesFailure extends SettingsState {
 
 class GetPromocodesLoading extends SettingsState {}
 
+class GetPromocodesDetailsSuccess extends SettingsState {}
+
+class GetPromocodesDetailsFailure extends SettingsState {
+  final String errMessage;
+  GetPromocodesDetailsFailure({required this.errMessage});
+}
+
+class GetPromocodesDetailsLoading extends SettingsState {}
+
 class ChangePasswordSuccess extends SettingsState {}
 
 class ChangePasswordFailure extends SettingsState {
