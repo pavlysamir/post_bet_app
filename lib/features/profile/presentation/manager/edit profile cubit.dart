@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -39,6 +39,24 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       return;
     }
   }
+
+  // Future<Uint8List> _compressImage(Uint8List imageBytes) async {
+  //   // 1. Resize image (optional):
+  //   // If the image size is very large, consider resizing it before compression.
+  //   // You can use a library like `pubspec.yaml`: `image: ^3.2.1`
+  //   // final resizedImage = await resizeImage(image, width: 1024, height: 768);
+
+  //   // 2. Compress image using desired quality:
+  //   final compressor = FlutterImageCompress();
+  //   final result = await compressor.compressWithList(
+  //     bytes: imageBytes,
+  //     minHeight: 480, // Adjust minimum height as needed
+  //     minWidth: 640, // Adjust minimum width as needed
+  //     quality: 80, // Adjust quality (lower for smaller size)
+  //   );
+
+  //   return result;
+  // }
 
   updateUserData() async {
     emit(UpdateUserDataLoading());
