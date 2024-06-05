@@ -168,19 +168,22 @@ class Plan {
   final bool tiktok;
   final bool pinterest;
   final bool reddit;
+  final bool youTube;
+  final bool googleBusiness;
 
-  Plan({
-    required this.id,
-    required this.name,
-    required this.facebook,
-    required this.instagram,
-    required this.linkedIn,
-    required this.twitter,
-    required this.telegram,
-    required this.tiktok,
-    required this.pinterest,
-    required this.reddit,
-  });
+  Plan(
+      {required this.id,
+      required this.name,
+      required this.facebook,
+      required this.instagram,
+      required this.linkedIn,
+      required this.twitter,
+      required this.telegram,
+      required this.tiktok,
+      required this.pinterest,
+      required this.reddit,
+      required this.youTube,
+      required this.googleBusiness});
 
   factory Plan.fromJson(Map<String, dynamic> json) {
     return Plan(
@@ -194,6 +197,8 @@ class Plan {
       tiktok: json['TikTok'] as bool,
       pinterest: json['Pinterest'] as bool,
       reddit: json['Reddit'] as bool,
+      youTube: json['YouTube'] as bool,
+      googleBusiness: json['GoogleBusiness'] as bool,
     );
   }
 
@@ -209,6 +214,8 @@ class Plan {
       'TikTok': tiktok,
       'Pinterest': pinterest,
       'Reddit': reddit,
+      'YouTube': youTube,
+      'GoogleBusiness': googleBusiness
     };
   }
 }

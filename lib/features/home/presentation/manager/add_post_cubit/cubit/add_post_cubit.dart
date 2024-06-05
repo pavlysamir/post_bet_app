@@ -22,14 +22,16 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   TextEditingController addPostController = TextEditingController();
   List<String> descriptionPlatform = [
-    'Posts, Story, Video',
-    'Posts, Story, Video',
-    'Posts, Video',
-    'Posts, Video',
+    'Images, Story, Video',
+    'Images, Story, Video',
+    'Images, Video',
+    'Images, Video',
     'image',
     'image',
     'Video',
     'image',
+    'Video',
+    'Post',
   ];
 
   List<String> descriptionPlatformsmall = [
@@ -165,6 +167,8 @@ class AddPostCubit extends Cubit<AddPostState> {
     'Pinterest',
     'Tiktok',
     'Reddit',
+    'YouTube',
+    'GoogleBusiness'
   ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,
@@ -175,6 +179,8 @@ class AddPostCubit extends Cubit<AddPostState> {
     AssetsData.pinterest,
     AssetsData.tiktok,
     AssetsData.reddit,
+    AssetsData.youtube,
+    AssetsData.googleBusiness
   ];
 
   List<String> imagesUrls = [];

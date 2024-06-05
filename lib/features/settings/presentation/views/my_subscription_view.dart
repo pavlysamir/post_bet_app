@@ -50,6 +50,8 @@ class MySubscriptionView extends StatelessWidget {
                               //       .mySubscriptionList,
                               // ),
                               MySubscriptionPlansCntainer(
+                                endSubscriptionDate:
+                                    'End Date : ${SettingsCubit.get(context).mySubscriptionModel!.endSubscriptionDate}',
                                 countPosts:
                                     'number of posts : ${SettingsCubit.get(context).mySubscriptionModel!.plan.numberOfPosts}',
                                 platForms:
@@ -121,6 +123,36 @@ class MySubscriptionView extends StatelessWidget {
                                           .tiktok
                                       ? Image.asset(
                                           AssetsData.tiktok,
+                                          height: 20.h,
+                                        )
+                                      : Container(),
+                                  SizedBox(width: 10.w),
+                                  SettingsCubit.get(context)
+                                          .mySubscriptionModel!
+                                          .plan
+                                          .telegram
+                                      ? Image.asset(
+                                          AssetsData.telegram,
+                                          height: 20.h,
+                                        )
+                                      : Container(),
+                                  SizedBox(width: 10.w),
+                                  SettingsCubit.get(context)
+                                          .mySubscriptionModel!
+                                          .plan
+                                          .youTube
+                                      ? Image.asset(
+                                          AssetsData.youtube,
+                                          height: 20.h,
+                                        )
+                                      : Container(),
+                                  SizedBox(width: 10.w),
+                                  SettingsCubit.get(context)
+                                          .mySubscriptionModel!
+                                          .plan
+                                          .googleBusiness
+                                      ? Image.asset(
+                                          AssetsData.googleBusiness,
                                           height: 20.h,
                                         )
                                       : Container(),

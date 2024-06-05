@@ -9,12 +9,14 @@ class MySubscriptionPlansCntainer extends StatelessWidget {
     required this.typePlan,
     required this.platForms,
     required this.widgets,
+    required this.endSubscriptionDate,
   });
   final String countPosts;
   // final String description;
   final String typePlan;
   final String platForms;
   final List<Widget> widgets;
+  final String endSubscriptionDate;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,17 @@ class MySubscriptionPlansCntainer extends StatelessWidget {
             //   description,
             //   style: Theme.of(context).textTheme.bodyMedium,
             // ),
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
+            Text(
+              endSubscriptionDate,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            // SizedBox(height: 5.h),
+            // Text(
+            //   description,
+            //   style: Theme.of(context).textTheme.bodyMedium,
+            // ),
+            SizedBox(height: 15.h),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

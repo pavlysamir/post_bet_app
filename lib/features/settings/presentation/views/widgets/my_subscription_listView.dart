@@ -29,6 +29,8 @@ class CustomListViewMySubscriptionPlan extends StatelessWidget {
             itemCount: count,
             itemBuilder: (context, index) {
               return MySubscriptionPlansCntainer(
+                endSubscriptionDate:
+                    'End Date : ${myListSubscrabtiopn[index].endSubscriptionDate}',
                 countPosts:
                     'number of posts : ${myListSubscrabtiopn[index].plan.numberOfPosts ?? '∞'}',
 

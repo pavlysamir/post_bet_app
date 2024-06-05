@@ -207,7 +207,7 @@ class SettingsRepository {
       MySubscriptionModel? mySubscriptionModel;
 
       SubscriptionResponse myListResponse =
-          SubscriptionResponse.fromJson(response['data']);
+          SubscriptionResponse.fromJson(response['data']['data']);
       String myCharger = '';
       // Iterate over the list of subscriptions
       for (var subscription in myListResponse.subscriptions) {

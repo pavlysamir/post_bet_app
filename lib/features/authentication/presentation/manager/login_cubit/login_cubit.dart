@@ -71,14 +71,22 @@ class LoginCubit extends Cubit<LoginState> {
 
       mySubscriptionModel.plan.facebook
           ? {
-              myPlatForms.add('Facebook'),
-              platformIcons.add(AssetsData.faceBookIcon)
+              myPlatForms.add('Facebook Post'),
+              myPlatForms.add('Facebook Story'),
+              myPlatForms.add('Facebook Reel'),
+              platformIcons.add(AssetsData.faceBookIcon),
+              platformIcons.add(AssetsData.faceBookIcon),
+              platformIcons.add(AssetsData.faceBookIcon),
             }
           : null;
       mySubscriptionModel.plan.instagram
           ? {
-              myPlatForms.add('Instagram'),
-              platformIcons.add(AssetsData.instagramIcon)
+              myPlatForms.add('Instagram Post'),
+              myPlatForms.add('Instagram Story'),
+              myPlatForms.add('Instagram Reel'),
+              platformIcons.add(AssetsData.instagramIcon),
+              platformIcons.add(AssetsData.instagramIcon),
+              platformIcons.add(AssetsData.instagramIcon),
             }
           : null;
       mySubscriptionModel.plan.twitter
@@ -107,6 +115,15 @@ class LoginCubit extends Cubit<LoginState> {
           : null;
       mySubscriptionModel.plan.reddit
           ? {myPlatForms.add('Reddit'), platformIcons.add(AssetsData.reddit)}
+          : null;
+      mySubscriptionModel.plan.youTube
+          ? {myPlatForms.add('YouTube'), platformIcons.add(AssetsData.youtube)}
+          : null;
+      mySubscriptionModel.plan.googleBusiness
+          ? {
+              myPlatForms.add('GoogleBusiness'),
+              platformIcons.add(AssetsData.googleBusiness)
+            }
           : null;
 
       getIt.get<CashHelperSharedPreferences>().saveData(
