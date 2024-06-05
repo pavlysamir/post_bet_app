@@ -22,8 +22,12 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   TextEditingController addPostController = TextEditingController();
   List<String> descriptionPlatform = [
-    'Images, Story, Video',
-    'Images, Story, Video',
+    'Images',
+    'Images ,video',
+    'Video',
+    'Images',
+    'Images ,video',
+    'Video',
     'Images, Video',
     'Images, Video',
     'image',
@@ -159,8 +163,12 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
-    'Instagram',
-    'Facebook',
+    'Facebook Post',
+    'Facebook Story',
+    'Facebook Reel',
+    'Instagram Post',
+    'Instagram Story',
+    'Instagram Reel',
     'Twitter',
     'Linkedin',
     'Telegram',
@@ -739,16 +747,16 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
   Future<void> handleAction() async {
-    if (imageFile != null && selectedaceInstaItems.contains('Story .')) {
+    if (imageFile != null && selectedaceInstaItems.contains('Facebook Story')) {
       await uploadImageStory();
     }
-    if (imageFile != null && selectedInstaItems.contains('Story')) {
+    if (imageFile != null && selectedInstaItems.contains('Instagram Story')) {
       await uploadInstagramImageStory();
     }
-    if (imageFile != null && selectedaceInstaItems.contains('Post .')) {
+    if (imageFile != null && selectedaceInstaItems.contains('Facebook Post')) {
       await uploadFaceBokImage();
     }
-    if (imageFile != null && selectedInstaItems.contains('Post')) {
+    if (imageFile != null && selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramImage();
     }
     if (postImages.isNotEmpty && platformNames.isNotEmpty) {
@@ -756,22 +764,22 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
 
     // Upload videos
-    if (fileVideo != null && selectedaceInstaItems.contains('Reel .')) {
+    if (fileVideo != null && selectedaceInstaItems.contains('Facebook Reel')) {
       await uploadReelVideo();
     }
-    if (fileVideo != null && selectedInstaItems.contains('Reel')) {
+    if (fileVideo != null && selectedInstaItems.contains('Instagram Reel')) {
       await uploadInstagramReelVideo();
     }
-    if (fileVideo != null && selectedInstaItems.contains('Story')) {
+    if (fileVideo != null && selectedInstaItems.contains('Instagram Story')) {
       await uploadVideoStoryInstagramVideo();
     }
-    if (fileVideo != null && selectedaceInstaItems.contains('Story .')) {
+    if (fileVideo != null && selectedaceInstaItems.contains('Facebook Story')) {
       await uploadVideoStoryFsaceBookVideo();
     }
-    if (fileVideo != null && selectedaceInstaItems.contains('Post .')) {
+    if (fileVideo != null && selectedaceInstaItems.contains('Facebook Post')) {
       await uploadFaceBookVideo();
     }
-    if (fileVideo != null && selectedInstaItems.contains('Post')) {
+    if (fileVideo != null && selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramVideo();
     }
     if (fileVideo != null && platformNames.isNotEmpty) {
@@ -784,13 +792,13 @@ class AddPostCubit extends Cubit<AddPostState> {
         postImages.isEmpty) {
       await createTextPost();
     }
-    if (selectedaceInstaItems.contains('Post .') &&
+    if (selectedaceInstaItems.contains('Facebook Post') &&
         addPostController.text.isNotEmpty &&
         fileVideo == null &&
         postImages.isEmpty) {
       await createFaceBookTextPost();
     }
-    if (selectedInstaItems.contains('Post') &&
+    if (selectedInstaItems.contains('Instagram Post') &&
         postImages.isEmpty &&
         fileVideo == null &&
         addPostController.text.isNotEmpty) {

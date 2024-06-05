@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +8,7 @@ import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
-
+import 'package:image/image.dart' as img;
 import '../../../../core/utils/service_locator.dart';
 
 class EditProfileCubit extends Cubit<EditProfileState> {
@@ -25,37 +24,52 @@ class EditProfileCubit extends Cubit<EditProfileState> {
   TextEditingController nameController = TextEditingController();
   String? base64Image;
   File? file;
+
   Future<void> pickCameraImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
+      // Read the image file
       final bytes = await File(image.path).readAsBytes();
-      base64Image = base64Encode(bytes);
-      print('pppppppppppppppppppppppppppppppppppppppppppppp$base64Image');
-      file = File(image.path);
-      print(file);
-      emit(SuccessfulPickImage());
+      // Decode the image
+      img.Image? originalImage = img.decodeImage(bytes);
+
+      if (originalImage != null) {
+        // Resize the image to a smaller size (e.g., width 600 pixels)
+        img.Image resizedImage = img.copyResize(originalImage, width: 600);
+
+        // Compress the image (optional)
+        List<int> compressedBytes = img.encodeJpg(resizedImage, quality: 30);
+
+        // Convert to base64
+        base64Image = base64Encode(compressedBytes);
+        print('Base64: $base64Image');
+
+        // Save the file
+        file = File(image.path);
+        print(file);
+
+        // Emit success state
+        emit(SuccessfulPickImage());
+      } else {
+        emit(FailPickImage());
+      }
     } else {
       emit(FailPickImage());
-      return;
     }
   }
-
-  // Future<Uint8List> _compressImage(Uint8List imageBytes) async {
-  //   // 1. Resize image (optional):
-  //   // If the image size is very large, consider resizing it before compression.
-  //   // You can use a library like `pubspec.yaml`: `image: ^3.2.1`
-  //   // final resizedImage = await resizeImage(image, width: 1024, height: 768);
-
-  //   // 2. Compress image using desired quality:
-  //   final compressor = FlutterImageCompress();
-  //   final result = await compressor.compressWithList(
-  //     bytes: imageBytes,
-  //     minHeight: 480, // Adjust minimum height as needed
-  //     minWidth: 640, // Adjust minimum width as needed
-  //     quality: 80, // Adjust quality (lower for smaller size)
-  //   );
-
-  //   return result;
+  // Future<void> pickCameraImage() async {
+  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+  //   if (image != null) {
+  //     final bytes = await File(image.path).readAsBytes();
+  //     base64Image = base64Encode(bytes);
+  //     print('pppppppppppppppppppppppppppppppppppppppppppppp$base64Image');
+  //     file = File(image.path);
+  //     print(file);
+  //     emit(SuccessfulPickImage());
+  //   } else {
+  //     emit(FailPickImage());
+  //     return;
+  //   }
   // }
 
   updateUserData() async {
