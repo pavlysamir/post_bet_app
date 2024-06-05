@@ -23,24 +23,36 @@ class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
 
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
-    'Instagram',
-    'Facebook',
+    'Facebook Post',
+    'Facebook Story',
+    'Facebook Reel',
+    'Instagram Post',
+    'Instagram Story',
+    'Instagram Reel',
     'Twitter',
     'Linkedin',
-    'Reddit',
-    'Tiktok',
-    'Pinterest',
     'Telegram',
+    'Pinterest',
+    'Tiktok',
+    'Reddit',
+    'YouTube',
+    'GoogleBusiness'
   ];
   List<String> descriptionPlatform = [
-    'Posts, Story, Video',
-    'Posts, Story, Video',
-    'Posts, Video',
-    'Posts, Video',
+    'Images,Text,Video',
+    'Images ,video',
+    'Video',
+    'Images,Text,Video',
+    'Images ,video',
+    'Video',
+    'Images, Video',
+    'Images, Video',
     'image',
     'image',
     'Video',
     'image',
+    'Video',
+    'Post',
   ];
 
   List<String> descriptionPlatformsmall = [

@@ -32,6 +32,8 @@ class SettingsScreen extends StatelessWidget {
       listener: (context, state) {
         if (state is LogOutSuccess) {
           customGoAndDeleteNavigate(context: context, path: AppRouter.kLogin);
+        } else if (state is DeleteAccountSuccess) {
+          customGoAndDeleteNavigate(context: context, path: AppRouter.kLogin);
         }
       },
       builder: (context, state) {
@@ -175,7 +177,7 @@ class SettingsScreen extends StatelessWidget {
                               Navigator.pop(context);
                             },
                             context: context,
-                            function: () {
+                            function: () async {
                               SettingsCubit.get(context).deleteAccount();
 
                               Navigator.pop(context);

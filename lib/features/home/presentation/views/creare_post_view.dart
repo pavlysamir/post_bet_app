@@ -219,9 +219,16 @@ class CreatePostView extends StatelessWidget {
                                         .length ==
                                     5
                                 ? AddPostCubit.get(context)
-                                    .descriptionPlatformsmall[index]
-                                : AddPostCubit.get(context)
-                                    .descriptionPlatform[index],
+                                    .descriptionPlatform4[index]
+                                : getIt
+                                            .get<CashHelperSharedPreferences>()
+                                            .getData(key: ApiKey.platFormsIcons)
+                                            .length ==
+                                        7
+                                    ? AddPostCubit.get(context)
+                                        .descriptionPlatform7[index]
+                                    : AddPostCubit.get(context)
+                                        .descriptionPlatform[index],
                           );
                         }),
                   ),

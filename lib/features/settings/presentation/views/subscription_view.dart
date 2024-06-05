@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
+import 'package:post_bet/features/settings/presentation/views/tap_payment_screen.dart';
 
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_subscription_listView.dart';
 import 'package:post_bet/generated/l10n.dart';
@@ -36,22 +39,32 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
           //   );
           // }));
           launchUrl(
-              Uri.parse(
-                SettingsCubit.get(context).subscriptionModel!.transactionUrl,
-              ),
-              mode: LaunchMode.externalApplication);
+                  Uri.parse(
+                    SettingsCubit.get(context)
+                        .subscriptionModel!
+                        .transactionUrl,
+                  ),
+                  mode: LaunchMode.externalApplication)
+              .then((value) async {
+            //await SettingsCubit.get(context).confirmSubscription();
+            await SettingsCubit.get(context).myPlan();
+          });
+          customGoAndDeleteNavigate(
+              context: context, path: AppRouter.kHomeLayOut);
           await SettingsCubit.get(context).mySubscription();
-          // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          //   content: Text('successfuly subscraption'),
-          // ));
+
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('successfuly subscraption'),
+          ));
         } else if (state is MySubscraptionSuccess) {
-          // await SettingsCubit.get(context).confirmSubscription().then((value) {
-          //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          //     content: Text('successfuly subscraption'),
-          //   ));
-          //   SettingsCubit.get(context).getPlans();
-          // });
-          SettingsCubit.get(context).getPlans();
+          await SettingsCubit.get(context).confirmSubscription().then((value) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('successfuly subscraption'),
+            ));
+            SettingsCubit.get(context).getPlans();
+            SettingsCubit.get(context).myPlan();
+          });
+          // SettingsCubit.get(context).getPlans();
         } else if (state is SubscraptionFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

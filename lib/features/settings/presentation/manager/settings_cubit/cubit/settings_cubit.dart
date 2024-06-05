@@ -145,7 +145,42 @@ class SettingsCubit extends Cubit<SettingsState> {
     final response = await settingsRepository.deleteAccount();
     response.fold(
       (errMessage) => emit(DeleteAccountFailure()),
-      (userData) {
+      (userData) async {
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.token);
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.name);
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.email);
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.id);
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.profilePic);
+
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.profileKey);
+
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.refId);
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.mySubscribeId);
+
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.platForms);
+        await getIt
+            .get<CashHelperSharedPreferences>()
+            .removeData(key: ApiKey.platFormsIcons);
+        await getIt.get<CashHelperSharedPreferences>().clearData();
+
         emit(DeleteAccountSuccess());
       },
     );

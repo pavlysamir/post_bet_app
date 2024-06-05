@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
-import 'package:post_bet/core/utils/app_router.dart';
-import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
@@ -124,6 +122,13 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                   planModel[index].tiktok
                       ? Image.asset(
                           AssetsData.tiktok,
+                          height: 20.h,
+                        )
+                      : Container(),
+                  SizedBox(width: 10.w),
+                  planModel[index].telegram
+                      ? Image.asset(
+                          AssetsData.telegram,
                           height: 20.h,
                         )
                       : Container(),

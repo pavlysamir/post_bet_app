@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_templete/add_post_templete_cubit.dart';
 
 class CreateTempletePostPlatFormItem extends StatefulWidget {
@@ -42,7 +43,7 @@ class _CreatePostPlatFormItemState
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Access the AddPostCubit and store the reference
+    // Access the addPostTempleteCubit and store the reference
     addPostTempleteCubit = AddPostTempleteCubit.get(context);
   }
 
@@ -79,146 +80,120 @@ class _CreatePostPlatFormItemState
               ),
             ],
           ),
-          widget.paltformName == 'Instagram' ||
-                  widget.paltformName == 'Facebook'
-              ? SizedBox(
-                  width: 150.w,
-                  child: DropdownButton<String>(
-                    // value: dropdownValue,
-                    items: widget.paltformName == 'Instagram'
-                        ? instagram
-                            .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    value,
-                                    style: TextStyle(fontSize: 15.sp),
-                                  ),
-                                  StatefulBuilder(
-                                    builder: (context, setState) => Checkbox(
-                                      value: addPostTempleteCubit
-                                              .checkBoxValues[value] ??
-                                          false,
-                                      onChanged: (bool? newValue) {
-                                        setState(() {
-                                          addPostTempleteCubit
-                                                  .checkBoxValues[value] =
-                                              newValue!;
-                                          if (newValue) {
-                                            // Add item to selected list if checked
-                                            addPostTempleteCubit
-                                                .selectedInstaItems
-                                                .add(value);
-                                          } else {
-                                            // Remove item from selected list if unchecked
-                                            addPostTempleteCubit
-                                                .selectedInstaItems
-                                                .remove(value);
-                                          }
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList()
-                        : facebook
-                            .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    value,
-                                    style: TextStyle(fontSize: 15.sp),
-                                  ),
-                                  StatefulBuilder(
-                                    builder: (context, setState) => Checkbox(
-                                      value: addPostTempleteCubit
-                                              .checkBoxValues[value] ??
-                                          false,
-                                      onChanged: (bool? newValue) {
-                                        setState(() {
-                                          addPostTempleteCubit
-                                                  .checkBoxValues[value] =
-                                              newValue!;
-                                          if (newValue) {
-                                            // Add item to selected list if checked
-                                            addPostTempleteCubit
-                                                .selectedaceInstaItems
-                                                .add(value);
-                                            print(addPostTempleteCubit
-                                                .selectedaceInstaItems);
-                                          } else {
-                                            // Remove item from selected list if unchecked
-                                            addPostTempleteCubit
-                                                .selectedaceInstaItems
-                                                .remove(value);
-                                          }
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          }).toList(),
-
-                    // Step 5. Update dropdown value and handle checkbox state changes.
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        dropdownValue = newValue!;
-                        // Reset checkboxes for other items (optional)
-                        addPostTempleteCubit.checkBoxValues
-                            .removeWhere((key, value) => key != newValue);
-                      });
-                    },
-                  ),
-                ) // ignore: unnecessary_this
-              : StatefulBuilder(
+          widget.paltformName == 'Instagram Post' ||
+                  widget.paltformName == 'Instagram Story' ||
+                  widget.paltformName == 'Instagram Reel'
+              ? StatefulBuilder(
                   builder: (context, setState) {
                     return Checkbox(
-                        value: initialValue,
-                        onChanged: (value) {
-                          setState(() {
-                            initialValue = value!;
-                            // addPostTempleteCubit.checkBoxValues[
-                            //     addPostTempleteCubit
-                            //         .platformNames[widget.indrx]] = value;
-                            if (value) {
-                              addPostTempleteCubit.selectedItems.add(
-                                  addPostTempleteCubit
-                                      .platformNames[widget.indrx]);
-                              addPostTempleteCubit.checkBoxValues[
-                                  addPostTempleteCubit
-                                      .platformNames[widget.indrx]] = value;
-                              print(addPostTempleteCubit.checkBoxValues);
-                              print(addPostTempleteCubit.selectedItems);
-                              // Add item to selected list if checked
-                            } else {
-                              addPostTempleteCubit.selectedItems.remove(
-                                  addPostTempleteCubit
-                                      .platformNames[widget.indrx]);
-                              print(addPostTempleteCubit.selectedItems);
-                              addPostTempleteCubit.selectedItems.remove(
-                                  addPostTempleteCubit.checkBoxValues[
-                                          addPostTempleteCubit
-                                              .platformNames[widget.indrx]] =
-                                      value);
-                              print(addPostTempleteCubit.selectedItems);
-                              // Remove item from selected list if unchecked
-                            }
-                          });
+                      checkColor: Colors.white,
+                      activeColor: kPrimaryKey,
+                      value: initialValue,
+                      onChanged: (value) {
+                        setState(() {
+                          initialValue = value!;
+                          if (value) {
+                            addPostTempleteCubit.selectedInstaItems.add(
+                                addPostTempleteCubit
+                                    .platformNames[widget.indrx]);
+                            addPostTempleteCubit.checkBoxValues[
+                                addPostTempleteCubit
+                                    .platformNames[widget.indrx]] = value;
+                            print(addPostTempleteCubit.checkBoxValues);
+                            print(addPostTempleteCubit.selectedItems);
+                          } else {
+                            addPostTempleteCubit.selectedInstaItems.remove(
+                                addPostTempleteCubit
+                                    .platformNames[widget.indrx]);
+                            print(addPostTempleteCubit.selectedInstaItems);
+                            addPostTempleteCubit.selectedInstaItems.remove(
+                                addPostTempleteCubit.checkBoxValues[
+                                    addPostTempleteCubit
+                                        .platformNames[widget.indrx]] = value);
+                            print(addPostTempleteCubit.selectedInstaItems);
+                          }
                         });
+                      },
+                    );
                   },
-                ),
+                )
+              : widget.paltformName == 'Facebook Post' ||
+                      widget.paltformName == 'Facebook Story' ||
+                      widget.paltformName == 'Facebook Reel'
+                  ? StatefulBuilder(
+                      builder: (context, setState) {
+                        return Checkbox(
+                          checkColor: Colors.white,
+                          activeColor: kPrimaryKey,
+                          value: initialValue,
+                          onChanged: (value) {
+                            setState(() {
+                              initialValue = value!;
+                              if (value) {
+                                addPostTempleteCubit.selectedaceInstaItems.add(
+                                    addPostTempleteCubit
+                                        .platformNames[widget.indrx]);
+                                addPostTempleteCubit.checkBoxValues[
+                                    addPostTempleteCubit
+                                        .platformNames[widget.indrx]] = value;
+                                print(addPostTempleteCubit.checkBoxValues);
+                                print(addPostTempleteCubit.selectedItems);
+                              } else {
+                                addPostTempleteCubit.selectedaceInstaItems
+                                    .remove(addPostTempleteCubit
+                                        .platformNames[widget.indrx]);
+                                print(
+                                    addPostTempleteCubit.selectedaceInstaItems);
+                                addPostTempleteCubit.selectedaceInstaItems
+                                    .remove(addPostTempleteCubit.checkBoxValues[
+                                            addPostTempleteCubit
+                                                .platformNames[widget.indrx]] =
+                                        value);
+                                print(
+                                    addPostTempleteCubit.selectedaceInstaItems);
+                              }
+                            });
+                          },
+                        );
+                      },
+                    )
+                  // ignore: unnecessary_this
+                  : StatefulBuilder(
+                      builder: (context, setState) {
+                        return Checkbox(
+                            value: initialValue,
+                            onChanged: (value) {
+                              setState(() {
+                                initialValue = value!;
+                                // addPostTempleteCubit.checkBoxValues[
+                                //     addPostTempleteCubit
+                                //         .platformNames[widget.indrx]] = value;
+                                if (value) {
+                                  addPostTempleteCubit.selectedItems.add(
+                                      addPostTempleteCubit
+                                          .platformNames[widget.indrx]);
+                                  addPostTempleteCubit.checkBoxValues[
+                                      addPostTempleteCubit
+                                          .platformNames[widget.indrx]] = value;
+                                  print(addPostTempleteCubit.checkBoxValues);
+                                  print(addPostTempleteCubit.selectedItems);
+                                  // Add item to selected list if checked
+                                } else {
+                                  addPostTempleteCubit.selectedItems.remove(
+                                      addPostTempleteCubit
+                                          .platformNames[widget.indrx]);
+                                  print(addPostTempleteCubit.selectedItems);
+                                  addPostTempleteCubit.selectedItems.remove(
+                                      addPostTempleteCubit.checkBoxValues[
+                                          addPostTempleteCubit.platformNames[
+                                              widget.indrx]] = value);
+                                  print(addPostTempleteCubit.selectedItems);
+                                  // Remove item from selected list if unchecked
+                                }
+                              });
+                            });
+                      },
+                    ),
         ],
       ),
       leading: Image.asset(

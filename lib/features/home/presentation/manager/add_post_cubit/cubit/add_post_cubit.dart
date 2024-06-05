@@ -2,13 +2,11 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:image/image.dart' as img;
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 
@@ -22,14 +20,14 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   TextEditingController addPostController = TextEditingController();
   List<String> descriptionPlatform = [
-    'Images',
+    'Images,Text,Video',
     'Images ,video',
     'Video',
-    'Images',
+    'Images,Text,Video',
     'Images ,video',
     'Video',
-    'Images, Video',
-    'Images, Video',
+    'Images, Video,text',
+    'Images, Video,text',
     'image',
     'image',
     'Video',
@@ -38,12 +36,31 @@ class AddPostCubit extends Cubit<AddPostState> {
     'Post',
   ];
 
-  List<String> descriptionPlatformsmall = [
-    'Posts, Story, Video',
-    'Posts, Story, Video',
-    'Posts, Video',
+  List<String> descriptionPlatform4 = [
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
     'Posts, Video',
     'image',
+  ];
+
+  List<String> descriptionPlatform7 = [
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
+    'Images, Video, text',
+    'Images, Video, text',
+    'image',
+    'image',
+    'image',
+    'Video',
+    'Post',
   ];
 
   List<File> postImages = [];
