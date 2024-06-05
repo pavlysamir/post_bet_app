@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/home/presentation/views/create_template_post.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_template_list_view_item.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 class CustomTemplatePostsListView extends StatelessWidget {
   const CustomTemplatePostsListView({super.key});
@@ -37,12 +43,31 @@ class CustomTemplatePostsListView extends StatelessWidget {
             img: templateImg[index],
             text: templateText[index],
             function: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return CreateTemplatePostView(
-                  img: templateImg[index],
-                  text: templateText[index],
-                );
-              }));
+              getIt
+                          .get<CashHelperSharedPreferences>()
+                          .getData(key: ApiKey.platForms) ==
+                      null
+                  ? showDialog(
+                      context: context,
+                      builder: (BuildContext context) => PopUpDialogOneButton(
+                        context: context,
+                        function: () {
+                          Navigator.pop(context);
+                        },
+                        title: S.of(context).gotoSubscripe,
+                        subTitle: '',
+                        colorButton1: kPrimaryKey,
+                        textColortcolor1: Colors.white,
+                        textbtn: S.of(context).ok,
+                      ),
+                    )
+                  : Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                      return CreateTemplatePostView(
+                        img: templateImg[index],
+                        text: templateText[index],
+                      );
+                    }));
             },
           );
         },
