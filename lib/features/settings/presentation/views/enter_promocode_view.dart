@@ -10,7 +10,7 @@ import 'package:post_bet/features/settings/presentation/manager/settings_cubit/c
 import 'package:post_bet/generated/l10n.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class EnterPromoView extends StatelessWidget {
+class EnterPromoView extends StatefulWidget {
   const EnterPromoView({
     super.key,
     required this.planeId,
@@ -18,7 +18,20 @@ class EnterPromoView extends StatelessWidget {
   final String planeId;
 
   @override
+  State<EnterPromoView> createState() => _EnterPromoViewState();
+}
+
+class _EnterPromoViewState extends State<EnterPromoView> {
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    SettingsCubit.get(context).promocodeController.text = '';
+  }
+
+  @override
   Widget build(BuildContext context) {
+    String btnTxt = S.of(context).submet;
     return Scaffold(
         appBar: CustomAppbareWithTitle(title: S.of(context).enterPromo),
         body: BlocConsumer<SettingsCubit, SettingsState>(
@@ -83,32 +96,6 @@ class EnterPromoView extends StatelessWidget {
                   SizedBox(
                     height: 30.h,
                   ),
-                  state is GetPromocodesDetailsLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(
-                            color: kPrimaryKey,
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
-                          child: CustomButtonLarge(
-                              text: S.of(context).submet,
-                              color: kPrimaryKey,
-                              textColor: Colors.white,
-                              function: () {
-                                if (SettingsCubit.get(context)
-                                    .formKeyPromoCode
-                                    .currentState!
-                                    .validate()) {
-                                  SettingsCubit.get(context)
-                                      .getPromoCodeDetails(
-                                          id: SettingsCubit.get(context)
-                                              .promocodeController
-                                              .text,
-                                          planeId: planeId);
-                                }
-                              }),
-                        ),
                   state is GetPromocodesDetailsSuccess
                       ? Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -142,7 +129,7 @@ class EnterPromoView extends StatelessWidget {
                                         'Plan Price : ${SettingsCubit.get(context).myPromoCodeDetails!.planPrice}',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .displaySmall,
+                                            .titleMedium,
                                       ),
                                       SizedBox(
                                         height: 15.h,
@@ -151,7 +138,7 @@ class EnterPromoView extends StatelessWidget {
                                         'Discount : ${SettingsCubit.get(context).myPromoCodeDetails!.discount}',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .displaySmall,
+                                            .titleMedium,
                                       ),
                                       SizedBox(
                                         height: 15.h,
@@ -160,33 +147,33 @@ class EnterPromoView extends StatelessWidget {
                                         'Price after discount : ${SettingsCubit.get(context).myPromoCodeDetails!.priceAfterDiscount}',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .displaySmall,
+                                            .titleMedium,
                                       ),
                                       SizedBox(
                                         height: 10.h,
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20),
-                                        child: CustomButtonLarge(
-                                            text: S.of(context).doneSubscribe,
-                                            color: kPrimaryKey,
-                                            textColor: Colors.white,
-                                            function: () async {
-                                              if (SettingsCubit.get(context)
-                                                  .formKeyPromoCode
-                                                  .currentState!
-                                                  .validate()) {
-                                                await SettingsCubit.get(context)
-                                                    .subscription(
-                                                        planId: planeId,
-                                                        promoCode: SettingsCubit
-                                                                .get(context)
-                                                            .promocodeController
-                                                            .text);
-                                              }
-                                            }),
-                                      ),
+                                      // Padding(
+                                      //   padding: const EdgeInsets.symmetric(
+                                      //       horizontal: 20),
+                                      //   child: CustomButtonLarge(
+                                      //       text: S.of(context).doneSubscribe,
+                                      //       color: kPrimaryKey,
+                                      //       textColor: Colors.white,
+                                      //       function: () async {
+                                      //         if (SettingsCubit.get(context)
+                                      //             .formKeyPromoCode
+                                      //             .currentState!
+                                      //             .validate()) {
+                                      //           await SettingsCubit.get(context)
+                                      //               .subscription(
+                                      //                   planId: planeId,
+                                      //                   promoCode: SettingsCubit
+                                      //                           .get(context)
+                                      //                       .promocodeController
+                                      //                       .text);
+                                      //         }
+                                      //       }),
+                                      // ),
                                       SizedBox(
                                         height: 10.h,
                                       ),
@@ -196,6 +183,65 @@ class EnterPromoView extends StatelessWidget {
                           ),
                         )
                       : const SizedBox(),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  state is GetPromocodesDetailsLoading ||
+                          state is SubscraptionLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: kPrimaryKey,
+                          ),
+                        )
+                      : state is GetPromocodesDetailsSuccess
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: CustomButtonLarge(
+                                  text: S.of(context).doneSubscribe,
+                                  color: kPrimaryKey,
+                                  textColor: Colors.white,
+                                  function: () async {
+                                    if (SettingsCubit.get(context)
+                                        .formKeyPromoCode
+                                        .currentState!
+                                        .validate()) {
+                                      if (SettingsCubit.get(context)
+                                          .formKeyPromoCode
+                                          .currentState!
+                                          .validate()) {
+                                        await SettingsCubit.get(context)
+                                            .subscription(
+                                                planId: widget.planeId,
+                                                promoCode:
+                                                    SettingsCubit.get(context)
+                                                        .promocodeController
+                                                        .text);
+                                      }
+                                    }
+                                  }),
+                            )
+                          : Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
+                              child: CustomButtonLarge(
+                                  text: S.of(context).submet,
+                                  color: kPrimaryKey,
+                                  textColor: Colors.white,
+                                  function: () {
+                                    if (SettingsCubit.get(context)
+                                        .formKeyPromoCode
+                                        .currentState!
+                                        .validate()) {
+                                      SettingsCubit.get(context)
+                                          .getPromoCodeDetails(
+                                              id: SettingsCubit.get(context)
+                                                  .promocodeController
+                                                  .text,
+                                              planeId: widget.planeId);
+                                    }
+                                  }),
+                            ),
                 ],
               ),
             ),

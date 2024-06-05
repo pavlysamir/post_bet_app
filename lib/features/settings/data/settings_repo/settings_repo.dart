@@ -130,7 +130,7 @@ class SettingsRepository {
 
       return Right(subscription);
     } on ServerException catch (e) {
-      return Left(e.errModel.errorMessage!);
+      return Left(e.errModel.error!);
     }
   }
 

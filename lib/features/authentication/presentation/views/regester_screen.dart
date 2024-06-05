@@ -44,7 +44,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               content: Text(state.data),
             ));
 
-            customJustGoNavigate(
+            customGoAndDeleteNavigate(
                 context: context, path: AppRouter.kVerifyEmail);
           } else if (state is SignUpFailure) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
