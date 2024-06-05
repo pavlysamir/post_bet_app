@@ -180,10 +180,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("ادخل كلمة مرور جديدة"),
         "enterPromo": MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
         "expireData": MessageLookupByLibrary.simpleMessage("تاريخ الانتهاء"),
+        "expireOn": MessageLookupByLibrary.simpleMessage("انتهاء الصلاحية في"),
         "faceBook": MessageLookupByLibrary.simpleMessage("فيس بوك"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 منشورات في اليوم"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "gotoSubscripe": MessageLookupByLibrary.simpleMessage(
+            "الذهاب لاشتراكاتك او الاشتراك الخاص بك"),
         "haveAccount":
             MessageLookupByLibrary.simpleMessage("لديك حساب بالفعل؟"),
         "helpCenter": MessageLookupByLibrary.simpleMessage("مركز المساعدة"),
@@ -223,6 +226,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noPosts": MessageLookupByLibrary.simpleMessage("لا يوجد منشورات"),
         "noSubscriptions":
             MessageLookupByLibrary.simpleMessage("لا يوجد اشتراكات"),
+        "ok": MessageLookupByLibrary.simpleMessage("موافق"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("طريقة سهلة للمشاركة"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(

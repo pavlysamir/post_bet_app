@@ -61,6 +61,8 @@ class TemplatePostsListViewItem extends StatelessWidget {
               child: Align(
                   alignment: Alignment.topLeft,
                   child: Text(S.of(context).amazingMessage,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                       style: Theme.of(context)
                           .textTheme
                           .bodyLarge!

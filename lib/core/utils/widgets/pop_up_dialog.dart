@@ -80,3 +80,63 @@ class PopUpDialog extends StatelessWidget {
     );
   }
 }
+
+class PopUpDialogOneButton extends StatelessWidget {
+  const PopUpDialogOneButton(
+      {super.key,
+      required this.context,
+      required this.function,
+      required this.title,
+      required this.subTitle,
+      this.colorButton1 = kPrimaryKey,
+      this.textColortcolor1 = Colors.white,
+      required this.textbtn});
+  final BuildContext context;
+  final Function() function;
+  final String title;
+  final String subTitle;
+  final Color colorButton1;
+  final Color textColortcolor1;
+  final String textbtn;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Theme.of(context).cardColor,
+      alignment: Alignment.center,
+      actionsAlignment: MainAxisAlignment.center,
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            title,
+            style: Theme.of(context).textTheme.displaySmall,
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 20.h,
+          ),
+          Text(
+            subTitle,
+            style: Theme.of(context).textTheme.labelLarge,
+            textAlign: TextAlign.center,
+          )
+        ],
+      ),
+      actions: <Widget>[
+        Padding(
+          padding: const EdgeInsets.only(bottom: 0),
+          child: CustomButtonSmall(
+            borderColor: Colors.red,
+            width: 100,
+            text: textbtn,
+            color: colorButton1,
+            function: function,
+            textColortcolor: textColortcolor1,
+          ),
+        )
+      ],
+    );
+  }
+}

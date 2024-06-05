@@ -217,7 +217,10 @@
     "linkAcount":"Link Acounts",
     "availableAccounts":"Available Accounts",
     "loading":"Loading...",
-    "pleaseWrite":"please write or Select something"
+    "pleaseWrite":"please write or Select something",
+    "ok":"ok",
+    "gotoSubscripe":"Go to Subscripe Or Your Subscription",
+    "expireOn":"Expires on"
 
  
 

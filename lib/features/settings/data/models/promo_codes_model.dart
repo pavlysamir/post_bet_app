@@ -43,6 +43,7 @@ class PromoCode {
   final bool isActive;
   final int usedCounter;
   final int numberOfUses;
+  final String expirationDate;
 
   PromoCode({
     required this.id,
@@ -53,6 +54,7 @@ class PromoCode {
     required this.isActive,
     required this.usedCounter,
     required this.numberOfUses,
+    required this.expirationDate,
   });
 
   factory PromoCode.fromJson(Map<String, dynamic> json) => PromoCode(
@@ -64,6 +66,7 @@ class PromoCode {
         isActive: json['isActive'],
         usedCounter: json['usedCounter'],
         numberOfUses: json['numberOfUses'],
+        expirationDate: json['expirationDate'],
       );
 }
 

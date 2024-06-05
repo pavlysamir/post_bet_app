@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
+import 'package:post_bet/generated/l10n.dart';
 
 class CobonItem extends StatelessWidget {
   const CobonItem({
@@ -17,9 +19,12 @@ class CobonItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String isoString = cobonTitle;
+    DateTime dateTime = DateTime.parse(isoString);
+    String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
     return Container(
         //padding: EdgeInsets.all(8.h),
-        height: 300.h,
+        height: 250.h,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
@@ -41,7 +46,7 @@ class CobonItem extends StatelessWidget {
                 height: 15.h,
               ),
               CircleAvatar(
-                radius: 55.r,
+                radius: 60.r,
                 backgroundColor: Colors.black,
                 child: Center(
                   child: Text(
@@ -53,7 +58,7 @@ class CobonItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  cobonTitle,
+                  '${S.of(context).expireData} $formattedDate',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.labelLarge,
                   maxLines: 4,

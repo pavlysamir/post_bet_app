@@ -2149,6 +2149,36 @@ class S {
       args: [],
     );
   }
+
+  /// `ok`
+  String get ok {
+    return Intl.message(
+      'ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to Subscripe Or Your Subscription`
+  String get gotoSubscripe {
+    return Intl.message(
+      'Go to Subscripe Or Your Subscription',
+      name: 'gotoSubscripe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expires on`
+  String get expireOn {
+    return Intl.message(
+      'Expires on',
+      name: 'expireOn',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

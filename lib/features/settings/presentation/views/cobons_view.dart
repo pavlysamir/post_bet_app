@@ -46,7 +46,9 @@ class CobonsView extends StatelessWidget {
                               cobonCode: SettingsCubit.get(context)
                                   .promoCode[index]
                                   .promoCode,
-                              cobonTitle: S.of(context).contentDiscount,
+                              cobonTitle: SettingsCubit.get(context)
+                                  .promoCode[index]
+                                  .expirationDate,
                             );
                           },
                         )),

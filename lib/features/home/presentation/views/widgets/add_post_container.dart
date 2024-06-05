@@ -6,6 +6,7 @@ import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/generated/l10n.dart';
 
 class AddPostContainer extends StatelessWidget {
@@ -23,9 +24,20 @@ class AddPostContainer extends StatelessWidget {
                       .get<CashHelperSharedPreferences>()
                       .getData(key: ApiKey.platForms) ==
                   null
-              ? ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                  content: Text(
-                      '${S.of(context).pleaseGo}${S.of(context).mySbscription}')))
+              ? showDialog(
+                  context: context,
+                  builder: (BuildContext context) => PopUpDialogOneButton(
+                    context: context,
+                    function: () {
+                      Navigator.pop(context);
+                    },
+                    title: S.of(context).gotoSubscripe,
+                    subTitle: '',
+                    colorButton1: kPrimaryKey,
+                    textColortcolor1: Colors.white,
+                    textbtn: S.of(context).ok,
+                  ),
+                )
               : customJustGoNavigate(
                   context: context, path: AppRouter.kAddPostView);
         },

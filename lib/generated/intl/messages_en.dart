@@ -179,10 +179,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
         "enterPromo": MessageLookupByLibrary.simpleMessage("Enter Promocode"),
         "expireData": MessageLookupByLibrary.simpleMessage("Expire Data"),
+        "expireOn": MessageLookupByLibrary.simpleMessage("Expires on"),
         "faceBook": MessageLookupByLibrary.simpleMessage("FaceBook"),
         "fivePosts": MessageLookupByLibrary.simpleMessage("5 posts per day"),
         "forgotPassword":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+        "gotoSubscripe": MessageLookupByLibrary.simpleMessage(
+            "Go to Subscripe Or Your Subscription"),
         "haveAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account"),
         "helpCenter": MessageLookupByLibrary.simpleMessage("Help center"),
@@ -220,6 +223,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "noPosts": MessageLookupByLibrary.simpleMessage("No Posts"),
         "noSubscriptions":
             MessageLookupByLibrary.simpleMessage("No Subscriptions"),
+        "ok": MessageLookupByLibrary.simpleMessage("ok"),
         "onBoardingSlider1":
             MessageLookupByLibrary.simpleMessage("Easy way to share"),
         "onBoardingSlider1subTitle1": MessageLookupByLibrary.simpleMessage(
