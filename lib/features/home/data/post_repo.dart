@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:post_bet/core/api/api_consumer.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
+import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
@@ -56,9 +57,8 @@ class PostReposatory {
       );
       print(response.data);
       return response.data['url'];
-    } on DioError catch (error) {
-      print('Error uploading file: ${error.message}');
-      rethrow; // Re-throw for further handling if needed
+    } on ServerException catch (e) {
+      return e.errModel.error!;
     }
   }
 
@@ -99,9 +99,8 @@ class PostReposatory {
       );
       print(response.data);
       return response.data['url'];
-    } on DioError catch (error) {
-      print('Error uploading file: ${error.message}');
-      rethrow; // Re-throw for further handling if needed
+    } on ServerException catch (e) {
+      return e.errModel.error!;
     }
   }
 

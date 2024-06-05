@@ -62,7 +62,7 @@ class WelcomScreen extends StatelessWidget {
                 text: S.of(context).welcomTextButton1,
                 colorTxt: Colors.white,
                 function: () {
-                  customJustGoNavigate(
+                  customGoAndDeleteNavigate(
                       context: context, path: AppRouter.kRegistretion);
                 },
               ),
@@ -75,7 +75,7 @@ class WelcomScreen extends StatelessWidget {
                 image: AssetsData.emailIcon,
                 text: S.of(context).welcomTextButton2,
                 function: () {
-                  customJustGoNavigate(
+                  customGoAndDeleteNavigate(
                       context: context, path: AppRouter.kLogin);
                 },
               ),

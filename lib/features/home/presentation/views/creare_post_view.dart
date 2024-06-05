@@ -71,7 +71,38 @@ class CreatePostView extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success Share Instagram Story'),
           ));
-        } else if (state is CreatePostFailure ||
+        }
+        // if (state is CreatePostFailure) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(state.errMessage),
+        //   ));
+        // }
+        // if (state is UploadImgFailure) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(state.errMessage),
+        //   ));
+        // }
+        // if (state is UploadVideoFailure) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(state.errMessage),
+        //   ));
+        // }
+        // if (state is UploadFaceBookImageStoryFailure) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(state.errMessage),
+        //   ));
+        // }
+        // if (state is UploadFaceBookReelFailure) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(state.errMessage),
+        //   ));
+        // }
+        // if (state is CreateFaceBookStoryFailure) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(state.errMessage),
+        //   ));
+        //}
+        else if (state is CreatePostFailure ||
             state is UploadImgFailure ||
             state is UploadVideoFailure ||
             state is UploadFaceBookImageStoryFailure ||
