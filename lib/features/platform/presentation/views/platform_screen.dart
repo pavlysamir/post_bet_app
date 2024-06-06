@@ -25,6 +25,8 @@ class PlatformScreen extends StatelessWidget {
       'Tiktok',
       'Pinterest',
       'Telegram',
+      'Youtube',
+      'Google business'
     ];
     final List<String> platformIcons = [
       AssetsData.instagramIcon,
@@ -35,6 +37,8 @@ class PlatformScreen extends StatelessWidget {
       AssetsData.tiktok,
       AssetsData.pinterest,
       AssetsData.telegram,
+      AssetsData.youtube,
+      AssetsData.googleBusiness
     ];
     return BlocConsumer<PlatformCubit, PlatformState>(
       listener: (context, state) {
