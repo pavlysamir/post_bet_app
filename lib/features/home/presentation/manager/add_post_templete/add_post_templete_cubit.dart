@@ -182,4 +182,77 @@ class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
       emit(UploadImgFailure(errMessage: e.toString()));
     }
   }
+
+  String? imgStoryUrl;
+  uploadImageStory({required String image}) async {
+    try {
+      emit(UploadFaceBookImageStoryLoading());
+
+      final response = await postReposatory.uploadFile(image);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imgStoryUrl = response;
+
+      print('لkokokokokokokokokokokokoko$imgStoryUrl');
+      emit(UploadFaceBookImageStorySuccessfully());
+      createFaceBookImageSrory(image: imgStoryUrl!);
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadFaceBookImageStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createFaceBookImageSrory({required String image}) async {
+    try {
+      emit(CreateFaceBookStoryLoading());
+
+      final response = await postReposatory.createFaceeBookImageStory(
+          addPostTempleteController.text, image);
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateFaceBookStorySuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateFaceBookStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  String? imgInstgramStoryUrl;
+  uploadInstagramImageStory({required String image}) async {
+    try {
+      emit(UploadInstagramImageStoryLoading());
+
+      final response = await postReposatory.uploadFile(image);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      imgInstgramStoryUrl = response;
+      print('لkokokokokokokokokokokokoko$imgInstgramStoryUrl');
+      emit(UploadFaceBookImageStorySuccessfully());
+      createInstagramImageSrory(image: imgInstgramStoryUrl!);
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadInstagramImageStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createInstagramImageSrory({required String image}) async {
+    try {
+      emit(CreateInstagramStoryLoading());
+
+      final response = await postReposatory.createInstagramImageStory(
+          addPostTempleteController.text, image);
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateInstagramStorySuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateInstagramStoryFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
 }

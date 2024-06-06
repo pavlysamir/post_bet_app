@@ -53,8 +53,7 @@ class CreateTemplatePostView extends StatelessWidget {
             content: Text('success Share Instagram Story'),
           ));
         } else if (state is CreatePostFailure ||
-            state is UploadImgFailure ||
-            state is UploadVideoFailure ||
+            state is CreateVideoPostFailure ||
             state is UploadFaceBookImageStoryFailure ||
             state is UploadFaceBookReelFailure ||
             state is CreateFaceBookStoryFailure ||
@@ -117,18 +116,30 @@ class CreateTemplatePostView extends StatelessWidget {
 
                           if (AddPostTempleteCubit.get(context)
                               .selectedaceInstaItems
-                              .contains('Post .')) {
+                              .contains('Facebook Story')) {
+                            await AddPostTempleteCubit.get(context)
+                                .uploadImageStory(image: img);
+                          }
+                          if (AddPostTempleteCubit.get(context)
+                              .selectedInstaItems
+                              .contains('Instagram Story')) {
+                            await AddPostTempleteCubit.get(context)
+                                .uploadInstagramImageStory(image: img);
+                          }
+                          if (AddPostTempleteCubit.get(context)
+                              .selectedaceInstaItems
+                              .contains('Facebook Post')) {
                             await AddPostTempleteCubit.get(context)
                                 .uploadFaceBokImage(image: img);
                           }
                           if (AddPostTempleteCubit.get(context)
                               .selectedInstaItems
-                              .contains('Post')) {
+                              .contains('Instagram Post')) {
                             await AddPostTempleteCubit.get(context)
                                 .uploadInstagramImage(image: img);
                           }
                           if (AddPostTempleteCubit.get(context)
-                              .platformNames
+                              .selectedItems
                               .isNotEmpty) {
                             await AddPostTempleteCubit.get(context)
                                 .uploadImage(image: img);

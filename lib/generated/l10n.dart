@@ -540,10 +540,10 @@ class S {
     );
   }
 
-  /// `Logout`
+  /// `Log out`
   String get logout {
     return Intl.message(
-      'Logout',
+      'Log out',
       name: 'logout',
       desc: '',
       args: [],

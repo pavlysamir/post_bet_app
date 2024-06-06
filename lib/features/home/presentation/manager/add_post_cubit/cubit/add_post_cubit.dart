@@ -178,22 +178,24 @@ class AddPostCubit extends Cubit<AddPostState> {
   final List<String> selectedaceInstaItems = [];
   final List<String> selectedInstaItems = [];
 
+  final List<String> selectedRestPlatForm = [];
+
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
-    // 'Facebook Post',
-    // 'Facebook Story',
-    // 'Facebook Reel',
-    // 'Instagram Post',
-    // 'Instagram Story',
-    // 'Instagram Reel',
-    // 'Twitter',
-    // 'Linkedin',
-    // 'Telegram',
-    // 'Pinterest',
-    // 'Tiktok',
-    // 'Reddit',
-    // 'YouTube',
-    // 'GoogleBusiness'
+    'Facebook Post',
+    'Facebook Story',
+    'Facebook Reel',
+    'Instagram Post',
+    'Instagram Story',
+    'Instagram Reel',
+    'Twitter',
+    'Linkedin',
+    'Telegram',
+    'Pinterest',
+    'Tiktok',
+    'Reddit',
+    'YouTube',
+    'GoogleBusiness'
   ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,
@@ -448,6 +450,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  String? imgInstgramStoryUrl;
   uploadInstagramImageStory() async {
     try {
       emit(UploadInstagramImageStoryLoading());
@@ -455,8 +458,8 @@ class AddPostCubit extends Cubit<AddPostState> {
       final response = await postReposatory.uploadFile(imageFile!.path);
 
       print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
-      imgStoryUrl = response;
-      print('لkokokokokokokokokokokokoko$imgStoryUrl');
+      imgInstgramStoryUrl = response;
+      print('لkokokokokokokokokokokokoko$imgInstgramStoryUrl');
       emit(UploadFaceBookImageStorySuccessfully());
       createInstagramImageSrory();
       return response;
@@ -739,14 +742,14 @@ class AddPostCubit extends Cubit<AddPostState> {
 
       final response = await postReposatory.createInstagramImageStory(
         addPostController.text,
-        imgStoryUrl!,
+        imgInstgramStoryUrl!,
       );
       print('llllllllllllllllllllllllllllllllllll $response');
-      emit(CreateVideoPostSuccessfully());
+      emit(CreateInstagramStorySuccessfully());
       return response;
     } catch (e) {
       print(e.toString());
-      emit(CreateVideoPostFailure(errMessage: e.toString()));
+      emit(CreateInstagramStoryFailure(errMessage: e.toString()));
       return e.toString();
     }
   }
@@ -776,7 +779,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     if (imageFile != null && selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramImage();
     }
-    if (postImages.isNotEmpty && platformNames.isNotEmpty) {
+    if (postImages.isNotEmpty && selectedItems.isNotEmpty) {
       await uploadImage();
     }
 
@@ -799,7 +802,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     if (fileVideo != null && selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramVideo();
     }
-    if (fileVideo != null && platformNames.isNotEmpty) {
+    if (fileVideo != null && selectedItems.isNotEmpty) {
       await uploadVideo();
     }
 

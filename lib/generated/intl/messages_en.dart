@@ -206,7 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "loginButton": MessageLookupByLibrary.simpleMessage("Login"),
         "loginEmail": MessageLookupByLibrary.simpleMessage("Email"),
         "loginPassword": MessageLookupByLibrary.simpleMessage("Password"),
-        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+        "logout": MessageLookupByLibrary.simpleMessage("Log out"),
         "logoutAreYouSure":
             MessageLookupByLibrary.simpleMessage("Are you sure?"),
         "logoutCancel": MessageLookupByLibrary.simpleMessage("Cancel"),
