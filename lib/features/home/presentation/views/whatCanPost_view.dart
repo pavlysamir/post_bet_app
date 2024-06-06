@@ -16,6 +16,8 @@ class WhatCanPostView extends StatelessWidget {
     'Tiktok',
     'Pinterest',
     'Telegram',
+    'Youtube',
+    'GoogleBusiness',
   ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,
@@ -26,6 +28,8 @@ class WhatCanPostView extends StatelessWidget {
     AssetsData.tiktok,
     AssetsData.pinterest,
     AssetsData.telegram,
+    AssetsData.youtube,
+    AssetsData.googleBusiness,
   ];
 
   @override
@@ -39,6 +43,8 @@ class WhatCanPostView extends StatelessWidget {
       S.of(context).detailsTiktok,
       S.of(context).detailsPintrest,
       S.of(context).detailsTelegrame,
+      S.of(context).detailsYoutube,
+      S.of(context).detailsGoogle,
     ];
     return Scaffold(
         appBar: AppBar(
@@ -64,7 +70,6 @@ class WhatCanPostView extends StatelessWidget {
                       height: 20.h,
                     ),
                     Container(
-                      height: 200.h,
                       width: MediaQuery.of(context).size.width,
                       clipBehavior: Clip.antiAlias,
                       decoration: BoxDecoration(
@@ -83,7 +88,8 @@ class WhatCanPostView extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(18.0),
-                        child: Column(
+                        child: IntrinsicHeight(
+                          child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Image.asset(
@@ -106,7 +112,9 @@ class WhatCanPostView extends StatelessWidget {
                                     .titleLarge!
                                     .copyWith(color: Colors.grey),
                               ),
-                            ]),
+                            ],
+                          ),
+                        ),
                       ),
                     )
                   ],

@@ -146,21 +146,25 @@ class MessageLookup extends MessageLookupByLibrary {
         "description9": MessageLookupByLibrary.simpleMessage(
             "You agree to indemnify and hold harmless the Company and its partners from any claims or losses arising from your use of the application."),
         "detailsFaceBook": MessageLookupByLibrary.simpleMessage(
-            "can share 3 images per post,one video, text"),
+            "1- Post :-\n- Image: - 3 Images.\nMax image size: 10 MB\nSupported formats: JPEG, BMP, PNG, GIF\nQuality: - 480 px – 1080 px\n- Text\n- Video:- one video\nMax video size: 2 GB\nDuration max: 4 hours.\nDuration MIN: 1 min.\nSupported formats: MP4, MOV, and AVI.\nQuality: - 480 px – 1080 px\n2- Reels\n- Video:- one video\nMax video size: 1 GB.\nSupported formats: MP4, MOV, and AVI.\nDuration: 3 seconds minimum and 90 seconds maximum.\nQuality: - 480 px – 1080 px\n3- Stories\n- Photos:-\nFormat: JPEG, BMP, PNG, GIF, TIFF.\nMax image size: 4MB.\n- Videos:- one video\nMax video size: 1 GB.\nFormat: MP4, MOV, and AVI.\nResolution: 1080 x 1920 pixels (recommended). Minimum is 540 x 960 pixels.\nDuration: 3 seconds minimum and 90 seconds maximum\n"),
+        "detailsGoogle": MessageLookupByLibrary.simpleMessage(
+            "• Image:- one image\nImage size: Between 10 KB and 5 MB.\nSupported formats: JPG and PNG.\nResolution: 720px.\n• Videos:- one video\nMax video size: 75 MB.\nDuration Max: Up to 30 seconds long.\nResolution: 720p or higher.\n"),
         "detailsInstagram": MessageLookupByLibrary.simpleMessage(
-            "can share 3 images per post,one video, text"),
+            "• Post :- \n- Image:- one image\n  Max image size: 8 MB.\n  Supported formats: JPG, GIF, and PNG.\n- Video:- one video\n  Max video size: 1 GB.\n  Supported formats: MP4 and MOV.\n  Duration max: 15 minutes.\n  Duration min: 3 seconds.\n• Reels:- \n- Video:- one video\n  Max video size: 1 GB.\n  Supported formats: MP4 and MOV.\n  Duration max: 15 minutes.\n  Duration min: 3 seconds.\n• Stories:- \n- Images:- one image\n  Supported formats: JPEG\n  Max image size: 8MB.\n- Video:- one video\n  Duration: 60 seconds maximum, 3 seconds minimum.\n  Max video size: 100MB.\n"),
         "detailsLinkedIn": MessageLookupByLibrary.simpleMessage(
-            "can share one image per post"),
+            "• Post\n- Image: - one image\nMax image size: 5 MB\nSupported formats: JPG, GIF, Animated GIF, and PNG.\n- Video:- one video\nMax video size: 200 MB\nSupported formats: MP4.\nDuration max: 30 minutes.\nDuration min: 3 seconds.\n"),
         "detailsPintrest": MessageLookupByLibrary.simpleMessage(
-            "can share one image per post"),
+            "• Image:- one image\n       Max image size: 20 MB.\n       Supported formats: BMP, JPEG, PNG, TIFF, GIF,\n       Animated GIF, and WEBP.\n• Video :- one video\n      Max video size: 1 GB\n      Supported formats: MP4, MOV, and M4V.\n      Duration max: 15 minutes.\n      Duration min: 4 seconds.\n"),
         "detailsReddit": MessageLookupByLibrary.simpleMessage(
-            "can share one image per post"),
+            "• Image:- one image\n       Max image size: 10 MB.\n       Supported formats: JPG, PNG, GIF, and WEBP."),
         "detailsTelegrame": MessageLookupByLibrary.simpleMessage(
-            "can share one image per post"),
-        "detailsTiktok":
-            MessageLookupByLibrary.simpleMessage("can share one video"),
+            "• Image:- one image\n          Max image size: 5 MB.\n          Supported formats: JPG, PNG, GIF, Animated GIF, and WEBP.\n\n• Video:- one video\n          Max image size: 20 MB."),
+        "detailsTiktok": MessageLookupByLibrary.simpleMessage(
+            "• Video :- one video\n          Max video size: 1 GB.\n          Supported formats: MP4, MOV, and WebM.\n          Duration Max: 600 seconds.\n          Duration Min: 3 seconds.\n          Video Resolution: 360p-1080p."),
         "detailsX": MessageLookupByLibrary.simpleMessage(
-            "can share 3 images per post,one video, text"),
+            "• Image:- 3 images\n           Max image size: 5 MB\n           Supported formats: JPG, PNG, GIF, Animated GIF, and WEBP.\n• Video :- one video\n  Max video size 512 MB\n  Supported formats: MP4 and MOV.\n  Maximum video resolution: 1280x1024 px.\n  Duration must be between 0.5 seconds and 140 seconds."),
+        "detailsYoutube": MessageLookupByLibrary.simpleMessage(
+            "• Video:- one video\n          Max video size: 5 GB.\n          Supported formats: MP4 and MOV.\n         Duration: 60s-3000s."),
         "discount": MessageLookupByLibrary.simpleMessage(" Discount"),
         "doChangeLanguage":
             MessageLookupByLibrary.simpleMessage("Do you want change language"),
