@@ -102,10 +102,7 @@ class CreatePostView extends StatelessWidget {
         //     content: Text(state.errMessage),
         //   ));
         //}
-        else if (state is CreatePostFailure ||
-            state is UploadImgFailure ||
-            state is UploadVideoFailure ||
-            state is UploadFaceBookImageStoryFailure ||
+        else if (state is UploadFaceBookImageStoryFailure ||
             state is UploadFaceBookReelFailure ||
             state is CreateFaceBookStoryFailure ||
             state is CreateVideoPostFailure ||
@@ -217,14 +214,14 @@ class CreatePostView extends StatelessWidget {
                                         .get<CashHelperSharedPreferences>()
                                         .getData(key: ApiKey.platFormsIcons)
                                         .length ==
-                                    5
+                                    8
                                 ? AddPostCubit.get(context)
                                     .descriptionPlatform4[index]
                                 : getIt
                                             .get<CashHelperSharedPreferences>()
                                             .getData(key: ApiKey.platFormsIcons)
                                             .length ==
-                                        7
+                                        11
                                     ? AddPostCubit.get(context)
                                         .descriptionPlatform7[index]
                                     : AddPostCubit.get(context)

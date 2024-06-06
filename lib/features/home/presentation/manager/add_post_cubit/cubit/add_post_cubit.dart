@@ -180,20 +180,20 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
-    'Facebook Post',
-    'Facebook Story',
-    'Facebook Reel',
-    'Instagram Post',
-    'Instagram Story',
-    'Instagram Reel',
-    'Twitter',
-    'Linkedin',
-    'Telegram',
-    'Pinterest',
-    'Tiktok',
-    'Reddit',
-    'YouTube',
-    'GoogleBusiness'
+    // 'Facebook Post',
+    // 'Facebook Story',
+    // 'Facebook Reel',
+    // 'Instagram Post',
+    // 'Instagram Story',
+    // 'Instagram Reel',
+    // 'Twitter',
+    // 'Linkedin',
+    // 'Telegram',
+    // 'Pinterest',
+    // 'Tiktok',
+    // 'Reddit',
+    // 'YouTube',
+    // 'GoogleBusiness'
   ];
   final List<String> platformIcons = [
     AssetsData.instagramIcon,

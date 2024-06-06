@@ -53,9 +53,9 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
               context: context, path: AppRouter.kHomeLayOut);
           await SettingsCubit.get(context).mySubscription();
 
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-            content: Text('successfuly subscraption'),
-          ));
+          // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          //   content: Text('successfuly subscraption'),
+          // ));
         } else if (state is MySubscraptionSuccess) {
           await SettingsCubit.get(context).confirmSubscription().then((value) {
             ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

@@ -337,6 +337,14 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> myPlan() async {
     emit(MyPlanLoading());
     myPlatForms.clear();
+    platformIcons.clear();
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.platForms);
+    await getIt
+        .get<CashHelperSharedPreferences>()
+        .removeData(key: ApiKey.platFormsIcons);
+
     final response = await settingsRepository.myPlan();
     response.fold(
       (errMessage) {
@@ -350,20 +358,20 @@ class SettingsCubit extends Cubit<SettingsState> {
         mySubscriptionModel!.plan.facebook
             ? {
                 myPlatForms.add('Facebook Post'),
+                platformIcons.add(AssetsData.faceBookIcon),
                 myPlatForms.add('Facebook Story'),
+                platformIcons.add(AssetsData.faceBookIcon),
                 myPlatForms.add('Facebook Reel'),
-                platformIcons.add(AssetsData.faceBookIcon),
-                platformIcons.add(AssetsData.faceBookIcon),
                 platformIcons.add(AssetsData.faceBookIcon),
               }
             : null;
         mySubscriptionModel!.plan.instagram
             ? {
                 myPlatForms.add('Instagram Post'),
+                platformIcons.add(AssetsData.instagramIcon),
                 myPlatForms.add('Instagram Story'),
+                platformIcons.add(AssetsData.instagramIcon),
                 myPlatForms.add('Instagram Reel'),
-                platformIcons.add(AssetsData.instagramIcon),
-                platformIcons.add(AssetsData.instagramIcon),
                 platformIcons.add(AssetsData.instagramIcon),
               }
             : null;

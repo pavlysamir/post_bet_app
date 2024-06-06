@@ -55,22 +55,31 @@ class AddPostTempleteCubit extends Cubit<AddPostTempleteState> {
     'Post',
   ];
 
-  List<String> descriptionPlatformsmall = [
-    'Posts, Story, Video',
-    'Posts, Story, Video',
-    'Posts, Video',
+  List<String> descriptionPlatform4 = [
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
     'Posts, Video',
     'image',
   ];
-  final List<String> platformIcons = [
-    AssetsData.instagramIcon,
-    AssetsData.faceBookIcon,
-    AssetsData.xIcon,
-    AssetsData.linkedln,
-    AssetsData.reddit,
-    AssetsData.tiktok,
-    AssetsData.pinterest,
-    AssetsData.telegram,
+
+  List<String> descriptionPlatform7 = [
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
+    'Images, Text, Video',
+    'Images ,video',
+    'Video',
+    'Images, Video, text',
+    'Images, Video, text',
+    'image',
+    'image',
+    'image',
+    'Video',
+    'Post',
   ];
 
   createImagePost({required String image}) async {

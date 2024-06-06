@@ -172,11 +172,18 @@ class CreateTemplatePostView extends StatelessWidget {
                                         .get<CashHelperSharedPreferences>()
                                         .getData(key: ApiKey.platFormsIcons)
                                         .length ==
-                                    5
+                                    8
                                 ? AddPostTempleteCubit.get(context)
-                                    .descriptionPlatformsmall[index]
-                                : AddPostTempleteCubit.get(context)
-                                    .descriptionPlatform[index],
+                                    .descriptionPlatform4[index]
+                                : getIt
+                                            .get<CashHelperSharedPreferences>()
+                                            .getData(key: ApiKey.platFormsIcons)
+                                            .length ==
+                                        11
+                                    ? AddPostTempleteCubit.get(context)
+                                        .descriptionPlatform7[index]
+                                    : AddPostTempleteCubit.get(context)
+                                        .descriptionPlatform[index],
                           );
                         }),
                   ),
