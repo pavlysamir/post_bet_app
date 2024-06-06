@@ -161,6 +161,8 @@ class _CreatePostPlatFormItemState
                   : StatefulBuilder(
                       builder: (context, setState) {
                         return Checkbox(
+                            checkColor: Colors.white,
+                            activeColor: kPrimaryKey,
                             value: initialValue,
                             onChanged: (value) {
                               setState(() {

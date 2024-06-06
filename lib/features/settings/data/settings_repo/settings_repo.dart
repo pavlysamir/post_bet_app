@@ -222,17 +222,17 @@ class SettingsRepository {
           // Optionally, print the id to verify
           print('Saved subscription id: ${subscription.id}');
           print(mySubscriptionModel);
+          await getIt.get<CashHelperSharedPreferences>().saveData(
+              key: ApiKey.chargeId,
+              value: myListResponse.subscriptions.last.chargeId);
+          myCharger = myListResponse.subscriptions.last.chargeId;
+
+          await getIt.get<CashHelperSharedPreferences>().saveData(
+              key: ApiKey.mySubscribeId,
+              value: myListResponse.subscriptions.last.id);
+          mySubscriptionModel = subscription;
         }
       }
-      await getIt.get<CashHelperSharedPreferences>().saveData(
-          key: ApiKey.chargeId,
-          value: myListResponse.subscriptions.last.chargeId);
-      myCharger = myListResponse.subscriptions.last.chargeId;
-
-      await getIt.get<CashHelperSharedPreferences>().saveData(
-          key: ApiKey.mySubscribeId,
-          value: myListResponse.subscriptions.last.id);
-      mySubscriptionModel = myListResponse.subscriptions.last;
 
       print(myCharger);
       // Example: also save the chargeId of the first subscription in the list
