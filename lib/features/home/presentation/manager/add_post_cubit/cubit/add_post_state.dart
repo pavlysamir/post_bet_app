@@ -87,6 +87,16 @@ class UploadFaceBookReelFailure extends AddPostState {
 
 class UploadFaceBookReelLoading extends AddPostState {}
 
+class UploadYouTubeVideoSuccessfully extends AddPostState {}
+
+class UploadYouTubeVideoFailure extends AddPostState {
+  final String errMessage;
+
+  UploadYouTubeVideoFailure({required this.errMessage});
+}
+
+class UploadYouTubeVideoLoading extends AddPostState {}
+
 class UploadFaceBookImageStorySuccessfully extends AddPostState {}
 
 class RemovePostImagePickedState extends AddPostState {}
@@ -156,6 +166,16 @@ class CreateFaceBookVideoStoryFailure extends AddPostState {
 }
 
 class CreateFaceBookVideoStoryLoading extends AddPostState {}
+
+class CreateYoutubeVideoSuccessfully extends AddPostState {}
+
+class CreateYoutubeVideoFailure extends AddPostState {
+  final String errMessage;
+
+  CreateYoutubeVideoFailure({required this.errMessage});
+}
+
+class CreateYoutubeVideoLoading extends AddPostState {}
 
 class CreateFaceBookStorySuccessfully extends AddPostState {}
 

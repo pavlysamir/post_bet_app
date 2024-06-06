@@ -930,4 +930,59 @@ class PostReposatory {
       rethrow; // Re-throw for further handling if needed
     }
   }
+
+  Future<Response> createYouTubeVideoPost(
+      String postContent, String mediaUrl) async {
+    String? token =
+        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
+
+    final dio = Dio();
+    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      return client;
+    };
+    final Map<String, dynamic> data = {
+      "platform": [
+        {"platform": "Youtube", "isSelected": true}
+      ],
+      "mediaUrls": mediaUrl,
+      "youtubeOptions": {
+        "title": postContent, //required
+        // "visibility": "string", //optional
+        // "thumbNail": "string", //optional
+        // "playListId": "string", //optional
+        "tags": [""],
+        "madeForKids": true, //optional
+        "shorts": true, //optional
+        "notifySubscribers": true, //optional
+        "categoryId": 0, //optional
+        "publishAt": "string" //optional
+      }
+    };
+
+    if (token != null) {
+      dio.options.headers = <String, dynamic>{
+        'Authorization': 'Bearer $token',
+        'Content-Type': contentType,
+      };
+    }
+    final jsonData = jsonEncode(data);
+
+    int? id = getIt
+        .get<CashHelperSharedPreferences>()
+        .getData(key: ApiKey.mySubscribeId);
+    try {
+      final response = await dio.post(
+        baseUrlPosting(id),
+        data: data,
+      );
+      print(response);
+      return response;
+    } on DioError catch (error) {
+      print('Error uploading file: ${error.message}');
+      rethrow; // Re-throw for further handling if needed
+    }
+  }
 }

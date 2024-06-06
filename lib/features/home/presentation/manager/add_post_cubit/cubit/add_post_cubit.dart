@@ -429,6 +429,44 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
   }
 
+  String? videoYoutubeUrl;
+  uploadVideoYoutubeVideo() async {
+    try {
+      emit(UploadYouTubeVideoLoading());
+
+      final response = await postReposatory.uploadFile(fileVideo!.path);
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      videoYoutubeUrl = response;
+      print('لkokokokokokokokokokokokoko$videoYoutubeUrl');
+      emit(UploadYouTubeVideoSuccessfully());
+      createVideoYoutube();
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(UploadYouTubeVideoFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
+  createVideoYoutube() async {
+    try {
+      emit(CreateYoutubeVideoLoading());
+
+      final response = await postReposatory.createYouTubeVideoPost(
+        addPostController.text,
+        videoYoutubeUrl!,
+      );
+      print('llllllllllllllllllllllllllllllllllll $response');
+      emit(CreateYoutubeVideoSuccessfully());
+      return response;
+    } catch (e) {
+      print(e.toString());
+      emit(CreateYoutubeVideoFailure(errMessage: e.toString()));
+      return e.toString();
+    }
+  }
+
   String? imgStoryUrl;
   uploadImageStory() async {
     try {
@@ -801,6 +839,9 @@ class AddPostCubit extends Cubit<AddPostState> {
     }
     if (fileVideo != null && selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramVideo();
+    }
+    if (fileVideo != null && selectedItems.contains('YouTube')) {
+      await uploadVideoYoutubeVideo();
     }
     if (fileVideo != null && selectedItems.isNotEmpty) {
       await uploadVideo();
