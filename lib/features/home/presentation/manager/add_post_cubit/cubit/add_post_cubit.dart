@@ -178,7 +178,7 @@ class AddPostCubit extends Cubit<AddPostState> {
   final List<String> selectedaceInstaItems = [];
   final List<String> selectedInstaItems = [];
 
-  final List<String> selectedRestPlatForm = [];
+  final List<String> selectedYouTube = [];
 
   final Map<String, bool> checkBoxValues = {};
   final List<String> platformNames = [
@@ -840,7 +840,7 @@ class AddPostCubit extends Cubit<AddPostState> {
     if (fileVideo != null && selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramVideo();
     }
-    if (fileVideo != null && selectedItems.contains('YouTube')) {
+    if (fileVideo != null && selectedYouTube.contains('YouTube')) {
       await uploadVideoYoutubeVideo();
     }
     if (fileVideo != null && selectedItems.isNotEmpty) {

@@ -147,36 +147,72 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
                         );
                       },
                     )
-                  : StatefulBuilder(
-                      builder: (context, setState) {
-                        return Checkbox(
-                          checkColor: Colors.white,
-                          activeColor: kPrimaryKey,
-                          value: initialValue,
-                          onChanged: (value) {
-                            setState(() {
-                              initialValue = value!;
-                              if (value) {
-                                addPostCubit.selectedItems.add(
-                                    addPostCubit.platformNames[widget.indrx]);
-                                addPostCubit.checkBoxValues[addPostCubit
-                                    .platformNames[widget.indrx]] = value;
-                                print(addPostCubit.checkBoxValues);
-                                print(addPostCubit.selectedItems);
-                              } else {
-                                addPostCubit.selectedItems.remove(
-                                    addPostCubit.platformNames[widget.indrx]);
-                                print(addPostCubit.selectedItems);
-                                addPostCubit.selectedItems.remove(
+                  : widget.paltformName == 'YouTube'
+                      ? StatefulBuilder(
+                          builder: (context, setState) {
+                            return Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: kPrimaryKey,
+                              value: initialValue,
+                              onChanged: (value) {
+                                setState(() {
+                                  initialValue = value!;
+                                  if (value) {
+                                    addPostCubit.selectedYouTube.add(
+                                        addPostCubit
+                                            .platformNames[widget.indrx]);
                                     addPostCubit.checkBoxValues[addPostCubit
-                                        .platformNames[widget.indrx]] = value);
-                                print(addPostCubit.selectedItems);
-                              }
-                            });
+                                        .platformNames[widget.indrx]] = value;
+                                    print(addPostCubit.checkBoxValues);
+                                    print(addPostCubit.selectedItems);
+                                  } else {
+                                    addPostCubit.selectedItems.remove(
+                                        addPostCubit
+                                            .platformNames[widget.indrx]);
+                                    print(addPostCubit.selectedItems);
+                                    addPostCubit.selectedItems.remove(
+                                        addPostCubit.checkBoxValues[addPostCubit
+                                                .platformNames[widget.indrx]] =
+                                            value);
+                                    print(addPostCubit.selectedItems);
+                                  }
+                                });
+                              },
+                            );
                           },
-                        );
-                      },
-                    ),
+                        )
+                      : StatefulBuilder(
+                          builder: (context, setState) {
+                            return Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: kPrimaryKey,
+                              value: initialValue,
+                              onChanged: (value) {
+                                setState(() {
+                                  initialValue = value!;
+                                  if (value) {
+                                    addPostCubit.selectedItems.add(addPostCubit
+                                        .platformNames[widget.indrx]);
+                                    addPostCubit.checkBoxValues[addPostCubit
+                                        .platformNames[widget.indrx]] = value;
+                                    print(addPostCubit.checkBoxValues);
+                                    print(addPostCubit.selectedItems);
+                                  } else {
+                                    addPostCubit.selectedItems.remove(
+                                        addPostCubit
+                                            .platformNames[widget.indrx]);
+                                    print(addPostCubit.selectedItems);
+                                    addPostCubit.selectedItems.remove(
+                                        addPostCubit.checkBoxValues[addPostCubit
+                                                .platformNames[widget.indrx]] =
+                                            value);
+                                    print(addPostCubit.selectedItems);
+                                  }
+                                });
+                              },
+                            );
+                          },
+                        ),
         ],
       ),
       leading: Image.asset(

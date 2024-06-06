@@ -944,22 +944,24 @@ class PostReposatory {
       return client;
     };
     final Map<String, dynamic> data = {
+      "post": postContent,
       "platform": [
         {"platform": "Youtube", "isSelected": true}
       ],
-      "mediaUrls": mediaUrl,
-      "youtubeOptions": {
+      "mediaUrls": [mediaUrl],
+      "youTubeOptions": {
         "title": postContent, //required
-        // "visibility": "string", //optional
+        "visibility": "public", //optional
         // "thumbNail": "string", //optional
         // "playListId": "string", //optional
-        "tags": [""],
-        "madeForKids": true, //optional
-        "shorts": true, //optional
-        "notifySubscribers": true, //optional
-        "categoryId": 0, //optional
-        "publishAt": "string" //optional
-      }
+        //"tags": [""],
+        "madeForKids": false,
+        "shorts": false, //optional
+        "notifySubscribers": true,
+        // "categoryId": 0, //optional
+        // "publishAt": "" //optional
+      },
+      "isVideo": true
     };
 
     if (token != null) {

@@ -71,6 +71,11 @@ class CreatePostView extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success Share Instagram Story'),
           ));
+        }
+        if (state is CreateYoutubeVideoSuccessfully) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text('success Share YouTubw Video'),
+          ));
         } else if (state is CreatePostFailure ||
             state is CreateVideoPostFailure ||
             state is UploadFaceBookImageStoryFailure ||
@@ -81,7 +86,8 @@ class CreatePostView extends StatelessWidget {
             state is CreateFaceBookVideoPostFailure ||
             state is UploadInstagramImageStoryFailure ||
             state is CreateInstagramReelFailure ||
-            state is CreateInstagramStoryFailure) {
+            state is CreateInstagramStoryFailure ||
+            state is CreateYoutubeVideoFailure) {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text('Failure')));
         }
