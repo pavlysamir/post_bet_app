@@ -97,7 +97,7 @@ class AuthRepository {
       mySubscriptionModel = subscriptions.last;
       print(mySubscriptionModel);
 
-      return Right(mySubscriptionModel!);
+      return Right(mySubscriptionModel);
     } on ServerException catch (e) {
       return Left(e.errModel.errorMessage!);
     }

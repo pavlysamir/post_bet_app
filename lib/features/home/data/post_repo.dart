@@ -17,16 +17,11 @@ class PostReposatory {
   String baseUrlUbloadImg = 'https://app.ayrshare.com/api/media/upload';
 
   String baseUrlUbloadVideo = ' https://app.ayrshare.com/api/media/uploadUrl';
-  // String profileKey =
-  //     getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.profileKey);
 
   String? id = getIt
       .get<CashHelperSharedPreferences>()
       .getData(key: ApiKey.mySubscribeId);
 
-  // static String baseUrlPosting =
-  //     'https://post-bet.onrender.com/Posting/post/$id';
-  // 'https://post-bet.onrender.com/Posting/post';
   String baseUrlPosting(id) {
     return 'https://postbet.ae/Posting/post/$id';
   }
@@ -80,7 +75,7 @@ class PostReposatory {
     print(formData);
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -104,56 +99,6 @@ class PostReposatory {
     }
   }
 
-  // String? accessUrl;
-  // Future<Either<String, String>> getUploadUrl(String fileName) async {
-  //   try {
-  //     File videoFile = File(fileName);
-  //     print(fileName);
-  //     final dio = Dio();
-  //     dio.options.headers = <String, dynamic>{
-  //       'Authorization': authorizationHeader,
-  //     };
-  //     final response = await dio.get(
-  //       'https://app.ayrshare.com/api/media/uploadUrl',
-  //       queryParameters: {
-  //         'fileName': Uri.encodeComponent(fileName),
-  //         'contentType': 'video/mp4',
-  //       },
-  //     );
-  //     accessUrl = response.data['accessUrl'].toString();
-  //     final uploadUrl = response.data['uploadUrl'] as String;
-
-  //     print('yaaaaaaaaaaaaaarb $accessUrl');
-  //     print('yaaaaaaaaaaaaaarb $uploadUrl');
-
-  //     return Right(accessUrl!);
-  //   } catch (e) {
-  //     return Left(e.toString());
-  //   }
-  // }
-
-  // bool isUrlExist = false;
-  // Future<Either<String, bool>> verifyUrl() async {
-  //   try {
-  //     final dio = Dio();
-  //     dio.options.headers = <String, dynamic>{
-  //       'Authorization': authorizationHeader,
-  //       'Content-Type': 'application/json',
-  //     };
-  //     final response = await dio.post(
-  //       'https://app.ayrshare.com/api/media/urlExists',
-  //       data: {'mediaUrl': accessUrl!},
-  //     );
-  //     isUrlExist = response.data['status'];
-
-  //     print('yaaaaaaaaaaaaaarb ${isUrlExist.toString()}');
-  //     return Right(isUrlExist);
-  //   } catch (e) {
-  //     print(e.toString());
-  //     return Left(e.toString());
-  //   }
-  // }
-
   Future<Response> createPost(String postContent,
       List<String> selectedPlatforms, List<String> mediaUrl) async {
     print(selectedPlatforms
@@ -166,7 +111,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -187,7 +132,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -219,13 +163,13 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
       return client;
     };
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -245,7 +189,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -277,7 +220,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -297,7 +240,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -331,7 +273,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -350,7 +292,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -384,7 +325,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -403,7 +344,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -437,7 +377,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -456,7 +396,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -488,7 +427,7 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -509,7 +448,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -537,7 +475,7 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -558,7 +496,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -586,7 +523,7 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -607,7 +544,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -633,7 +569,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -655,8 +591,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -685,7 +619,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -708,7 +642,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -737,7 +670,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -758,7 +691,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -787,7 +719,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -809,7 +741,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -838,7 +769,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -859,7 +790,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -910,7 +840,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()
@@ -970,7 +899,6 @@ class PostReposatory {
         'Content-Type': contentType,
       };
     }
-    final jsonData = jsonEncode(data);
 
     int? id = getIt
         .get<CashHelperSharedPreferences>()

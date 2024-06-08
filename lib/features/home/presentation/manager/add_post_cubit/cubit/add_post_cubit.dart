@@ -278,9 +278,6 @@ class AddPostCubit extends Cubit<AddPostState> {
       Future.wait(upload).then((value) {
         createInstagramImagePost();
       });
-      // final response = await postReposatory.uploadFile(filePath);
-      // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
-      // imgUrl = response;
     } catch (e) {
       print(e.toString());
       emit(UploadImgFailure(errMessage: e.toString()));
@@ -453,10 +450,16 @@ class AddPostCubit extends Cubit<AddPostState> {
     try {
       emit(CreateYoutubeVideoLoading());
 
+      // Check if addPostController.text is null or empty
+      final postText = addPostController.text?.isEmpty ?? true
+          ? "."
+          : addPostController.text;
+
       final response = await postReposatory.createYouTubeVideoPost(
-        addPostController.text,
+        postText,
         videoYoutubeUrl!,
       );
+
       print('llllllllllllllllllllllllllllllllllll $response');
       emit(CreateYoutubeVideoSuccessfully());
       return response;

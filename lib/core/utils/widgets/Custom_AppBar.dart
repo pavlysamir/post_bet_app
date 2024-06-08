@@ -105,23 +105,4 @@ class CustomAppBar extends StatelessWidget {
       },
     );
   }
-
-  // ImageProvider _buildImageProvider() {
-  //   if (profileImage is Uint8List) {
-  //     // If 'profilePic' is a Uint8List, use MemoryImage
-  //     return MemoryImage(profilePic as Uint8List);
-  //   } else if (profilePic is String) {
-  //     // If 'profilePic' is a String (file path or URL), check if it's a valid file path
-  //     if (Uri.tryParse(profilePic)?.isAbsolute == true) {
-  //       // If it's an absolute URL, use NetworkImage
-  //       return NetworkImage(profilePic as String);
-  //     } else {
-  //       // Otherwise, assume it's a file path and use FileImage
-  //       return FileImage(File(profilePic as String));
-  //     }
-  //   } else {
-  //     // Handle other cases or throw an error
-  //     throw ArgumentError('Invalid file type');
-  //   }
-  // }
 }

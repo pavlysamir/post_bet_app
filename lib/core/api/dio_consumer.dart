@@ -12,7 +12,7 @@ class DioConsumer extends ApiConsumer {
 
   DioConsumer({required this.dio}) {
     dio.options.baseUrl = EndPoint.baseUrl;
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;

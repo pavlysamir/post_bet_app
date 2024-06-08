@@ -18,7 +18,6 @@ import 'package:post_bet/features/profile/presentation/view/edit%20profile%20scr
 import 'package:post_bet/features/settings/presentation/views/about_us_view.dart';
 import 'package:post_bet/features/settings/presentation/views/change_password_view.dart';
 import 'package:post_bet/features/settings/presentation/views/cobons_view.dart';
-import 'package:post_bet/features/settings/presentation/views/enter_promocode_view.dart';
 import 'package:post_bet/features/settings/presentation/views/my_subscription_view.dart';
 import 'package:post_bet/features/settings/presentation/views/private_chat_view.dart';
 import 'package:post_bet/features/settings/presentation/views/subscription_view.dart';

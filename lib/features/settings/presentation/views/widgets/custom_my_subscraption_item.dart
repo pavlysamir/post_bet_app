@@ -73,18 +73,6 @@ class MySubscriptionPlansCntainer extends StatelessWidget {
               children: widgets,
             ),
             SizedBox(height: 20.h),
-
-            // CustomButtonSmall(
-            //     width: 150.w,
-            //     function: () {
-            //       ScaffoldMessenger.of(context).showSnackBar(
-            //         const SnackBar(
-            //           content: Text('Done'),
-            //         ),
-            //       );
-            //     },
-            //     text: 'confirm plan',
-            //     borderColor: kPrimaryKey),
           ],
         ),
       ),

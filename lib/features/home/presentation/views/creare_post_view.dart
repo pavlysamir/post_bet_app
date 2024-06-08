@@ -142,11 +142,6 @@ class CreatePostView extends StatelessWidget {
                           }
 
                           title = S.of(context).loading;
-                          // Future.delayed(const Duration(seconds: 17))
-                          //     .then((value) {
-                          //   customGoAndDeleteNavigate(
-                          //       context: context, path: AppRouter.kHomeLayOut);
-                          // });
 
                           await AddPostCubit.get(context)
                               .handleAction()
