@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -818,7 +817,7 @@ class PostReposatory {
     // If token is not null, add it to the request headers as a Bearer token
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -866,7 +865,7 @@ class PostReposatory {
         getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.token);
 
     final dio = Dio();
-    (dio!.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+    (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
