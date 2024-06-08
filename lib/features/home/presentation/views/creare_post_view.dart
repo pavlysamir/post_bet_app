@@ -24,12 +24,6 @@ class CreatePostView extends StatelessWidget {
   Widget build(BuildContext context) {
     String title = S.of(context).share;
 
-    final addPostCubit = AddPostCubit.get(context);
-    var myyPlatForms =
-        getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.platForms);
-    var platformIconss = getIt
-        .get<CashHelperSharedPreferences>()
-        .getData(key: ApiKey.platFormsIcons);
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
         if (state is CreatePostSuccessfully) {
