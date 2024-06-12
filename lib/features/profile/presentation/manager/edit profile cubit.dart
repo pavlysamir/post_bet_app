@@ -57,20 +57,7 @@ class EditProfileCubit extends Cubit<EditProfileState> {
       emit(FailPickImage());
     }
   }
-  // Future<void> pickCameraImage() async {
-  //   final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-  //   if (image != null) {
-  //     final bytes = await File(image.path).readAsBytes();
-  //     base64Image = base64Encode(bytes);
-  //     print('pppppppppppppppppppppppppppppppppppppppppppppp$base64Image');
-  //     file = File(image.path);
-  //     print(file);
-  //     emit(SuccessfulPickImage());
-  //   } else {
-  //     emit(FailPickImage());
-  //     return;
-  //   }
-  // }
+ 
 
   updateUserData() async {
     emit(UpdateUserDataLoading());

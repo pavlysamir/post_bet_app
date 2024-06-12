@@ -28,7 +28,8 @@ class PlatFormsRepositery {
       'https://profile.ayrshare.com?domain=id-c9o06&jwt=https://profile.ayrshare.com?domain=id-c9o06&jwt=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.\neyJhcGlLZXkiOnsiaXYiOiJlZGUzMGE3MDM1MDcyOWU3YjVkNmQzZDliNTlhM2FjMSIsImNvbnRlbnQiOiIzZDA2NWViZjAzNmU2MGZiZWY0ZmQ4YTYyNWEwYzcxZTc5ZWE4ZGFlNTczMWQwYTUwZjFiZjA5YSJ9LCJwcm9maWxlS2V5Ijp7Iml2IjoiZWRlMzBhNzAzNTA3MjllN2I1ZDZkM2Q5YjU5YTNhYzEiLCJjb250ZW50IjoiN2QwNDRhYjU1MzQ0NDlkYmZkNGVmN2E5M2E5YTlkMWMyOGM3OWRmMDRhMGZjYmM1MWMwYWMxOWEifSwiaWF0IjoxNzE1ODk3NTk1LCJleHAiOjE3MTU4OTc4OTUsImF1ZCI6Imh0dHBzOi8vcHJvZmlsZS5heXJzaGFyZS5jb20iLCJpc3MiOiJpZC1jOW8wNiIsInN1YiI6InN1cHBvcnRAYXlyc2hhcmUuY29tIn0.\n';
   // getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.email);.com
   static const num expiresIn = 2600;
-  static const String redirect = 'https://www.google.com/';
+  static const String redirect =
+      'https://postbet.ae/Posting/platformConfirmation/';
 
   Future<Either<String, String>> linkAccount() async {
     final Map<String, dynamic> data = {

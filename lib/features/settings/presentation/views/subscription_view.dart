@@ -48,7 +48,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
             await SettingsCubit.get(context).myPlan();
           });
           customGoAndDeleteNavigate(
-              context: context, path: AppRouter.kHomeLayOut);
+              context: context, path: AppRouter.kMySubscription);
           await SettingsCubit.get(context).mySubscription();
         } else if (state is MySubscraptionSuccess) {
           await SettingsCubit.get(context).confirmSubscription().then((value) {
