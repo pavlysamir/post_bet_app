@@ -1,4 +1,4 @@
-package com.example.post_bet
+package com.postBet.post_bet
 
 import io.flutter.embedding.android.FlutterActivity
 
