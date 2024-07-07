@@ -4,7 +4,6 @@
     "onBoardingSlider2": "منصات مختلفة",
     "onBoardingSlider3": "ALO مع بوستبيت",
     "onBoardingSlider4":"إنشاء حساب",
-
     "onBoardingSlider1subTitle1": "شارك المنشورات والصور ومقاطع الفيديو بنقرة واحدة فقط",
     "onBoardingSlider2subTitle1": "نقدم منصات مثل الفيسبوك وانستجرام وإكس وتيك توك",
     "onBoardingSlider3subTitle1": "بوستبيت يجعل من السهل عليك إدارة ومشاركة منشوراتك",
@@ -15,7 +14,7 @@
     "next": "التالي",
     "skip": "تخطى",
     "welcome": "مرحبًا بك في",
-    "login": "تسجيل الدخول",
+    "login": "اهلاً بعودتك",
     "register": "تسجيل",
     "loginEmail": "البريد الإلكتروني",
     "loginPassword": "كلمة المرور",
