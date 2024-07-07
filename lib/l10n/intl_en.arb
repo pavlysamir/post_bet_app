@@ -222,7 +222,9 @@
     "pleaseWrite":"please write or Select something",
     "ok":"ok",
     "gotoSubscripe":"Go to Subscripe Or Your Subscription",
-    "expireOn":"Expires on"
+    "expireOn":"Expires on",
+    "firstScreenTitle":"Welcome to Postbet",
+    "firstScreenDescription":"Share posts, photos and videos with just one click."
 
  
 

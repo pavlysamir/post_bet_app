@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:post_bet/constants.dart';
 import '../../../core/utils/styles.dart';
 import '../data/models/onBoeding_model.dart';
 
@@ -20,7 +21,10 @@ class BuildBoardingItem extends StatelessWidget {
           height: 10,
         ),
         Text('${model.title}',
-            style: Theme.of(context).textTheme.displayLarge,
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge!
+                .copyWith(color: kPrimaryKey),
             textAlign: TextAlign.center),
         const SizedBox(
           height: 20,

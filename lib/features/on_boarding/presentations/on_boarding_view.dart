@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
@@ -58,6 +59,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //  Image.asset(AssetsData.newDesignLogoName),
             Expanded(
               child: PageView.builder(
                 itemBuilder: (context, index) =>
@@ -83,35 +85,30 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ),
             ),
             const SizedBox(
-              height: 40,
+              height: 1,
             ),
             Row(
               children: [
                 SmoothPageIndicator(
                   controller: BoardController,
                   count: modelBoarding.length,
-                  effect: const ExpandingDotsEffect(
+                  effect: ExpandingDotsEffect(
                       activeDotColor: kPrimaryKey,
                       dotColor: Colors.grey,
-                      dotHeight: 10,
-                      expansionFactor: 4,
+                      dotHeight: 6.h,
+                      expansionFactor: 3,
                       dotWidth: 10,
                       spacing: 5),
                 ),
                 const Spacer(),
                 CustomButtonSmall(
-                  borderColor: kPrimaryKey,
-                  function: () {
-                    if (widget.isLast == true) {
-                      submit();
-                    } else {
-                      BoardController.nextPage(
-                          duration: const Duration(milliseconds: 750),
-                          curve: Curves.fastLinearToSlowEaseIn);
-                    }
-                  },
-                  text: S.of(context).next,
-                ),
+                    width: 100,
+                    function: () {
+                      customGoAndDeleteNavigate(
+                          context: context, path: AppRouter.kWelcomeView);
+                    },
+                    text: S.of(context).next,
+                    borderColor: kPrimaryKey)
               ],
             ),
             const SizedBox(

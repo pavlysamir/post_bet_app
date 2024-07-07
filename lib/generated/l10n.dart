@@ -2199,6 +2199,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Welcome to Postbet`
+  String get firstScreenTitle {
+    return Intl.message(
+      'Welcome to Postbet',
+      name: 'firstScreenTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// Share posts, photos and videos with just one click.
+  String get firstScreenDescription {
+    return Intl.message(
+      'Share posts, photos and videos with just one click.',
+      name: 'firstScreenDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

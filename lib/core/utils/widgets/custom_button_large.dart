@@ -35,7 +35,8 @@ class CustomButtonLarge extends StatelessWidget {
             children: [
               TextSpan(
                   text: text,
-                  style: const TextStyle(overflow: TextOverflow.ellipsis)),
+                  style: TextStyle(
+                      overflow: TextOverflow.ellipsis, color: textColor)),
               WidgetSpan(
                   child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 0.0),

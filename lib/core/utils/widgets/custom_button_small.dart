@@ -10,7 +10,7 @@ class CustomButtonSmall extends StatelessWidget {
       required this.text,
       this.color = kPrimaryKey,
       this.textColortcolor = Colors.white,
-      this.width = 78,
+      this.width = 180,
       required this.borderColor});
   final Function() function;
   final String text;
@@ -24,7 +24,7 @@ class CustomButtonSmall extends StatelessWidget {
     return TextButton(
         onPressed: function,
         child: Container(
-          height: 40.h,
+          height: 50.h,
           width: width.w,
           decoration: BoxDecoration(
             border: Border.all(color: borderColor),

@@ -1,12 +1,17 @@
 class AssetsData {
+  static const newDesignLogo = 'assets/images/newDesign.png';
+  static const newDesignLogoName = 'assets/images/newLogoName.png';
+  static const loginScreen_1 = 'assets/images/loginScreen_1.jpg';
+  static const loginScreen_2 = 'assets/images/LoginScreen_2.jpg';
+
   static const loginLogo = 'assets/images/logo_for_login.png';
   static const emailIcon = 'assets/images/email_icon.png';
   static const googleIcon = 'assets/images/google_icon.png';
   static const splash = 'assets/images/Splash_postBet.png';
-  static const onBoarding1 = 'assets/images/new_onBoaeding_1.png';
-  static const onBoarding2 = 'assets/images/new_onBoarding_2.png';
-  static const onBoarding3 = 'assets/images/new_onBoarding_2.png';
-  static const onBoarding4 = 'assets/images/on_Boarding_4.png';
+  static const onBoarding1 = 'assets/images/onBoarding_1.png';
+  static const onBoarding2 = 'assets/images/onBoarding_2.png';
+  static const onBoarding3 = 'assets/images/onBoarding_3.png';
+  static const onBoarding4 = 'assets/images/onBoarding_4.png';
 
   static const postBetName = 'assets/images/logo.png';
   static const penIcon = 'assets/images/pen_icon.png';

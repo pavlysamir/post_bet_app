@@ -22,8 +22,8 @@ class CustomAuthButton extends StatelessWidget {
     return GestureDetector(
       onTap: function,
       child: Container(
-          height: 40.h,
-          width: double.infinity,
+          height: 55.h,
+          width: 200.w,
           decoration: BoxDecoration(
             border: Border.all(color: kPrimaryKey),
             color: color,

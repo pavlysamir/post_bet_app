@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
@@ -59,136 +60,146 @@ class _LoginScreenState extends State<LoginScreen> {
           key: LoginCubit.get(context)!.formKey,
           child: Center(
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      S.of(context).login,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(color: kPrimaryKey),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Text(S.of(context).welcomeBack,
-                        style: Styles.textStyle14Grey),
-                    SizedBox(height: 30.h),
-                    Text(
-                      S.of(context).loginEmail,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomFormField(
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: kPrimaryKey,
-                        ),
-                        textInputType: TextInputType.emailAddress,
-                        hintText: S.of(context).loginEmail,
-                        controller: LoginCubit.get(context)!.emailController,
-                        validationMassage: (value) {
-                          if (value.isEmpty) {
-                            return S.of(context).enterCode;
-                          }
-                        }),
-                    SizedBox(height: 30.h),
-                    Text(
-                      S.of(context).password,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomFormField(
-                      isEyeTrue: LoginCubit.get(context)!.ifPasswordVisible,
-                      prefixIcon: const Icon(
-                        Icons.lock,
-                        color: kPrimaryKey,
-                      ),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          LoginCubit.get(context)!.isVisiblePasswordEye();
-                        },
-                        icon: Icon(LoginCubit.get(context)!.iconData),
-                      ),
-                      textInputType: TextInputType.visiblePassword,
-                      hintText: '*************',
-                      controller: LoginCubit.get(context)!.passwordController,
-                      validationMassage: (value) {
-                        if (value.isEmpty) {
-                          return 'please enter your password';
-                        }
-                      },
-                    ),
-                    SizedBox(height: 2.h),
-                    CustomTextButtonForgotPassword(function: () {
-                      customJustGoNavigate(
-                          context: context, path: AppRouter.kForgotPassword);
-                    }),
-                    state is LoginLoading
-                        ? const Center(
-                            child: CircularProgressIndicator(
-                            color: kPrimaryKey,
-                          ))
-                        : CustomButtonLarge(
-                            text: S.of(context).loginButton,
-                            color: kPrimaryKey,
-                            textColor: Colors.white,
-                            function: () {
-                              if (LoginCubit.get(context)!
-                                  .formKey
-                                  .currentState!
-                                  .validate()) {
-                                LoginCubit.get(context)!.signIn();
-                              }
-                            }),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Center(
-                      child: GestureDetector(
-                        onTap: () {
-                          customGoAndDeleteNavigate(
-                              context: context, path: AppRouter.kRegistretion);
-                        },
-                        child: Text(S.of(context).dontHaveAccount,
-                            style: Styles.textStyle12Orange),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 40.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Image.asset(AssetsData.loginScreen_2),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          S.of(context).agreeTerms,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
+                          S.of(context).login,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(color: kPrimaryKey),
                         ),
                         const SizedBox(
-                          width: 1,
+                          height: 12,
                         ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) {
-                              return TermsAndConditionsScreen();
-                            }));
+                        Text(S.of(context).welcomeBack,
+                            style: Styles.textStyle14Grey),
+                        SizedBox(height: 30.h),
+                        Text(
+                          S.of(context).loginEmail,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CustomFormField(
+                            prefixIcon: const Icon(
+                              Icons.email_outlined,
+                              color: kPrimaryKey,
+                            ),
+                            textInputType: TextInputType.emailAddress,
+                            hintText: S.of(context).loginEmail,
+                            controller:
+                                LoginCubit.get(context)!.emailController,
+                            validationMassage: (value) {
+                              if (value.isEmpty) {
+                                return S.of(context).enterCode;
+                              }
+                            }),
+                        SizedBox(height: 30.h),
+                        Text(
+                          S.of(context).password,
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        CustomFormField(
+                          isEyeTrue: LoginCubit.get(context)!.ifPasswordVisible,
+                          prefixIcon: const Icon(
+                            Icons.lock,
+                            color: kPrimaryKey,
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {
+                              LoginCubit.get(context)!.isVisiblePasswordEye();
+                            },
+                            icon: Icon(LoginCubit.get(context)!.iconData),
+                          ),
+                          textInputType: TextInputType.visiblePassword,
+                          hintText: '*************',
+                          controller:
+                              LoginCubit.get(context)!.passwordController,
+                          validationMassage: (value) {
+                            if (value.isEmpty) {
+                              return 'please enter your password';
+                            }
                           },
-                          child: Text(S.of(context).termsAndConditions,
-                              style: Styles.textStyle14Orange),
+                        ),
+                        SizedBox(height: 2.h),
+                        CustomTextButtonForgotPassword(function: () {
+                          customJustGoNavigate(
+                              context: context,
+                              path: AppRouter.kForgotPassword);
+                        }),
+                        state is LoginLoading
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                color: kPrimaryKey,
+                              ))
+                            : CustomButtonLarge(
+                                text: S.of(context).loginButton,
+                                color: kPrimaryKey,
+                                textColor: Colors.white,
+                                function: () {
+                                  if (LoginCubit.get(context)!
+                                      .formKey
+                                      .currentState!
+                                      .validate()) {
+                                    LoginCubit.get(context)!.signIn();
+                                  }
+                                }),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              customGoAndDeleteNavigate(
+                                  context: context,
+                                  path: AppRouter.kRegistretion);
+                            },
+                            child: Text(S.of(context).dontHaveAccount,
+                                style: Styles.textStyle12Orange),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 40.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              S.of(context).agreeTerms,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                            const SizedBox(
+                              width: 1,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(context,
+                                    MaterialPageRoute(builder: (context) {
+                                  return TermsAndConditionsScreen();
+                                }));
+                              },
+                              child: Text(S.of(context).termsAndConditions,
+                                  style: Styles.textStyle14Orange),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

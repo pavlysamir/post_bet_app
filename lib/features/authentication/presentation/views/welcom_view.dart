@@ -15,74 +15,70 @@ class WelcomScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 76.h,
-              ),
-              Image.asset(AssetsData.loginLogo),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    S.of(context).welcome,
-                    style: Theme.of(context).textTheme.displayLarge,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'POSTBET',
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(color: kPrimaryKey),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                S.of(context).letsSatrt,
-                style: Styles.textStyle14Grey,
-              ),
-              SizedBox(
-                height: 25.h,
-              ),
-              CustomAuthButton(
-                color: kPrimaryKey,
-                image: AssetsData.googleIcon,
-                text: S.of(context).welcomTextButton1,
-                colorTxt: Colors.white,
-                function: () {
-                  customGoAndDeleteNavigate(
-                      context: context, path: AppRouter.kRegistretion);
-                },
-              ),
-              SizedBox(
-                height: 18.h,
-              ),
-              CustomAuthButton(
-                colorTxt: kPrimaryKey,
-                color: Colors.white,
-                image: AssetsData.emailIcon,
-                text: S.of(context).welcomTextButton2,
-                function: () {
-                  customGoAndDeleteNavigate(
-                      context: context, path: AppRouter.kLogin);
-                },
-              ),
-              SizedBox(
-                height: 26.h,
-              ),
-            ],
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      S.of(context).welcome,
+                      style: Theme.of(context).textTheme.displayLarge,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'POSTBET',
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge!
+                          .copyWith(color: kPrimaryKey),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  S.of(context).letsSatrt,
+                  style: Styles.textStyle14Grey,
+                ),
+                SizedBox(
+                  height: 82.h,
+                ),
+                CustomAuthButton(
+                  color: kPrimaryKey,
+                  image: AssetsData.googleIcon,
+                  text: 'انشاء حساب',
+                  colorTxt: Colors.white,
+                  function: () {
+                    customGoAndDeleteNavigate(
+                        context: context, path: AppRouter.kRegistretion);
+                  },
+                ),
+                SizedBox(
+                  height: 18.h,
+                ),
+                CustomAuthButton(
+                  colorTxt: kPrimaryKey,
+                  color: Colors.white,
+                  image: AssetsData.emailIcon,
+                  text: S.of(context).welcomTextButton2,
+                  function: () {
+                    customGoAndDeleteNavigate(
+                        context: context, path: AppRouter.kLogin);
+                  },
+                ),
+                SizedBox(
+                  height: 26.h,
+                ),
+              ],
+            ),
           ),
         ),
       ),
