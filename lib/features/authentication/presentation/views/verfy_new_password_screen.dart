@@ -10,7 +10,6 @@ import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -51,72 +50,69 @@ class _LoginScreenState extends State<VerifyNewPasswordEmailScreen> {
           return Scaffold(
               body: Form(
             key: LoginCubit.get(context)!.formVerifyForgetOtpKey,
-            child: Center(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppLocalizations.of(context)!.verifyEmail,
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayLarge!
-                            .copyWith(color: kPrimaryKey),
-                      ),
-                      const SizedBox(
-                        height: 12,
-                      ),
-                      Text(
-                        AppLocalizations.of(context)!.enterCode,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      SizedBox(height: 30.h),
-                      Text(
-                        AppLocalizations.of(context)!.code,
-                        style: Styles.textStyle14Black,
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      CustomFormField(
-                          prefixIcon: const Icon(
-                            Icons.email_outlined,
-                            color: kPrimaryKey,
-                          ),
-                          textInputType: TextInputType.emailAddress,
-                          hintText: 'xxxxxxx',
-                          controller: LoginCubit.get(context)!
-                              .verfyNewPasswordOtpController,
-                          validationMassage: (value) {
-                            if (value.isEmpty) {
-                              return 'please enter your code';
-                            }
-                          }),
-                      SizedBox(height: 36.h),
-                      state is VerifyForgetPasswordLoading
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                                color: kPrimaryKey,
-                              ),
-                            )
-                          : CustomButtonLarge(
-                              text: AppLocalizations.of(context)!.submet,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.verifyEmail,
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge!
+                          .copyWith(color: kPrimaryKey),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.enterCode,
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    SizedBox(height: 30.h),
+                    Text(
+                      AppLocalizations.of(context)!.code,
+                      style: Styles.textStyle14Black,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    CustomFormField(
+                        prefixIcon: const Icon(
+                          Icons.email_outlined,
+                          color: kPrimaryKey,
+                        ),
+                        textInputType: TextInputType.emailAddress,
+                        hintText: 'xxxxxxx',
+                        controller: LoginCubit.get(context)!
+                            .verfyNewPasswordOtpController,
+                        validationMassage: (value) {
+                          if (value.isEmpty) {
+                            return 'please enter your code';
+                          }
+                        }),
+                    SizedBox(height: 36.h),
+                    state is VerifyForgetPasswordLoading
+                        ? const Center(
+                            child: CircularProgressIndicator(
                               color: kPrimaryKey,
-                              textColor: Colors.white,
-                              function: () {
-                                if (LoginCubit.get(context)!
-                                    .formVerifyForgetOtpKey
-                                    .currentState!
-                                    .validate()) {
-                                  LoginCubit.get(context)!
-                                      .verfyNewPasswordOtp();
-                                }
-                              })
-                    ],
-                  ),
+                            ),
+                          )
+                        : CustomButtonLarge(
+                            text: AppLocalizations.of(context)!.submet,
+                            color: kPrimaryKey,
+                            textColor: Colors.white,
+                            function: () {
+                              if (LoginCubit.get(context)!
+                                  .formVerifyForgetOtpKey
+                                  .currentState!
+                                  .validate()) {
+                                LoginCubit.get(context)!.verfyNewPasswordOtp();
+                              }
+                            })
+                  ],
                 ),
               ),
             ),

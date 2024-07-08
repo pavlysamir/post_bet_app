@@ -33,4 +33,5 @@ class AssetsData {
 
   static const googleBusiness = 'assets/images/googleBusiness.png';
   static const postBetImage = 'assets/images/postbet_logo.png';
+  static const forgetPasswordImage = 'assets/images/otpImage.png';
 }

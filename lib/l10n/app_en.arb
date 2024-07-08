@@ -45,7 +45,7 @@
   "loginButton":"Login",
   "registerName":"Name",
   "registerEmail":"Email",
-  "registerPassword":"Password",
+  "registerPassword":"Forget Password",
   "registerButton":"Register",
   "forgotPassword":"Forgot Password?",
   "name":"Name",

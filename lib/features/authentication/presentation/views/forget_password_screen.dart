@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:post_bet/features/authentication/presentation/views/widgets/custom_login_clip_wave.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -41,70 +43,84 @@ class _LoginScreenState extends State<ForgetPasswordScreen> {
       },
       builder: (context, state) {
         return Scaffold(
-            body: Form(
-          key: LoginCubit.get(context)!.formVerifyEmailForgetOtpKey,
-          child: Center(
+            body: SafeArea(
+          child: Form(
+            key: LoginCubit.get(context)!.formVerifyEmailForgetOtpKey,
             child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.registerPassword,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(color: kPrimaryKey),
-                    ),
-                    const SizedBox(
-                      height: 12,
-                    ),
-                    Text(AppLocalizations.of(context)!.enterEmail,
-                        style: Styles.textStyle14Grey),
-                    SizedBox(height: 30.h),
-                    Text(
-                      AppLocalizations.of(context)!.loginEmail,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    CustomFormField(
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: kPrimaryKey,
+              child: Stack(
+                children: [
+                  CustomPaint(
+                    size: const Size(430, 194),
+                    painter: RPSCustomPainter(),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 70.h,
                         ),
-                        textInputType: TextInputType.emailAddress,
-                        hintText: AppLocalizations.of(context)!.loginEmail,
-                        controller: LoginCubit.get(context)!
-                            .emailForForgetPasswordController,
-                        validationMassage: (value) {
-                          if (value.isEmpty) {
-                            return 'please enter your email';
-                          }
-                        }),
-                    SizedBox(height: 36.h),
-                    state is ForgetPasswordLoading
-                        ? const Center(
-                            child: CircularProgressIndicator(
-                            color: kPrimaryKey,
-                          ))
-                        : CustomButtonLarge(
-                            text: AppLocalizations.of(context)!.resetPassword,
-                            color: kPrimaryKey,
-                            textColor: Colors.white,
-                            function: () {
-                              if (LoginCubit.get(context)!
-                                  .formVerifyEmailForgetOtpKey
-                                  .currentState!
-                                  .validate()) {
-                                LoginCubit.get(context)!.forgetPassword();
+                        Text(
+                          AppLocalizations.of(context)!.registerPassword,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(color: kPrimaryKey),
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        Text(AppLocalizations.of(context)!.enterEmail,
+                            style: Styles.textStyle14Grey),
+                        SizedBox(height: 30.h),
+                        Center(
+                          child: Image.asset(
+                            AssetsData.forgetPasswordImage,
+                            height: 200.h,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50.h,
+                        ),
+                        CustomFormField(
+                            prefixIcon: const Icon(
+                              Icons.email_outlined,
+                              color: kPrimaryKey,
+                            ),
+                            textInputType: TextInputType.emailAddress,
+                            hintText: AppLocalizations.of(context)!.loginEmail,
+                            controller: LoginCubit.get(context)!
+                                .emailForForgetPasswordController,
+                            validationMassage: (value) {
+                              if (value.isEmpty) {
+                                return 'please enter your email';
                               }
                             }),
-                  ],
-                ),
+                        SizedBox(height: 36.h),
+                        state is ForgetPasswordLoading
+                            ? const Center(
+                                child: CircularProgressIndicator(
+                                color: kPrimaryKey,
+                              ))
+                            : CustomButtonLarge(
+                                text:
+                                    AppLocalizations.of(context)!.resetPassword,
+                                color: kPrimaryKey,
+                                textColor: Colors.white,
+                                function: () {
+                                  if (LoginCubit.get(context)!
+                                      .formVerifyEmailForgetOtpKey
+                                      .currentState!
+                                      .validate()) {
+                                    LoginCubit.get(context)!.forgetPassword();
+                                  }
+                                }),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
