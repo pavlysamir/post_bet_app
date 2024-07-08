@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CobonItem extends StatelessWidget {
   const CobonItem({
@@ -58,7 +58,7 @@ class CobonItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  '${S.of(context).expireData} $formattedDate',
+                  '${AppLocalizations.of(context)!.expireData} $formattedDate',
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.labelLarge,
                   maxLines: 4,

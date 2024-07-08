@@ -9,7 +9,7 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChangePasswordView extends StatelessWidget {
   const ChangePasswordView({super.key});
@@ -17,7 +17,8 @@ class ChangePasswordView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppbareWithTitle(title: S.of(context).changePassword),
+      appBar: CustomAppbareWithTitle(
+          title: AppLocalizations.of(context)!.changePassword),
       bottomNavigationBar: BottomAppBar(
         height: 70.h,
         elevation: 0,
@@ -30,7 +31,7 @@ class ChangePasswordView extends StatelessWidget {
               //     context: context, path: AppRouter.kVerifyEmail);
             }
           },
-          text: S.of(context).ubdate,
+          text: AppLocalizations.of(context)!.ubdate,
           textColor: Colors.white,
         ),
       ),
@@ -75,7 +76,7 @@ class ChangePasswordView extends StatelessWidget {
                       height: 10.h,
                     ),
                     Text(
-                      S.of(context).currentPassword,
+                      AppLocalizations.of(context)!.currentPassword,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(
@@ -104,7 +105,7 @@ class ChangePasswordView extends StatelessWidget {
                             .currentPasswordController,
                         validationMassage: conditionOfValidationName),
                     SizedBox(height: 30.h),
-                    Text(S.of(context).newPassword,
+                    Text(AppLocalizations.of(context)!.newPassword,
                         style: Theme.of(context).textTheme.titleLarge),
                     SizedBox(
                       height: 10.h,
@@ -133,7 +134,7 @@ class ChangePasswordView extends StatelessWidget {
                         validationMassage: conditionOfValidationPassWord),
                     SizedBox(height: 30.h),
                     Text(
-                      S.of(context).confirmPassword,
+                      AppLocalizations.of(context)!.confirmPassword,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(

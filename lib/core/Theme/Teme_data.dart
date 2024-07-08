@@ -113,7 +113,7 @@ class AppTheme {
     inputDecorationTheme: InputDecorationTheme(
       fillColor: Colors.white,
       enabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: Colors.black),
+        borderSide: const BorderSide(color: Colors.grey),
         borderRadius: BorderRadius.circular(10.0),
       ),
       border: OutlineInputBorder(

@@ -8,7 +8,7 @@ import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/home/presentation/views/create_template_post.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_template_list_view_item.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomTemplatePostsListView extends StatelessWidget {
   const CustomTemplatePostsListView({super.key});
@@ -54,11 +54,11 @@ class CustomTemplatePostsListView extends StatelessWidget {
                         function: () {
                           Navigator.pop(context);
                         },
-                        title: S.of(context).gotoSubscripe,
+                        title: AppLocalizations.of(context)!.gotoSubscripe,
                         subTitle: '',
                         colorButton1: kPrimaryKey,
                         textColortcolor1: Colors.white,
-                        textbtn: S.of(context).ok,
+                        textbtn: AppLocalizations.of(context)!.ok,
                       ),
                     )
                   : Navigator.push(context,

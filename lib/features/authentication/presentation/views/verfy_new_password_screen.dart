@@ -9,7 +9,8 @@ import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<VerifyNewPasswordEmailScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        S.of(context).verifyEmail,
+                        AppLocalizations.of(context)!.verifyEmail,
                         style: Theme.of(context)
                             .textTheme
                             .displayLarge!
@@ -69,12 +70,12 @@ class _LoginScreenState extends State<VerifyNewPasswordEmailScreen> {
                         height: 12,
                       ),
                       Text(
-                        S.of(context).enterCode,
+                        AppLocalizations.of(context)!.enterCode,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       SizedBox(height: 30.h),
                       Text(
-                        S.of(context).code,
+                        AppLocalizations.of(context)!.code,
                         style: Styles.textStyle14Black,
                       ),
                       SizedBox(
@@ -102,7 +103,7 @@ class _LoginScreenState extends State<VerifyNewPasswordEmailScreen> {
                               ),
                             )
                           : CustomButtonLarge(
-                              text: S.of(context).submet,
+                              text: AppLocalizations.of(context)!.submet,
                               color: kPrimaryKey,
                               textColor: Colors.white,
                               function: () {

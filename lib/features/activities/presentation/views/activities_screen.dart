@@ -6,7 +6,7 @@ import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/activities/presentation/manager/cubit/get_posts_cubit.dart';
 import 'package:post_bet/features/activities/presentation/views/widgets/last_posts_list_view.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ActivitiesScreen extends StatefulWidget {
   const ActivitiesScreen({super.key});
@@ -46,7 +46,7 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                   )
                 : GetPostsCubit.get(context).posts.isEmpty
                     ? Center(
-                        child: Text(S.of(context).noPosts),
+                        child: Text(AppLocalizations.of(context)!.noPosts),
                       )
                     : state is GetPostsSuccess
                         ? Column(
@@ -58,7 +58,9 @@ class _ActivitiesScreenState extends State<ActivitiesScreen> {
                               SizedBox(
                                 height: 40.h,
                               ),
-                              CustomTitleText(text: S.of(context).lastPosts),
+                              CustomTitleText(
+                                  text:
+                                      AppLocalizations.of(context)!.lastPosts),
                               Expanded(
                                 child: SingleChildScrollView(
                                   child: LastPostsListView(

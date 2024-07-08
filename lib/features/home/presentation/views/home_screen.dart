@@ -13,7 +13,7 @@ import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit
 import 'package:post_bet/features/home/presentation/views/widgets/add_post_container.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_teplate_list_view.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_whatCanPost_container.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,7 +45,8 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 40.h,
                           ),
-                          CustomTitleText(text: S.of(context).createPost),
+                          CustomTitleText(
+                              text: AppLocalizations.of(context)!.createPost),
                           SizedBox(
                             height: 15.h,
                           ),
@@ -60,7 +61,8 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 34.h,
                           ),
-                          CustomTitleText(text: S.of(context).template),
+                          CustomTitleText(
+                              text: AppLocalizations.of(context)!.template),
                           SizedBox(
                             height: 30.h,
                           ),
@@ -93,7 +95,8 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomTitleText(text: S.of(context).whatUCanPost),
+                          CustomTitleText(
+                              text: AppLocalizations.of(context)!.whatUCanPost),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: GestureDetector(
@@ -103,7 +106,7 @@ class HomeScreen extends StatelessWidget {
                                     path: AppRouter.kWhatCanPost);
                               },
                               child: Text(
-                                S.of(context).seeAll,
+                                AppLocalizations.of(context)!.seeAll,
                                 style: const TextStyle(color: kPrimaryKey),
                               ),
                             ),

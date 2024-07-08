@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../core/utils/styles.dart';
 
@@ -9,11 +9,13 @@ class CustomTextButtonForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.bottomRight,
+      alignment: Alignment.bottomLeft,
       child: TextButton(
         onPressed: function,
-        child:
-            Text(S.of(context).forgotPassword, style: Styles.textStyle12Orange),
+        child: Text(AppLocalizations.of(context)!.forgotPassword,
+            style: Styles.textStyle12Orange.copyWith(
+              decoration: TextDecoration.underline,
+            )),
       ),
     );
   }

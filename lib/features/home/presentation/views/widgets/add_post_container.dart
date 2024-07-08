@@ -7,7 +7,7 @@ import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddPostContainer extends StatelessWidget {
   const AddPostContainer({
@@ -31,11 +31,11 @@ class AddPostContainer extends StatelessWidget {
                     function: () {
                       Navigator.pop(context);
                     },
-                    title: S.of(context).gotoSubscripe,
+                    title: AppLocalizations.of(context)!.gotoSubscripe,
                     subTitle: '',
                     colorButton1: kPrimaryKey,
                     textColortcolor1: Colors.white,
-                    textbtn: S.of(context).ok,
+                    textbtn: AppLocalizations.of(context)!.ok,
                   ),
                 )
               : customJustGoNavigate(
@@ -62,7 +62,7 @@ class AddPostContainer extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(S.of(context).typeAnyThing),
+                Text(AppLocalizations.of(context)!.typeAnyThing),
                 const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

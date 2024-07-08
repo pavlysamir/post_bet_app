@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
@@ -8,7 +7,8 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -59,7 +59,7 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      S.of(context).newPassword,
+                      AppLocalizations.of(context)!.newPassword,
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
@@ -68,11 +68,11 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
                     const SizedBox(
                       height: 12,
                     ),
-                    Text(S.of(context).enterNewPassword,
+                    Text(AppLocalizations.of(context)!.enterNewPassword,
                         style: Styles.textStyle14Grey),
                     SizedBox(height: 30.h),
                     Text(
-                      S.of(context).password,
+                      AppLocalizations.of(context)!.password,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(
@@ -107,7 +107,7 @@ class _LoginScreenState extends State<AddNewPasswordScreen> {
                             color: kPrimaryKey,
                           ))
                         : CustomButtonLarge(
-                            text: S.of(context).resetPassword,
+                            text: AppLocalizations.of(context)!.resetPassword,
                             color: kPrimaryKey,
                             textColor: Colors.white,
                             function: () {

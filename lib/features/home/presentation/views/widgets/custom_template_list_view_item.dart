@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TemplatePostsListViewItem extends StatelessWidget {
   const TemplatePostsListViewItem(
@@ -60,7 +60,7 @@ class TemplatePostsListViewItem extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: Align(
                   alignment: Alignment.topLeft,
-                  child: Text(S.of(context).amazingMessage,
+                  child: Text(AppLocalizations.of(context)!.amazingMessage,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: Theme.of(context)

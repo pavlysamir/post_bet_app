@@ -8,7 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/chat_recieve_bubble.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/chat_send_bubble.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PrivateChat extends StatelessWidget {
   const PrivateChat({
@@ -31,7 +31,7 @@ class PrivateChat extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              S.of(context).helpCenter,
+              AppLocalizations.of(context)!.helpCenter,
               style: Theme.of(context).textTheme.displaySmall,
             ),
           ),

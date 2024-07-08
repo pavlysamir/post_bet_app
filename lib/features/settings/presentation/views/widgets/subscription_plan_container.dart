@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubscriptionPlansCntainer extends StatelessWidget {
   const SubscriptionPlansCntainer({
@@ -77,7 +77,7 @@ class SubscriptionPlansCntainer extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: CustomButtonLarge(
-                text: S.of(context).subscribe,
+                text: AppLocalizations.of(context)!.subscribe,
                 color: kPrimaryKey,
                 textColor: Colors.white,
                 function: function,

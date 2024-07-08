@@ -5,7 +5,7 @@ import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_cobon_item.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CobonsView extends StatelessWidget {
   const CobonsView({super.key});
@@ -25,7 +25,8 @@ class CobonsView extends StatelessWidget {
                 },
                 icon: const Icon(Icons.arrow_back_ios, color: kPrimaryKey),
               ),
-              title: CustomTitleText(text: S.of(context).cobons),
+              title:
+                  CustomTitleText(text: AppLocalizations.of(context)!.cobons),
             ),
             body: state is GetPromocodesSuccess
                 ? SafeArea(
@@ -41,7 +42,7 @@ class CobonsView extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return CobonItem(
                               packageType:
-                                  '${SettingsCubit.get(context).promoCode[index].percentage}% ${S.of(context).discount}',
+                                  '${SettingsCubit.get(context).promoCode[index].percentage}% ${AppLocalizations.of(context)!.discount}',
                               color: Colors.grey,
                               cobonCode: SettingsCubit.get(context)
                                   .promoCode[index]

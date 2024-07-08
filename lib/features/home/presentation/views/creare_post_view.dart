@@ -13,7 +13,7 @@ import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/select_post_platform_widget.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreatePostView extends StatelessWidget {
   const CreatePostView({
@@ -22,7 +22,7 @@ class CreatePostView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = S.of(context).share;
+    String title = AppLocalizations.of(context)!.share;
 
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
@@ -88,7 +88,8 @@ class CreatePostView extends StatelessWidget {
       },
       builder: (context, state) {
         return Scaffold(
-            appBar: CustomAppbareWithTitle(title: S.of(context).createPost),
+            appBar: CustomAppbareWithTitle(
+                title: AppLocalizations.of(context)!.createPost),
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -106,7 +107,8 @@ class CreatePostView extends StatelessWidget {
                                 return 'please write anything';
                               }
                             },
-                            hintText: S.of(context).typeAnyThing,
+                            hintText:
+                                AppLocalizations.of(context)!.typeAnyThing,
                             textInputType: TextInputType.text),
                       ],
                     ),
@@ -132,10 +134,11 @@ class CreatePostView extends StatelessWidget {
                                   .checkBoxValues
                                   .isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                content: Text(S.of(context).pleaseWrite)));
+                                content: Text(AppLocalizations.of(context)!
+                                    .pleaseWrite)));
                           }
 
-                          title = S.of(context).loading;
+                          title = AppLocalizations.of(context)!.loading;
 
                           await AddPostCubit.get(context)
                               .handleAction()

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
-
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomWhatCanPostContainer extends StatelessWidget {
   const CustomWhatCanPostContainer({super.key});
@@ -40,14 +39,14 @@ class CustomWhatCanPostContainer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      S.of(context).faceBook,
+                      AppLocalizations.of(context)!.faceBook,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(
                       height: 5.h,
                     ),
                     Text(
-                      S.of(context).detailsFaceBook,
+                      AppLocalizations.of(context)!.detailsFaceBook,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context)

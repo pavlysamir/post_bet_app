@@ -7,7 +7,7 @@ import 'package:post_bet/core/utils/styles.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PaymentView extends StatelessWidget {
   const PaymentView({super.key, required this.text, required this.price});
@@ -31,7 +31,7 @@ class PaymentView extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back_ios, color: kPrimaryKey),
         ),
-        title: CustomTitleText(text: S.of(context).subscribe),
+        title: CustomTitleText(text: AppLocalizations.of(context)!.subscribe),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -49,7 +49,8 @@ class PaymentView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 40.h),
-              CustomTitleText(text: S.of(context).paymentAmount),
+              CustomTitleText(
+                  text: AppLocalizations.of(context)!.paymentAmount),
               SizedBox(height: 12.h),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -62,7 +63,7 @@ class PaymentView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 44),
                 child: Text(
-                  S.of(context).nameCard,
+                  AppLocalizations.of(context)!.nameCard,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
@@ -73,11 +74,11 @@ class PaymentView extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 44),
                 child: CustomFormField(
                     textInputType: TextInputType.emailAddress,
-                    hintText: S.of(context).name,
+                    hintText: AppLocalizations.of(context)!.name,
                     controller: nameCardController,
                     validationMassage: (value) {
                       if (value.isEmpty) {
-                        return S.of(context).nameCard;
+                        return AppLocalizations.of(context)!.nameCard;
                       }
                     }),
               ),
@@ -87,7 +88,7 @@ class PaymentView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 44),
                 child: Text(
-                  S.of(context).cardNumber,
+                  AppLocalizations.of(context)!.cardNumber,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
@@ -102,7 +103,7 @@ class PaymentView extends StatelessWidget {
                     controller: numbaerCardController,
                     validationMassage: (value) {
                       if (value.isEmpty) {
-                        return S.of(context).nameCard;
+                        return AppLocalizations.of(context)!.nameCard;
                       }
                     }),
               ),
@@ -115,7 +116,7 @@ class PaymentView extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          S.of(context).expireData,
+                          AppLocalizations.of(context)!.expireData,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
@@ -138,7 +139,7 @@ class PaymentView extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          S.of(context).cvv,
+                          AppLocalizations.of(context)!.cvv,
                           style: Theme.of(context).textTheme.titleLarge,
                         ),
                         SizedBox(
@@ -165,7 +166,7 @@ class PaymentView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 44),
                 child: Text(
-                  S.of(context).zip,
+                  AppLocalizations.of(context)!.zip,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),
@@ -180,7 +181,7 @@ class PaymentView extends StatelessWidget {
                     controller: zipController,
                     validationMassage: (value) {
                       if (value.isEmpty) {
-                        return S.of(context).nameCard;
+                        return AppLocalizations.of(context)!.nameCard;
                       }
                     }),
               ),
@@ -188,7 +189,7 @@ class PaymentView extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 44),
                 child: CustomButtonLarge(
-                    text: S.of(context).pay,
+                    text: AppLocalizations.of(context)!.pay,
                     color: kPrimaryKey,
                     textColor: Colors.white,
                     function: () {

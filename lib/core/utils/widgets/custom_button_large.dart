@@ -21,7 +21,7 @@ class CustomButtonLarge extends StatelessWidget {
     return InkWell(
       onTap: function,
       child: Container(
-        height: 40.h,
+        height: 50.h,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
           color: color,

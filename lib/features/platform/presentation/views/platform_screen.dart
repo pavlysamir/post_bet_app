@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
@@ -9,7 +8,7 @@ import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/platform/presentation/views/widgets/platform_listview_item.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PlatformScreen extends StatelessWidget {
   const PlatformScreen({super.key});
@@ -63,7 +62,8 @@ class PlatformScreen extends StatelessWidget {
                 SizedBox(
                   height: 40.h,
                 ),
-                CustomTitleText(text: S.of(context).availableAccounts),
+                CustomTitleText(
+                    text: AppLocalizations.of(context)!.availableAccounts),
                 SizedBox(
                   height: 40.h,
                 ),
@@ -97,7 +97,7 @@ class PlatformScreen extends StatelessWidget {
                               });
                             },
                             child: Text(
-                              S.of(context).linkAcount,
+                              AppLocalizations.of(context)!.linkAcount,
                               style: const TextStyle(color: Colors.white),
                             )),
                       ),

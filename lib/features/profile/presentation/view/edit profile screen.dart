@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
@@ -16,7 +15,7 @@ import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
 import 'package:post_bet/features/profile/presentation/view/widgets/profile%20photo%20widget.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -49,7 +48,8 @@ class EditProfileScreen extends StatelessWidget {
         editProfileCubit.nameController.text =
             getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name);
         return Scaffold(
-            appBar: CustomAppbareWithTitle(title: S.of(context).editProfile),
+            appBar: CustomAppbareWithTitle(
+                title: AppLocalizations.of(context)!.editProfile),
             bottomNavigationBar: BottomAppBar(
               height: 70.h,
               elevation: 0,
@@ -67,7 +67,7 @@ class EditProfileScreen extends StatelessWidget {
                           //     context: context, path: AppRouter.kVerifyEmail);
                         }
                       },
-                      text: S.of(context).ubdate,
+                      text: AppLocalizations.of(context)!.ubdate,
                       textColor: Colors.white,
                     ),
             ),
@@ -96,7 +96,7 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 30.h),
                     Text(
-                      S.of(context).loginEmail,
+                      AppLocalizations.of(context)!.loginEmail,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(
@@ -115,7 +115,7 @@ class EditProfileScreen extends StatelessWidget {
                         validationMassage: conditionOfValidationEmail),
                     SizedBox(height: 30.h),
                     Text(
-                      S.of(context).name,
+                      AppLocalizations.of(context)!.name,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     SizedBox(

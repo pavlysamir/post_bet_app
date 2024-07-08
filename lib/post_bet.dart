@@ -19,7 +19,8 @@ import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:post_bet/l10n/l10n.dart';
 
 class PostBetApp extends StatelessWidget {
   const PostBetApp({super.key});
@@ -65,12 +66,12 @@ class PostBetApp extends StatelessWidget {
             return MaterialApp.router(
                 locale: isEnglish ? const Locale('en') : const Locale('ar'),
                 localizationsDelegates: const [
-                  S.delegate,
+                  AppLocalizations.delegate,
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   GlobalCupertinoLocalizations.delegate,
                 ],
-                supportedLocales: S.delegate.supportedLocales,
+                supportedLocales: L10n.all,
                 debugShowCheckedModeBanner: false,
                 routerConfig: AppRouter.router,
                 theme: isDark ? AppTheme.darkTheme : AppTheme.lightTheme);

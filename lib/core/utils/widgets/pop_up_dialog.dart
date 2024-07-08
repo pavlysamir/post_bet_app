@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PopUpDialog extends StatelessWidget {
   const PopUpDialog(
@@ -60,7 +60,7 @@ class PopUpDialog extends StatelessWidget {
               CustomButtonSmall(
                 borderColor: Colors.red,
                 width: 100,
-                text: S.of(context).yes,
+                text: AppLocalizations.of(context)!.yes,
                 color: colorButton1,
                 function: function,
                 textColortcolor: textColortcolor1,
@@ -68,7 +68,7 @@ class PopUpDialog extends StatelessWidget {
               CustomButtonSmall(
                 borderColor: Colors.red,
                 width: 100,
-                text: S.of(context).no,
+                text: AppLocalizations.of(context)!.no,
                 textColortcolor: textColortcolor2,
                 color: colorButton2,
                 function: function2,

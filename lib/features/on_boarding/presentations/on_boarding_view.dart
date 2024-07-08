@@ -5,7 +5,8 @@ import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../constants.dart';
 import '../../../core/assets/Assets.dart';
@@ -29,20 +30,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     List<OnBoardingModel> modelBoarding = [
       OnBoardingModel(
           image: AssetsData.onBoarding1,
-          title: S.of(context).onBoardingSlider1,
-          messege: S.of(context).onBoardingSlider1subTitle1),
+          title: AppLocalizations.of(context)!.onBoardingSlider1,
+          messege: AppLocalizations.of(context)!.onBoardingSlider1subTitle1),
       OnBoardingModel(
           image: AssetsData.onBoarding2,
-          title: S.of(context).onBoardingSlider2,
-          messege: S.of(context).onBoardingSlider2subTitle1),
+          title: AppLocalizations.of(context)!.onBoardingSlider2,
+          messege: AppLocalizations.of(context)!.onBoardingSlider2subTitle1),
       OnBoardingModel(
           image: AssetsData.onBoarding3,
-          title: S.of(context).onBoardingSlider3,
-          messege: S.of(context).onBoardingSlider3subTitle1),
+          title: AppLocalizations.of(context)!.onBoardingSlider3,
+          messege: AppLocalizations.of(context)!.onBoardingSlider3subTitle1),
       OnBoardingModel(
           image: AssetsData.onBoarding4,
-          title: S.of(context).onBoardingSlider4,
-          messege: S.of(context).onBoardingSlider4subTitle1),
+          title: AppLocalizations.of(context)!.onBoardingSlider4,
+          messege: AppLocalizations.of(context)!.onBoardingSlider4subTitle1),
     ];
 
     return Scaffold(
@@ -51,7 +52,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           onPressed: () {
             submit();
           },
-          child: Text(S.of(context).skip, style: Styles.textStyle14Grey),
+          child: Text(AppLocalizations.of(context)!.skip,
+              style: Styles.textStyle14Grey),
         ),
       ),
       body: Padding(
@@ -107,7 +109,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       customGoAndDeleteNavigate(
                           context: context, path: AppRouter.kWelcomeView);
                     },
-                    text: S.of(context).next,
+                    text: AppLocalizations.of(context)!.next,
                     borderColor: kPrimaryKey)
               ],
             ),

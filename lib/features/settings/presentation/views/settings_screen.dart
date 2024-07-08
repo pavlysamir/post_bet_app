@@ -17,7 +17,7 @@ import 'package:post_bet/features/authentication/presentation/manager/login_cubi
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/terms_conditions_view.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
@@ -39,7 +39,7 @@ class SettingsScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             title: Text(
-              S.of(context).settings,
+              AppLocalizations.of(context)!.settings,
               style: Theme.of(context).textTheme.displaySmall,
             ),
           ),
@@ -48,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               const CustomLineSeperator(),
               SizedBox(height: 40.h),
-              CustomTitleText(text: S.of(context).accounts),
+              CustomTitleText(text: AppLocalizations.of(context)!.accounts),
               SizedBox(height: 26.h),
               InkWell(
                 onTap: () {
@@ -105,10 +105,10 @@ class SettingsScreen extends StatelessWidget {
               const SizedBox(height: 40),
               const CustomLineSeperator(),
               SizedBox(height: 30.h),
-              CustomTitleText(text: S.of(context).settings),
+              CustomTitleText(text: AppLocalizations.of(context)!.settings),
               SettingsIconWidget(
                 icon: const Icon(Icons.password, color: Colors.white),
-                title: S.of(context).changePassword,
+                title: AppLocalizations.of(context)!.changePassword,
                 function: () {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kChangePassword);
@@ -120,7 +120,7 @@ class SettingsScreen extends StatelessWidget {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kSubscriptionView);
                 },
-                title: S.of(context).subscribe,
+                title: AppLocalizations.of(context)!.subscribe,
               ),
               SettingsIconWidget(
                 function: () {
@@ -130,7 +130,7 @@ class SettingsScreen extends StatelessWidget {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kMySubscription);
                 },
-                title: S.of(context).mySbscription,
+                title: AppLocalizations.of(context)!.mySbscription,
               ),
               SettingsIconWidget(
                 function: () {
@@ -145,8 +145,8 @@ class SettingsScreen extends StatelessWidget {
                         SettingsCubit.get(context).changeLanguage();
                         Navigator.pop(context);
                       },
-                      title: S.of(context).confirmChangeLng,
-                      subTitle: S.of(context).doChangeLanguage,
+                      title: AppLocalizations.of(context)!.confirmChangeLng,
+                      subTitle: AppLocalizations.of(context)!.doChangeLanguage,
                       colorButton1: kPoppingsRedColor,
                       colorButton2: Colors.red,
                       textColortcolor1: Colors.red,
@@ -154,7 +154,7 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   );
                 },
-                title: S.of(context).changeLanguage,
+                title: AppLocalizations.of(context)!.changeLanguage,
               ),
               SettingsIconWidget(
                 function: () {
@@ -163,11 +163,11 @@ class SettingsScreen extends StatelessWidget {
                   }));
                 },
                 icon: const Icon(Icons.text_snippet, color: Colors.white),
-                title: S.of(context).termsAndConditions,
+                title: AppLocalizations.of(context)!.termsAndConditions,
               ),
               SettingsIconWidget(
                 icon: const Icon(Icons.delete, color: Colors.white),
-                title: S.of(context).deleteAccount,
+                title: AppLocalizations.of(context)!.deleteAccount,
                 function: () {
                   showDialog(
                       context: context,
@@ -181,8 +181,9 @@ class SettingsScreen extends StatelessWidget {
 
                               Navigator.pop(context);
                             },
-                            title: S.of(context).deletAccountConfirm,
-                            subTitle: S.of(context).logOut,
+                            title: AppLocalizations.of(context)!
+                                .deletAccountConfirm,
+                            subTitle: AppLocalizations.of(context)!.logOut,
                             colorButton1: kPoppingsRedColor,
                             colorButton2: Colors.red,
                             textColortcolor1: Colors.red,
@@ -202,8 +203,8 @@ class SettingsScreen extends StatelessWidget {
                         SettingsCubit.get(context).changeTheme();
                         Navigator.pop(context);
                       },
-                      title: S.of(context).changeThemeConfirm,
-                      subTitle: S.of(context).doChangeTheme,
+                      title: AppLocalizations.of(context)!.changeThemeConfirm,
+                      subTitle: AppLocalizations.of(context)!.doChangeTheme,
                       colorButton1: kPoppingsRedColor,
                       colorButton2: Colors.red,
                       textColortcolor1: Colors.red,
@@ -211,7 +212,7 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   );
                 },
-                title: S.of(context).changeTheme,
+                title: AppLocalizations.of(context)!.changeTheme,
               ),
               SettingsIconWidget(
                 function: () {
@@ -223,14 +224,14 @@ class SettingsScreen extends StatelessWidget {
                   Icons.local_offer,
                   color: Colors.white,
                 ),
-                title: S.of(context).cobons,
+                title: AppLocalizations.of(context)!.cobons,
               ),
               SettingsIconWidget(
                 function: () {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kAboutUs);
                 },
-                title: S.of(context).aboutUs,
+                title: AppLocalizations.of(context)!.aboutUs,
               ),
               SettingsIconWidget(
                 icon: const Icon(
@@ -241,14 +242,14 @@ class SettingsScreen extends StatelessWidget {
                   customJustGoNavigate(
                       context: context, path: AppRouter.kWhatCanPost);
                 },
-                title: S.of(context).whatUCanPost,
+                title: AppLocalizations.of(context)!.whatUCanPost,
               ),
               SettingsIconWidget(
                 icon: const Icon(
                   Icons.help_outline_sharp,
                   color: Colors.white,
                 ),
-                title: S.of(context).helpCenter,
+                title: AppLocalizations.of(context)!.helpCenter,
                 function: () {
                   SettingsCubit.get(context).getContactUsMessage();
                   customJustGoNavigate(
@@ -269,8 +270,8 @@ class SettingsScreen extends StatelessWidget {
 
                         Navigator.pop(context);
                       },
-                      title: S.of(context).logOutConfirm,
-                      subTitle: S.of(context).doLogOut,
+                      title: AppLocalizations.of(context)!.logOutConfirm,
+                      subTitle: AppLocalizations.of(context)!.doLogOut,
                       colorButton1: kPoppingsRedColor,
                       colorButton2: Colors.red,
                       textColortcolor1: Colors.red,
@@ -279,7 +280,7 @@ class SettingsScreen extends StatelessWidget {
                   );
                 },
                 icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-                title: S.of(context).logOut,
+                title: AppLocalizations.of(context)!.logOut,
               ),
             ]),
           ),

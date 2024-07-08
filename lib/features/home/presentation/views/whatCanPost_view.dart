@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WhatCanPostView extends StatelessWidget {
   WhatCanPostView({super.key});
@@ -35,16 +35,16 @@ class WhatCanPostView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> platformsDetails = [
-      S.of(context).detailsInstagram,
-      S.of(context).detailsFaceBook,
-      S.of(context).detailsX,
-      S.of(context).detailsLinkedIn,
-      S.of(context).detailsReddit,
-      S.of(context).detailsTiktok,
-      S.of(context).detailsPintrest,
-      S.of(context).detailsTelegrame,
-      S.of(context).detailsYoutube,
-      S.of(context).detailsGoogle,
+      AppLocalizations.of(context)!.detailsInstagram,
+      AppLocalizations.of(context)!.detailsFaceBook,
+      AppLocalizations.of(context)!.detailsX,
+      AppLocalizations.of(context)!.detailsLinkedIn,
+      AppLocalizations.of(context)!.detailsReddit,
+      AppLocalizations.of(context)!.detailsTiktok,
+      AppLocalizations.of(context)!.detailsPintrest,
+      AppLocalizations.of(context)!.detailsTelegrame,
+      AppLocalizations.of(context)!.detailsYoutube,
+      AppLocalizations.of(context)!.detailsGoogle,
     ];
     return Scaffold(
         appBar: AppBar(
@@ -54,7 +54,8 @@ class WhatCanPostView extends StatelessWidget {
             },
             icon: const Icon(Icons.arrow_back_ios, color: kPrimaryKey),
           ),
-          title: CustomTitleText(text: S.of(context).whatUCanPost),
+          title:
+              CustomTitleText(text: AppLocalizations.of(context)!.whatUCanPost),
         ),
         body: SafeArea(
             child: ListView.builder(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/webview_view.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebViewPaynet extends StatefulWidget {
@@ -48,7 +48,7 @@ class _WebViewPaynetState extends State<WebViewPaynet> {
         //   },
         //   icon: const Icon(Icons.arrow_back),
         // ),
-        title: CustomTitleText(text: S.of(context).subscribe),
+        title: CustomTitleText(text: AppLocalizations.of(context)!.subscribe),
         actions: [
           IconButton(
               onPressed: () async {

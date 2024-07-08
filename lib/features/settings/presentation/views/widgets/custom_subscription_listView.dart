@@ -8,7 +8,7 @@ import 'package:post_bet/features/settings/data/models/plane_model.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/enter_promocode_view.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/subscription_plan_container.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CustomListViewSubscriptionPlan extends StatelessWidget {
   const CustomListViewSubscriptionPlan({
@@ -53,7 +53,7 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                                 planeId: '${planModel[index].id}');
                           }));
                         },
-                        title: S.of(context).doPromocode,
+                        title: AppLocalizations.of(context)!.doPromocode,
                         subTitle: '',
                         colorButton1: Colors.white,
                         colorButton2: kPrimaryKey,

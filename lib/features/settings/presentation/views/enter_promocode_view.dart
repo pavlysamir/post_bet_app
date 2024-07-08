@@ -7,7 +7,7 @@ import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EnterPromoView extends StatefulWidget {
@@ -31,9 +31,10 @@ class _EnterPromoViewState extends State<EnterPromoView> {
 
   @override
   Widget build(BuildContext context) {
-    String btnTxt = S.of(context).submet;
+    String btnTxt = AppLocalizations.of(context)!.submet;
     return Scaffold(
-        appBar: CustomAppbareWithTitle(title: S.of(context).enterPromo),
+        appBar: CustomAppbareWithTitle(
+            title: AppLocalizations.of(context)!.enterPromo),
         body: BlocConsumer<SettingsCubit, SettingsState>(
             listener: (context, state) async {
           if (state is GetPromocodesFailure) {
@@ -73,7 +74,7 @@ class _EnterPromoViewState extends State<EnterPromoView> {
                 children: [
                   Center(
                       child: Text(
-                    S.of(context).enterPromo,
+                    AppLocalizations.of(context)!.enterPromo,
                     style: Theme.of(context).textTheme.displayLarge,
                   )),
                   SizedBox(
@@ -156,7 +157,7 @@ class _EnterPromoViewState extends State<EnterPromoView> {
                                       //   padding: const EdgeInsets.symmetric(
                                       //       horizontal: 20),
                                       //   child: CustomButtonLarge(
-                                      //       text: S.of(context).doneSubscribe,
+                                      //       text:AppLocalizations.of(context)!.doneSubscribe,
                                       //       color: kPrimaryKey,
                                       //       textColor: Colors.white,
                                       //       function: () async {
@@ -198,7 +199,8 @@ class _EnterPromoViewState extends State<EnterPromoView> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: CustomButtonLarge(
-                                  text: S.of(context).doneSubscribe,
+                                  text: AppLocalizations.of(context)!
+                                      .doneSubscribe,
                                   color: kPrimaryKey,
                                   textColor: Colors.white,
                                   function: () async {
@@ -225,7 +227,7 @@ class _EnterPromoViewState extends State<EnterPromoView> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 20),
                               child: CustomButtonLarge(
-                                  text: S.of(context).submet,
+                                  text: AppLocalizations.of(context)!.submet,
                                   color: kPrimaryKey,
                                   textColor: Colors.white,
                                   function: () {

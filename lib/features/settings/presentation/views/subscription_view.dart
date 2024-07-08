@@ -9,7 +9,7 @@ import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_subscription_listView.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SubscriptionsView extends StatefulWidget {
@@ -81,7 +81,8 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 40.h),
-                        CustomTitleText(text: S.of(context).subscribePlan),
+                        CustomTitleText(
+                            text: AppLocalizations.of(context)!.subscribePlan),
                         SizedBox(height: 40.h),
                         // SubscriptionPlansCntainer(
                         //   function: () {
@@ -89,14 +90,14 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                         //         MaterialPageRoute(builder: (context) {
                         //       return PaymentView(
                         //         price: "10.00\$",
-                        //         text: S.of(context).basic,
+                        //         text:AppLocalizations.of(context)!.basic,
                         //       );
                         //     }));
                         //   },
                         //   price: "10.00\$",
                         //   countPosts: '.${S.of(context).fivePosts}',
                         //   description: '.${S.of(context).shareWithTickTok}',
-                        //   typePlan: S.of(context).basic,
+                        //   typePlan:AppLocalizations.of(context)!.basic,
                         // // ),
                         // SizedBox(height: 25.h),
                         // SubscriptionPlansCntainer(
@@ -106,7 +107,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                         //   price: "15.00\$",
                         //   countPosts: '.${S.of(context).tenPosts}',
                         //   description: '.${S.of(context).shareWithTickandSnap}',
-                        //   typePlan: S.of(context).standard,
+                        //   typePlan:AppLocalizations.of(context)!.standard,
                         // ),
                         // SizedBox(height: 25.h),
                         // SubscriptionPlansCntainer(
@@ -114,7 +115,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                         //   price: "20.00\$",
                         //   countPosts: '.${S.of(context).unlimitedPosts}',
                         //   description: '.${S.of(context).shareAllPlatform}',
-                        //   typePlan: S.of(context).premium,
+                        //   typePlan:AppLocalizations.of(context)!.premium,
                         // ),
                         // SizedBox(height: 25.h),
 

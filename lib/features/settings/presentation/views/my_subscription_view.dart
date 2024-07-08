@@ -6,7 +6,7 @@ import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_my_subscraption_item.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MySubscriptionView extends StatelessWidget {
   const MySubscriptionView({super.key});
@@ -24,17 +24,21 @@ class MySubscriptionView extends StatelessWidget {
               },
               icon: const Icon(Icons.arrow_back_ios, color: kPrimaryKey),
             ),
-            title: CustomTitleText(text: S.of(context).subscribe),
+            title:
+                CustomTitleText(text: AppLocalizations.of(context)!.subscribe),
           ),
           body: SettingsCubit.get(context).mySubscriptionModel == null
-              ? Center(child: Text(S.of(context).noSubscriptions))
+              ? Center(
+                  child: Text(AppLocalizations.of(context)!.noSubscriptions))
               : state is ConfirmSubscraptionSuccess
                   ? SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           SizedBox(height: 40.h),
-                          CustomTitleText(text: S.of(context).subscribePlan),
+                          CustomTitleText(
+                              text:
+                                  AppLocalizations.of(context)!.subscribePlan),
                           SizedBox(height: 40.h),
                           // CustomListViewMySubscriptionPlan(
                           //   count: SettingsCubit.get(context)

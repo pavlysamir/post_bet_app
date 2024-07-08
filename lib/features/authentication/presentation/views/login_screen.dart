@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
-import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:post_bet/features/authentication/presentation/views/widgets/custom_login_clip_wave.dart';
 import 'package:post_bet/features/authentication/presentation/views/widgets/custom_text_button_forgot_password.dart';
 import 'package:post_bet/features/settings/presentation/views/terms_conditions_view.dart';
-import 'package:post_bet/generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../../core/utils/styles.dart';
 import '../../../../../../constants.dart';
 
@@ -58,65 +57,58 @@ class _LoginScreenState extends State<LoginScreen> {
         return Scaffold(
             body: Form(
           key: LoginCubit.get(context)!.formKey,
-          child: Center(
-            child: SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: SafeArea(
               child: Stack(
-                alignment: Alignment.center,
+                alignment: Alignment.topCenter,
                 children: [
-                  Image.asset(AssetsData.loginScreen_2),
+                  CustomPaint(
+                    size: const Size(430, 194),
+                    painter: RPSCustomPainter(),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(30.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        SizedBox(
+                          height: 50.h,
+                        ),
                         Text(
-                          S.of(context).login,
+                          AppLocalizations.of(context)!.login,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
                               .copyWith(color: kPrimaryKey),
                         ),
-                        const SizedBox(
-                          height: 12,
-                        ),
-                        Text(S.of(context).welcomeBack,
-                            style: Styles.textStyle14Grey),
-                        SizedBox(height: 30.h),
-                        Text(
-                          S.of(context).loginEmail,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
                         SizedBox(
-                          height: 10.h,
+                          height: 12.h,
                         ),
+                        Text(AppLocalizations.of(context)!.welcomeBack,
+                            style: Styles.textStyle16Black),
+                        SizedBox(height: 41.h),
                         CustomFormField(
-                            prefixIcon: const Icon(
-                              Icons.email_outlined,
-                              color: kPrimaryKey,
-                            ),
+                            // prefixIcon: const Icon(
+                            //   Icons.email_outlined,
+                            //   color: kPrimaryKey,
+                            // ),
                             textInputType: TextInputType.emailAddress,
-                            hintText: S.of(context).loginEmail,
+                            hintText: AppLocalizations.of(context)!.loginEmail,
                             controller:
                                 LoginCubit.get(context)!.emailController,
                             validationMassage: (value) {
                               if (value.isEmpty) {
-                                return S.of(context).enterCode;
+                                return AppLocalizations.of(context)!.enterCode;
                               }
                             }),
-                        SizedBox(height: 30.h),
-                        Text(
-                          S.of(context).password,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
+                        SizedBox(height: 18.h),
                         CustomFormField(
                           isEyeTrue: LoginCubit.get(context)!.ifPasswordVisible,
-                          prefixIcon: const Icon(
-                            Icons.lock,
-                            color: kPrimaryKey,
-                          ),
+                          // prefixIcon: const Icon(
+                          //   Icons.lock,
+                          //   color: kPrimaryKey,
+                          // ),
                           suffixIcon: IconButton(
                             onPressed: () {
                               LoginCubit.get(context)!.isVisiblePasswordEye();
@@ -139,13 +131,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               context: context,
                               path: AppRouter.kForgotPassword);
                         }),
+                        SizedBox(height: 45.h),
                         state is LoginLoading
                             ? const Center(
                                 child: CircularProgressIndicator(
                                 color: kPrimaryKey,
                               ))
                             : CustomButtonLarge(
-                                text: S.of(context).loginButton,
+                                text: AppLocalizations.of(context)!.loginButton,
                                 color: kPrimaryKey,
                                 textColor: Colors.white,
                                 function: () {
@@ -159,25 +152,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(
                           height: 30,
                         ),
-                        Center(
-                          child: GestureDetector(
-                            onTap: () {
-                              customGoAndDeleteNavigate(
-                                  context: context,
-                                  path: AppRouter.kRegistretion);
-                            },
-                            child: Text(S.of(context).dontHaveAccount,
-                                style: Styles.textStyle12Orange),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 40.h,
-                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              S.of(context).agreeTerms,
+                              AppLocalizations.of(context)!.agreeTerms,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ),
@@ -191,10 +170,25 @@ class _LoginScreenState extends State<LoginScreen> {
                                   return TermsAndConditionsScreen();
                                 }));
                               },
-                              child: Text(S.of(context).termsAndConditions,
+                              child: Text(
+                                  AppLocalizations.of(context)!
+                                      .termsAndConditions,
                                   style: Styles.textStyle14Orange),
                             ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 60.h,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            customGoAndDeleteNavigate(
+                                context: context,
+                                path: AppRouter.kRegistretion);
+                          },
+                          child: Text(
+                              AppLocalizations.of(context)!.dontHaveAccount,
+                              style: Styles.textStyle12Orange),
                         ),
                       ],
                     ),

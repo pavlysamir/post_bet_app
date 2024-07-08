@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:post_bet/core/Layouts/home_layout_cubit.dart';
-import '../../../../../generated/l10n.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({Key? key}) : super(key: key);
@@ -40,25 +40,25 @@ class _HomeLayoutState extends State<HomeLayout> {
                     icon: const Icon(
                       Icons.home_outlined,
                     ),
-                    label: S.of(context).home,
+                    label: AppLocalizations.of(context)!.home,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(
                       Icons.subscriptions_outlined,
                     ),
-                    label: S.of(context).subscribe,
+                    label: AppLocalizations.of(context)!.subscribe,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(
                       Icons.horizontal_split_rounded,
                     ),
-                    label: S.of(context).platform,
+                    label: AppLocalizations.of(context)!.platform,
                   ),
                   BottomNavigationBarItem(
                     icon: const Icon(
                       Icons.menu,
                     ),
-                    label: S.of(context).menu,
+                    label: AppLocalizations.of(context)!.menu,
                   ),
                 ],
                 currentIndex: cubit.currentIndex,
