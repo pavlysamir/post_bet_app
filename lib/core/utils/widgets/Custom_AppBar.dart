@@ -38,8 +38,10 @@ class CustomAppBar extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+                    IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+                    const Spacer(),
                     Image.asset(
-                      AssetsData.postBetImage,
+                      AssetsData.newDesignLogoName,
                       height: 50.h,
                       width: 120.w,
                     ),
@@ -51,16 +53,16 @@ class CustomAppBar extends StatelessWidget {
                       },
                       child: Row(
                         children: [
-                          state is GetUserLoading
-                              ? Text('Hello',
-                                  style: Theme.of(context).textTheme.titleLarge)
-                              : Text(
-                                  '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
-                                  style: Theme.of(context).textTheme.titleLarge,
-                                ),
-                          const SizedBox(
-                            width: 5,
-                          ),
+                          // state is GetUserLoading
+                          //     ? Text('Hello',
+                          //         style: Theme.of(context).textTheme.titleLarge)
+                          //     : Text(
+                          //         '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
+                          //         style: Theme.of(context).textTheme.titleLarge,
+                          //       ),
+                          // const SizedBox(
+                          //   width: 5,
+                          // ),
                           profilePic != null
                               ? CircleAvatar(
                                   backgroundColor: Colors.transparent,
