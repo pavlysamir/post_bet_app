@@ -25,7 +25,13 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Uint8List profileImage = base64Decode(profilePic.toString());
+    Uint8List? profileImage;
+    try {
+      profileImage = base64Decode(profilePic.toString());
+    } catch (e) {
+      print('Error decoding profile picture: $e');
+      // Handle decoding error
+    }
 
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
@@ -38,7 +44,15 @@ class CustomAppBar extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
+                    IconButton(
+                      onPressed: () {
+                        customJustGoNavigate(
+                          context: context,
+                          path: AppRouter.kSettingScreen,
+                        );
+                      },
+                      icon: const Icon(Icons.menu),
+                    ),
                     const Spacer(),
                     Image.asset(
                       AssetsData.newDesignLogoName,
@@ -49,21 +63,13 @@ class CustomAppBar extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         customJustGoNavigate(
-                            context: context, path: AppRouter.kEditProfile);
+                          context: context,
+                          path: AppRouter.kEditProfile,
+                        );
                       },
                       child: Row(
                         children: [
-                          // state is GetUserLoading
-                          //     ? Text('Hello',
-                          //         style: Theme.of(context).textTheme.titleLarge)
-                          //     : Text(
-                          //         '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
-                          //         style: Theme.of(context).textTheme.titleLarge,
-                          //       ),
-                          // const SizedBox(
-                          //   width: 5,
-                          // ),
-                          profilePic != null
+                          profilePic != null && profileImage != null
                               ? CircleAvatar(
                                   backgroundColor: Colors.transparent,
                                   radius: 20,

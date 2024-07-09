@@ -12,6 +12,7 @@ import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20state.dart';
 import 'package:post_bet/features/profile/presentation/view/widgets/profile%20photo%20widget.dart';
@@ -25,13 +26,22 @@ class EditProfileScreen extends StatelessWidget {
     return BlocConsumer<EditProfileCubit, EditProfileState>(
       listener: (context, state) {
         if (state is UpdateUserDataSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text("success"),
+          showDialog(
+            context: context,
+            builder: (BuildContext context) => PopUpDialogOneButton(
+              context: context,
+              function: () {
+                customGoAndDeleteNavigate(
+                    context: context, path: AppRouter.kHomeLayOut);
+                Navigator.pop(context);
+              },
+              title: 'Saved',
+              subTitle: '',
+              colorButton1: kPrimaryKey,
+              textColortcolor1: Colors.white,
+              textbtn: 'Back to home',
             ),
           );
-          customGoAndDeleteNavigate(
-              context: context, path: AppRouter.kHomeLayOut);
         } else if (state is UpdateUserDataFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -85,23 +95,7 @@ class EditProfileScreen extends StatelessWidget {
                       editProfileCubit: editProfileCubit,
                     ),
                     SizedBox(height: 20.h),
-                    //edit name
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                            '${getIt.get<CashHelperSharedPreferences>().getData(key: ApiKey.name)}',
-                            style: Theme.of(context).textTheme.displaySmall),
-                      ],
-                    ),
-                    SizedBox(height: 30.h),
-                    Text(
-                      AppLocalizations.of(context)!.loginEmail,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+
                     CustomFormField(
                         readOnly: true,
                         prefixIcon: const Icon(
@@ -114,13 +108,7 @@ class EditProfileScreen extends StatelessWidget {
                         controller: editProfileCubit.emailController,
                         validationMassage: conditionOfValidationEmail),
                     SizedBox(height: 30.h),
-                    Text(
-                      AppLocalizations.of(context)!.name,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
+
                     CustomFormField(
                         prefixIcon: const Icon(
                           Icons.account_circle_rounded,

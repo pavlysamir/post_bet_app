@@ -21,6 +21,7 @@ import 'package:post_bet/features/settings/presentation/views/change_password_vi
 import 'package:post_bet/features/settings/presentation/views/cobons_view.dart';
 import 'package:post_bet/features/settings/presentation/views/my_subscription_view.dart';
 import 'package:post_bet/features/settings/presentation/views/private_chat_view.dart';
+import 'package:post_bet/features/settings/presentation/views/settings_screen.dart';
 import 'package:post_bet/features/settings/presentation/views/subscription_view.dart';
 
 abstract class AppRouter {
@@ -47,6 +48,7 @@ abstract class AppRouter {
   static const kMySubscription = '/MySubscription';
   static const kWhatCanPost = '/WhatCanPost';
   static const kFirstScreen = '/FirstScreen';
+  static const kSettingScreen = '/SettingScreen';
 
   static final router = GoRouter(
       initialLocation:
@@ -144,6 +146,10 @@ abstract class AppRouter {
         GoRoute(
           path: kFirstScreen,
           builder: (context, state) => const FirstScreen(),
+        ),
+        GoRoute(
+          path: kSettingScreen,
+          builder: (context, state) => SettingsScreen(),
         ),
       ]);
 }

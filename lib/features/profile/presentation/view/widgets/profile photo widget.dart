@@ -20,9 +20,13 @@ class ProfilePhotoWidget extends StatelessWidget {
               ClipOval(
                 child: CircleAvatar(
                     radius: 75.h,
-                    backgroundColor: k5A5A5A,
+                    backgroundColor: kBlackColor,
                     child: editProfileCubit.file == null
-                        ? null
+                        ? Icon(
+                            Icons.person,
+                            size: 75.h,
+                            color: Colors.white,
+                          )
                         : Image.file(
                             editProfileCubit.file!,
                             fit: BoxFit.fill,

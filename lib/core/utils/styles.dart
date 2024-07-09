@@ -87,8 +87,14 @@ abstract class Styles {
   static TextStyle textStyle14White = const TextStyle(
       fontSize: 14, fontWeight: FontWeight.normal, color: Colors.white);
 
-  static TextStyle textStyle14Black = const TextStyle(
-      fontSize: 14, fontWeight: FontWeight.bold, color: kBlackColor);
+  static TextStyle textStyle14Black = GoogleFonts.cairo(
+    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    color: kBlackColor,
+  );
+
+  //  const TextStyle(
+  //     fontSize: 14, fontWeight: FontWeight.bold, color: kBlackColor);
 
   static TextStyle textStyle16Black = const TextStyle(
       fontSize: 16, fontWeight: FontWeight.bold, color: kBlackColor);

@@ -17,20 +17,15 @@ class SettingsIconWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 18),
           child: Row(
             children: [
-              CircleAvatar(
-                radius: 30,
-                backgroundColor: kPrimaryKey,
-                child: icon ??
-                    const CircleAvatar(
-                        radius: 15, backgroundColor: Colors.white),
-              ),
+              icon ??
+                  const CircleAvatar(radius: 15, backgroundColor: Colors.black),
               SizedBox(width: 13.w),
               Text(title, style: Theme.of(context).textTheme.titleLarge),
               const Spacer(),
               const Icon(
                 Icons.arrow_forward_ios,
-                color: kPrimaryKey,
-                size: 24,
+                color: kBlackColor,
+                size: 18,
               ),
             ],
           )),

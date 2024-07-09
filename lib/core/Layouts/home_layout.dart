@@ -45,25 +45,13 @@ class _HomeLayoutState extends State<HomeLayout> {
                   items: [
                     BottomNavigationBarItem(
                       icon: const Icon(
-                        Icons.home_outlined,
+                        Icons.home,
                       ),
                       label: AppLocalizations.of(context)!.home,
                     ),
                     BottomNavigationBarItem(
                       icon: const Icon(
-                        Icons.subscriptions_outlined,
-                      ),
-                      label: AppLocalizations.of(context)!.subscribe,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Icon(
-                        Icons.horizontal_split_rounded,
-                      ),
-                      label: AppLocalizations.of(context)!.platform,
-                    ),
-                    BottomNavigationBarItem(
-                      icon: const Icon(
-                        Icons.menu,
+                        Icons.calendar_month,
                       ),
                       label: AppLocalizations.of(context)!.menu,
                     ),
