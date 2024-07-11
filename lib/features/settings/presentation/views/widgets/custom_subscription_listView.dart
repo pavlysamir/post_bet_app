@@ -71,7 +71,7 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                 },
                 price: "${planModel[index].price} AED",
                 countPosts:
-                    'number of posts : ${planModel[index].numberOfPosts ?? '∞'}',
+                    ' ${planModel[index].numberOfPosts ?? '∞'} منشور فقط يمكن نشره ',
                 //description: '.${S.of(context).shareAllPlatform}',
                 typePlan: planModel[index].name,
                 platForms:
@@ -80,59 +80,59 @@ class CustomListViewSubscriptionPlan extends StatelessWidget {
                   planModel[index].facebook
                       ? Image.asset(
                           AssetsData.faceBookIcon,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].twitter
                       ? Image.asset(
                           AssetsData.xIcon,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].instagram
                       ? Image.asset(
                           AssetsData.instagramIcon,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].linkedin
                       ? Image.asset(
                           AssetsData.linkedln,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].pinterest
                       ? Image.asset(
                           AssetsData.pinterest,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].reddit
                       ? Image.asset(
                           AssetsData.reddit,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].tiktok
                       ? Image.asset(
                           AssetsData.tiktok,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                   planModel[index].telegram
                       ? Image.asset(
                           AssetsData.telegram,
-                          height: 20.h,
+                          height: 15.h,
                         )
                       : Container(),
-                  SizedBox(width: 10.w),
+                  SizedBox(width: 3.w),
                 ],
               );
             });

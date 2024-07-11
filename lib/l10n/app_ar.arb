@@ -54,7 +54,7 @@
   "accounts": "الحسابات",
   "helpCenter": "مركز المساعدة",
   "aboutUs": "معلومات عنا",
-  "subscribe": "الاشتراكات",
+  "subscribe": "اشترك الان",
   "subscribePlan":"خطط الاشتراكات",
   "changeLanguage": "تغيير اللغة",
   "termsAndConditions": "الشروط والأحكام",
@@ -224,7 +224,9 @@
   "ok":"موافق",
   "gotoSubscripe":"الذهاب لاشتراكاتك او الاشتراك الخاص بك",
   "expireOn":"انتهاء الصلاحية في",
-  "createBtnAccount":"انشاء حساب"
+  "createBtnAccount":"انشاء حساب",
+  "subsNow":"الاشتراك الان"
+
 
 
 

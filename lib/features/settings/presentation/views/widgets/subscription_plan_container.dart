@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/styles.dart';
-import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 
 class SubscriptionPlansCntainer extends StatelessWidget {
   const SubscriptionPlansCntainer({
@@ -48,19 +48,52 @@ class SubscriptionPlansCntainer extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 17.h),
-            Text(
-              typePlan,
-              style: Theme.of(context).textTheme.labelLarge,
-            ),
-            SizedBox(height: 2.h),
-            Text(
-              price,
-              style: Styles.textStyle32Orange,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 23),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 42.h,
+                    width: 116.w,
+                    decoration: BoxDecoration(
+                        color: kPrimaryKey,
+                        borderRadius: BorderRadius.circular(17)),
+                    child: Center(
+                      child: Text(
+                        typePlan,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 2.h),
+                  Text(
+                    price,
+                    style:
+                        Styles.textStyle32Orange.copyWith(color: kBlackColor),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 15.h),
-            Text(
-              countPosts,
-              style: Theme.of(context).textTheme.bodyMedium,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 23),
+              child: Row(
+                children: [
+                  const Icon(Icons.check_circle_outline, color: kPrimaryKey),
+                  SizedBox(width: 10.w),
+                  Text(
+                    countPosts,
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyMedium!
+                        .copyWith(color: Colors.black),
+                  ),
+                ],
+              ),
             ),
             // SizedBox(height: 5.h),
             // Text(
@@ -69,21 +102,27 @@ class SubscriptionPlansCntainer extends StatelessWidget {
             // ),
             SizedBox(height: 20.h),
 
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: widgets,
-            ),
-            SizedBox(height: 20.h),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: CustomButtonLarge(
-                text: AppLocalizations.of(context)!.subscribe,
-                color: kPrimaryKey,
-                textColor: Colors.white,
-                function: function,
+              padding: const EdgeInsets.symmetric(horizontal: 23),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: widgets,
+                  ),
+                  SizedBox(
+                    width: 140.w,
+                    height: 60.h,
+                    child: CustomButtonSmall(
+                      borderColor: kPrimaryKey,
+                      text: AppLocalizations.of(context)!.subscribe,
+                      color: kPrimaryKey,
+                      function: function,
+                    ),
+                  ),
+                ],
               ),
             ),
-            SizedBox(height: 20.h),
           ],
         ),
       ),

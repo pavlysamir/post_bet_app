@@ -77,7 +77,7 @@
   "accounts":"Accounts",
   "helpCenter":"Help center",
   "aboutUs":"About us",
-  "subscribe":"Subscriptions",
+  "subscribe":"Subscribe Now",
   "subscribePlan":"Subscriptions Plans",
   "enterNewPassword":"Enter New Password",
   "noBackHistoryItem":"No Back History",
@@ -223,7 +223,8 @@
   "ok":"ok",
   "gotoSubscripe":"Go to Subscripe Or Your Subscription",
   "expireOn":"Expires on",
-  "createBtnAccount":"Create Account"
+  "createBtnAccount":"Create Account",
+  "subsNow":"Subscribe Now"
 
 
 

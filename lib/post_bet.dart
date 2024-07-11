@@ -34,9 +34,10 @@ class PostBetApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-              create: (context) =>
-                  SettingsCubit(getIt.get<SettingsRepository>())
-                    ..initializeLanguage()),
+              create: (context) => SettingsCubit(
+                    getIt.get<SettingsRepository>(),
+                    getIt.get<PlatFormsRepositery>(),
+                  )..initializeLanguage()),
           BlocProvider(
             create: (context) => LoginCubit(getIt.get<AuthRepository>()),
           ),

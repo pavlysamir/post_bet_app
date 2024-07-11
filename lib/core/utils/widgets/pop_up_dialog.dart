@@ -58,7 +58,7 @@ class PopUpDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               CustomButtonSmall(
-                borderColor: Colors.red,
+                borderColor: kPrimaryKey,
                 width: 100,
                 text: AppLocalizations.of(context)!.yes,
                 color: colorButton1,
@@ -66,7 +66,7 @@ class PopUpDialog extends StatelessWidget {
                 textColortcolor: textColortcolor1,
               ),
               CustomButtonSmall(
-                borderColor: Colors.red,
+                borderColor: kPrimaryKey,
                 width: 100,
                 text: AppLocalizations.of(context)!.no,
                 textColortcolor: textColortcolor2,

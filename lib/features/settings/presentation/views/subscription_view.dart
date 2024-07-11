@@ -3,11 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/app_router.dart';
-import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
-import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
-
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_subscription_listView.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -70,9 +67,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: CustomAppBar(
-              image: 'd',
-            ),
+            title: Text(AppLocalizations.of(context)!.subscribePlan),
           ),
           body: state is GetPlansSuccess
               ? SafeArea(
@@ -81,9 +76,7 @@ class _SubscriptionsViewState extends State<SubscriptionsView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(height: 40.h),
-                        CustomTitleText(
-                            text: AppLocalizations.of(context)!.subscribePlan),
-                        SizedBox(height: 40.h),
+
                         // SubscriptionPlansCntainer(
                         //   function: () {
                         //     Navigator.push(context,

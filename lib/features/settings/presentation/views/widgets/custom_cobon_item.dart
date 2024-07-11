@@ -78,7 +78,7 @@ class CobonItem extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10.0, horizontal: 10.0),
+                        vertical: 3.0, horizontal: 10.0),
                     enabledBorder:
                         Theme.of(context).inputDecorationTheme.enabledBorder,
                     focusedBorder: OutlineInputBorder(

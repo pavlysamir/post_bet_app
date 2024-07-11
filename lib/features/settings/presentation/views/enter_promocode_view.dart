@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
@@ -24,14 +23,12 @@ class EnterPromoView extends StatefulWidget {
 class _EnterPromoViewState extends State<EnterPromoView> {
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     SettingsCubit.get(context).promocodeController.text = '';
   }
 
   @override
   Widget build(BuildContext context) {
-    String btnTxt = AppLocalizations.of(context)!.submet;
     return Scaffold(
         appBar: CustomAppbareWithTitle(
             title: AppLocalizations.of(context)!.enterPromo),
@@ -105,81 +102,80 @@ class _EnterPromoViewState extends State<EnterPromoView> {
                               SizedBox(
                                 height: 30.h,
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).cardColor,
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius: BorderRadius.circular(10),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.5),
-                                      spreadRadius: 2,
-                                      blurRadius: 4,
-                                      //offset: const Offset(0, 2), // changes position of shadow
+                              Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 20),
+                                  child: Column(children: [
+                                    SizedBox(
+                                      height: 10.h,
                                     ),
-                                  ],
-                                ),
-                                child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 20),
-                                    child: Column(children: [
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      Text(
-                                        'Plan Price : ${SettingsCubit.get(context).myPromoCodeDetails!.planPrice}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                      ),
-                                      SizedBox(
-                                        height: 15.h,
-                                      ),
-                                      Text(
-                                        'Discount : ${SettingsCubit.get(context).myPromoCodeDetails!.discount}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                      ),
-                                      SizedBox(
-                                        height: 15.h,
-                                      ),
-                                      Text(
-                                        'Price after discount : ${SettingsCubit.get(context).myPromoCodeDetails!.priceAfterDiscount}',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium,
-                                      ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                      // Padding(
-                                      //   padding: const EdgeInsets.symmetric(
-                                      //       horizontal: 20),
-                                      //   child: CustomButtonLarge(
-                                      //       text:AppLocalizations.of(context)!.doneSubscribe,
-                                      //       color: kPrimaryKey,
-                                      //       textColor: Colors.white,
-                                      //       function: () async {
-                                      //         if (SettingsCubit.get(context)
-                                      //             .formKeyPromoCode
-                                      //             .currentState!
-                                      //             .validate()) {
-                                      //           await SettingsCubit.get(context)
-                                      //               .subscription(
-                                      //                   planId: planeId,
-                                      //                   promoCode: SettingsCubit
-                                      //                           .get(context)
-                                      //                       .promocodeController
-                                      //                       .text);
-                                      //         }
-                                      //       }),
-                                      // ),
-                                      SizedBox(
-                                        height: 10.h,
-                                      ),
-                                    ])),
-                              ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '${SettingsCubit.get(context).myPromoCodeDetails!.planPrice} AED : ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(color: kPrimaryKey),
+                                        ),
+                                        Text(
+                                          'Plan Price',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '${SettingsCubit.get(context).myPromoCodeDetails!.discount} AED : ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(color: kPrimaryKey),
+                                        ),
+                                        Text(
+                                          'Discount',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 15.h,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          '${SettingsCubit.get(context).myPromoCodeDetails!.priceAfterDiscount} AED : ',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium!
+                                              .copyWith(color: kPrimaryKey),
+                                        ),
+                                        Text(
+                                          'Price after discount',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 10.h,
+                                    ),
+                                  ])),
                             ],
                           ),
                         )

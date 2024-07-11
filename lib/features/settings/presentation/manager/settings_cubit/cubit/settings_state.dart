@@ -112,3 +112,13 @@ class MyPlanFailure extends SettingsState {
 }
 
 class MyPlanLoading extends SettingsState {}
+
+final class LinkAcoountLoading extends SettingsState {}
+
+final class LinkAcoountSuccess extends SettingsState {}
+
+final class LinkAcoountFailure extends SettingsState {
+  final String errMessage;
+
+  LinkAcoountFailure({required this.errMessage});
+}

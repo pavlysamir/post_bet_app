@@ -16,6 +16,7 @@ import 'package:post_bet/features/settings/presentation/views/terms_conditions_v
 import 'package:post_bet/features/settings/presentation/views/widgets/custom_link_account.dart';
 import 'package:post_bet/features/settings/presentation/views/widgets/setting_icon_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
@@ -108,9 +109,23 @@ class SettingsScreen extends StatelessWidget {
                                 color: kBlackColor),
                           ),
                           CustomLinkAccount(
-                            icon: Icon(Icons.link, color: kBlackColor),
+                            icon: const Icon(Icons.link, color: kBlackColor),
                             title: AppLocalizations.of(context)!.linkAcount,
-                            function: () {},
+                            function: () async {
+                              SettingsCubit.get(context)
+                                  .linkAcount()
+                                  .then((value) {
+                                launchUrl(Uri.parse(value),
+                                    mode: LaunchMode.externalApplication);
+
+                                // Navigator.push(context,
+                                //     MaterialPageRoute(builder: (context) {
+                                //   return WebViewPaynet(
+                                //     uri: value,
+                                //   );
+                                // }));
+                              });
+                            },
                           ),
                           SettingsIconWidget(
                             function: () {
@@ -142,9 +157,9 @@ class SettingsScreen extends StatelessWidget {
                                       .confirmChangeLng,
                                   subTitle: AppLocalizations.of(context)!
                                       .doChangeLanguage,
-                                  colorButton1: kPoppingsRedColor,
-                                  colorButton2: Colors.red,
-                                  textColortcolor1: Colors.red,
+                                  colorButton1: Colors.white,
+                                  colorButton2: kPrimaryKey,
+                                  textColortcolor1: kPrimaryKey,
                                   textColortcolor2: Colors.white,
                                 ),
                               );

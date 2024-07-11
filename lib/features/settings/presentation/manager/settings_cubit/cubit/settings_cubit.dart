@@ -8,6 +8,7 @@ import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
+import 'package:post_bet/features/platform/data/repo/platforms_repo.dart';
 import 'package:post_bet/features/settings/data/models/message_model.dart';
 import 'package:post_bet/features/settings/data/models/my_subscription_model.dart';
 import 'package:post_bet/features/settings/data/models/plane_model.dart';
@@ -19,9 +20,13 @@ import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit(this.settingsRepository) : super(SettingsInitial());
+  SettingsCubit(this.settingsRepository, this.platFormsRepositery)
+      : super(SettingsInitial());
 
   final SettingsRepository settingsRepository;
+
+  final PlatFormsRepositery platFormsRepositery;
+
   static SettingsCubit get(context) => BlocProvider.of(context);
 
   TextEditingController currentPasswordController = TextEditingController();
@@ -103,6 +108,20 @@ class SettingsCubit extends Cubit<SettingsState> {
         print(isDark);
       }
     });
+  }
+
+  Future<String> linkAcount() async {
+    String? url;
+    emit(LinkAcoountLoading());
+    final response = await platFormsRepositery.linkAccount();
+    response.fold((l) {
+      emit(LinkAcoountFailure(errMessage: l));
+    }, (r) {
+      url = r;
+
+      emit(LinkAcoountSuccess());
+    });
+    return url!;
   }
 
   void logout() async {
