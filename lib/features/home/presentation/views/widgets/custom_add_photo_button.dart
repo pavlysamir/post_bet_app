@@ -4,8 +4,14 @@ import 'package:post_bet/constants.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 class CustomAddPhotoButton extends StatelessWidget {
-  const CustomAddPhotoButton({super.key, required this.function});
+  const CustomAddPhotoButton(
+      {super.key,
+      required this.function,
+      required this.text,
+      required this.icon});
   final Function() function;
+  final String text;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +24,8 @@ class CustomAddPhotoButton extends StatelessWidget {
         radius: const Radius.circular(10),
         dashPattern: const [6, 3],
         child: Container(
-          width: 250.w,
-          height: 210.h,
+          width: 150.w,
+          height: 150.h,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
@@ -27,8 +33,8 @@ class CustomAddPhotoButton extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Icon(
-                Icons.image_outlined,
+              Icon(
+                icon,
                 color: Colors.grey,
                 size: 60,
               ),
@@ -36,7 +42,7 @@ class CustomAddPhotoButton extends StatelessWidget {
                 height: 10.h,
               ),
               Text(
-                'اضف صور/فيديوهات او تصفح',
+                text,
                 style: TextStyle(color: kBlackColor, fontSize: 14.sp),
               ),
             ],

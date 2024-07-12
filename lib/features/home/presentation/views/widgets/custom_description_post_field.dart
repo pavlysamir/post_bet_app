@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/utils/app_router.dart';
+import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_add_photo_button.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_view_photo_from_device.dart';
@@ -33,7 +36,6 @@ class CustomDescriptionPostField extends StatelessWidget {
       builder: (context, state) {
         return Container(
           clipBehavior: Clip.none,
-          //  height: 150.h,
           decoration: BoxDecoration(
             color: Theme.of(context).cardColor,
             border: Border.all(color: Colors.white),
@@ -78,11 +80,6 @@ class CustomDescriptionPostField extends StatelessWidget {
                       .copyWith(color: Colors.grey),
                   //prefixIcon: prefexIcon,
                 ),
-              ),
-              CustomAddPhotoButton(
-                function: () {
-                  AddPostCubit.get(context).pickImage();
-                },
               ),
               state is LoadingPickImage
                   ? const Center(
@@ -146,12 +143,9 @@ class CustomDescriptionPostField extends StatelessWidget {
                                     ),
                             ],
                           ),
-                    // CustomViewPhotoFromDevice(
-                    //   file: AddPostCubit.get(context).image!,
-                    //   function: () {
-                    //     AddPostCubit.get(context).clearImage();
-                    //   },
-                    // ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
                   ],
                 ),
               if (AddPostCubit.get(context).fileVideo != null)
@@ -182,33 +176,46 @@ class CustomDescriptionPostField extends StatelessWidget {
                 ),
               if (img == null)
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     AddPostCubit.get(context).postImages.length >= 3
                         ? const SizedBox()
-                        : IconButton(
-                            icon: Icon(
-                              Icons.image,
-                              size: 25.h,
-                            ),
-                            onPressed: () {
+                        : CustomAddPhotoButton(
+                            icon: Icons.image_outlined,
+                            text: 'اضف صور',
+                            function: () {
                               AddPostCubit.get(context).pickImage();
                             },
                           ),
                     SizedBox(width: 10.w),
                     AddPostCubit.get(context).fileVideo == null
-                        ? IconButton(
-                            icon: Icon(
-                              Icons.videocam_rounded,
-                              size: 25.h,
-                            ),
-                            onPressed: () {
+                        ? CustomAddPhotoButton(
+                            icon: Icons.video_collection_outlined,
+                            text: 'اضف فيديو',
+                            function: () {
                               AddPostCubit.get(context).pickCameraVideo();
                             },
                           )
                         : const SizedBox(),
                   ],
-                )
+                ),
+              SizedBox(height: 20.h),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                child: CustomButtonSmall(
+                    text: 'Next',
+                    color: kPrimaryKey,
+                    borderColor: kPrimaryKey,
+                    function: () async {
+                      customJustGoNavigate(
+                          context: context,
+                          path: AppRouter.kSelectedPlatformScreen);
+                    }),
+              ),
+              SizedBox(
+                height: 12.h,
+              ),
             ],
           ),
         );
