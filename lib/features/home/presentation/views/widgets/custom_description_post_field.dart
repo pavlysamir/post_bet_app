@@ -65,7 +65,10 @@ class CustomDescriptionPostField extends StatelessWidget {
                   enabledBorder: outlineInputBorder(),
                   focusedBorder: outlineInputBorder(),
                   hintText: hintText,
-                  hintStyle: Theme.of(context).textTheme.bodyLarge,
+                  hintStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: Colors.grey),
                   //prefixIcon: prefexIcon,
                 ),
               ),
