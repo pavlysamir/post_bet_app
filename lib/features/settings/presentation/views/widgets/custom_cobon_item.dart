@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:post_bet/constants.dart';
 
 class CobonItem extends StatelessWidget {
   const CobonItem({
@@ -24,7 +25,7 @@ class CobonItem extends StatelessWidget {
     String formattedDate = DateFormat('yyyy-MM-dd').format(dateTime);
     return Container(
         //padding: EdgeInsets.all(8.h),
-        height: 250.h,
+        height: 260.h,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.white),
@@ -47,7 +48,7 @@ class CobonItem extends StatelessWidget {
               ),
               CircleAvatar(
                 radius: 60.r,
-                backgroundColor: Colors.black,
+                backgroundColor: kPrimaryKey,
                 child: Center(
                   child: Text(
                     packageType,
@@ -68,7 +69,7 @@ class CobonItem extends StatelessWidget {
               const Spacer(),
               SizedBox(
                 width: 80.w,
-                height: 40.h,
+                height: 50.h,
                 child: TextFormField(
                   initialValue: cobonCode,
                   readOnly: true,
@@ -78,9 +79,12 @@ class CobonItem extends StatelessWidget {
                   },
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.symmetric(
-                        vertical: 3.0, horizontal: 10.0),
-                    enabledBorder:
-                        Theme.of(context).inputDecorationTheme.enabledBorder,
+                        vertical: 5.0, horizontal: 10.0),
+                    enabledBorder: Theme.of(context)
+                        .inputDecorationTheme
+                        .enabledBorder!
+                        .copyWith(
+                            borderSide: const BorderSide(color: kPrimaryKey)),
                     focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(
                           color: Colors.white), // Border color changes to red

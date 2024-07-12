@@ -203,11 +203,10 @@ class SettingsScreen extends StatelessWidget {
                                         },
                                         title: AppLocalizations.of(context)!
                                             .deletAccountConfirm,
-                                        subTitle: AppLocalizations.of(context)!
-                                            .logOut,
-                                        colorButton1: kPoppingsRedColor,
-                                        colorButton2: Colors.red,
-                                        textColortcolor1: Colors.red,
+                                        subTitle: '',
+                                        colorButton1: Colors.white,
+                                        colorButton2: kPrimaryKey,
+                                        textColortcolor1: kPrimaryKey,
                                       ));
                             },
                           ),
@@ -228,9 +227,9 @@ class SettingsScreen extends StatelessWidget {
                                       .changeThemeConfirm,
                                   subTitle: AppLocalizations.of(context)!
                                       .doChangeTheme,
-                                  colorButton1: kPoppingsRedColor,
-                                  colorButton2: Colors.red,
-                                  textColortcolor1: Colors.red,
+                                  colorButton1: Colors.white,
+                                  colorButton2: kPrimaryKey,
+                                  textColortcolor1: kPrimaryKey,
                                   textColortcolor2: Colors.white,
                                 ),
                               );
@@ -306,9 +305,9 @@ class SettingsScreen extends StatelessWidget {
                                       .logOutConfirm,
                                   subTitle:
                                       AppLocalizations.of(context)!.doLogOut,
-                                  colorButton1: kPoppingsRedColor,
-                                  colorButton2: Colors.red,
-                                  textColortcolor1: Colors.red,
+                                  colorButton1: Colors.white,
+                                  colorButton2: kPrimaryKey,
+                                  textColortcolor1: kPrimaryKey,
                                   textColortcolor2: Colors.white,
                                 ),
                               );

@@ -93,19 +93,26 @@ class WhatCanPostView extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                platformIcons[index],
-                                height: 40.h,
-                                width: 40.w,
+                              Row(
+                                children: [
+                                  Image.asset(
+                                    platformIcons[index],
+                                    height: 40.h,
+                                    width: 40.w,
+                                  ),
+                                  SizedBox(
+                                    width: 15.w,
+                                  ),
+                                  Text(
+                                    platformNames[index],
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                height: 15.h,
+                              const SizedBox(
+                                height: 15,
                               ),
-                              Text(
-                                platformNames[index],
-                                style: Theme.of(context).textTheme.titleLarge,
-                              ),
-                              const Spacer(),
                               Text(
                                 platformsDetails[index],
                                 style: Theme.of(context)
