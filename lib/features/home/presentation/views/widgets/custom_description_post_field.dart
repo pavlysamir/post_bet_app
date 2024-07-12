@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/custom_add_photo_button.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_view_photo_from_device.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_view_video_from_device.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/data_user_add_post.dart';
 
 class CustomDescriptionPostField extends StatelessWidget {
   const CustomDescriptionPostField({
@@ -47,8 +49,13 @@ class CustomDescriptionPostField extends StatelessWidget {
           ),
           child: Column(
             children: [
+              const Padding(
+                padding: EdgeInsets.all(18.0),
+                child: DataUserAddPost(),
+              ),
+              SizedBox(height: 20.h),
               TextFormField(
-                maxLines: 10,
+                maxLines: 2,
                 keyboardType: textInputType,
                 controller: controller,
                 validator: (value) {
@@ -71,6 +78,11 @@ class CustomDescriptionPostField extends StatelessWidget {
                       .copyWith(color: Colors.grey),
                   //prefixIcon: prefexIcon,
                 ),
+              ),
+              CustomAddPhotoButton(
+                function: () {
+                  AddPostCubit.get(context).pickImage();
+                },
               ),
               state is LoadingPickImage
                   ? const Center(
