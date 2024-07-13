@@ -21,9 +21,7 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => AddPostCubit(getIt.get<PostReposatory>()),
       child: BlocConsumer<AddPostCubit, AddPostState>(
-        listener: (context, state) {
-          // TODO: implement listener
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return Scaffold(
               body: CustomScrollView(

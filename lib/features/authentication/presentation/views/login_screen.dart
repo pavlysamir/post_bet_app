@@ -95,7 +95,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 LoginCubit.get(context)!.emailController,
                             validationMassage: (value) {
                               if (value.isEmpty) {
-                                return AppLocalizations.of(context)!.enterCode;
+                                return AppLocalizations.of(context)!.enterEmail;
                               }
                             }),
                         SizedBox(height: 18.h),
