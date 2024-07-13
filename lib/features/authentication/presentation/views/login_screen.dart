@@ -24,7 +24,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
   }
