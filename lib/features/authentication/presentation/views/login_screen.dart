@@ -89,10 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             style: Styles.textStyle16Black),
                         SizedBox(height: 41.h),
                         CustomFormField(
-                            // prefixIcon: const Icon(
-                            //   Icons.email_outlined,
-                            //   color: kPrimaryKey,
-                            // ),
                             textInputType: TextInputType.emailAddress,
                             hintText: AppLocalizations.of(context)!.loginEmail,
                             controller:

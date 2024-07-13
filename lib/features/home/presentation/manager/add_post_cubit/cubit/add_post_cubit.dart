@@ -19,6 +19,11 @@ class AddPostCubit extends Cubit<AddPostState> {
   static AddPostCubit get(BuildContext context) => BlocProvider.of(context);
 
   TextEditingController addPostController = TextEditingController();
+
+  TextEditingController addSchadulaPostController = TextEditingController();
+
+  var formSchadulaKey = GlobalKey<FormState>();
+
   List<String> descriptionPlatform = [
     'Images,Text,Video',
     'Images ,video',

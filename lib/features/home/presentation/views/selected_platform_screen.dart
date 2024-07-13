@@ -8,7 +8,6 @@ import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_large.dart';
 import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
-import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/select_post_platform_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,6 +22,21 @@ class SelectedPlatformScreen extends StatelessWidget {
     return BlocConsumer<AddPostCubit, AddPostState>(
       listener: (context, state) {
         if (state is CreatePostSuccessfully) {
+          // showDialog(
+          //   context: context,
+          //   builder: (BuildContext context) => PopUpDialogOneButton(
+          //     context: context,
+          //     function: () {
+          //       Navigator.pop(context);
+          //     },
+          //     title: 'تم النشر بنجاح ',
+          //     subTitle: '',
+          //     colorButton1: kPrimaryKey,
+          //     textColortcolor1: Colors.white,
+          //     textbtn: 'رجوع',
+          //   ),
+          // );
+
           ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
             content: Text('success Share Post'),
           ));
@@ -90,7 +104,11 @@ class SelectedPlatformScreen extends StatelessWidget {
             ),
             actions: [
               IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.calendar_month))
+                  onPressed: () {
+                    customJustGoNavigate(
+                        context: context, path: AppRouter.kSchadulaPostsScreen);
+                  },
+                  icon: const Icon(Icons.calendar_month))
             ],
           ),
           bottomNavigationBar: Padding(

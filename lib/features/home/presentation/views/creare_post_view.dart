@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:post_bet/core/utils/app_router.dart';
 
-import 'package:post_bet/core/utils/widgets/Custom_AppBar_with_title.dart';
+import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
@@ -19,8 +20,18 @@ class CreatePostView extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-            appBar: CustomAppbareWithTitle(
-                title: AppLocalizations.of(context)!.createPost),
+            appBar: AppBar(
+              title: Text(AppLocalizations.of(context)!.createPost),
+              actions: [
+                IconButton(
+                    onPressed: () {
+                      customJustGoNavigate(
+                          context: context,
+                          path: AppRouter.kSchadulaPostsScreen);
+                    },
+                    icon: const Icon(Icons.calendar_month))
+              ],
+            ),
             body: SingleChildScrollView(
               child: Column(
                 children: [
