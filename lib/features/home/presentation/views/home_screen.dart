@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
-import 'package:post_bet/core/utils/app_router.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
-import 'package:post_bet/core/utils/widgets/custom_go_navigator.dart';
 import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
 import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/add_post_container.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_teplate_list_view.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_whatCanPost_container.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/custom_img_templete_listView.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/search_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,28 +40,33 @@ class HomeScreen extends StatelessWidget {
                             image: 'd',
                           ),
                           SizedBox(
+                            height: 21.h,
+                          ),
+                          SearchBarWidget(
+                            onChanged: (p0) {},
+                          ),
+                          SizedBox(
                             height: 40.h,
                           ),
-                          CustomTitleText(
-                              text: AppLocalizations.of(context)!.createPost),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const CustomTitleText(text: 'الأكثر شعبية'),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: GestureDetector(
+                                  onTap: () {},
+                                  child: Text(
+                                    AppLocalizations.of(context)!.seeAll,
+                                    style: const TextStyle(color: kPrimaryKey),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                           SizedBox(
                             height: 15.h,
-                          ),
-                          const AddPostContainer(),
-                          SizedBox(
-                            height: 25.h,
-                          ),
-                          SizedBox(
-                            height: 34.h,
-                          ),
-                          const CustomLineSeperator(),
-                          SizedBox(
-                            height: 34.h,
-                          ),
-                          CustomTitleText(
-                              text: AppLocalizations.of(context)!.template),
-                          SizedBox(
-                            height: 30.h,
                           ),
                         ],
                       ),
@@ -72,7 +74,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SliverToBoxAdapter(
-                  child: CustomTemplatePostsListView(),
+                  child: CustomImgTempleteListview(),
                 ),
                 SliverToBoxAdapter(
                   child: Column(
@@ -95,16 +97,11 @@ class HomeScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomTitleText(
-                              text: AppLocalizations.of(context)!.whatUCanPost),
+                          const CustomTitleText(text: 'شهر الفخر'),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: GestureDetector(
-                              onTap: () {
-                                customJustGoNavigate(
-                                    context: context,
-                                    path: AppRouter.kWhatCanPost);
-                              },
+                              onTap: () {},
                               child: Text(
                                 AppLocalizations.of(context)!.seeAll,
                                 style: const TextStyle(color: kPrimaryKey),
@@ -116,12 +113,11 @@ class HomeScreen extends StatelessWidget {
                       SizedBox(
                         height: 30.h,
                       ),
-                      const CustomWhatCanPostContainer(),
-                      SizedBox(
-                        height: 30.h,
-                      ),
                     ],
                   ),
+                ),
+                const SliverToBoxAdapter(
+                  child: CustomImgTempleteListview(),
                 ),
               ]));
         },
