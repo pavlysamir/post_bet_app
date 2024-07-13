@@ -4,6 +4,7 @@ import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/features/authentication/presentation/views/add_new_password_screen.dart';
+import 'package:post_bet/features/home/presentation/views/myPosts_list_screen.dart';
 import 'package:post_bet/features/home/presentation/views/schedule_posts_screen.dart';
 import 'package:post_bet/features/home/presentation/views/selected_platform_screen.dart';
 import 'package:post_bet/features/on_boarding/presentations/first_screen.dart';
@@ -53,6 +54,7 @@ abstract class AppRouter {
   static const kSettingScreen = '/SettingScreen';
   static const kSelectedPlatformScreen = '/SelectedPlatformScreen';
   static const kSchadulaPostsScreen = '/SchadulaPostsScreen';
+  static const kMySchadulaPostsScreen = '/MySchadulaPostsScreen';
 
   static final router = GoRouter(
       initialLocation:
@@ -162,6 +164,10 @@ abstract class AppRouter {
         GoRoute(
           path: kSchadulaPostsScreen,
           builder: (context, state) => const SchedulePostsScreen(),
+        ),
+        GoRoute(
+          path: kMySchadulaPostsScreen,
+          builder: (context, state) => const MyPostsListSchaduling(),
         ),
       ]);
 }

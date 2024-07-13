@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/widgets/custom_button_small.dart';
 import 'package:post_bet/core/utils/widgets/custom_form_field.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/myPosts_schaduling_item.dart';
 
 class SchedulePostsScreen extends StatelessWidget {
   const SchedulePostsScreen({super.key});
@@ -19,7 +21,7 @@ class SchedulePostsScreen extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
-              title: Text(AppLocalizations.of(context)!.home),
+              title: Text(AppLocalizations.of(context)!.platform),
             ),
             body: SingleChildScrollView(
               child: Form(
@@ -65,7 +67,23 @@ class SchedulePostsScreen extends StatelessWidget {
                         child: CustomButtonSmall(
                           text: AppLocalizations.of(context)!.zip,
                           borderColor: kPrimaryKey,
-                          function: () {},
+                          function: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  PopUpDialogOneButton(
+                                context: context,
+                                function: () {
+                                  Navigator.pop(context);
+                                },
+                                title: 'تم الحفظ  ',
+                                subTitle: '',
+                                colorButton1: kPrimaryKey,
+                                textColortcolor1: Colors.white,
+                                textbtn: 'رجوع',
+                              ),
+                            );
+                          },
                           color: kPrimaryKey,
                           textColortcolor: Colors.white,
                         ),
@@ -75,6 +93,14 @@ class SchedulePostsScreen extends StatelessWidget {
                         AppLocalizations.of(context)!.pay,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
+                      SizedBox(height: 20.h),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 5,
+                          itemBuilder: (context, index) {
+                            return const MyPostsSchaduling();
+                          }),
                     ],
                   ),
                 ),
