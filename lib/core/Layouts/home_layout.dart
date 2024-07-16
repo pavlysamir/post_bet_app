@@ -32,10 +32,10 @@ class _HomeLayoutState extends State<HomeLayout> {
               elevation: 0.0,
               shape: const CircularNotchedRectangle(),
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     top: BorderSide(
-                      color: Colors.white,
+                      color: Colors.grey[300]!,
                       width: 1.0,
                     ),
                   ),
