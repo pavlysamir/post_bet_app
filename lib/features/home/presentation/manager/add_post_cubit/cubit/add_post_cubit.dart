@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
+import 'package:post_bet/features/home/data/models/myposts_model.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 
 part 'add_post_state.dart';
@@ -21,6 +22,8 @@ class AddPostCubit extends Cubit<AddPostState> {
   TextEditingController addPostController = TextEditingController();
 
   TextEditingController addSchadulaPostController = TextEditingController();
+
+  TextEditingController addSchadulaTimePostController = TextEditingController();
 
   var formSchadulaKey = GlobalKey<FormState>();
 
@@ -214,6 +217,8 @@ class AddPostCubit extends Cubit<AddPostState> {
     AssetsData.youtube,
     AssetsData.googleBusiness
   ];
+
+  //List<File> postEditImages = [];
 
   List<String> imagesUrls = [];
   String? imgUrl;
@@ -873,6 +878,30 @@ class AddPostCubit extends Cubit<AddPostState> {
         addPostController.text.isNotEmpty) {
       await createInstagramTextPost();
     }
+  }
+
+  List<History> myPosts = [];
+  mySharedPosts() async {
+    emit(MyPostsLoading());
+    final response = await postReposatory.myPosts();
+    response.fold(
+      (errMessage) {
+        emit(MyPostsFuailure());
+      },
+      (history) {
+        myPosts = history;
+        emit(MyPostsSuccessfully());
+      },
+    );
+    // try {
+    //   final response = postReposatory.myPosts();
+    //   print('llllllllllllllllllllllllllllllllllll $response');
+    //   myPosts = response;
+    //   emit(MyPostsSuccessfully());
+    // } catch (e) {
+    //   print(e.toString());
+    //   emit(MyPostsFuailure());
+    // }
   }
 }
 // img.compositeImage(image, banner!, dstH: 35, dstW: 140, dstX: x, dstY: y);

@@ -53,7 +53,7 @@ class _CreatePostPlatFormItemState extends State<CreatePostPlatFormItem> {
     addPostCubit.selectedInstaItems.clear();
     addPostCubit.selectedaceInstaItems.clear();
     addPostCubit.selectedItems.clear();
-    addPostCubit.addPostController.text = '';
+    //addPostCubit.addPostController.text = '';
     addPostCubit.postImages.clear();
     addPostCubit.fileVideo = null;
     super.dispose();

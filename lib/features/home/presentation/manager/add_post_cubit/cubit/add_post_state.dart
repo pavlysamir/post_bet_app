@@ -236,3 +236,9 @@ class ShareActionFailure extends AddPostState {
 }
 
 class ShareActionLoading extends AddPostState {}
+
+class MyPostsLoading extends AddPostState {}
+
+class MyPostsSuccessfully extends AddPostState {}
+
+class MyPostsFuailure extends AddPostState {}

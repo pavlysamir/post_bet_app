@@ -52,7 +52,8 @@ class PostBetApp extends StatelessWidget {
             ),
           ),
           BlocProvider(
-            create: (context) => AddPostCubit(getIt.get<PostReposatory>()),
+            create: (context) =>
+                AddPostCubit(getIt.get<PostReposatory>())..mySharedPosts(),
           ),
           BlocProvider(
             create: (context) =>

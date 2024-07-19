@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:post_bet/core/api/api_consumer.dart';
@@ -8,6 +9,7 @@ import 'package:post_bet/core/errors/exceptions.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:flutter/services.dart' show ByteData, rootBundle;
+import 'package:post_bet/features/home/data/models/myposts_model.dart';
 
 class PostReposatory {
   final ApiConsumer api;
@@ -912,6 +914,24 @@ class PostReposatory {
     } on DioError catch (error) {
       print('Error uploading file: ${error.message}');
       rethrow; // Re-throw for further handling if needed
+    }
+  }
+
+  Future<Either<String, List<History>>> myPosts() async {
+    try {
+      final response = await api.get(
+        '/posting/history?lastDays=90',
+      );
+
+      List<History> posts = [];
+      for (var item in response['data']['history']) {
+        posts.add(History.fromJson(item));
+      }
+
+      print(posts);
+      return Right(posts);
+    } on ServerException catch (e) {
+      return Left(e.errModel.errorMessage!);
     }
   }
 }
