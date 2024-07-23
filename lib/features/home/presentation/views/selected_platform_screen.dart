@@ -118,26 +118,31 @@ class SelectedPlatformScreen extends StatelessWidget {
                 color: kPrimaryKey,
                 textColor: Colors.white,
                 function: () async {
-                  if (AddPostCubit.get(context)
-                              .addPostController
-                              .text
-                              .isEmpty &&
-                          AddPostCubit.get(context).fileVideo == null &&
-                          AddPostCubit.get(context).postImages.isEmpty ||
+                  if (
+                      // AddPostCubit.get(context)
+                      //           .addPostController
+                      //           .text
+                      //           .isEmpty &&
+                      //       AddPostCubit.get(context).fileVideo == null &&
+                      //       AddPostCubit.get(context).postImages.isEmpty ||
                       AddPostCubit.get(context).checkBoxValues.isEmpty) {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         content:
                             Text(AppLocalizations.of(context)!.pleaseWrite)));
-                  }
+                  } else {
+                    title = AppLocalizations.of(context)!.loading;
 
-                  title = AppLocalizations.of(context)!.loading;
-
-                  await AddPostCubit.get(context).handleAction().then((value) {
-                    Future.delayed(const Duration(seconds: 18)).then((value) {
-                      customGoAndDeleteNavigate(
-                          context: context, path: AppRouter.kHomeLayOut);
+                    await AddPostCubit.get(context)
+                        .handleAction()
+                        .then((value) {
+                      Future.delayed(const Duration(seconds: 18)).then((value) {
+                        customGoAndDeleteNavigate(
+                            context: context, path: AppRouter.kHomeLayOut);
+                      }).then((value) {
+                        AddPostCubit.get(context).clearImage();
+                      });
                     });
-                  });
+                  }
 
                   print(AddPostCubit.get(context).checkBoxValues);
                   print(AddPostCubit.get(context).selectedItems);

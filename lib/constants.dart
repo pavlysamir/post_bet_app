@@ -17,3 +17,5 @@ const k323232 = Color(0xff323232);
 File? imageFile;
 List<String> myPlatForms = [];
 List<String> platformIcons = [];
+
+File? editedTempletePostImages;

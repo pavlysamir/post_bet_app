@@ -10,9 +10,12 @@ import 'package:post_bet/features/activities/data/repo/activities_repo.dart';
 import 'package:post_bet/features/activities/presentation/manager/cubit/get_posts_cubit.dart';
 import 'package:post_bet/features/authentication/data/repo/auth_repo.dart';
 import 'package:post_bet/features/authentication/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:post_bet/features/home/data/photos_repo.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_templete/add_post_templete_cubit.dart';
+import 'package:post_bet/features/home/presentation/manager/details_photo/details_photo_cubit.dart';
+import 'package:post_bet/features/home/presentation/manager/photo_cubit/photo_cubit.dart';
 import 'package:post_bet/features/platform/data/repo/platforms_repo.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
@@ -61,7 +64,15 @@ class PostBetApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => GetPostsCubit(getIt.get<ActivitiesRepo>()),
-          )
+          ),
+          BlocProvider(
+            create: (context) => PhotoCubit(getIt.get<PhotoRepositiry>())
+              ..getCollection()
+              ..getPhotos(),
+          ),
+          BlocProvider(
+            create: (context) => DetailsPhotosCubit(),
+          ),
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(
           builder: (context, state) {

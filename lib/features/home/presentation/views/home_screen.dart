@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/utils/service_locator.dart';
 import 'package:post_bet/core/utils/widgets/Custom_AppBar.dart';
-import 'package:post_bet/core/utils/widgets/custom_line_seperator.dart';
-import 'package:post_bet/core/utils/widgets/custom_title_text.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit/add_post_cubit.dart';
-import 'package:post_bet/features/home/presentation/views/widgets/custom_img_templete_listView.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:post_bet/features/home/presentation/views/widgets/photo_widget.dart';
 import 'package:post_bet/features/home/presentation/views/widgets/search_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -46,76 +42,27 @@ class HomeScreen extends StatelessWidget {
                           SizedBox(
                             height: 40.h,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const CustomTitleText(text: 'الأكثر شعبية'),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                child: GestureDetector(
-                                  onTap: () {},
-                                  child: Text(
-                                    AppLocalizations.of(context)!.seeAll,
-                                    style: const TextStyle(color: kPrimaryKey),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 15.h,
-                          ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                const SliverToBoxAdapter(
-                  child: CustomImgTempleteListview(),
-                ),
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                    ],
+                // const SliverToBoxAdapter(
+                //   child: CustomImgTempleteListview(),
+                // ),
+
+                SliverPadding(
+                  padding: const EdgeInsets.all(16),
+                  sliver: SliverToBoxAdapter(
+                    child: Text(
+                      "اشهر الصور الجديدة",
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
                   ),
                 ),
-                SliverToBoxAdapter(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const CustomLineSeperator(),
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const CustomTitleText(text: 'شهر الفخر'),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Text(
-                                AppLocalizations.of(context)!.seeAll,
-                                style: const TextStyle(color: kPrimaryKey),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 30.h,
-                      ),
-                    ],
-                  ),
-                ),
-                const SliverToBoxAdapter(
-                  child: CustomImgTempleteListview(),
+                const SliverPadding(
+                  padding: EdgeInsets.fromLTRB(16, 0, 16, 16),
+                  sliver: PhotosWidget(),
                 ),
               ]));
         },

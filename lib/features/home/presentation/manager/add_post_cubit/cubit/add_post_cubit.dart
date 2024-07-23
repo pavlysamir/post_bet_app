@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:post_bet/constants.dart';
 import 'package:post_bet/core/Assets/Assets.dart';
 import 'package:post_bet/features/home/data/models/myposts_model.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
@@ -73,6 +74,8 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   List<File> postImages = [];
 
+  List<File> editedPostImages = [];
+
   File? imageFile;
   Future<void> pickImage() async {
     emit(LoadingPickImage());
@@ -125,7 +128,18 @@ class AddPostCubit extends Cubit<AddPostState> {
     imagesUrls.clear();
     imagesFaceUrls.clear();
     postImages.clear();
-
+    editedPostImages.clear();
+    imagesInstaUrls.clear();
+    postVideos.clear();
+    displayVideo = null;
+    base64String = null;
+    videoBytes = null;
+    fileVideo = null;
+    imageFile = null;
+    imagesUrls.clear();
+    imagesFaceUrls.clear();
+    imagesInstaUrls.clear();
+    editedTempletePostImages = null;
     emit(RemoveFileImage());
   }
 
@@ -222,24 +236,36 @@ class AddPostCubit extends Cubit<AddPostState> {
 
   List<String> imagesUrls = [];
   String? imgUrl;
+
   uploadImage() async {
     try {
       emit(UploadImageLoading());
-      final upload = postImages.map((image) async {
-        await postReposatory.uploadFile(image.path).then((value) {
+      List<Future<void>> uploadFutures = [];
+
+      if (editedPostImages.isNotEmpty) {
+        uploadFutures = editedPostImages.map((image) async {
+          final value = await postReposatory.uploadFile(image.path);
           imagesUrls.add(value);
-          print('ccccccccccccccccccccccccccccccc${value}');
-        });
-      }).toList();
+          print('ccccccccccccccccccccccccccccccc$value');
+        }).toList();
+      } else if (editedTempletePostImages != null) {
+        final value =
+            await postReposatory.uploadFile(editedTempletePostImages!.path);
+        imagesUrls.add(value);
+      } else {
+        uploadFutures = postImages.map((image) async {
+          final value = await postReposatory.uploadFile(image.path);
+          imagesUrls.add(value);
+          print('ccccccccccccccccccccccccccccccc$value');
+        }).toList();
+      }
+
       print(
           'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imagesUrls');
+
+      await Future.wait(uploadFutures);
       emit(UploadImgSuccessfully());
-      Future.wait(upload).then((value) {
-        createImagePost();
-      });
-      // final response = await postReposatory.uploadFile(filePath);
-      // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
-      // imgUrl = response;
+      createImagePost();
     } catch (e) {
       print(e.toString());
       emit(UploadImgFailure(errMessage: e.toString()));
@@ -249,17 +275,29 @@ class AddPostCubit extends Cubit<AddPostState> {
   List<String> imagesFaceUrls = [];
   uploadFaceBokImage() async {
     try {
-      emit(UploadImageLoading());
-      final upload = postImages.map((image) async {
-        await postReposatory.uploadFile(image.path).then((value) {
+      List<Future<void>> uploadFutures = [];
+
+      if (editedPostImages.isNotEmpty) {
+        uploadFutures = editedPostImages.map((image) async {
+          final value = await postReposatory.uploadFile(image.path);
           imagesFaceUrls.add(value);
-          print('ccccccccccccccccccccccccccccccc${value}');
-        });
-      }).toList();
+          print('ccccccccccccccccccccccccccccccc$value');
+        }).toList();
+      } else if (editedTempletePostImages != null) {
+        final value =
+            await postReposatory.uploadFile(editedTempletePostImages!.path);
+        imagesFaceUrls.add(value);
+      } else {
+        uploadFutures = postImages.map((image) async {
+          final value = await postReposatory.uploadFile(image.path);
+          imagesFaceUrls.add(value);
+          print('ccccccccccccccccccccccccccccccc$value');
+        }).toList();
+      }
       print(
           'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imagesFaceUrls');
       emit(UploadImgSuccessfully());
-      Future.wait(upload).then((value) {
+      Future.wait(uploadFutures).then((value) {
         createFaceBookImagePost();
       });
       // final response = await postReposatory.uploadFile(filePath);
@@ -276,16 +314,29 @@ class AddPostCubit extends Cubit<AddPostState> {
   uploadInstagramImage() async {
     try {
       emit(UploadImageLoading());
-      final upload = postImages.map((image) async {
-        await postReposatory.uploadFile(image.path).then((value) {
+      List<Future<void>> uploadFutures = [];
+
+      if (editedPostImages.isNotEmpty) {
+        uploadFutures = editedPostImages.map((image) async {
+          final value = await postReposatory.uploadFile(image.path);
           imagesInstaUrls.add(value);
-          print('ccccccccccccccccccccccccccccccc${value}');
-        });
-      }).toList();
+          print('ccccccccccccccccccccccccccccccc$value');
+        }).toList();
+      } else if (editedTempletePostImages != null) {
+        final value =
+            await postReposatory.uploadFile(editedTempletePostImages!.path);
+        imagesInstaUrls.add(value);
+      } else {
+        uploadFutures = postImages.map((image) async {
+          final value = await postReposatory.uploadFile(image.path);
+          imagesInstaUrls.add(value);
+          print('ccccccccccccccccccccccccccccccc$value');
+        }).toList();
+      }
       print(
           'لالالالالالالالالالالالالالالالالالالالالالالالالالالا$imagesInstaUrls');
       emit(UploadImgSuccessfully());
-      Future.wait(upload).then((value) {
+      Future.wait(uploadFutures).then((value) {
         createInstagramImagePost();
       });
     } catch (e) {
@@ -484,11 +535,26 @@ class AddPostCubit extends Cubit<AddPostState> {
   uploadImageStory() async {
     try {
       emit(UploadFaceBookImageStoryLoading());
+      String response;
+      if (editedPostImages.isNotEmpty) {
+        response = await postReposatory.uploadFile(editedPostImages[0].path);
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+        imgStoryUrl = response;
+      } else if (editedTempletePostImages != null) {
+        response =
+            await postReposatory.uploadFile(editedTempletePostImages!.path);
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+        imgStoryUrl = response;
+      } else {
+        response = await postReposatory.uploadFile(imageFile!.path);
+        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+        imgStoryUrl = response;
+      }
 
-      final response = await postReposatory.uploadFile(imageFile!.path);
+      //final response = await postReposatory.uploadFile(imageFile!.path);
 
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
-      imgStoryUrl = response;
+      // print('aaaaaaaaaaaaaaaaaaaaaaaaaaaa$response');
+      // imgStoryUrl = response;
 
       print('لkokokokokokokokokokokokoko$imgStoryUrl');
       emit(UploadFaceBookImageStorySuccessfully());
@@ -694,6 +760,8 @@ class AddPostCubit extends Cubit<AddPostState> {
     //image = null;
     displayVideo = null;
     addPostController.clear();
+    editedPostImages.clear();
+
     emit(RemovePostContant());
   }
 
@@ -818,19 +886,40 @@ class AddPostCubit extends Cubit<AddPostState> {
   }
 
   Future<void> handleAction() async {
-    if (imageFile != null && selectedaceInstaItems.contains('Facebook Story')) {
+    if (
+        // imageFile != null ||
+        //   postImages.isNotEmpty ||
+        //   editedPostImages.isNotEmpty ||
+        //   editedTempletePostImages != null &&
+        selectedaceInstaItems.contains('Facebook Story')) {
       await uploadImageStory();
     }
-    if (imageFile != null && selectedInstaItems.contains('Instagram Story')) {
+    if (
+        // imageFile != null ||
+        //   postImages.isNotEmpty ||
+        //   editedPostImages.isNotEmpty ||
+        //   editedTempletePostImages != null &&
+        selectedInstaItems.contains('Instagram Story')) {
       await uploadInstagramImageStory();
     }
-    if (imageFile != null && selectedaceInstaItems.contains('Facebook Post')) {
+    if (
+        // imageFile != null ||
+        //   postImages.isNotEmpty ||
+        //   editedPostImages.isNotEmpty ||
+        //   editedTempletePostImages != null &&
+        selectedaceInstaItems.contains('Facebook Post')) {
       await uploadFaceBokImage();
     }
-    if (imageFile != null && selectedInstaItems.contains('Instagram Post')) {
+    if (
+        // imageFile != null &&
+        selectedInstaItems.contains('Instagram Post')) {
       await uploadInstagramImage();
     }
-    if (postImages.isNotEmpty && selectedItems.isNotEmpty) {
+    if (
+        // postImages.isNotEmpty ||
+        //   editedPostImages.isNotEmpty ||
+        //   editedTempletePostImages != null &&
+        selectedItems.isNotEmpty) {
       await uploadImage();
     }
 

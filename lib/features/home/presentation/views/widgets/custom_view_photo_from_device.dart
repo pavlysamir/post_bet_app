@@ -100,9 +100,11 @@ class _CustomViewPhotoFromDeviceState extends State<CustomViewPhotoFromDevice> {
                           // تحويل Uint8List الناتج إلى ملف
                           final editedFile =
                               await _convertUint8ListToFile(editedImage);
-                          AddPostCubit.get(context).postImages.add(editedFile);
+                          AddPostCubit.get(context)
+                              .editedPostImages
+                              .add(editedFile);
                           print(
-                              '${AddPostCubit.get(context).postImages.length}');
+                              'leeeeeeeeeeeeeh${AddPostCubit.get(context).editedPostImages.length}');
                         }
                       },
                       icon: const Icon(

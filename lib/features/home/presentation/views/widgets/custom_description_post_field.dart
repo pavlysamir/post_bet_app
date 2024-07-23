@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +27,7 @@ class CustomDescriptionPostField extends StatelessWidget {
 
   final TextEditingController? controller;
   final String hintText;
-  final String? img;
+  final File? img;
 
   final TextInputType textInputType;
   final Function(String value) validationMassage;
@@ -163,17 +166,21 @@ class CustomDescriptionPostField extends StatelessWidget {
                   ],
                 ),
               if (img != null)
-                Container(
+                SizedBox(
                   width: MediaQuery.of(context).size.width * 0.8,
                   height: MediaQuery.of(context).size.height * 0.2,
-                  decoration: const BoxDecoration(
-                      // border: Border.all(color: kPrimaryKey),
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
-                  child: Image.asset(
-                    img!,
-                    fit: BoxFit.cover,
-                  ),
+                  child: _buildImage(),
                 ),
+              // Container(
+              //   width: MediaQuery.of(context).size.width * 0.8,
+              //   height: MediaQuery.of(context).size.height * 0.2,
+              //   decoration: const BoxDecoration(
+              //       // border: Border.all(color: kPrimaryKey),
+              //       borderRadius: BorderRadius.all(Radius.circular(10))),
+              //   child: Image(image: _buildImage(),
+              //   fit: BoxFit.cover,
+              //   ),
+              // ),
               if (img == null)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -221,6 +228,23 @@ class CustomDescriptionPostField extends StatelessWidget {
         );
       },
     );
+  }
+
+  Widget _buildImage() {
+    if (img is Uint8List) {
+      return Image.memory(img as Uint8List, fit: BoxFit.cover);
+    } else if (img is File) {
+      return Image.file(img as File, fit: BoxFit.cover);
+    } else if (img is String) {
+      return Image.network(img as String, fit: BoxFit.cover);
+    } else {
+      return const Center(
+        child: Icon(
+          Icons.image_not_supported,
+          color: Colors.blueGrey,
+        ),
+      );
+    }
   }
 }
 
