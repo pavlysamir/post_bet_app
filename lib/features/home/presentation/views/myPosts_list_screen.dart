@@ -13,19 +13,6 @@ class MyPostsListSchaduling extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          AppLocalizations.of(context)!.createPost,
-        ),
-        // actions: [
-        //   IconButton(
-        //       onPressed: () {
-        //         customJustGoNavigate(
-        //             context: context, path: AppRouter.kSchadulaPostsScreen);
-        //       },
-        //       icon: const Icon(Icons.calendar_month))
-        // ],
-      ),
       body: BlocConsumer<AddPostCubit, AddPostState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -35,28 +22,31 @@ class MyPostsListSchaduling extends StatelessWidget {
                   color: kPrimaryKey,
                 ))
               : SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          AppLocalizations.of(context)!.basic,
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        SizedBox(height: 20.h),
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: AddPostCubit.get(context).myPosts.length,
-                            itemBuilder: (context, index) {
-                              return MyPostsSchaduling(
-                                postModel:
-                                    AddPostCubit.get(context).myPosts[index],
-                                index: index,
-                              );
-                            }),
-                      ],
+                  child: SafeArea(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            AppLocalizations.of(context)!.basic,
+                            style: Theme.of(context).textTheme.titleLarge,
+                          ),
+                          SizedBox(height: 20.h),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount:
+                                  AddPostCubit.get(context).myPosts.length,
+                              itemBuilder: (context, index) {
+                                return MyPostsSchaduling(
+                                  postModel:
+                                      AddPostCubit.get(context).myPosts[index],
+                                  index: index,
+                                );
+                              }),
+                        ],
+                      ),
                     ),
                   ),
                 );
