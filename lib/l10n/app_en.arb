@@ -31,7 +31,7 @@
 
   "seeAll":"See All",
   "amazingMessage":"Write an amazing description in this ",
-"aed":"AED",
+"aed":"Edit Profile",
 
 
 
@@ -106,9 +106,9 @@
  "shareWithTickandSnap":"Share with Tiktok and snapchat",
  "unlimitedPosts":"Unlimited posts per day",
  "shareAllPlatform":"Share with all platforms",
- "paymentAmount":"Pay amount",
- "nameCard":"Name on card",
- "cardNumber":"Card Number",
+ "paymentAmount":"Popular photos",
+ "nameCard":"No photo edited for share",
+ "cardNumber":"Search",
  "expireData":"Expire Data",
  "cvv":"Time",
  "zip":"Save Schadule",
@@ -118,7 +118,7 @@
  "no":"No",
  "doChangeTheme":"Do you want change Theme",
  "changePassword":"Change Password",
- "template":"Template",
+ "template":"Photo details",
  "title1": "Agreement to the Terms",
  "description1": "By using the application, you agree to comply with all the terms and conditions set forth in this agreement.",
  "title2": "Eligibility",

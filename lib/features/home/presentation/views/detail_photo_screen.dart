@@ -8,13 +8,18 @@ import 'package:image_editor_plus/image_editor_plus.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:post_bet/constants.dart';
+import 'package:post_bet/core/api/end_ponits.dart';
 import 'package:post_bet/core/utils/dialog/loading_dialog.dart';
 import 'package:post_bet/core/utils/dialog/success_dialog.dart';
 import 'package:post_bet/core/utils/extension/string_extension.dart';
+import 'package:post_bet/core/utils/service_locator.dart';
+import 'package:post_bet/core/utils/shared_preferences_cash_helper.dart';
 import 'package:post_bet/core/utils/snackbar/info_snackbar.dart';
+import 'package:post_bet/core/utils/widgets/pop_up_dialog.dart';
 import 'package:post_bet/features/home/data/models/photo/photo_model.dart';
 import 'package:post_bet/features/home/presentation/manager/details_photo/details_photo_cubit.dart';
 import 'package:post_bet/features/home/presentation/views/create_template_post.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DetailPhotoScreen extends StatelessWidget {
   const DetailPhotoScreen({super.key, required this.photo});
@@ -76,7 +81,7 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
             ),
             centerTitle: false,
             title: Text(
-              "Detail Photo",
+              AppLocalizations.of(context)!.template,
               style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
@@ -182,7 +187,7 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
                                 ),
                               ),
                               child: Text(
-                                "Edit Photo",
+                                AppLocalizations.of(context)!.aed,
                                 style: Theme.of(context)
                                     .textTheme
                                     .titleSmall
@@ -193,19 +198,42 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
                             OutlinedButton.icon(
                               onPressed: () {
                                 if (_file is File) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          CreateTempletePostView(
-                                        template: (_file as File),
-                                      ),
-                                    ),
-                                  );
+                                  getIt
+                                              .get<
+                                                  CashHelperSharedPreferences>()
+                                              .getData(key: ApiKey.platForms) ==
+                                          null
+                                      ? showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              PopUpDialogOneButton(
+                                            context: context,
+                                            function: () {
+                                              Navigator.pop(context);
+                                            },
+                                            title: AppLocalizations.of(context)!
+                                                .gotoSubscripe,
+                                            subTitle: '',
+                                            colorButton1: kPrimaryKey,
+                                            textColortcolor1: Colors.white,
+                                            textbtn:
+                                                AppLocalizations.of(context)!
+                                                    .ok,
+                                          ),
+                                        )
+                                      : Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                CreateTempletePostView(
+                                              template: (_file as File),
+                                            ),
+                                          ),
+                                        );
                                 } else {
                                   showInfoSnackBar(
                                     context,
-                                    "No edited image to share!",
+                                    AppLocalizations.of(context)!.nameCard,
                                   );
                                 }
                               },
@@ -223,7 +251,7 @@ class _DetailPhotoLayoutState extends State<DetailPhotoLayout> {
                                     ?.color,
                               ),
                               label: Text(
-                                "Share",
+                                AppLocalizations.of(context)!.share,
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
                             ),

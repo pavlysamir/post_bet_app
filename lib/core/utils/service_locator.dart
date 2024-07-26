@@ -7,6 +7,8 @@ import 'package:post_bet/features/home/data/photos_repo.dart';
 import 'package:post_bet/features/home/data/post_repo.dart';
 import 'package:post_bet/features/platform/data/repo/platforms_repo.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
+import 'package:post_bet/features/seach_photo/repository/search_repository.dart';
+import 'package:post_bet/features/seach_photo/repository/search_repository_impl.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 
 import 'shared_preferences_cash_helper.dart';
@@ -36,4 +38,7 @@ void setUpServiceLocator() {
   getIt.registerSingleton<ActivitiesRepo>(ActivitiesRepo());
 
   getIt.registerSingleton<PhotoRepositiry>(PhotoRepositiry(client: Dio()));
+
+  getIt.registerSingleton<SearchRepositoryImpl>(
+      SearchRepositoryImpl(client: Dio()));
 }

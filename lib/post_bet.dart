@@ -20,6 +20,8 @@ import 'package:post_bet/features/platform/data/repo/platforms_repo.dart';
 import 'package:post_bet/features/platform/presentation/manager/cubit/platform_cubit.dart';
 import 'package:post_bet/features/profile/data/profile_repo/profile_repo.dart';
 import 'package:post_bet/features/profile/presentation/manager/edit%20profile%20cubit.dart';
+import 'package:post_bet/features/seach_photo/presentation/manager/cubit/search_cubit.dart';
+import 'package:post_bet/features/seach_photo/repository/search_repository_impl.dart';
 import 'package:post_bet/features/settings/data/settings_repo/settings_repo.dart';
 import 'package:post_bet/features/settings/presentation/manager/settings_cubit/cubit/settings_cubit.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -72,6 +74,9 @@ class PostBetApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => DetailsPhotosCubit(),
+          ),
+          BlocProvider(
+            create: (context) => SearchCubit(getIt.get<SearchRepositoryImpl>()),
           ),
         ],
         child: BlocBuilder<SettingsCubit, SettingsState>(

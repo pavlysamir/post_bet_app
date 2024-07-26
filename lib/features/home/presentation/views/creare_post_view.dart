@@ -9,10 +9,24 @@ import 'package:post_bet/features/home/presentation/manager/add_post_cubit/cubit
 import 'package:post_bet/features/home/presentation/views/widgets/custom_description_post_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class CreatePostView extends StatelessWidget {
+class CreatePostView extends StatefulWidget {
   const CreatePostView({
     super.key,
   });
+
+  @override
+  State<CreatePostView> createState() => _CreatePostViewState();
+}
+
+class _CreatePostViewState extends State<CreatePostView> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    AddPostCubit.get(context).clearImage();
+    AddPostCubit.get(context).addPostController.clear();
+    AddPostCubit.get(context).clearVideo();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

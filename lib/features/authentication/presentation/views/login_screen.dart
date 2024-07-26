@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: 2.h),
                         CustomTextButtonForgotPassword(function: () {
-                          customJustGoNavigate(
+                          customGoAndDeleteNavigate(
                               context: context,
                               path: AppRouter.kForgotPassword);
                         }),
